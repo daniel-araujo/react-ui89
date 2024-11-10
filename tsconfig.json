@@ -3,20 +3,19 @@
     "plugins": [
       { "name": "typescript-plugin-css-modules" }
     ],
-    "target": "es2016",
-    "jsx": "react",
+    "target": "ES2023",
     "module": "ES2022",
-    "moduleResolution": "node",
-    "declaration": true,
-    "emitDeclarationOnly": true,
-    "sourceMap": true,
-    "outDir": "dist",
-    "declarationDir": "dist/types",
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "skipLibCheck": true
+    "jsx": "react", // JSX support
+    "declaration": true, // Emit `.d.ts` declaration files
+    "declarationDir": "./dist/esm", // Directory to output the generated `.d.ts` files
+    "outDir": "./dist", // Output directory for `.js` files
+    "strict": true, // Enable all strict type-checking options
+    "esModuleInterop": true, // Enable `import` and `export` interop between ES Modules and CommonJS
+    "skipLibCheck": true, // Skip type checking for declaration files (faster compilation)
+    "forceConsistentCasingInFileNames": true, // Enforce consistent casing in import paths
+    "moduleResolution": "node", // Resolve modules using Node.js conventions
+    "isolatedModules": true, // Ensures each file is treated as a separate module
+    "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist"],

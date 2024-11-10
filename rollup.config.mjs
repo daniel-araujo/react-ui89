@@ -13,11 +13,6 @@ export default [
     input: "src/index.ts",
     output: [
       {
-        file: packageJson.main,
-        format: "cjs",
-        sourcemap: true,
-      },
-      {
         file: packageJson.module,
         format: "esm",
         sourcemap: true,
@@ -26,19 +21,21 @@ export default [
     plugins: [
       resolve(),
       commonjs(),
-      typescript({ tsconfig: "./tsconfig.json" }),
+      typescript({
+        tsconfig: "./tsconfig.json",
+      }),
       postcss({
         modules: true,
         extract: true,
         minimize: true,
-        sourceMap: true  
+        sourceMap: true
       }),
     ],
+    external: Object.keys(packageJson.peerDependencies),
   },
   {
     input: "dist/esm/types/index.d.ts",
     output: [{ file: "dist/index.d.ts", format: "esm" }],
     plugins: [dts()],
-    external: [/\.css$/],
   },
 ]

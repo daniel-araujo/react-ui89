@@ -3,10 +3,10 @@
   "description": "A collection of components that mimic a style of user interfaces from the 80s.",
   "version": "0.1.0",
   "author": "Daniel Araujo",
-  "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "types": "dist/index.d.ts",
   "peerDependencies": {
