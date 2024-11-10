@@ -1,0 +1,30 @@
+.container {
+  display: block;
+  padding-right: var(--safe-space);
+  padding-bottom: var(--safe-space);
+  position: relative;
+}
+
+.right {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - var(--safe-space));
+  width: var(--safe-space);
+  box-sizing: border-box;
+  background: black;
+  z-index: 0;
+}
+
+.bottom {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - var(--safe-space));
+  height: var(--safe-space);
+  box-sizing: border-box;
+  background: black;
+  z-index: 0;
+}

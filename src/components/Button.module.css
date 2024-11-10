@@ -1,0 +1,73 @@
+.container {
+  display: inline-block;
+}
+
+.button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center; /* align vertical */
+  border: 0;
+  color: var(--action-text-color);
+  background-color: var(--action-bg-color);
+  min-width: 60px;
+  border-radius: 1px;
+  font-weight: bold;
+  padding: 0 16px;
+  user-select: none;
+  text-align: center;
+  box-sizing: border-box;
+  border: 1px solid #00000010;
+
+  transition: transform var(--animation-speed);
+
+  /* For the button active/hover/focus state */
+  position: relative;
+}
+
+.button:before {
+  position: absolute;
+  inset: 0;
+}
+
+.block {
+  display: flex;
+}
+
+.button:hover:not(.disabled):not(.active):before {
+  content: '';
+  background-color: #FFFFFF40;
+  cursor: pointer;
+}
+
+.button:active:not(.disabled),
+.active {
+  transform: translate3d(calc(var(--safe-space) / 2), calc(var(--safe-space) / 2), 0)
+}
+
+.button:active:not(.disabled):not(.active):before {
+  content: none;
+  background-color: #00000040;
+  cursor: pointer;
+}
+
+.disabled {
+  opacity: 0.5;
+}
+
+.size--normal {
+  height: 22px;
+}
+
+.size--small {
+  height: 24px;
+}
+
+.click {
+  position: absolute;
+  inset: 0;
+}
+
+.button:active:not(.disabled) > .click,
+.active > .click {
+  transform: translate3d(calc(var(--safe-space) / 2 * -1), calc(var(--safe-space) / 2 * -1), 0)
+}

@@ -1,26 +1,23 @@
 {
   "name": "react-1980ui",
+  "description": "A collection of components that mimic a style of user interfaces from the 80s.",
   "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
-    "web-vitals": "^2.1.4"
+  "author": "Daniel Araujo",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
+  "peerDependencies": {
+    "react": "^18.3.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build": "rollup -c"
   },
   "eslintConfig": {
     "extends": [
-      "react-app",
-      "react-app/jest"
+      "react-app"
     ]
   },
   "browserslist": {
@@ -34,5 +31,17 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^28.0.1",
+    "@rollup/plugin-node-resolve": "^15.3.0",
+    "@rollup/plugin-typescript": "^12.1.1",
+    "@types/react": "^18.3.12",
+    "rollup": "^4.25.0",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-postcss": "^4.0.2",
+    "tslib": "^2.8.1",
+    "typescript": "^5.6.3",
+    "typescript-plugin-css-modules": "^5.1.0"
   }
 }
