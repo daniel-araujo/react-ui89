@@ -1,0 +1,38 @@
+.big {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-big);
+  line-height: 25px;
+}
+
+.normal {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-normal);
+  line-height: 24px;
+}
+
+.normalBold {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-normal);
+  line-height: 24px;
+  font-weight: bold;
+}
+
+.small {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-small);
+  line-height: 16px;
+}
+
+.smallBold {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-small);
+  line-height: 16px;
+  font-weight: bold;
+}
+
+/* For buttons and such. */
+.special {
+  font-family: monospace;
+  font-size: var(--ui89-font-size-small);
+  font-weight: bold;
+}

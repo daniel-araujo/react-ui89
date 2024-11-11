@@ -1,0 +1,15 @@
+.vertical1 {
+  padding-top: calc(var(--ui89-safe-space) * 1);
+}
+
+.gap1 {
+  gap: calc(var(--ui89-safe-space) * 1);
+}
+
+.vertical2 {
+  padding-top: calc(var(--ui89-safe-space) * 2);
+}
+
+.gap2 {
+  gap: calc(var(--ui89-safe-space) * 2);
+}

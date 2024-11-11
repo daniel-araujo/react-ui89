@@ -7,8 +7,8 @@
   justify-content: center;
   align-items: center; /* align vertical */
   border: 0;
-  color: var(--action-text-color);
-  background-color: var(--action-bg-color);
+  color: var(--ui89-chosen-theme-text-color);
+  background-color: var(--ui89-chosen-theme-bg-color);
   min-width: 60px;
   border-radius: 1px;
   font-weight: bold;
@@ -18,10 +18,12 @@
   box-sizing: border-box;
   border: 1px solid #00000010;
 
-  transition: transform var(--animation-speed);
+  transition: transform var(--ui89-animation-speed);
 
   /* For the button active/hover/focus state */
   position: relative;
+
+  cursor: pointer;
 }
 
 .button:before {
@@ -41,7 +43,7 @@
 
 .button:active:not(.disabled),
 .active {
-  transform: translate3d(calc(var(--safe-space) / 2), calc(var(--safe-space) / 2), 0)
+  transform: translate3d(calc(var(--ui89-safe-space) / 2), calc(var(--ui89-safe-space) / 2), 0)
 }
 
 .button:active:not(.disabled):not(.active):before {
@@ -52,6 +54,7 @@
 
 .disabled {
   opacity: 0.5;
+  cursor: default;
 }
 
 .size--normal {
@@ -69,5 +72,5 @@
 
 .button:active:not(.disabled) > .click,
 .active > .click {
-  transform: translate3d(calc(var(--safe-space) / 2 * -1), calc(var(--safe-space) / 2 * -1), 0)
+  transform: translate3d(calc(var(--ui89-safe-space) / 2 * -1), calc(var(--ui89-safe-space) / 2 * -1), 0)
 }

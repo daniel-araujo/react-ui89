@@ -1,0 +1,4 @@
+.container {
+  background-color: var(--ui89-content-bg-color);
+  color: var(--ui89-content-text-color);
+}

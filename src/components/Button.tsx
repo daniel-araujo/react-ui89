@@ -1,12 +1,18 @@
-import React, { MouseEvent, useState } from 'react'
+import React, { useState } from 'react'
+
 import styles from './Button.module.css'
+import typoStyles from '../style/typo.module.css'
+import chosenThemeStyles from '../style/chosen-theme.module.css'
+
 import HoverShadow from './HoverShadow'
 
+import { Ui89Theme } from '../theme'
+
 interface ButtonProps {
-  theme?: string,
+  theme?: keyof typeof Ui89Theme | Ui89Theme,
   size?: string,
   block?: boolean,
-  onClick?: () => void,
+  onClick?: () => (void | Promise<void>),
   href?: string,
   children: React.ReactNode,
   autoDisableOnClick?: boolean,
@@ -15,7 +21,7 @@ interface ButtonProps {
 }
 
 export default function Button({
-  theme = 'good',
+  theme = Ui89Theme.primary,
   size = 'normal',
   block,
   onClick,
@@ -30,7 +36,7 @@ export default function Button({
 
   let localDisabled = disabled || (autoDisableOnClick && clicking)
 
-  async function onAnchorClick(e: MouseEvent<HTMLAnchorElement>) {
+  async function onAnchorClick(e: React.MouseEvent<HTMLAnchorElement>) {
     if (localDisabled) {
       // The anchor tag does not support the disabled attribute so we do this.
       return
@@ -55,7 +61,7 @@ export default function Button({
     }
   }
 
-  async function onButtonClick(e: MouseEvent<HTMLButtonElement>) {
+  async function onButtonClick(e: React.MouseEvent<HTMLButtonElement>) {
     if (localDisabled) {
       // The anchor tag does not support the disabled attribute so we do this.
       return
@@ -82,8 +88,8 @@ export default function Button({
 
   let buttonClass = [
     styles.button,
-    'typo-special',
-    'action-theme-' + theme,
+    typoStyles.special,
+    chosenThemeStyles[theme],
     styles['size--' + size],
     activated ? styles.active : undefined,
     block ? styles.block : undefined,

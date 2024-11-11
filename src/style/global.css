@@ -1,0 +1,59 @@
+/*
+ * Variables.
+ */
+:root {
+  /* Leet colors. */
+  --ui89-palette-black: #000000;
+  --ui89-palette-dark-blue: #0000AA;
+  --ui89-palette-dark-green: #00AA00;
+  --ui89-palette-dark-cyan: #00AAAA;
+  --ui89-palette-dark-red: #AA0000;
+  --ui89-palette-dark-pink: #AA00AA;
+  --ui89-palette-dark-yellow: #AA5500;
+  --ui89-palette-light-gray: #AAAAAA;
+  --ui89-palette-dark-gray: #555555;
+  --ui89-palette-light-blue: #5454FF;
+  --ui89-palette-light-green: #55FF55;
+  --ui89-palette-light-cyan: #55FFFF;
+  --ui89-palette-light-red: #FF5555;
+  --ui89-palette-light-pink: #FF55FF;
+  --ui89-palette-light-yellow: #FFFF55;
+  --ui89-palette-white: #FFFFFF;
+
+  /* Themes */
+  --ui89-theme-primary-text-color: var(--ui89-palette-black);
+  --ui89-theme-primary-bg-color: var(--ui89-palette-light-yellow);
+
+  --ui89-theme-secondary-text-color: var(--ui89-palette-black);
+  --ui89-theme-secondary-bg-color: var(--ui89-palette-white);
+
+  --ui89-theme-success-text-color: var(--ui89-palette-white);
+  --ui89-theme-success-bg-color: var(--ui89-palette-dark-green);
+
+  --ui89-theme-info-text-color: var(--ui89-palette-white);
+  --ui89-theme-info-bg-color: var(--ui89-palette-light-blue);
+  
+  --ui89-theme-warning-text-color: var(--ui89-palette-white);
+  --ui89-theme-warning-bg-color: var(--ui89-palette-dark-yellow);
+  
+  --ui89-theme-danger-text-color: var(--ui89-palette-white);
+  --ui89-theme-danger-bg-color: var(--ui89-palette-dark-red);
+
+  /* Size and alignment */
+  --ui89-safe-space: 8px;
+  --ui89-input-height: 32px;
+
+  /* Typography */
+  --ui89-font-size-huge: 32px;
+  --ui89-font-size-big: 20px;
+  --ui89-font-size-normal: 16px;
+  --ui89-font-size-small: 14px;
+  --ui89-font-size-tiny: 10px;
+
+  /* Input box */
+  --ui89-input-bg-color: var(--ui89-palette-black);
+  --ui89-input-text-color: var(--ui89-palette-light-yellow);
+
+  /* Animation */
+  --ui89-animation-speed: 100ms;
+}

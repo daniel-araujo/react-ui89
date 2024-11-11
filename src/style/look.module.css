@@ -1,0 +1,29 @@
+.main {
+  --ui89-content-text-color: var(--ui89-palette-white);
+  --ui89-content-text-subtle-color: var(--ui89-palette-light-gray);
+  --ui89-content-bg-color: var(--ui89-palette-dark-blue);
+  --ui89-content-highlight-color: rgba(255, 255, 255, 0.2);
+  --ui89-content-card-bg-color: var(--ui89-palette-dark-blue);
+  --ui89-content-card-text-color: var(--ui89-palette-white);
+
+  --ui89-theme-primary-text-color: var(--ui89-palette-white);
+  --ui89-theme-primary-bg-color: var(--ui89-palette-light-blue);
+
+  --ui89-theme-secondary-text-color: var(--ui89-palette-black);
+  --ui89-theme-secondary-bg-color: var(--ui89-palette-light-gray);
+}
+
+.side {
+  --ui89-content-text-color: var(--ui89-palette-white);
+  --ui89-content-text-subtle-color: var(--ui89-palette-dark-gray);
+  --ui89-content-bg-color: var(--ui89-palette-light-gray);
+  --ui89-content-highlight-color: rgba(255, 255, 255, 0.2);
+  --ui89-content-card-bg-color: var(--ui89-palette-light-gray);
+  --ui89-content-card-text-color: var(--ui89-palette-white);
+
+  --ui89-theme-primary-text-color: var(--ui89-palette-white);
+  --ui89-theme-primary-bg-color: var(--ui89-palette-light-blue);
+
+  --ui89-theme-secondary-text-color: var(--ui89-palette-black);
+  --ui89-theme-secondary-bg-color: var(--ui89-palette-white);
+}

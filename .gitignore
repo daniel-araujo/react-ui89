@@ -6,3 +6,5 @@
 
 # Node garbage.
 npm-debug.log*
+
+*storybook.log

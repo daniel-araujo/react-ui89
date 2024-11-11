@@ -1,7 +1,7 @@
 .container {
   display: block;
-  padding-right: var(--safe-space);
-  padding-bottom: var(--safe-space);
+  padding-right: var(--ui89-safe-space);
+  padding-bottom: var(--ui89-safe-space);
   position: relative;
 }
 
@@ -10,8 +10,8 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  height: calc(100% - var(--safe-space));
-  width: var(--safe-space);
+  height: calc(100% - var(--ui89-safe-space));
+  width: var(--ui89-safe-space);
   box-sizing: border-box;
   background: black;
   z-index: 0;
@@ -22,8 +22,8 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  width: calc(100% - var(--safe-space));
-  height: var(--safe-space);
+  width: calc(100% - var(--ui89-safe-space));
+  height: var(--ui89-safe-space);
   box-sizing: border-box;
   background: black;
   z-index: 0;
