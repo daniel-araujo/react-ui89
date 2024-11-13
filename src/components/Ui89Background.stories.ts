@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
-import Ui89Background from "./Ui89Background"
+import { Ui89Background } from "./Ui89Background"
 
 const meta: Meta<typeof Ui89Background> = {
   component: Ui89Background,

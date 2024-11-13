@@ -1,7 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
-import Ui89Button from "./Ui89Button"
+import { Ui89Button } from "./Ui89Button"
 
 const meta: Meta<typeof Ui89Button> = {
   component: Ui89Button,
