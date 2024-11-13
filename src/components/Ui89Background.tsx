@@ -9,7 +9,7 @@ export function Ui89Background({
   look,
   children,
 }: {
-  look: keyof typeof Ui89Look | Ui89Look
+  look: Ui89Look | string
   children: React.ReactNode
 }) {
   return (

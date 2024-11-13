@@ -1,13 +1,13 @@
 export enum Ui89Theme {
-  primary,
-  secondary,
-  info,
-  success,
-  warning,
-  danger,
+  primary = "primary",
+  secondary = "secondary",
+  info = "info",
+  success = "success",
+  warning = "warning",
+  danger = "danger",
 }
 
 export enum Ui89Look {
-  main,
-  side,
+  main = "main",
+  side = "side",
 }

@@ -9,7 +9,7 @@ import HoverShadow from "./HoverShadow"
 import { Ui89Theme } from "../theme"
 
 interface Ui89ButtonProps {
-  theme?: keyof typeof Ui89Theme | Ui89Theme
+  theme?: Ui89Theme | string
   size?: string
   block?: boolean
   onClick?: () => void | Promise<void>
