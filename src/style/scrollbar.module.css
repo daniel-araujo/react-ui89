@@ -29,7 +29,8 @@
   height: calc(var(--ui89-safe-space) * 2);
 }
 .container::-webkit-scrollbar-button:single-button:vertical:decrement {
-  border-width: 0 var(--ui89-safe-space) var(--ui89-safe-space) var(--ui89-safe-space);
+  border-width: 0 var(--ui89-safe-space) var(--ui89-safe-space)
+    var(--ui89-safe-space);
   border-color: transparent transparent var(--ui89-palette-black) transparent;
 }
 .container::-webkit-scrollbar-button:single-button:vertical:decrement:active {
@@ -37,7 +38,8 @@
 }
 
 .container::-webkit-scrollbar-button:single-button:vertical:increment {
-  border-width: var(--ui89-safe-space) var(--ui89-safe-space) 0 var(--ui89-safe-space);
+  border-width: var(--ui89-safe-space) var(--ui89-safe-space) 0
+    var(--ui89-safe-space);
   border-color: var(--ui89-palette-black) transparent transparent transparent;
 }
 .container::-webkit-scrollbar-button:single-button:vertical:increment:active {
@@ -45,7 +47,8 @@
 }
 
 .container::-webkit-scrollbar-button:single-button:horizontal:decrement {
-  border-width: var(--ui89-safe-space) var(--ui89-safe-space) var(--ui89-safe-space) 0;
+  border-width: var(--ui89-safe-space) var(--ui89-safe-space)
+    var(--ui89-safe-space) 0;
   border-color: transparent var(--ui89-palette-black) transparent transparent;
 }
 .container::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
@@ -53,7 +56,8 @@
 }
 
 .container::-webkit-scrollbar-button:single-button:horizontal:increment {
-  border-width: var(--ui89-safe-space) 0 var(--ui89-safe-space) var(--ui89-safe-space);
+  border-width: var(--ui89-safe-space) 0 var(--ui89-safe-space)
+    var(--ui89-safe-space);
   border-color: transparent transparent transparent var(--ui89-palette-black);
 }
 .container::-webkit-scrollbar-button:single-button:horizontal:increment:active {

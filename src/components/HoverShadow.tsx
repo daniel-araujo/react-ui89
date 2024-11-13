@@ -1,8 +1,8 @@
-import React from 'react'
-import styles from './HoverShadow.module.css'
+import React from "react"
+import styles from "./HoverShadow.module.css"
 
 export default function HoverShadow({
-  children
+  children,
 }: {
   children: React.ReactNode
 }) {

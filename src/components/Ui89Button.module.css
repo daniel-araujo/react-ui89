@@ -36,14 +36,18 @@
 }
 
 .button:hover:not(.disabled):not(.active):before {
-  content: '';
-  background-color: #FFFFFF40;
+  content: "";
+  background-color: #ffffff40;
   cursor: pointer;
 }
 
 .button:active:not(.disabled),
 .active {
-  transform: translate3d(calc(var(--ui89-safe-space) / 2), calc(var(--ui89-safe-space) / 2), 0)
+  transform: translate3d(
+    calc(var(--ui89-safe-space) / 2),
+    calc(var(--ui89-safe-space) / 2),
+    0
+  );
 }
 
 .button:active:not(.disabled):not(.active):before {
@@ -72,5 +76,9 @@
 
 .button:active:not(.disabled) > .click,
 .active > .click {
-  transform: translate3d(calc(var(--ui89-safe-space) / 2 * -1), calc(var(--ui89-safe-space) / 2 * -1), 0)
+  transform: translate3d(
+    calc(var(--ui89-safe-space) / 2 * -1),
+    calc(var(--ui89-safe-space) / 2 * -1),
+    0
+  );
 }

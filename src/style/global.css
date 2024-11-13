@@ -4,21 +4,21 @@
 :root {
   /* Leet colors. */
   --ui89-palette-black: #000000;
-  --ui89-palette-dark-blue: #0000AA;
-  --ui89-palette-dark-green: #00AA00;
-  --ui89-palette-dark-cyan: #00AAAA;
-  --ui89-palette-dark-red: #AA0000;
-  --ui89-palette-dark-pink: #AA00AA;
-  --ui89-palette-dark-yellow: #AA5500;
-  --ui89-palette-light-gray: #AAAAAA;
+  --ui89-palette-dark-blue: #0000aa;
+  --ui89-palette-dark-green: #00aa00;
+  --ui89-palette-dark-cyan: #00aaaa;
+  --ui89-palette-dark-red: #aa0000;
+  --ui89-palette-dark-pink: #aa00aa;
+  --ui89-palette-dark-yellow: #aa5500;
+  --ui89-palette-light-gray: #aaaaaa;
   --ui89-palette-dark-gray: #555555;
-  --ui89-palette-light-blue: #5454FF;
-  --ui89-palette-light-green: #55FF55;
-  --ui89-palette-light-cyan: #55FFFF;
-  --ui89-palette-light-red: #FF5555;
-  --ui89-palette-light-pink: #FF55FF;
-  --ui89-palette-light-yellow: #FFFF55;
-  --ui89-palette-white: #FFFFFF;
+  --ui89-palette-light-blue: #5454ff;
+  --ui89-palette-light-green: #55ff55;
+  --ui89-palette-light-cyan: #55ffff;
+  --ui89-palette-light-red: #ff5555;
+  --ui89-palette-light-pink: #ff55ff;
+  --ui89-palette-light-yellow: #ffff55;
+  --ui89-palette-white: #ffffff;
 
   /* Themes */
   --ui89-theme-primary-text-color: var(--ui89-palette-black);
@@ -32,10 +32,10 @@
 
   --ui89-theme-info-text-color: var(--ui89-palette-white);
   --ui89-theme-info-bg-color: var(--ui89-palette-light-blue);
-  
+
   --ui89-theme-warning-text-color: var(--ui89-palette-white);
   --ui89-theme-warning-bg-color: var(--ui89-palette-dark-yellow);
-  
+
   --ui89-theme-danger-text-color: var(--ui89-palette-white);
   --ui89-theme-danger-bg-color: var(--ui89-palette-dark-red);
 

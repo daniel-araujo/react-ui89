@@ -1,28 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState } from "react"
 
-import styles from './Ui89Button.module.css'
-import typoStyles from '../style/typo.module.css'
-import chosenThemeStyles from '../style/chosen-theme.module.css'
+import styles from "./Ui89Button.module.css"
+import typoStyles from "../style/typo.module.css"
+import chosenThemeStyles from "../style/chosen-theme.module.css"
 
-import HoverShadow from './HoverShadow'
+import HoverShadow from "./HoverShadow"
 
-import { Ui89Theme } from '../theme'
+import { Ui89Theme } from "../theme"
 
 interface Ui89ButtonProps {
-  theme?: keyof typeof Ui89Theme | Ui89Theme,
-  size?: string,
-  block?: boolean,
-  onClick?: () => (void | Promise<void>),
-  href?: string,
-  children: React.ReactNode,
-  autoDisableOnClick?: boolean,
-  disabled?: boolean,
-  activated?: boolean,
+  theme?: keyof typeof Ui89Theme | Ui89Theme
+  size?: string
+  block?: boolean
+  onClick?: () => void | Promise<void>
+  href?: string
+  children: React.ReactNode
+  autoDisableOnClick?: boolean
+  disabled?: boolean
+  activated?: boolean
 }
 
 export function Ui89Button({
   theme = Ui89Theme.primary,
-  size = 'normal',
+  size = "normal",
   block,
   onClick,
   href,
@@ -51,7 +51,7 @@ export function Ui89Button({
       setClicking(true)
 
       if (href !== undefined) {
-        if (href.startsWith('/')) {
+        if (href.startsWith("/")) {
           e.preventDefault()
           //router.push(href)
         }
@@ -90,22 +90,18 @@ export function Ui89Button({
     styles.button,
     typoStyles.special,
     chosenThemeStyles[theme],
-    styles['size--' + size],
+    styles["size--" + size],
     activated ? styles.active : undefined,
     block ? styles.block : undefined,
     disabled ? styles.disabled : undefined,
     clicking ? styles.active : undefined,
-  ].join(' ')
+  ].join(" ")
 
   if (href) {
     return (
       <span className={styles.container}>
         <HoverShadow>
-          <a
-            className={buttonClass}
-            href={href}
-            onClick={onAnchorClick}
-          >
+          <a className={buttonClass} href={href} onClick={onAnchorClick}>
             <span className={styles.click}></span>
             {children}
           </a>
