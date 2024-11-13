@@ -1,0 +1,11 @@
+<svg width="64" height="64" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background square -->
+  <rect x="0" y="0" width="64" height="64" rx="8" fill="#0078D7"/>
+
+  <!-- Shortcut arrow background circle -->
+  <circle cx="48" cy="48" r="16" fill="white"/>
+
+  <!-- Arrow inside the circle -->
+  <polygon points="44,40 52,48 44,56" fill="#0078D7"/>
+  <rect x="44" y="48" width="8" height="4" fill="#0078D7"/>
+</svg>

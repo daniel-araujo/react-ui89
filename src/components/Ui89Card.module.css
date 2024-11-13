@@ -1,0 +1,47 @@
+.container {
+  background: var(--ui89-content-card-bg-color);
+  color: var(--ui89-content-card-text-color);
+  border-radius: var(--ui89-box-border-radius);
+  position: relative;
+  box-shadow: rgb(0 0 0 / 5%) 0px 1px 2px 0px;
+  border-top: calc(var(--ui89-safe-space)) solid #ffffff20;
+  border-left: calc(var(--ui89-safe-space)) solid #ffffff20;
+  border-right: calc(var(--ui89-safe-space)) solid #00000040;
+  border-bottom: calc(var(--ui89-safe-space)) solid #00000040;
+  padding: calc(var(--ui89-safe-space) / 4) calc(var(--ui89-safe-space) / 2);
+  border: 1px solid white;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.container > * {
+  flex: 1;
+}
+
+.containerHasTop {
+  margin-top: var(--ui89-safe-space);
+}
+
+.inside {
+  border: 1px solid white;
+  padding: calc(var(--ui89-safe-space));
+}
+
+.topLeftCenter {
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  padding-left: var(--ui89-safe-space);
+  transform: translateY(50%);
+}
+
+.topCenter {
+  position: absolute;
+  top: 0;
+  transform: translateY(-50%);
+  left: var(--ui89-safe-space);
+  right: var(--ui89-safe-space);
+  display: flex;
+  justify-content: center;
+}

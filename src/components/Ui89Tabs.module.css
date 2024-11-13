@@ -1,0 +1,17 @@
+.navigation {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.navigationItem {
+  color: var(--content-text-color);
+  background-color: var(--content-bg-color);
+  padding: 0 calc(var(--safe-space) * 3);
+  cursor: pointer;
+}
+
+.navigationItem:hover,
+.navigationItemSelected {
+  background-color: var(--content-text-color);
+  color: var(--content-bg-color);
+}

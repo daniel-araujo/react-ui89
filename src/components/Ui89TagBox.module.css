@@ -1,0 +1,9 @@
+.container {
+  color: var(--ui89-chosen-theme-text-color);
+  background-color: var(--ui89-chosen-theme-bg-color);
+
+  display: inline-block;
+  padding: calc(var(--ui89-safe-space) / 2) calc(var(--ui89-safe-space) * 2);
+  border-radius: var(--box-border-radius);
+  line-height: 1;
+}
