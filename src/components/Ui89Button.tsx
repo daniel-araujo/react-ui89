@@ -18,6 +18,7 @@ interface Ui89ButtonProps {
   autoDisableOnClick?: boolean
   disabled?: boolean
   activated?: boolean
+  routerPush?: (url: string) => void
 }
 
 export function Ui89Button({
@@ -30,6 +31,7 @@ export function Ui89Button({
   autoDisableOnClick = true,
   disabled,
   activated,
+  routerPush,
 }: Ui89ButtonProps) {
   //const router = useRouter()
   const [clicking, setClicking] = useState(false)
@@ -52,8 +54,10 @@ export function Ui89Button({
 
       if (href !== undefined) {
         if (href.startsWith("/")) {
-          e.preventDefault()
-          //router.push(href)
+          if (routerPush !== undefined) {
+            e.preventDefault()
+            routerPush(href)
+          }
         }
       }
     } finally {
