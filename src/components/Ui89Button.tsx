@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import styles from './Button.module.css'
+import styles from './Ui89Button.module.css'
 import typoStyles from '../style/typo.module.css'
 import chosenThemeStyles from '../style/chosen-theme.module.css'
 
@@ -8,7 +8,7 @@ import HoverShadow from './HoverShadow'
 
 import { Ui89Theme } from '../theme'
 
-interface ButtonProps {
+interface Ui89ButtonProps {
   theme?: keyof typeof Ui89Theme | Ui89Theme,
   size?: string,
   block?: boolean,
@@ -20,7 +20,7 @@ interface ButtonProps {
   activated?: boolean,
 }
 
-export default function Button({
+export function Ui89Button({
   theme = Ui89Theme.primary,
   size = 'normal',
   block,
@@ -30,7 +30,7 @@ export default function Button({
   autoDisableOnClick = true,
   disabled,
   activated,
-}: ButtonProps) {
+}: Ui89ButtonProps) {
   //const router = useRouter()
   const [clicking, setClicking] = useState(false)
 

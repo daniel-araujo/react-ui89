@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Ui89Look } from '../theme'
 
-import style from './Background.module.css'
+import style from './Ui89Background.module.css'
 import lookStyle from '../style/look.module.css'
 
-export default function Background({
+export function Ui89Background({
   look,
   children
 }: {

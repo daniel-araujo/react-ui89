@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { fn } from '@storybook/test';
 
-import Background from './Background';
+import Ui89Background from './Ui89Background';
 
-const meta: Meta<typeof Background> = {
-  component: Background,
+const meta: Meta<typeof Ui89Background> = {
+  component: Ui89Background,
   parameters: {
     layout: 'fullscreen',
   },
@@ -18,13 +18,13 @@ type Story = StoryObj<typeof meta>;
 export const LookMain: Story = {
   args: {
     look: 'main',
-    children: 'Background',
+    children: 'Content goes here',
   },
 };
 
 export const LookSide: Story = {
   args: {
     look: 'side',
-    children: 'Background',
+    children: 'Content goes here',
   },
 };
