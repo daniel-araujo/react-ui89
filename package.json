@@ -8,6 +8,7 @@
     "dist",
     "README.md"
   ],
+  "types": "dist/esm/index.d.ts",
   "peerDependencies": {
     "react": "^18.3.1"
   },
