@@ -1,9 +1,11 @@
-import React, { useMemo } from "react"
+import React, { forwardRef, useMemo } from "react"
 // @ts-ignore
 import { VariableSizeGrid } from "react-window"
 import AutoSizer from "react-virtualized-auto-sizer"
 import styles from "./Ui89VirtualTable.module.css"
 import { Ui89TagBox } from "./Ui89TagBox"
+
+const HEADER_HEIGHT = 30
 
 interface Ui89VirtualTableColumnRenderHeaderParams<T> {
   index: number
@@ -43,11 +45,27 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
   }, [props.columns])
 
   function getRowHeight(index: number): number {
-    return props.rowHeight ?? 50
+    if (index === 0) {
+      // Header.
+      return HEADER_HEIGHT
+    } else {
+      // Body
+      return props.rowHeight ?? 50
+    }
   }
 
   function getColumnWidth(index: number): number {
     return columns[index].width ?? 100
+  }
+
+  function getColumnHorizontalOffset(columnIndex: number) {
+    let offset = 0
+
+    for (let i = 0; i < columnIndex; i++) {
+      offset += getColumnWidth(columnIndex)
+    }
+
+    return offset
   }
 
   function getColumnClass(columnIndex: number, rowIndex: number): string {
@@ -68,6 +86,28 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     return classes.join(" ")
   }
 
+  // This is the secret to having sticky headers.
+  const innerElementType = forwardRef(({ children, ...rest }: any, ref) => (
+    <div ref={ref} {...rest}>
+      <div className={styles.tableHeader}>
+        {columns.map((column, index) => (
+          <div
+            className={getColumnClass(index, 0)}
+            style={{
+              left: getColumnHorizontalOffset(index),
+              width: getColumnWidth(index) + "px",
+              height: getRowHeight(0) + "px",
+            }}
+          >
+            <column.renderHeader index={index} column={column} />
+          </div>
+        ))}
+      </div>
+
+      {children}
+    </div>
+  ))
+
   return (
     <div className={styles.table}>
       {rows.length > 0 ? (
@@ -81,27 +121,19 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                 rowHeight={getRowHeight}
                 width={width}
                 height={height}
+                innerElementType={innerElementType}
               >
                 {({ columnIndex, rowIndex, style }: VariableSizeGridProps) => (
                   <div
                     className={getColumnClass(columnIndex, rowIndex)}
                     style={style}
                   >
-                    {rowIndex === 0 &&
-                      [columns[columnIndex].renderHeader].map(
-                        (HeaderContent) => (
-                          <HeaderContent
-                            index={columnIndex}
-                            column={columns[columnIndex]}
-                          />
-                        ),
-                      )}
-
+                    {/* We do not render the first column. That space is reserved for the header */}
                     {rowIndex !== 0 &&
                       [columns[columnIndex].renderBody].map((BodyContent) => (
                         <BodyContent
-                          index={rowIndex + 1}
-                          row={rows[rowIndex + 1]}
+                          index={rowIndex - 1}
+                          row={rows[rowIndex - 1]}
                         />
                       ))}
                   </div>

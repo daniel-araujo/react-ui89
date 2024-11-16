@@ -13,12 +13,10 @@
 }
 
 .tableHeader {
+  position: sticky;
+  top: 0;
   display: flex;
-  border-bottom: 1px solid var(--ui89-scene-text-color);
-}
-
-.tableHeader > * {
-  flex: 1 0;
+  z-index: 2;
 }
 
 .empty {
@@ -44,18 +42,11 @@
   background: var(--ui89-scene-bg-color);
 }
 
-.cell--header {
-  /* The library places position absolute inline. We need sticky. */
-  position: sticky !important;
-  position: -webkit-sticky !important;
-  z-index: 2;
-}
-
-.cell--first {
+.cell--column-first {
   padding-left: var(--ui89-safe-space);
+  border-left: 1px solid var(--ui89-scene-text-color);
 }
 
-.cell--last {
+.cell--column-last {
   padding-right: var(--ui89-safe-space);
-  border-right: none;
 }

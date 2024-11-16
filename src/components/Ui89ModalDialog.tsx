@@ -1,3 +1,4 @@
+// @ts-ignore
 import ReactModal from "react-modal"
 import styles from "./Ui89ModalDialog.module.css"
 import React, { useMemo } from "react"
