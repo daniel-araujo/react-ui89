@@ -1,3 +1,4 @@
+import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
@@ -14,4 +15,16 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Space: Story = {}
+export const Gap: Story = {
+  args: {
+    gap: 1,
+  },
+
+  render: (args, context) => (
+    <>
+      First paragraph.
+      <Ui89SpaceVertical gap={args.gap} />
+      Second paragraph separated by a {args.gap} gap space.
+    </>
+  ),
+}
