@@ -54,7 +54,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     const classes = [styles.cell]
 
     if (rowIndex === 0) {
-      classes.push(styles["cell--row-first"])
+      classes.push(styles["cell--header"])
     }
 
     if (columnIndex === 0) {
@@ -70,20 +70,6 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
 
   return (
     <div className={styles.table}>
-      {columns.length > 0 && (
-        <div className={styles.tableHeader}>
-          {columns.map((column, index) => (
-            <div
-              key={index}
-              className={getColumnClass(index, 0)}
-              style={{ width: getColumnWidth(index) + "px" }}
-            >
-              <column.renderHeader index={index} column={column} />
-            </div>
-          ))}
-        </div>
-      )}
-
       {rows.length > 0 ? (
         <div className={styles.tableBody}>
           <AutoSizer>
@@ -91,7 +77,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
               <VariableSizeGrid
                 columnCount={columns.length}
                 columnWidth={getColumnWidth}
-                rowCount={rows.length}
+                rowCount={rows.length + 1}
                 rowHeight={getRowHeight}
                 width={width}
                 height={height}
@@ -101,13 +87,23 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                     className={getColumnClass(columnIndex, rowIndex)}
                     style={style}
                   >
-                    {[columns[columnIndex].renderBody].map((BodyContent) => (
-                      <BodyContent
-                        key={columnIndex}
-                        index={rowIndex}
-                        row={rows[rowIndex]}
-                      />
-                    ))}
+                    {rowIndex === 0 &&
+                      [columns[columnIndex].renderHeader].map(
+                        (HeaderContent) => (
+                          <HeaderContent
+                            index={columnIndex}
+                            column={columns[columnIndex]}
+                          />
+                        ),
+                      )}
+
+                    {rowIndex !== 0 &&
+                      [columns[columnIndex].renderBody].map((BodyContent) => (
+                        <BodyContent
+                          index={rowIndex + 1}
+                          row={rows[rowIndex + 1]}
+                        />
+                      ))}
                   </div>
                 )}
               </VariableSizeGrid>

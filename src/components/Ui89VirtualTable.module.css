@@ -32,18 +32,23 @@
   display: flex;
   align-items: center;
   padding: var(--ui89-safe-space);
-  border-top: 1px solid var(--ui89-scene-text-color);
+  border-bottom: 1px solid var(--ui89-scene-text-color);
   border-right: 1px solid var(--ui89-scene-text-color);
 
   /* The width of the column will include padding and border. */
   box-sizing: border-box;
 
   overflow: hidden;
+
+  /* So that the floating headers remain visible. */
+  background: var(--ui89-scene-bg-color);
 }
 
-.cell--row-first {
-  /* The header will be responsible for placing the border */
-  border-top: none;
+.cell--header {
+  /* The library places position absolute inline. We need sticky. */
+  position: sticky !important;
+  position: -webkit-sticky !important;
+  z-index: 2;
 }
 
 .cell--first {
