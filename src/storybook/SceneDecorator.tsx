@@ -5,17 +5,21 @@ import { Ui89Scene } from "../components/Ui89Scene"
 
 export const SceneDecorator: Decorator = (Story) => {
   return (
-    <div
-      style={{
-        display: "grid",
-        height: "100vh",
-      }}
-    >
+    <div className="scene-decorator">
       <Ui89Scene>
         <Story />
       </Ui89Scene>
 
       <style>{`
+        .scene-decorator {
+          display: grid;
+          height: 100vh;
+        }
+
+        .scene-decorator > * {
+          min-width: 0;
+        }
+
         .sb-show-main.sb-main-padded {
           /* No padding. */
           padding: 0;

@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  line-height: 1;
+}
+
+.inside {
+  min-width: 0;
+  border-bottom: 1px solid;
+  position: relative;
+  padding-bottom: calc(var(--ui89-safe-space) / 2);
+}
+
+.inside:after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateY(-2px);
+  border-bottom: 1px solid;
+  z-index: 0;
+}
