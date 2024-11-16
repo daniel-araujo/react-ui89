@@ -1,13 +1,14 @@
 {
   "name": "react-ui89",
-  "description": "A collection of components that mimic a style of user interfaces from the 80s.",
+  "description": "A collection of components that mimic a common style of user interfaces from the late 80s and early 90s.",
   "version": "0.5.1",
   "author": "Daniel Araujo",
   "module": "dist/esm/index.js",
   "files": [
     "dist",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "preview.png"
   ],
   "types": "dist/esm/index.d.ts",
   "peerDependencies": {
