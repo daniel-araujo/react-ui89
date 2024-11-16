@@ -7,25 +7,25 @@ import { Ui89TagBox } from "./Ui89TagBox"
 
 const HEADER_HEIGHT = 30
 
-interface Ui89VirtualTableColumnRenderHeaderParams<T> {
-  index: number
-  column: Ui89VirtualTableColumn<T>
-}
-
-interface Ui89VirtualTableColumnRenderBodyParams<T> {
-  index: number
-  row: T
-}
-
 interface VariableSizeGridProps {
   columnIndex: number
   rowIndex: number
   style: React.CSSProperties
 }
 
+export interface Ui89VirtualTableColumnRenderHeaderParams<T> {
+  index: number
+  column: Ui89VirtualTableColumn<T>
+}
+
+export interface Ui89VirtualTableColumnRenderBodyParams<T> {
+  index: number
+  row: T
+}
+
 export interface Ui89VirtualTableColumn<T> {
   width?: number
-  renderHeader: React.FC<Ui89VirtualTableColumnRenderHeaderParams<T>>
+  renderHeader?: React.FC<Ui89VirtualTableColumnRenderHeaderParams<T>>
   renderBody: React.FC<Ui89VirtualTableColumnRenderBodyParams<T>>
 }
 
@@ -99,7 +99,9 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
               height: getRowHeight(0) + "px",
             }}
           >
-            <column.renderHeader index={index} column={column} />
+            {column.renderHeader !== undefined && (
+              <column.renderHeader index={index} column={column} />
+            )}
           </div>
         ))}
       </div>
