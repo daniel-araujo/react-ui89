@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  height: 100%;
+}
+
+.container > .tableWrapper,
+.container > .empty {
+  flex: 1;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.cell {
+  display: flex;
+  align-items: center;
+  padding: var(--ui89-safe-space);
+  border-top: 1px solid var(--ui89-scene-text-color);
+  border-right: 1px solid var(--ui89-scene-text-color);
+
+  /* The width of the column will include padding and border. */
+  box-sizing: border-box;
+
+  overflow: hidden;
+}
+
+.cell--first {
+  padding-left: var(--ui89-safe-space);
+}
+
+.cell--last {
+  padding-right: var(--ui89-safe-space);
+  border-right: none;
+}

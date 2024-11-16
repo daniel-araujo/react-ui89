@@ -7,7 +7,7 @@
 .normal {
   font-family: monospace;
   font-size: var(--ui89-font-size-normal);
-  line-height: 24px;
+  line-height: 16px;
 }
 
 .normalBold {
