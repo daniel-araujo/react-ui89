@@ -13,8 +13,10 @@ export { Ui89Tabs } from "./components/Ui89Tabs"
 export { Ui89TagBox } from "./components/Ui89TagBox"
 export { Ui89TitleBox } from "./components/Ui89TitleBox"
 export { Ui89TitleUnderline } from "./components/Ui89TitleUnderline"
+export {
+  Ui89VirtualTable
+} from "./components/Ui89VirtualTable"
 export type {
-  Ui89VirtualTable,
   Ui89VirtualTableColumnRenderHeaderParams,
   Ui89VirtualTableColumnRenderBodyParams,
   Ui89VirtualTableColumn,
