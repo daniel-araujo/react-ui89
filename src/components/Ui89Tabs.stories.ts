@@ -3,11 +3,19 @@ import { fn } from "@storybook/test"
 
 import { Ui89Tabs } from "./Ui89Tabs"
 import { SceneDecorator } from "../storybook/SceneDecorator"
+import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 
 const meta: Meta<typeof Ui89Tabs> = {
   component: Ui89Tabs,
   tags: ["autodocs"],
-  decorators: [SceneDecorator],
+  decorators: [
+    SceneDecorator,
+    ActionPropUpdate({
+      directLink: {
+        onChange: "selected",
+      },
+    }),
+  ],
 }
 
 export default meta

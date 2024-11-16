@@ -4,11 +4,19 @@ import { fn } from "@storybook/test"
 
 import { Ui89TabbedCard } from "./Ui89TabbedCard"
 import { SceneDecorator } from "../storybook/SceneDecorator"
+import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 
 const meta: Meta<typeof Ui89TabbedCard> = {
   component: Ui89TabbedCard,
   tags: ["autodocs"],
-  decorators: [SceneDecorator],
+  decorators: [
+    SceneDecorator,
+    ActionPropUpdate({
+      directLink: {
+        onChange: "selected",
+      },
+    }),
+  ],
 }
 
 export default meta
