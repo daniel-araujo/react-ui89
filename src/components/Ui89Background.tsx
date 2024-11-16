@@ -6,10 +6,10 @@ import style from "./Ui89Background.module.css"
 import lookStyle from "../style/look.module.css"
 
 export function Ui89Background({
-  look,
+  look = Ui89Look.main,
   children,
 }: {
-  look: Ui89Look | string
+  look?: Ui89Look | string
   children: React.ReactNode
 }) {
   return (
