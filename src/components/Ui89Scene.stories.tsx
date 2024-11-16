@@ -30,7 +30,7 @@ export const LookSide: Story = {
   },
 }
 
-export const VerticalScrollbar: Story = {
+export const VerticalOverflow: Story = {
   args: {
     look: "main",
     children: "Content goes here\n".repeat(1000),
@@ -56,7 +56,7 @@ export const VerticalScrollbar: Story = {
   ),
 }
 
-export const HorizontalScrollbar: Story = {
+export const HorizontalOverflow: Story = {
   args: {
     look: "main",
     children: "Contentgoeshere".repeat(100),
