@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
 import { Ui89Shortcut } from "./Ui89Shortcut"
-import { BackgroundDecorator } from "../storybook/BackgroundDecorator"
+import { SceneDecorator } from "../storybook/SceneDecorator"
 
 const meta: Meta<typeof Ui89Shortcut> = {
   component: Ui89Shortcut,
   tags: ["autodocs"],
-  decorators: [BackgroundDecorator],
+  decorators: [SceneDecorator],
 }
 
 export default meta

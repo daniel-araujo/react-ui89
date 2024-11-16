@@ -1,9 +1,9 @@
 import React from "react"
 import { Decorator } from "@storybook/react/*"
 
-import { Ui89Background } from "../components/Ui89Background"
+import { Ui89Scene } from "../components/Ui89Scene"
 
-export const BackgroundDecorator: Decorator = (Story) => {
+export const SceneDecorator: Decorator = (Story) => {
   return (
     <div
       style={{
@@ -11,9 +11,9 @@ export const BackgroundDecorator: Decorator = (Story) => {
         height: "100vh",
       }}
     >
-      <Ui89Background>
+      <Ui89Scene>
         <Story />
-      </Ui89Background>
+      </Ui89Scene>
 
       <style>{`
         .sb-show-main.sb-main-padded {

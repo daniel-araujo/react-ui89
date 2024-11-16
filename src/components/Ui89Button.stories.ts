@@ -2,12 +2,12 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
 import { Ui89Button } from "./Ui89Button"
-import { BackgroundDecorator } from "../storybook/BackgroundDecorator"
+import { SceneDecorator } from "../storybook/SceneDecorator"
 
 const meta: Meta<typeof Ui89Button> = {
   component: Ui89Button,
   tags: ["autodocs"],
-  decorators: [BackgroundDecorator],
+  decorators: [SceneDecorator],
 }
 
 export default meta
