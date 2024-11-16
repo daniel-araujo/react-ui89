@@ -6,7 +6,8 @@
   "module": "dist/esm/index.js",
   "files": [
     "dist",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "types": "dist/esm/index.d.ts",
   "peerDependencies": {
