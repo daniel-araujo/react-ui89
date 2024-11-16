@@ -66,6 +66,7 @@
     "vite-plugin-svgr": "^4.3.0"
   },
   "dependencies": {
+    "react-modal": "^3.16.1",
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10"
   }

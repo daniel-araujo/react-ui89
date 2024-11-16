@@ -1,0 +1,67 @@
+.container {
+  position: absolute;
+  inset: 0;
+  border: none;
+  color: var(--content-text-color);
+  background: var(--content-bg-color);
+  border-radius: 0;
+  outline: none;
+  padding: var(--safe-space);
+  margin: auto;
+  word-break: break-word;
+
+  align-items: center;
+
+  /*
+    Need to make sure that the dialog does not overflow page.
+    The contents inside must overflow.
+  */
+  max-height: 100%;
+  min-height: 0;
+  bottom: auto;
+  overflow: auto;
+
+  animation: appear var(--animation-speed);
+
+  display: flex;
+  flex-direction: column;
+}
+
+.backdrop {
+  position: fixed;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.spacer {
+  min-height: 0;
+  height: 10%;
+  flex: 0 1;
+}
+
+.container > *:not(.spacer) {
+  flex: 1;
+  min-height: 0;
+}
+
+.container--size-big {
+  max-width: 700px;
+}
+
+.container--size-medium {
+  max-width: 500px;
+}
+
+.container--size-small {
+  max-width: 300px;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
