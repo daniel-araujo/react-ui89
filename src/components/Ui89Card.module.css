@@ -1,6 +1,6 @@
 .container {
-  background: var(--ui89-content-card-bg-color);
-  color: var(--ui89-content-card-text-color);
+  background: var(--ui89-scene-card-bg-color);
+  color: var(--ui89-scene-card-text-color);
   border-radius: var(--ui89-box-border-radius);
   position: relative;
   box-shadow: rgb(0 0 0 / 5%) 0px 1px 2px 0px;

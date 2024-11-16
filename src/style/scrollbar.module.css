@@ -1,10 +1,10 @@
 .container::-webkit-scrollbar {
-  background: var(--ui89-content-bg-color);
+  background: var(--ui89-scene-bg-color);
   width: calc(var(--ui89-safe-space) * 2);
 }
 
 .container::-webkit-scrollbar-track {
-  background: var(--ui89-content-bg-color);
+  background: var(--ui89-scene-bg-color);
   background: var(--ui89-palette-dark-gray);
   border: 1px solid var(--ui89-palette-dark-gray);
 }
