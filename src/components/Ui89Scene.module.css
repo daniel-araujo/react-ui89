@@ -1,4 +1,5 @@
 .container {
   background-color: var(--ui89-scene-bg-color);
   color: var(--ui89-scene-text-color);
+  overflow: auto;
 }

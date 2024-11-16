@@ -5,6 +5,7 @@ import { Ui89Look } from "../theme"
 import styles from "./Ui89Scene.module.css"
 import lookStyles from "../style/look.module.css"
 import typoStyles from "../style/typo.module.css"
+import scrollbarStyles from "../style/scrollbar.module.css"
 
 export function Ui89Scene({
   look = Ui89Look.main,
@@ -15,7 +16,7 @@ export function Ui89Scene({
 }) {
   return (
     <div
-      className={`${styles.container} ${lookStyles[look]} ${typoStyles.normal}`}
+      className={`${styles.container} ${lookStyles[look]} ${typoStyles.normal} ${scrollbarStyles.container}`}
     >
       {children}
     </div>

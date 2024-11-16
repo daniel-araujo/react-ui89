@@ -1,65 +1,79 @@
-.container::-webkit-scrollbar {
+.container::-webkit-scrollbar,
+.container ::-webkit-scrollbar {
   background: var(--ui89-scene-bg-color);
   width: calc(var(--ui89-safe-space) * 2);
 }
 
-.container::-webkit-scrollbar-track {
+.container::-webkit-scrollbar-track,
+.container ::-webkit-scrollbar-track {
   background: var(--ui89-scene-bg-color);
   background: var(--ui89-palette-dark-gray);
   border: 1px solid var(--ui89-palette-dark-gray);
 }
 
-.container::-webkit-scrollbar-thumb {
+.container::-webkit-scrollbar-thumb,
+.container ::-webkit-scrollbar-thumb {
   background: var(--ui89-palette-light-gray);
   border: 1px solid transparent;
 }
-.container::-webkit-scrollbar-thumb:vertical {
+.container::-webkit-scrollbar-thumb:vertical,
+.container ::-webkit-scrollbar-thumb:vertical {
   border-top-color: var(--ui89-palette-dark-gray);
   border-bottom-color: var(--ui89-palette-dark-gray);
 }
-.container::-webkit-scrollbar-thumb:horizontal {
+.container::-webkit-scrollbar-thumb:horizontal,
+.container ::-webkit-scrollbar-thumb:horizontal {
   border-left-color: var(--ui89-palette-dark-gray);
   border-right-color: var(--ui89-palette-dark-gray);
 }
 
-.container::-webkit-scrollbar-button:single-button {
+.container::-webkit-scrollbar-button:single-button,
+.container ::-webkit-scrollbar-button:single-button {
   background-color: #bbbbbb;
   display: block;
   border-style: solid;
   height: calc(var(--ui89-safe-space) * 2);
 }
-.container::-webkit-scrollbar-button:single-button:vertical:decrement {
+.container::-webkit-scrollbar-button:single-button:vertical:decrement,
+.container ::-webkit-scrollbar-button:single-button:vertical:decrement {
   border-width: 0 var(--ui89-safe-space) var(--ui89-safe-space)
     var(--ui89-safe-space);
   border-color: transparent transparent var(--ui89-palette-black) transparent;
 }
-.container::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+.container::-webkit-scrollbar-button:single-button:vertical:decrement:active,
+.container ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
   background: var(--ui89-palette-dark-gray);
 }
 
-.container::-webkit-scrollbar-button:single-button:vertical:increment {
+.container::-webkit-scrollbar-button:single-button:vertical:increment,
+.container ::-webkit-scrollbar-button:single-button:vertical:increment {
   border-width: var(--ui89-safe-space) var(--ui89-safe-space) 0
     var(--ui89-safe-space);
   border-color: var(--ui89-palette-black) transparent transparent transparent;
 }
-.container::-webkit-scrollbar-button:single-button:vertical:increment:active {
+.container::-webkit-scrollbar-button:single-button:vertical:increment:active,
+.container ::-webkit-scrollbar-button:single-button:vertical:increment:active {
   background: var(--ui89-palette-dark-gray);
 }
 
-.container::-webkit-scrollbar-button:single-button:horizontal:decrement {
+.container::-webkit-scrollbar-button:single-button:horizontal:decrement,
+.container ::-webkit-scrollbar-button:single-button:horizontal:decrement {
   border-width: var(--ui89-safe-space) var(--ui89-safe-space)
     var(--ui89-safe-space) 0;
   border-color: transparent var(--ui89-palette-black) transparent transparent;
 }
-.container::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
+.container::-webkit-scrollbar-button:single-button:horizontal:decrement:active,
+.container ::-webkit-scrollbar-button:single-button:horizontal:decrement:active {
   background: var(--ui89-palette-dark-gray);
 }
 
-.container::-webkit-scrollbar-button:single-button:horizontal:increment {
+.container::-webkit-scrollbar-button:single-button:horizontal:increment,
+.container ::-webkit-scrollbar-button:single-button:horizontal:increment {
   border-width: var(--ui89-safe-space) 0 var(--ui89-safe-space)
     var(--ui89-safe-space);
   border-color: transparent transparent transparent var(--ui89-palette-black);
 }
-.container::-webkit-scrollbar-button:single-button:horizontal:increment:active {
+.container::-webkit-scrollbar-button:single-button:horizontal:increment:active,
+.container ::-webkit-scrollbar-button:single-button:horizontal:increment:active {
   background: var(--ui89-palette-dark-gray);
 }
