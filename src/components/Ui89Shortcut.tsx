@@ -1,8 +1,8 @@
-import React from 'react'
+import React from "react"
 
-import iconShortcut from '../images/shortcut.svg'
+import ShortcutSvg from "../images/shortcut.svg"
 
-import styles from './Ui89Shortcut.module.css'
+import styles from "./Ui89Shortcut.module.css"
 import typoStyles from "../style/typo.module.css"
 
 export function Ui89Shortcut({
@@ -22,7 +22,7 @@ export function Ui89Shortcut({
     <div className={styles.container}>
       <img className={styles.image} src={imageUrl} onClick={onNativeClick} />
 
-      <img className={styles.shortcutIcon}/>
+      <ShortcutSvg className={styles.shortcutIcon} width={16} height={16} />
 
       <div className={`${typoStyles.smallBold}`}>{label}</div>
     </div>

@@ -16,13 +16,13 @@ export const NothingSelected: Story = {
   args: {
     items: [
       {
-        value: '1',
-        label: 'One',
+        value: "1",
+        label: "One",
       },
       {
-        value: '2',
-        label: 'Two',
-      }
+        value: "2",
+        label: "Two",
+      },
     ],
   },
 }
@@ -31,14 +31,14 @@ export const Selected: Story = {
   args: {
     items: [
       {
-        value: '1',
-        label: 'One',
+        value: "1",
+        label: "One",
       },
       {
-        value: '2',
-        label: 'Two',
-      }
+        value: "2",
+        label: "Two",
+      },
     ],
-    selected: '1',
+    selected: "1",
   },
 }

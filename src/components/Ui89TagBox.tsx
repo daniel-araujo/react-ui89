@@ -14,6 +14,10 @@ export function Ui89TagBox({
   children: React.ReactNode
 }) {
   return (
-    <div className={`${style.container} ${typoStyles.special} ${chosenThemeStyles[theme]}`}>{children}</div>
+    <div
+      className={`${style.container} ${typoStyles.special} ${chosenThemeStyles[theme]}`}
+    >
+      {children}
+    </div>
   )
 }

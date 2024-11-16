@@ -1,6 +1,6 @@
-import { Ui89Card } from './Ui89Card'
-import { Ui89Tabs } from './Ui89Tabs'
-import React from 'react'
+import { Ui89Card } from "./Ui89Card"
+import { Ui89Tabs } from "./Ui89Tabs"
+import React from "react"
 
 export default function Ui89TabbedCard({
   selected,
@@ -24,7 +24,8 @@ export default function Ui89TabbedCard({
     <Ui89Card
       topCenter={
         <Ui89Tabs selected={selected} items={items} onChange={onChange} />
-      }>
+      }
+    >
       {children}
     </Ui89Card>
   )

@@ -17,6 +17,6 @@ type Story = StoryObj<typeof meta>
 
 export const Default: Story = {
   args: {
-    label: 'Label goes here'
-  }
+    label: "Label goes here",
+  },
 }

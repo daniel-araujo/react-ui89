@@ -1,5 +1,5 @@
-import React from 'react'
-import styles from './Ui89Card.module.css'
+import React from "react"
+import styles from "./Ui89Card.module.css"
 
 export function Ui89Card({
   topLeftCenter,
@@ -14,7 +14,8 @@ export function Ui89Card({
 
   return (
     <div
-      className={`${styles.container} ${hasTopContent ? styles.containerHasTop : ''}`}>
+      className={`${styles.container} ${hasTopContent ? styles.containerHasTop : ""}`}
+    >
       <div className={styles.inside}>
         {topLeftCenter && (
           <div className={styles.topLeftCenter}>{topLeftCenter}</div>

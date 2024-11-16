@@ -5,6 +5,7 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import postcss from 'rollup-plugin-postcss'
+import svgr from '@svgr/rollup'
 
 const packageJson = JSON.parse(await fs.readFile('./package.json'))
 
@@ -19,6 +20,7 @@ export default [
       },
     ],
     plugins: [
+      svgr(),
       resolve(),
       commonjs(),
       typescript({
