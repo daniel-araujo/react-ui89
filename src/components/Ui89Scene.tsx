@@ -16,7 +16,7 @@ export function Ui89Scene({
 }) {
   return (
     <div
-      className={`${styles.container} ${lookStyles[look]} ${typoStyles.normal} ${scrollbarStyles.container}`}
+      className={`${styles.scene} ${lookStyles[look]} ${typoStyles.normal} ${scrollbarStyles.container}`}
     >
       {children}
     </div>

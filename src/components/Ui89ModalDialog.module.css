@@ -10,8 +10,6 @@
   margin: auto;
   word-break: break-word;
 
-  align-items: center;
-
   /*
     Need to make sure that the dialog does not overflow page.
     The contents inside must overflow.
@@ -35,12 +33,11 @@
 
 .spacer {
   min-height: 0;
-  height: 10%;
-  flex: 0 1;
+  height: 100px;
 }
 
 .container > *:not(.spacer) {
-  flex: 1;
+  flex: 1 0;
   min-height: 0;
 }
 

@@ -7,9 +7,9 @@ export default function HoverShadow({
   children: React.ReactNode
 }) {
   return (
-    <span className={styles.container}>
-      <span className={styles.bottom}></span>
-      <span className={styles.right}></span>
+    <span className={styles.hoverShadow}>
+      <span className={styles.hoverShadowBottom}></span>
+      <span className={styles.hoverShadowRight}></span>
       {children}
     </span>
   )
