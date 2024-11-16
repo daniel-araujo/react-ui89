@@ -5,7 +5,12 @@ import AutoSizer from "react-virtualized-auto-sizer"
 import styles from "./Ui89VirtualTable.module.css"
 import { Ui89TagBox } from "./Ui89TagBox"
 
-interface Ui89VirtualTableColumnRenderParams<T> {
+interface Ui89VirtualTableColumnRenderHeaderParams<T> {
+  index: number
+  column: Ui89VirtualTableColumn<T>
+}
+
+interface Ui89VirtualTableColumnRenderBodyParams<T> {
   index: number
   row: T
 }
@@ -18,8 +23,8 @@ interface VariableSizeGridProps {
 
 export interface Ui89VirtualTableColumn<T> {
   width?: number
-  renderHeader: React.FC<Ui89VirtualTableColumnRenderParams<T>>
-  renderBody: React.FC<Ui89VirtualTableColumnRenderParams<T>>
+  renderHeader: React.FC<Ui89VirtualTableColumnRenderHeaderParams<T>>
+  renderBody: React.FC<Ui89VirtualTableColumnRenderBodyParams<T>>
 }
 
 export interface Ui89VirtualTableProps<T> {
@@ -45,24 +50,42 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     return columns[index].width ?? 100
   }
 
-  function getColumnClass(index: number): string {
+  function getColumnClass(columnIndex: number, rowIndex: number): string {
     const classes = [styles.cell]
 
-    if (index === 0) {
-      classes.push(styles["cell--first"])
+    if (rowIndex === 0) {
+      classes.push(styles["cell--row-first"])
     }
 
-    if (index === columns.length - 1) {
-      classes.push(styles["cell--last"])
+    if (columnIndex === 0) {
+      classes.push(styles["cell--column-first"])
+    }
+
+    if (columnIndex === columns.length - 1) {
+      classes.push(styles["cell--column-last"])
     }
 
     return classes.join(" ")
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.table}>
+      {columns.length > 0 && (
+        <div className={styles.tableHeader}>
+          {columns.map((column, index) => (
+            <div
+              key={index}
+              className={getColumnClass(index, 0)}
+              style={{ width: getColumnWidth(index) + "px" }}
+            >
+              <column.renderHeader index={index} column={column} />
+            </div>
+          ))}
+        </div>
+      )}
+
       {rows.length > 0 ? (
-        <div className={styles.tableWrapper}>
+        <div className={styles.tableBody}>
           <AutoSizer>
             {({ height, width }) => (
               <VariableSizeGrid
@@ -74,7 +97,10 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                 height={height}
               >
                 {({ columnIndex, rowIndex, style }: VariableSizeGridProps) => (
-                  <div className={getColumnClass(columnIndex)} style={style}>
+                  <div
+                    className={getColumnClass(columnIndex, rowIndex)}
+                    style={style}
+                  >
                     {[columns[columnIndex].renderBody].map((BodyContent) => (
                       <BodyContent
                         key={columnIndex}

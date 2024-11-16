@@ -17,6 +17,21 @@ type Story = StoryObj<typeof meta>
 
 export const Empty: Story = {}
 
+export const EmptyWithColumns: Story = {
+  args: {
+    columns: [
+      {
+        renderHeader: () => <>Header #1</>,
+        renderBody: ({ index }) => <>Row #{index}</>,
+      },
+      {
+        renderHeader: () => <>Header #2</>,
+        renderBody: () => <>Second column</>,
+      },
+    ],
+  },
+}
+
 export const TwoColumns: Story = {
   args: {
     rows: new Array(2),
@@ -88,6 +103,39 @@ export const VerticalScrolling: Story = {
       {
         renderHeader: () => <>Header #3</>,
         renderBody: () => <>Third column.</>,
+      },
+    ],
+  },
+}
+
+export const HorizontalScrolling: Story = {
+  args: {
+    rows: new Array(2),
+    columns: [
+      {
+        width: 400,
+        renderHeader: () => <>Header #1</>,
+        renderBody: ({ index }) => <>Row #{index}</>,
+      },
+      {
+        width: 800,
+        renderHeader: () => <>Header #2</>,
+        renderBody: () => <>Second column</>,
+      },
+      {
+        width: 400,
+        renderHeader: () => <>Header #3</>,
+        renderBody: () => <>Third column.</>,
+      },
+      {
+        width: 400,
+        renderHeader: () => <>Header #4</>,
+        renderBody: () => <>Fourth column.</>,
+      },
+      {
+        width: 400,
+        renderHeader: () => <>Header #5</>,
+        renderBody: () => <>Fifth column.</>,
       },
     ],
   },

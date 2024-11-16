@@ -1,13 +1,24 @@
-.container {
+.table {
   display: flex;
   flex-direction: column;
   overflow: auto;
   height: 100%;
+  border-bottom: 1px solid var(--ui89-scene-text-color);
+  box-sizing: border-box;
 }
 
-.container > .tableWrapper,
-.container > .empty {
+.table > .tableBody,
+.table > .empty {
   flex: 1;
+}
+
+.tableHeader {
+  display: flex;
+  border-bottom: 1px solid var(--ui89-scene-text-color);
+}
+
+.tableHeader > * {
+  flex: 1 0;
 }
 
 .empty {
@@ -28,6 +39,11 @@
   box-sizing: border-box;
 
   overflow: hidden;
+}
+
+.cell--row-first {
+  /* The header will be responsible for placing the border */
+  border-top: none;
 }
 
 .cell--first {
