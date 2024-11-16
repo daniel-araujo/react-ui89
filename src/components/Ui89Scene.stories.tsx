@@ -89,8 +89,8 @@ export const CustomizesScrollbarsInside: Story = {
   render: (args, context) => (
     <Ui89Scene {...args}>
       <div className="container">
-        {'asdasdasdasd'.repeat(50)}
-        {'asdasdasdasd\n'.repeat(50)}
+        {"asdasdasdasd".repeat(50)}
+        {"asdasdasdasd\n".repeat(50)}
       </div>
 
       <style>{`
