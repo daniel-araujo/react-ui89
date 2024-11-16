@@ -4,14 +4,14 @@
 }
 
 .navigationItem {
-  color: var(--content-text-color);
-  background-color: var(--content-bg-color);
-  padding: 0 calc(var(--safe-space) * 3);
+  color: var(--ui89-content-text-color);
+  background-color: var(--ui89-content-bg-color);
+  padding: 0 calc(var(--ui89-safe-space) * 3);
   cursor: pointer;
 }
 
 .navigationItem:hover,
 .navigationItemSelected {
-  background-color: var(--content-text-color);
-  color: var(--content-bg-color);
+  background-color: var(--ui89-content-text-color);
+  color: var(--ui89-content-bg-color);
 }
