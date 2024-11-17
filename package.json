@@ -21,6 +21,7 @@
   "scripts": {
     "build": "rollup -c",
     "storybook": "storybook dev -p 6006",
+    "test-storybook": "test-storybook",
     "build-storybook": "storybook build",
     "format": "prettier --write src"
   },
@@ -56,6 +57,7 @@
     "@storybook/blocks": "^8.4.4",
     "@storybook/preview-api": "^8.4.4",
     "@storybook/react-vite": "^8.4.4",
+    "@storybook/test-runner": "^0.19.1",
     "@svgr/rollup": "^8.1.0",
     "@types/react": "^18.3.12",
     "@types/react-dom": "^18.3.1",
