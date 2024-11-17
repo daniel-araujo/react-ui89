@@ -27,13 +27,17 @@ export function Ui89TabbedCard({
     return selectedItem !== null ? selectedItem.render : () => <></>
   }, [selectedItem])
 
+  const ContentKey = useMemo(() => {
+    return selectedItem !== null ? selectedItem.value : undefined
+  }, [selectedItem])
+
   return (
     <Ui89Card
       topCenter={
         <Ui89Tabs selected={selected} items={items} onChange={onChange} />
       }
     >
-      <Content />
+      <Content key={ContentKey} />
     </Ui89Card>
   )
 }
