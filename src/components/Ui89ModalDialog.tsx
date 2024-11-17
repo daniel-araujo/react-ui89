@@ -7,6 +7,8 @@ import { Ui89Scene } from "./Ui89Scene"
 import GridExpandTrick from "./GridExpandTrick"
 import ScrollContainer from "./ScrollContainer"
 
+const portalRoot: HTMLElement | null = typeof document !== undefined ? document.body : null
+
 export function Ui89ModalDialog({
   open,
   size = "medium",
@@ -34,7 +36,7 @@ export function Ui89ModalDialog({
     }
   }
 
-  return createPortal(
+  const vdom = (
     <div
       className={dialogClass}
       role="dialog"
@@ -56,7 +58,10 @@ export function Ui89ModalDialog({
           </GridExpandTrick>
         </HoverShadow>
       </div>
-    </div>,
-    document.body
+    </div>
   )
+
+  return portalRoot !== null
+    ? createPortal(vdom, portalRoot)
+    : vdom
 }
