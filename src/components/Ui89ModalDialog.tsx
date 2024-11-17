@@ -8,7 +8,7 @@ import GridExpandTrick from "./GridExpandTrick"
 import ScrollContainer from "./ScrollContainer"
 
 const portalRoot: HTMLElement | null =
-  typeof document !== undefined ? document.body : null
+  typeof document !== "undefined" ? document.body : null
 
 export function Ui89ModalDialog({
   open,
