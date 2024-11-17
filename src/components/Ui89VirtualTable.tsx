@@ -72,7 +72,11 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     const classes = [styles.cell]
 
     if (rowIndex === 0) {
-      classes.push(styles["cell--header"])
+      classes.push(styles["cell--row-first"])
+    }
+
+    if (rowIndex === rows.length) {
+      classes.push(styles["cell--row-last"])
     }
 
     if (columnIndex === 0) {

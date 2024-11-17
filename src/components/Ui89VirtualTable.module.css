@@ -3,7 +3,7 @@
   flex-direction: column;
   overflow: auto;
   height: 100%;
-  border-bottom: 1px solid var(--ui89-scene-text-color);
+  border: 1px solid var(--ui89-scene-text-color);
   box-sizing: border-box;
 }
 
@@ -44,9 +44,16 @@
 
 .cell--column-first {
   padding-left: var(--ui89-safe-space);
-  border-left: 1px solid var(--ui89-scene-text-color);
 }
 
 .cell--column-last {
   padding-right: var(--ui89-safe-space);
+}
+
+.cell--row-first {
+  border-top: none;
+}
+
+.cell--row-last {
+  border-bottom: none;
 }
