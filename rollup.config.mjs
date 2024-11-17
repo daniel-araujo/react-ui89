@@ -6,6 +6,7 @@ import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import postcss from 'rollup-plugin-postcss'
 import svgr from '@svgr/rollup'
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 const packageJson = JSON.parse(await fs.readFile('./package.json'))
 
@@ -20,6 +21,10 @@ export default [
       },
     ],
     plugins: [
+      // Don't want peer dependencies of react-modal bundled in.
+      peerDepsExternal({
+        includeDependencies: true,
+      }),
       svgr(),
       resolve(),
       commonjs(),
