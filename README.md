@@ -20,7 +20,6 @@ import {
   Ui89Scene,
   Ui89Card,
   Ui89SpaceVertical,
-  Ui89Card,
   Ui89Button,
   Ui89TitleBox,
 } from 'react-ui89'
