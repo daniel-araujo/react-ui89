@@ -17,6 +17,7 @@ npm install react-ui89
 ```jsx
 import React from 'react'
 import {
+  Ui89Scene,
   Ui89Card,
   Ui89SpaceVertical,
   Ui89Card,
@@ -26,16 +27,18 @@ import {
 
 export default function Page() {
   return (
-    <Ui89Card topCenter={<Ui89TitleBox>Proposition</Ui89TitleBox>}>
-      <Ui89SpaceVertical gap={1} />
-      Welcome to the past.
-      <Ui89SpaceVertical gap={1} />
-      Do you accept?
-      <Ui89SpaceVertical gap={2} />
-      <Ui89Button theme="success">Yes</Ui89Button>
-      <Ui89Button theme="danger">No</Ui89Button>
-      <Ui89Button theme="warning">Yesn't</Ui89Button>
-    </Ui89Card>
+    <Ui89Scene>
+      <Ui89Card topCenter={<Ui89TitleBox>Proposition</Ui89TitleBox>}>
+        <Ui89SpaceVertical gap={1} />
+        Welcome to the past.
+        <Ui89SpaceVertical gap={1} />
+        Do you accept?
+        <Ui89SpaceVertical gap={2} />
+        <Ui89Button theme="success">Yes</Ui89Button>
+        <Ui89Button theme="danger">No</Ui89Button>
+        <Ui89Button theme="warning">Yesn't</Ui89Button>
+      </Ui89Card>
+    </Ui89Scene>
   )
 }
 ```
