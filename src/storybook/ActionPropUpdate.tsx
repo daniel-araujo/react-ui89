@@ -3,28 +3,63 @@ import { Decorator } from "@storybook/react/*"
 import { useArgs } from "@storybook/preview-api"
 
 interface ActionPropUpdateOptions {
-  directLink: {
+  directLink?: {
     [actionName: string]: string
-  }
+  },
+  updateArgs?: {
+    [actionName: string]: (...args: any) => ({
+      [propName: string]: any
+    } | undefined)
+  },
 }
 
 export function ActionPropUpdate({
   directLink,
+  updateArgs,
 }: ActionPropUpdateOptions): Decorator {
   return (Story) => {
     const [args, setArgs] = useArgs()
 
     useEffect(() => {
-      // Set up our functions.
-      for (let actionName in directLink) {
-        const propName = directLink[actionName]
+      // Set up our functions
+      if (directLink !== undefined) {
+        for (let actionName in directLink) {
+          const propName = directLink[actionName]
+          const originalAction = args[actionName]
 
-        setArgs({
-          [actionName]: (value: any) =>
-            setArgs({
-              [propName]: value,
-            }),
-        })
+          setArgs({
+            [actionName]: (value: any) => {
+              if (originalAction !== undefined) {
+                originalAction(value)
+              }
+
+              setArgs({
+                [propName]: value,
+              })
+            }
+          })
+        }
+      }
+
+      if (updateArgs !== undefined) {
+        for (let actionName in updateArgs) {
+          const handler = updateArgs[actionName]
+          const originalAction = args[actionName]
+
+          setArgs({
+            [actionName]: (...args: any) => {
+              if (originalAction !== undefined) {
+                originalAction(...args)
+              }
+
+              const newArgs = handler(...args)
+
+              if (newArgs !== undefined) {
+                setArgs(newArgs)
+              }
+            }
+          })
+        }
       }
     }, [])
 

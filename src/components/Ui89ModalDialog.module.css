@@ -1,4 +1,22 @@
-.container {
+.dialog {
+  position: fixed;
+  inset: 0px;
+
+  display: none;
+  animation: appear var(--animation-speed);
+}
+
+.dialog--open {
+  display: block;
+}
+
+.dialogBackdrop {
+  position: absolute;
+  inset: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.dialogBox {
   position: absolute;
   inset: 0;
   border: none;
@@ -19,37 +37,30 @@
   bottom: auto;
   overflow: auto;
 
-  animation: appear var(--animation-speed);
-
   display: flex;
   flex-direction: column;
 }
 
-.backdrop {
-  position: fixed;
-  inset: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
-}
 
 .spacer {
   min-height: 0;
   height: 100px;
 }
 
-.container > *:not(.spacer) {
+.dialogBox > *:not(.spacer) {
   flex: 1 0;
   min-height: 0;
 }
 
-.container--size-big {
+.dialogBox--size-big {
   max-width: 700px;
 }
 
-.container--size-medium {
+.dialogBox--size-medium {
   max-width: 500px;
 }
 
-.container--size-small {
+.dialogBox--size-small {
   max-width: 300px;
 }
 
