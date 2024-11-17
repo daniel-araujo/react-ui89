@@ -23,11 +23,11 @@ export function Ui89TabbedCard({
     return items.find((item) => item.value === selected) ?? null
   }, [selected, items])
 
-  const Content = useMemo(() => {
+  const render = useMemo(() => {
     return selectedItem !== null ? selectedItem.render : () => <></>
   }, [selectedItem])
 
-  const ContentKey = useMemo(() => {
+  const renderKey = useMemo(() => {
     return selectedItem !== null ? selectedItem.value : undefined
   }, [selectedItem])
 
@@ -37,7 +37,7 @@ export function Ui89TabbedCard({
         <Ui89Tabs selected={selected} items={items} onChange={onChange} />
       }
     >
-      <Content key={ContentKey} />
+      <React.Fragment key={renderKey}>{render()}</React.Fragment>
     </Ui89Card>
   )
 }
