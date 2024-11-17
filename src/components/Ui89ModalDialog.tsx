@@ -1,13 +1,14 @@
 import styles from "./Ui89ModalDialog.module.css"
 import React, { useMemo } from "react"
-import { createPortal } from 'react-dom';
+import { createPortal } from "react-dom"
 import { Ui89Card } from "./Ui89Card"
 import HoverShadow from "./HoverShadow"
 import { Ui89Scene } from "./Ui89Scene"
 import GridExpandTrick from "./GridExpandTrick"
 import ScrollContainer from "./ScrollContainer"
 
-const portalRoot: HTMLElement | null = typeof document !== undefined ? document.body : null
+const portalRoot: HTMLElement | null =
+  typeof document !== undefined ? document.body : null
 
 export function Ui89ModalDialog({
   open,
@@ -23,7 +24,7 @@ export function Ui89ModalDialog({
   onRequestClose?: () => void
 }) {
   const dialogClass = useMemo(() => {
-    return [styles.dialog, open ? styles['dialog--open'] : ''].join(" ")
+    return [styles.dialog, open ? styles["dialog--open"] : ""].join(" ")
   }, [size, open])
 
   const dialogBoxClass = useMemo(() => {
@@ -32,20 +33,19 @@ export function Ui89ModalDialog({
 
   function onClickBackdrop() {
     if (onRequestClose !== undefined) {
-      onRequestClose();
+      onRequestClose()
     }
   }
 
   const vdom = (
-    <div
-      className={dialogClass}
-      role="dialog"
-    >
-      <div className={styles.dialogBackdrop} role="presentation" onClick={onClickBackdrop}></div>
-
+    <div className={dialogClass} role="dialog">
       <div
-        className={dialogBoxClass}
-      >
+        className={styles.dialogBackdrop}
+        role="presentation"
+        onClick={onClickBackdrop}
+      ></div>
+
+      <div className={dialogBoxClass}>
         <div className={styles.spacer}></div>
 
         <HoverShadow>
@@ -61,7 +61,5 @@ export function Ui89ModalDialog({
     </div>
   )
 
-  return portalRoot !== null
-    ? createPortal(vdom, portalRoot)
-    : vdom
+  return portalRoot !== null ? createPortal(vdom, portalRoot) : vdom
 }

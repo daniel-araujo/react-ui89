@@ -5,12 +5,14 @@ import { useArgs } from "@storybook/preview-api"
 interface ActionPropUpdateOptions {
   directLink?: {
     [actionName: string]: string
-  },
+  }
   updateArgs?: {
-    [actionName: string]: (...args: any) => ({
-      [propName: string]: any
-    } | undefined)
-  },
+    [actionName: string]: (...args: any) =>
+      | {
+          [propName: string]: any
+        }
+      | undefined
+  }
 }
 
 export function ActionPropUpdate({
@@ -36,7 +38,7 @@ export function ActionPropUpdate({
               setArgs({
                 [propName]: value,
               })
-            }
+            },
           })
         }
       }
@@ -57,7 +59,7 @@ export function ActionPropUpdate({
               if (newArgs !== undefined) {
                 setArgs(newArgs)
               }
-            }
+            },
           })
         }
       }

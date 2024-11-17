@@ -13,13 +13,13 @@ const meta: Meta<typeof Ui89ModalDialog> = {
     ActionPropUpdate({
       updateArgs: {
         onRequestClose: () => {
-          console.log('test;')
+          console.log("test;")
           return {
-            open: false
+            open: false,
           }
-        }
-      }
-    })
+        },
+      },
+    }),
   ],
 }
 
@@ -49,10 +49,10 @@ export const RequestsToCloseWhenClickingOnTheBackdrop: Story = {
   },
 
   async play(context) {
-    const backdrop = await screen.findByRole('presentation')
+    const backdrop = await screen.findByRole("presentation")
 
     await userEvent.click(backdrop)
 
-    expect(context.args.onRequestClose).toHaveBeenCalledOnce();
-  }
+    expect(context.args.onRequestClose).toHaveBeenCalledOnce()
+  },
 }
