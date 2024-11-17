@@ -14,8 +14,13 @@ npm install react-ui89
 
 ## Usage
 
+To get started, import the CSS file and place a `Ui89Scene` component as the
+root element of your layout.
+
+Then, add any other react-ui89 components as needed to create your desired UI.
+
 ```jsx
-import React from 'react'
+import 'react-ui89/dist/esm/index.css'
 import {
   Ui89Scene,
   Ui89Card,
