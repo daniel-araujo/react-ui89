@@ -9,26 +9,24 @@ const THROTTLE_DELAY = 200
 
 export function Ui89InputText({
   value,
-  defaultValue,
-  onChange,
   placeholder,
+  autoTrim = true,
+  onChange,
   onTyping,
   onFocus,
   onBlur,
 }: {
   value?: any
-  defaultValue?: any
-  onChange?: (value: any) => void
   placeholder?: string
+  autoTrim?: boolean
+  onChange?: (value: any) => void
   onTyping?: (value: boolean) => void
   onFocus?: () => void
   onBlur?: () => void
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isTyping, setIsTyping] = useState(false)
-  const [intermediateValue, setIntermediateValue] = useState(
-    defaultValue !== undefined ? defaultValue : value,
-  )
+  const [intermediateValue, setIntermediateValue] = useState(value)
   const onChangeThrottled = useMemo(() => throttledTimeout(), [])
 
   useEffect(() => {
@@ -66,6 +64,7 @@ export function Ui89InputText({
     }
 
     if (!isTyping) {
+      // Lets show the user what is actually the value.
       setIntermediateValue(value)
     }
   }, [isTyping, value])
@@ -76,7 +75,14 @@ export function Ui89InputText({
     }
 
     let newVal = e.target.value
+
     setIntermediateValue(newVal)
+
+    if (autoTrim) {
+      // Must trim after setting intermediate value. Do not want to disturb
+      // user.
+      newVal = newVal.replace(/\s+/g, " ").trim()
+    }
 
     onChangeThrottled.call(THROTTLE_DELAY, () => {
       onChange(newVal)

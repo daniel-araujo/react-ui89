@@ -3,11 +3,19 @@ import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89InputText } from "./Ui89InputText"
 import { SceneDecorator } from "../storybook/SceneDecorator"
+import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 
 const meta: Meta<typeof Ui89InputText> = {
   component: Ui89InputText,
   tags: ["autodocs"],
-  decorators: [SceneDecorator],
+  decorators: [
+    SceneDecorator,
+    ActionPropUpdate({
+      directLink: {
+        onChange: "value",
+      },
+    }),
+  ],
 }
 
 export default meta
@@ -22,9 +30,9 @@ export const TypingEmitsOnChange: Story = {
   },
 
   async play(context) {
-    const backdrop = await screen.findByRole("textbox")
+    const textbox = await screen.findByRole("textbox")
 
-    await userEvent.type(backdrop, "A")
+    await userEvent.type(textbox, "A")
 
     await new Promise((resolve) => setTimeout(resolve, 100))
 
@@ -43,15 +51,15 @@ export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
   },
 
   async play(context) {
-    const backdrop = await screen.findByRole("textbox")
+    const textbox = await screen.findByRole("textbox")
 
-    await userEvent.type(backdrop, "A")
+    await userEvent.type(textbox, "A")
 
     await new Promise((resolve) => setTimeout(resolve, 100))
 
     expect(context.args.onChange).not.toHaveBeenCalled()
 
-    await userEvent.type(backdrop, "a")
+    await userEvent.type(textbox, "a")
 
     await new Promise((resolve) => setTimeout(resolve, 100))
 
@@ -60,5 +68,53 @@ export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
     await new Promise((resolve) => setTimeout(resolve, 100))
 
     expect(context.args.onChange).toHaveBeenCalledWith("Aa")
+  },
+}
+
+export const RemovesWhitespaceAtTheBeginning: Story = {
+  args: {
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    await userEvent.type(textbox, " A")
+
+    await new Promise((resolve) => setTimeout(resolve, 200))
+
+    expect(context.args.onChange).toHaveBeenCalledWith("A")
+  },
+}
+
+export const RemovesWhitespaceAtTheEnd: Story = {
+  args: {
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    await userEvent.type(textbox, "A ")
+
+    await new Promise((resolve) => setTimeout(resolve, 200))
+
+    expect(context.args.onChange).toHaveBeenCalledWith("A")
+  },
+}
+
+export const RemovesExtraWhitespaceInTheMiddle: Story = {
+  args: {
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    await userEvent.type(textbox, "A  A")
+
+    await new Promise((resolve) => setTimeout(resolve, 200))
+
+    expect(context.args.onChange).toHaveBeenCalledWith("A A")
   },
 }
