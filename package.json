@@ -75,6 +75,7 @@
   },
   "dependencies": {
     "react-virtualized-auto-sizer": "^1.0.24",
-    "react-window": "^1.8.10"
+    "react-window": "^1.8.10",
+    "smart-timeout": "^2.7.1"
   }
 }

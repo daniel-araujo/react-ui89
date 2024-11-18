@@ -1,0 +1,15 @@
+.inputText input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+
+  height: var(--ui89-input-height);
+  padding: 0 var(--ui89-safe-space);
+  border: 0;
+
+  border-radius: 0;
+  outline: none;
+
+  background: var(--ui89-input-bg-color);
+  color: var(--ui89-input-text-color);
+}
