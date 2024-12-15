@@ -5,8 +5,8 @@ import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
 import postcss from 'rollup-plugin-postcss'
-import svgr from '@svgr/rollup'
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import svgr from "vite-plugin-svgr";
 
 const packageJson = JSON.parse(await fs.readFile('./package.json'))
 
@@ -25,7 +25,9 @@ export default [
       peerDepsExternal({
         includeDependencies: true,
       }),
-      svgr(),
+      svgr({
+        include: "**/*.svg",
+      }),
       resolve(),
       commonjs(),
       typescript({
