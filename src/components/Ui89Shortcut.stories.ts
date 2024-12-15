@@ -19,3 +19,10 @@ export const Default: Story = {
     label: "Label goes here",
   },
 }
+
+export const LongLabel: Story = {
+  args: {
+    label:
+      "This Label is very long and will most likely take up more than 1 line",
+  },
+}

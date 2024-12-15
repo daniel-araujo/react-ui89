@@ -5,6 +5,8 @@ import ShortcutSvg from "../images/shortcut.svg"
 import styles from "./Ui89Shortcut.module.css"
 import typoStyles from "../style/typo.module.css"
 
+import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
+
 export function Ui89Shortcut({
   imageUrl,
   label,
@@ -20,11 +22,28 @@ export function Ui89Shortcut({
 
   return (
     <div className={styles.container}>
-      <img className={styles.image} src={imageUrl} onClick={onNativeClick} />
+      <div className={styles.imageContainer}>
+        <img
+          className={styles.image}
+          src={imageUrl}
+          onClick={onNativeClick}
+          tabIndex={0}
+        />
 
-      <ShortcutSvg className={styles.shortcutIcon} width={16} height={16} />
+        <div className={styles.shortcutIconContainer}>
+          <ShortcutSvg className={styles.shortcutIcon} width={16} height={16} />
+        </div>
+      </div>
 
-      <div className={`${typoStyles.smallBold}`}>{label}</div>
+      <Ui89SpaceVertical gap={1} />
+
+      <div
+        className={`${styles.label} ${typoStyles.smallBold}`}
+        onClick={onNativeClick}
+        tabIndex={0}
+      >
+        {label}
+      </div>
     </div>
   )
 }

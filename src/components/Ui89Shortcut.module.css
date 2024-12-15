@@ -1,20 +1,52 @@
 .container {
-  display: inline-block;
-  width: 200px;
-  height: 200px;
+  display: inline-flex;
+  flex-direction: column;
+  padding: calc(var(--ui89-safe-space) * 2);
 
+  position: relative;
+  text-align: center;
+
+  box-sizing: border-box;
+
+  border: 2px solid transparent;
+
+  user-select: none;
+}
+
+.container:focus-within {
+  border-color: currentColor;
+}
+
+.label {
+  max-width: 140px;
+}
+
+.container:focus-within .label {
+  background: var(--ui89-scene-text-color);
+  color: var(--ui89-scene-bg-color);
+}
+
+.imageContainer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
   position: relative;
 }
 
 .image {
-  width: 150px;
-  height: 160px;
+  display: block;
+  width: 140px;
+  height: 140px;
+}
+
+.shortcutIconContainer {
+  position: relative;
+  width: 0;
 }
 
 .shortcutIcon {
   position: absolute;
-  top: 140px;
-  left: 130px;
-  width: 24px;
-  height: 24px;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
 }
