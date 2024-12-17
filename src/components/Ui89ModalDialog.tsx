@@ -50,7 +50,7 @@ export function Ui89ModalDialog({
 
         <HoverShadow>
           <GridExpandTrick>
-            <Ui89Scene look="side">
+            <Ui89Scene>
               <Ui89Card topCenter={topCenter}>
                 <ScrollContainer>{children}</ScrollContainer>
               </Ui89Card>
