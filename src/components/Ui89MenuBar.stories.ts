@@ -7,9 +7,7 @@ import { SceneDecorator } from "../storybook/SceneDecorator"
 const meta: Meta<typeof Ui89MenuBar> = {
   component: Ui89MenuBar,
   tags: ["autodocs"],
-  decorators: [
-    SceneDecorator,
-  ],
+  decorators: [SceneDecorator],
 }
 
 export default meta
@@ -26,14 +24,14 @@ export const TwoItems: Story = {
   args: {
     items: [
       {
-        label: 'First',
-        onClick: fn()
+        label: "First",
+        onClick: fn(),
       },
       {
-        label: 'Second',
-        onClick: fn()
-      }
-    ]
+        label: "Second",
+        onClick: fn(),
+      },
+    ],
   },
 }
 
@@ -41,10 +39,10 @@ export const ClickingOnItemCallsOnClick: Story = {
   args: {
     items: [
       {
-        label: 'First',
-        onClick: fn()
-      }
-    ]
+        label: "First",
+        onClick: fn(),
+      },
+    ],
   },
 
   async play(context) {
@@ -52,6 +50,6 @@ export const ClickingOnItemCallsOnClick: Story = {
 
     await userEvent.click(item)
 
-    expect(context.args.items[0].onClick).toBeCalledTimes(1);
+    expect(context.args.items[0].onClick).toBeCalledTimes(1)
   },
 }

@@ -5,31 +5,31 @@ import typoStyles from "../style/typo.module.css"
 import scrollbarStyles from "../style/scrollbar.module.css"
 
 export interface Ui89MenuBarItem {
-  label: React.ReactNode,
-  onClick?: () => void,
-  children?: Ui89MenuBarItem[],
+  label: React.ReactNode
+  onClick?: () => void
+  children?: Ui89MenuBarItem[]
 }
 
 export interface Ui89MenuBarProps {
-  items: Ui89MenuBarItem[],
+  items: Ui89MenuBarItem[]
 }
 
-export function Ui89MenuBar({
-  items,
-}: Ui89MenuBarProps) {
+export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
   return (
     <div
       className={`${styles.menuBar} ${typoStyles.special} ${scrollbarStyles.container}`}
     >
-      {items.map(item => {
+      {items.map((item) => {
         function onNativeClick() {
           if (item.onClick !== undefined) {
-            item.onClick();
+            item.onClick()
           }
         }
 
         return (
-          <div className={styles.menuBarItem} onClick={onNativeClick}>{item.label}</div>
+          <div className={styles.menuBarItem} onClick={onNativeClick}>
+            {item.label}
+          </div>
         )
       })}
     </div>
