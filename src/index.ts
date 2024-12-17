@@ -4,6 +4,10 @@ export { Ui89Theme, Ui89Look } from "./theme"
 export { Ui89Button } from "./components/Ui89Button"
 export { Ui89Card } from "./components/Ui89Card"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"
+export type {
+  Ui89MenuBarItem,
+  Ui89MenuBarProps,
+} from "./components/Ui89MenuBar"
 export { Ui89ModalDialog } from "./components/Ui89ModalDialog"
 export { Ui89Scene } from "./components/Ui89Scene"
 export { Ui89Shortcut } from "./components/Ui89Shortcut"

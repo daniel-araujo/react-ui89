@@ -1,0 +1,19 @@
+.menuBar {
+  display: flex;
+
+  height: 16px;
+
+  color: var(--ui89-theme-primary-text-color);
+  background: var(--ui89-theme-primary-bg-color);
+}
+
+.menuBarItem {
+  cursor: pointer;
+  padding: 0 calc(var(--ui89-safe-space) * 2);
+}
+
+.menuBarItem:hover,
+.menuBarItem:active {
+  color: var(--ui89-theme-primary-bg-color);
+  background: var(--ui89-theme-primary-text-color);
+}
