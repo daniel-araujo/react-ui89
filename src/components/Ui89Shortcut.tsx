@@ -21,14 +21,9 @@ export function Ui89Shortcut({
   }
 
   return (
-    <div className={styles.container}>
+    <div className={styles.container} onClick={onNativeClick}>
       <div className={styles.imageContainer}>
-        <img
-          className={styles.image}
-          src={imageUrl}
-          onClick={onNativeClick}
-          tabIndex={0}
-        />
+        <img className={styles.image} src={imageUrl} />
 
         <div className={styles.shortcutIconContainer}>
           <ShortcutSvg className={styles.shortcutIcon} width={16} height={16} />
@@ -40,7 +35,6 @@ export function Ui89Shortcut({
       <div
         className={`${styles.label} ${typoStyles.smallBold}`}
         onClick={onNativeClick}
-        tabIndex={0}
       >
         {label}
       </div>
