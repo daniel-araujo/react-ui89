@@ -8,6 +8,7 @@ export type {
   Ui89MenuBarItem,
   Ui89MenuBarProps,
 } from "./components/Ui89MenuBar"
+export { Ui89MenuBar } from "./components/Ui89MenuBar"
 export { Ui89ModalDialog } from "./components/Ui89ModalDialog"
 export { Ui89Scene } from "./components/Ui89Scene"
 export { Ui89Shortcut } from "./components/Ui89Shortcut"
