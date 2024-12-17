@@ -3,7 +3,7 @@
   inset: 0px;
 
   display: none;
-  animation: appear var(--animation-speed);
+  animation: appear var(--ui89-animation-speed);
 }
 
 .dialog--open {
@@ -20,11 +20,8 @@
   position: absolute;
   inset: 0;
   border: none;
-  color: var(--content-text-color);
-  background: var(--content-bg-color);
   border-radius: 0;
   outline: none;
-  padding: var(--safe-space);
   margin: auto;
   word-break: break-word;
 
