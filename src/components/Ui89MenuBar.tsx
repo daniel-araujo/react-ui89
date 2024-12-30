@@ -27,7 +27,11 @@ export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
         }
 
         return (
-          <div key={index} className={styles.menuBarItem} onClick={onNativeClick}>
+          <div
+            key={index}
+            className={styles.menuBarItem}
+            onClick={onNativeClick}
+          >
             {item.label}
           </div>
         )
