@@ -19,7 +19,7 @@ export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
     <div
       className={`${styles.menuBar} ${typoStyles.special} ${scrollbarStyles.container}`}
     >
-      {items.map((item) => {
+      {items.map((item, index) => {
         function onNativeClick() {
           if (item.onClick !== undefined) {
             item.onClick()
@@ -27,7 +27,7 @@ export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
         }
 
         return (
-          <div className={styles.menuBarItem} onClick={onNativeClick}>
+          <div key={index} className={styles.menuBarItem} onClick={onNativeClick}>
             {item.label}
           </div>
         )
