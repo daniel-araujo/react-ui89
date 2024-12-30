@@ -6,6 +6,7 @@ import resetStyles from "../style/reset.module.css"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
 
 import { Ui89Theme } from "../theme"
+import { useUi89Overrides } from "../Ui89Override"
 
 export type Ui89BreadcrumbsPropsOnSelect = (e: {
   item: Ui89BreadcrumbsPropsItem
@@ -32,12 +33,25 @@ export function Ui89BreadcrumbsItem({
   onSelect?: Ui89BreadcrumbsPropsOnSelect
 }) {
   const tagname = item.url !== undefined ? "a" : "div"
+  const overrides = useUi89Overrides()
+
+  const onClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
+    if (item.url !== undefined) {
+      if (item.url.startsWith("/")) {
+        if (overrides.routerPush !== undefined) {
+          e.preventDefault()
+          overrides.routerPush(item.url)
+        }
+      }
+    }
+  }
 
   return (
     <a
       className={`${resetStyles.a} ${styles.breadcrumbsItem}`}
       href={item.url}
       style={{ "--ui89-index": index }}
+      onClick={onClick}
     >
       <div className={styles.breadcrumbsItemBackground}></div>
       {item.label}

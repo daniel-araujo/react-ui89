@@ -1,8 +1,13 @@
+import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89Breadcrumbs, Ui89BreadcrumbsPropsItem } from "./Ui89Breadcrumbs"
 import { SceneDecorator } from "../storybook/SceneDecorator"
+import {
+  Ui89OverrideProvider,
+  Ui89OverrideProviderProps,
+} from "../Ui89Override"
 
 const itemsSampleOneCrumb: Ui89BreadcrumbsPropsItem[] = [
   {
@@ -97,5 +102,27 @@ export const TwoCrumbs: Story = {
 export const FiveCrumbs: Story = {
   args: {
     items: itemsSampleFiveCrumbs,
+  },
+}
+
+export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
+  args: {
+    routerPush: fn(),
+  },
+
+  render: (args, context) => (
+    <Ui89OverrideProvider routerPush={args.routerPush}>
+      <Ui89Breadcrumbs items={itemsSampleTwoCrumbs} />
+    </Ui89OverrideProvider>
+  ),
+
+  async play(context) {
+    const firstLink = await screen.findByRole("link", {
+      name: "First",
+    })
+
+    await userEvent.click(firstLink)
+
+    expect(context.args.routerPush).toHaveBeenCalledWith("/first")
   },
 }
