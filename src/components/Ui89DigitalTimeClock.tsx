@@ -1,20 +1,10 @@
 import React, { useRef } from "react"
 
-import { Ui89Theme } from "../theme"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
 import typoStyles from "../style/typo.module.css"
 
 import { TimeAnimation, TimeAnimationPropsChildrenProps } from "./TimeAnimation"
 
-export function Ui89DigitalTime({
-  theme,
-  block,
-  children,
-}: {
-  theme: Ui89Theme | string
-  block?: boolean
-  children: React.ReactNode
-}) {
+export function Ui89DigitalTimeClock() {
   const withColon = useRef(false)
 
   function render({ now }: TimeAnimationPropsChildrenProps) {
@@ -32,7 +22,7 @@ export function Ui89DigitalTime({
   }
 
   return (
-    <span className={`${chosenThemeStyles[theme]} ${typoStyles.special}`}>
+    <span className={`${typoStyles.special}`}>
       <TimeAnimation>{render}</TimeAnimation>
     </span>
   )
