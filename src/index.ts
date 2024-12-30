@@ -18,6 +18,8 @@ export type {
 } from "./components/Ui89MenuBar"
 export { Ui89MenuBar } from "./components/Ui89MenuBar"
 export { Ui89ModalDialog } from "./components/Ui89ModalDialog"
+export type { Ui89OverrideProviderProps } from "./Ui89Override"
+export { Ui89OverrideProvider } from "./Ui89Override"
 export { Ui89Scene } from "./components/Ui89Scene"
 export { Ui89Shortcut } from "./components/Ui89Shortcut"
 export { Ui89SpaceVertical } from "./components/Ui89SpaceVertical"

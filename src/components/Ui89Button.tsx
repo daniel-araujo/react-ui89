@@ -7,6 +7,7 @@ import chosenThemeStyles from "../style/chosen-theme.module.css"
 import HoverShadow from "./HoverShadow"
 
 import { Ui89Theme } from "../theme"
+import { useUi89Overrides } from "../Ui89Override"
 
 interface Ui89ButtonProps {
   theme?: Ui89Theme | string
@@ -18,7 +19,6 @@ interface Ui89ButtonProps {
   autoDisableOnClick?: boolean
   disabled?: boolean
   activated?: boolean
-  routerPush?: (url: string) => void
 }
 
 export function Ui89Button({
@@ -31,9 +31,8 @@ export function Ui89Button({
   autoDisableOnClick = true,
   disabled,
   activated,
-  routerPush,
 }: Ui89ButtonProps) {
-  //const router = useRouter()
+  const overrides = useUi89Overrides()
   const [clicking, setClicking] = useState(false)
 
   let localDisabled = disabled || (autoDisableOnClick && clicking)
@@ -54,9 +53,9 @@ export function Ui89Button({
 
       if (href !== undefined) {
         if (href.startsWith("/")) {
-          if (routerPush !== undefined) {
+          if (overrides.routerPush !== undefined) {
             e.preventDefault()
-            routerPush(href)
+            overrides.routerPush(href)
           }
         }
       }
@@ -105,7 +104,12 @@ export function Ui89Button({
     return (
       <span className={styles.container}>
         <HoverShadow>
-          <a className={buttonClass} href={href} onClick={onAnchorClick}>
+          <a
+            className={buttonClass}
+            role="button"
+            href={href}
+            onClick={onAnchorClick}
+          >
             <span className={styles.click}></span>
             {children}
           </a>
