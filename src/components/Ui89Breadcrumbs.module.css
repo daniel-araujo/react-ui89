@@ -1,0 +1,33 @@
+.breadcrumbs {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  overflow: hidden;
+  padding: var(--ui89-safe-space);
+}
+
+.breadcrumbsItem {
+  display: block;
+  color: var(--ui89-chosen-theme-text-color);
+  padding-left: calc(var(--ui89-safe-space) * 3);
+  padding-right: calc(var(--ui89-safe-space) * 2);
+  margin: calc(var(--ui89-safe-space) * -1);
+
+  /* For background */
+  position: relative;
+  clip-path: polygon(
+    0% 0%,
+    calc(100% - var(--ui89-safe-space)) 0%,
+    100% 50%,
+    calc(100% - var(--ui89-safe-space)) 100%,
+    0% 100%
+  );
+}
+
+.breadcrumbsItemBackground {
+  position: absolute;
+  z-index: -1;
+  inset: 0;
+  background-color: var(--ui89-chosen-theme-bg-color);
+  filter: brightness(calc(1 - var(--ui89-index) * 0.1));
+}
