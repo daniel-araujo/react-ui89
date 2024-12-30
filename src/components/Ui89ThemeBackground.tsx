@@ -5,7 +5,7 @@ import chosenThemeStyles from "../style/chosen-theme.module.css"
 
 import { Ui89Theme } from "../theme"
 
-interface Ui89ButtonProps {
+interface Ui89ThemeBackgroundProps {
   theme?: Ui89Theme | string
   children: React.ReactNode
 }
@@ -13,7 +13,7 @@ interface Ui89ButtonProps {
 export function Ui89ThemeBackground({
   theme = Ui89Theme.primary,
   children,
-}: Ui89ButtonProps) {
+}: Ui89ThemeBackgroundProps) {
   return (
     <div className={`${styles.background} ${chosenThemeStyles[theme]}`}>
       {children}
