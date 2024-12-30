@@ -96,6 +96,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
       <div className={styles.tableHeader}>
         {columns.map((column, index) => (
           <div
+            key={index}
             className={getColumnClass(index, 0)}
             style={{
               left: getColumnHorizontalOffset(index),
@@ -138,6 +139,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                     {rowIndex !== 0 &&
                       [columns[columnIndex].renderBody].map((BodyContent) => (
                         <BodyContent
+                          key={rowIndex}
                           index={rowIndex - 1}
                           row={rows[rowIndex - 1]}
                         />
