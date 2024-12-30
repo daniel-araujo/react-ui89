@@ -1,0 +1,4 @@
+.background {
+  color: var(--ui89-chosen-theme-text-color);
+  background-color: var(--ui89-chosen-theme-bg-color);
+}

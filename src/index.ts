@@ -1,6 +1,7 @@
 import "./style/global.css"
 
 export { Ui89Theme, Ui89Look } from "./theme"
+export { Ui89ThemeBackground } from "./components/Ui89ThemeBackground"
 export { Ui89Button } from "./components/Ui89Button"
 export { Ui89Card } from "./components/Ui89Card"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"
