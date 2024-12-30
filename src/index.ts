@@ -4,6 +4,8 @@ export { Ui89Theme, Ui89Look } from "./theme"
 export { Ui89Button } from "./components/Ui89Button"
 export { Ui89Card } from "./components/Ui89Card"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"
+export { Ui89InputText } from "./components/Ui89InputText"
+export { Ui89InputTextNumber } from "./components/Ui89InputTextNumber"
 export type {
   Ui89MenuBarItem,
   Ui89MenuBarProps,
