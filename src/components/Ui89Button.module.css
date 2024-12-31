@@ -23,7 +23,7 @@
   /* For the button active/hover/focus state */
   position: relative;
 
-  cursor: pointer;
+  cursor: var(--ui89-cursor-pointer);
 }
 
 .button:before {
@@ -38,7 +38,7 @@
 .button:hover:not(.disabled):not(.active):before {
   content: "";
   background-color: #ffffff40;
-  cursor: pointer;
+  cursor: var(--ui89-cursor-pointer);
 }
 
 .button:active:not(.disabled),
@@ -53,12 +53,12 @@
 .button:active:not(.disabled):not(.active):before {
   content: none;
   background-color: #00000040;
-  cursor: pointer;
+  cursor: var(--ui89-cursor-pointer);
 }
 
 .disabled {
   opacity: 0.5;
-  cursor: default;
+  cursor: var(--ui89-cursor-default);
 }
 
 .size--normal {

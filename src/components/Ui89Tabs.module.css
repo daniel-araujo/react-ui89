@@ -7,7 +7,7 @@
   color: var(--ui89-scene-text-color);
   background-color: var(--ui89-scene-bg-color);
   padding: 0 calc(var(--ui89-safe-space) * 3);
-  cursor: pointer;
+  cursor: var(--ui89-cursor-pointer);
 }
 
 .navigationItem:hover,

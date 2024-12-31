@@ -8,7 +8,7 @@
 }
 
 .menuBarItem {
-  cursor: pointer;
+  cursor: var(--ui89-cursor-pointer);
   padding: 0 calc(var(--ui89-safe-space) * 2);
 }
 

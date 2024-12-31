@@ -56,4 +56,8 @@
 
   /* Animation */
   --ui89-animation-speed: 100ms;
+
+  /* Cursors */
+  --ui89-cursor-default: default;
+  --ui89-cursor-pointer: pointer;
 }
