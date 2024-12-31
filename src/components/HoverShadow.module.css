@@ -6,8 +6,8 @@
 }
 
 .hoverShadow > * {
-  min-height: 0;
-  min-width: 0;
+  min-height: min-content;
+  min-width: min-content;
 }
 
 .hoverShadowRight {

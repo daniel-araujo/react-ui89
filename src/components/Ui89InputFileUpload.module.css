@@ -1,0 +1,10 @@
+.inputFileUpload {
+  display: flex;
+  gap: calc(var(--ui89-safe-space) * 1);
+  align-items: center;
+}
+
+.inputFileUpload__info {
+  /* We do not want to squish the button */
+  min-width: 0;
+}

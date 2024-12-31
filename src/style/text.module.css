@@ -12,3 +12,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+.singleLine--ellipsisLeft {
+  direction: rtl;
+}

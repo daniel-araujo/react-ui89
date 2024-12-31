@@ -111,7 +111,7 @@ export function Ui89Button({
             onClick={onAnchorClick}
           >
             <span className={styles.click}></span>
-            {children}
+            <div className={styles.buttonContent}>{children}</div>
           </a>
         </HoverShadow>
       </span>
@@ -127,7 +127,7 @@ export function Ui89Button({
             disabled={localDisabled}
           >
             <span className={styles.click}></span>
-            {children}
+            <div className={styles.buttonContent}>{children}</div>
           </button>
         </HoverShadow>
       </span>
