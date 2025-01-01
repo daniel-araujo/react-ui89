@@ -27,6 +27,10 @@
   animation: appear var(--ui89-animation-speed);
 }
 
+.breadcrumbsItem:last-child {
+  padding-left: calc(var(--ui89-safe-space) * 2);
+}
+
 @keyframes appear {
   from {
     transform: translateX(-100%);
