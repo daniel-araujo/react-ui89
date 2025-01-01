@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import styles from "./Ui89Button.module.css"
 import typoStyles from "../style/typo.module.css"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
+import resetStyles from "../style/reset.module.css"
 
 import HoverShadow from "./HoverShadow"
 
@@ -105,7 +106,7 @@ export function Ui89Button({
       <span className={styles.container}>
         <HoverShadow>
           <a
-            className={buttonClass}
+            className={`${resetStyles.a} ${buttonClass}`}
             role="button"
             href={href}
             onClick={onAnchorClick}
