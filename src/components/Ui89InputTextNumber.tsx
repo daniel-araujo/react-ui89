@@ -40,13 +40,10 @@ export function Ui89InputTextNumber({
   onChange?: (value: any) => void
   precision?: number
 }) {
+  const [isTyping, setIsTyping] = useState(false)
   const [intermediateValue, setIntermediateValue] = useState(
     displayText(value, emptyValue),
   )
-
-  useEffect(() => {
-    setIntermediateValue(displayText(value, emptyValue))
-  }, [value])
 
   function implOnChange(value: string) {
     if (onChange === undefined) {
@@ -83,18 +80,17 @@ export function Ui89InputTextNumber({
     onChange(value)
   }
 
-  function onTyping(isTyping: boolean) {
+  useEffect(() => {
     if (!isTyping) {
-      // Correct display value.
       setIntermediateValue(displayText(value, emptyValue))
     }
-  }
+  }, [isTyping, value])
 
   return (
     <Ui89InputText
       value={intermediateValue}
       onChange={implOnChange}
-      onTyping={onTyping}
+      onTyping={setIsTyping}
     />
   )
 }
