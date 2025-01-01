@@ -15,6 +15,14 @@
   z-index: 1;
 }
 
+.menuContent {
+  display: inline-flex;
+  flex-direction: column;
+
+  /* We want to make sure that all items occupy at least the width of the menu */
+  min-width: 100%;
+}
+
 .inputSelect:focus-within .menu {
   display: block;
 

@@ -68,33 +68,35 @@ export function Ui89InputSelect({
       </div>
 
       <div className={[styles.menu].join(" ")} tabIndex={0}>
-        {realOptions.length > 0 ? (
-          realOptions.map((o) => {
-            const isSelected =
-              selectedOption && selectedOption.value === o.value
+        <div className={styles.menuContent}>
+          {realOptions.length > 0 ? (
+            realOptions.map((o) => {
+              const isSelected =
+                selectedOption && selectedOption.value === o.value
 
-            return (
-              <div
-                className={[
-                  styles.menuItem,
-                  isSelected ? styles.selected : null,
-                ].join(" ")}
-                key={o.value}
-                onClick={() => selectOption(o)}
-              >
-                {o.label}
-              </div>
-            )
-          })
-        ) : (
-          <div
-            className={[styles.menuItem, styles["menuItem--disabled"]].join(
-              " ",
-            )}
-          >
-            &lt;empty&gt;
-          </div>
-        )}
+              return (
+                <div
+                  className={[
+                    styles.menuItem,
+                    isSelected ? styles.selected : null,
+                  ].join(" ")}
+                  key={o.value}
+                  onClick={() => selectOption(o)}
+                >
+                  {o.label}
+                </div>
+              )
+            })
+          ) : (
+            <div
+              className={[styles.menuItem, styles["menuItem--disabled"]].join(
+                " ",
+              )}
+            >
+              &lt;empty&gt;
+            </div>
+          )}
+        </div>
       </div>
     </div>
   )

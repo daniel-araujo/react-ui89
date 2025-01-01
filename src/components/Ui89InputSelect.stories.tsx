@@ -5,6 +5,11 @@ import { Ui89InputSelect } from "./Ui89InputSelect"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 
+const optionsSampleTo100 = Array.from({ length: 100 }, (_, i) => ({
+  value: i + 1,
+  label: `Option ${i + 1}`,
+}))
+
 const meta: Meta<typeof Ui89InputSelect> = {
   component: Ui89InputSelect,
   tags: ["autodocs"],
@@ -52,5 +57,26 @@ export const MenuItemOverflow: Story = {
           "Very long string of text that should overflow but still be visible",
       },
     ],
+  },
+}
+
+export const MenuItemOverflowButOnlyOne: Story = {
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+  },
+  args: {
+    options: [
+      {
+        value: 1,
+        label:
+          "Very long string of text that should overflow but still be visible",
+      },
+    ].concat(optionsSampleTo100),
+  },
+}
+
+export const MenuVerticalOverflow: Story = {
+  args: {
+    options: optionsSampleTo100,
   },
 }
