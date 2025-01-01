@@ -22,6 +22,19 @@
     calc(100% - var(--ui89-safe-space)) 100%,
     0% 100%
   );
+
+  /* Animation */
+  animation: appear var(--ui89-animation-speed);
+}
+
+@keyframes appear {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(0%);
+  }
 }
 
 .breadcrumbsItemBackground {

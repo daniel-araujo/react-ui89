@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
@@ -8,6 +8,7 @@ import {
   Ui89OverrideProvider,
   Ui89OverrideProviderProps,
 } from "../Ui89Override"
+import { sleep } from "../promise-utils"
 
 const itemsSampleOneCrumb: Ui89BreadcrumbsPropsItem[] = [
   {
@@ -102,6 +103,45 @@ export const TwoCrumbs: Story = {
 export const FiveCrumbs: Story = {
   args: {
     items: itemsSampleFiveCrumbs,
+  },
+}
+
+export const NewItemAnimation: StoryObj = {
+  render: (args, context) => {
+    const [items, setItems] = useState(itemsSampleTwoCrumbs)
+
+    useEffect(() => {
+      let timeoutId = setTimeout(() => {
+        setItems(
+          items.concat([
+            {
+              label: "Appear",
+              url: "/appear",
+            },
+          ]),
+        )
+      }, 500)
+
+      return () => clearTimeout(timeoutId)
+    }, [])
+
+    return <Ui89Breadcrumbs items={items} />
+  },
+}
+
+export const RemoveItemAnimation: StoryObj = {
+  render: (args, context) => {
+    const [items, setItems] = useState(itemsSampleTwoCrumbs)
+
+    useEffect(() => {
+      let timeoutId = setTimeout(() => {
+        setItems(items.slice(0, 1))
+      }, 500)
+
+      return () => clearTimeout(timeoutId)
+    }, [])
+
+    return <Ui89Breadcrumbs items={items} />
   },
 }
 
