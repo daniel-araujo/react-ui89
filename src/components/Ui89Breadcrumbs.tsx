@@ -13,7 +13,7 @@ export type Ui89BreadcrumbsPropsOnSelect = (e: {
 }) => void | Promise<void>
 
 export interface Ui89BreadcrumbsPropsItem {
-  label: string
+  label: React.ReactNode
   url?: string
 }
 
