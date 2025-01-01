@@ -1,4 +1,3 @@
-"use client"
 import React, { createContext, useContext, ReactNode } from "react"
 
 type RouterPush = (url: string) => void | Promise<void>
