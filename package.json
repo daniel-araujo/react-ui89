@@ -1,6 +1,6 @@
 {
   "name": "react-ui89",
-  "description": "A collection of components that mimic a common style of user interfaces from the late 80s and early 90s.",
+  "description": "A collection of React components that mimic a common style of user interfaces from the late 80s and early 90s.",
   "version": "0.16.0",
   "author": "Daniel Araujo",
   "module": "dist/esm/index.js",
@@ -76,5 +76,20 @@
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10",
     "smart-timeout": "^2.7.1"
-  }
+  },
+  "keywords": [
+    "react",
+    "ui",
+    "components",
+    "design",
+    "framework",
+    "90s",
+    "80s",
+    "tui",
+    "terminal",
+    "dos",
+    "msdos",
+    "linux",
+    "leet"
+  ]
 }
