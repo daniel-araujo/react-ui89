@@ -15,8 +15,20 @@
   z-index: 1;
 }
 
-.menu--open {
+.inputSelect:focus-within .menu {
   display: block;
+
+  animation: appear var(--ui89-animation-speed);
+}
+
+@keyframes appear {
+  from {
+    transform: translateY(-5px);
+  }
+
+  to {
+    transform: translateY(0%);
+  }
 }
 
 .menuItem {

@@ -20,8 +20,6 @@ export function Ui89InputSelect({
   value,
   onChange,
 }: Ui89InputSelectProps) {
-  const [open, setOpen] = useState(false)
-
   const realOptions = useMemo(() => {
     return options.map((option) => {
       if (typeof option !== "object") {
@@ -47,11 +45,11 @@ export function Ui89InputSelect({
     if (onChange) {
       onChange(option.value)
     }
-    setOpen(false)
-  }
 
-  function toggleOpen() {
-    setOpen(!open)
+    if (document.activeElement !== null) {
+      // @ts-expect-error
+      document.activeElement.blur()
+    }
   }
 
   return (
@@ -63,15 +61,13 @@ export function Ui89InputSelect({
           inputBoxStyles["inputBox--clickable"],
           textStyles.singleLine,
         ].join(" ")}
-        onClick={toggleOpen}
+        tabIndex={0}
         title={selectedOption !== null ? selectedOption.label : undefined}
       >
         {selectedOption !== null ? <>{selectedOption.label}</> : <>Select...</>}
       </div>
 
-      <div
-        className={[styles.menu, open ? styles["menu--open"] : null].join(" ")}
-      >
+      <div className={[styles.menu].join(" ")} tabIndex={0}>
         {realOptions.length > 0 ? (
           realOptions.map((o) => {
             const isSelected =
