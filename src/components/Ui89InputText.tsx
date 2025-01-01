@@ -7,6 +7,10 @@ import typoStyles from "../style/typo.module.css"
 
 const THROTTLE_DELAY = 200
 
+function convertAnyToText(value: any) {
+  return value ?? ""
+}
+
 export function Ui89InputText({
   value,
   placeholder,
@@ -26,7 +30,6 @@ export function Ui89InputText({
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [isTyping, setIsTyping] = useState(false)
-  const [intermediateValue, setIntermediateValue] = useState(value)
   const onChangeThrottled = useMemo(() => throttledTimeout(), [])
 
   useEffect(() => {
@@ -45,6 +48,7 @@ export function Ui89InputText({
         onFocus()
       }
     }
+
     inputRef.current.onblur = () => {
       setIsTyping(false)
 
@@ -59,24 +63,43 @@ export function Ui89InputText({
   }, [inputRef.current, onBlur, onFocus])
 
   useEffect(() => {
-    if (isTyping === null) {
+    if (inputRef.current === null) {
       return
     }
 
     if (!isTyping) {
-      // Lets show the user what is actually the value.
-      setIntermediateValue(value)
+      onChangeThrottled.abort()
+      update()
+    }
+  }, [isTyping])
+
+  useEffect(() => {
+    if (!isTyping) {
+      // Lets show the user what the actual value is.
+      onChangeThrottled.call(THROTTLE_DELAY, () => {
+        if (inputRef.current === null) {
+          return
+        }
+
+        inputRef.current.value = convertAnyToText(value)
+      })
     }
   }, [isTyping, value])
 
   function implOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+    onChangeThrottled.call(THROTTLE_DELAY, update)
+  }
+
+  function update() {
     if (!onChange) {
       return
     }
 
-    let newVal = e.target.value
+    if (inputRef.current === null) {
+      return
+    }
 
-    setIntermediateValue(newVal)
+    let newVal = inputRef.current.value
 
     if (autoTrim) {
       // Must trim after setting intermediate value. Do not want to disturb
@@ -84,9 +107,12 @@ export function Ui89InputText({
       newVal = newVal.replace(/\s+/g, " ").trim()
     }
 
-    onChangeThrottled.call(THROTTLE_DELAY, () => {
-      onChange(newVal)
-    })
+    if (newVal === value) {
+      // Same value.
+      return
+    }
+
+    onChange(newVal)
   }
 
   return (
@@ -95,7 +121,6 @@ export function Ui89InputText({
         ref={inputRef}
         className={`${inputBoxStyles.inputBox} ${typoStyles.special}`}
         type="text"
-        value={intermediateValue}
         onChange={implOnChange}
         placeholder={placeholder}
       />

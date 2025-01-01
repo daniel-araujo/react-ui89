@@ -16,6 +16,13 @@ export function throttledTimeout() {
         Timeout.set(id, () => callback(), delay)
       }
     },
+
+    /**
+     * If there is a call that has been scheduled, remove it from the queue.
+     */
+    abort() {
+      Timeout.clear(id, true)
+    },
   }
 }
 

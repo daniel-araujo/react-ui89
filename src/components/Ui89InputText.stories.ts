@@ -26,6 +26,7 @@ export const Default: Story = {}
 
 export const TypingEmitsOnChange: Story = {
   args: {
+    value: "",
     onChange: fn(),
   },
 
@@ -47,6 +48,7 @@ export const TypingEmitsOnChange: Story = {
 
 export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
   args: {
+    value: "",
     onChange: fn(),
   },
 
@@ -73,6 +75,7 @@ export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
 
 export const RemovesWhitespaceAtTheBeginning: Story = {
   args: {
+    value: "",
     onChange: fn(),
   },
 
@@ -89,6 +92,7 @@ export const RemovesWhitespaceAtTheBeginning: Story = {
 
 export const RemovesWhitespaceAtTheEnd: Story = {
   args: {
+    value: "",
     onChange: fn(),
   },
 
@@ -105,6 +109,7 @@ export const RemovesWhitespaceAtTheEnd: Story = {
 
 export const RemovesExtraWhitespaceInTheMiddle: Story = {
   args: {
+    value: "",
     onChange: fn(),
   },
 
