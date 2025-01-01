@@ -3,6 +3,7 @@ import React, { forwardRef, useMemo } from "react"
 import { VariableSizeGrid } from "react-window"
 import AutoSizer from "react-virtualized-auto-sizer"
 import styles from "./Ui89VirtualTable.module.css"
+import typoStyles from "../style/typo.module.css"
 import { Ui89TagBox } from "./Ui89TagBox"
 
 const HEADER_HEIGHT = 30
@@ -97,7 +98,9 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
         {columns.map((column, index) => (
           <div
             key={index}
-            className={getColumnClass(index, 0)}
+            className={[getColumnClass(index, 0), typoStyles.normalBold].join(
+              " ",
+            )}
             style={{
               left: getColumnHorizontalOffset(index),
               width: getColumnWidth(index) + "px",
