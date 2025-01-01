@@ -3,7 +3,6 @@
   flex-direction: column;
   overflow: auto;
   height: 100%;
-  border: 1px solid var(--ui89-scene-text-color);
   box-sizing: border-box;
 }
 
@@ -30,8 +29,7 @@
   display: flex;
   align-items: center;
   padding: var(--ui89-safe-space);
-  border-bottom: 1px solid var(--ui89-scene-text-color);
-  border-right: 1px solid var(--ui89-scene-text-color);
+  border-bottom: 2px solid var(--ui89-scene-text-color);
 
   /* The width of the column will include padding and border. */
   box-sizing: border-box;
@@ -55,5 +53,4 @@
 }
 
 .cell--row-last {
-  border-bottom: none;
 }

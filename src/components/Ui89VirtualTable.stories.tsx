@@ -140,3 +140,19 @@ export const HorizontalScrolling: Story = {
     ],
   },
 }
+
+export const NotEnoughColumnsAndRows: Story = {
+  args: {
+    rows: new Array(2),
+    columns: [
+      {
+        renderHeader: () => <>Header #1</>,
+        renderBody: ({ index }) => <>Row #{index}</>,
+      },
+      {
+        renderHeader: () => <>Header #2</>,
+        renderBody: () => <>Second column</>,
+      },
+    ],
+  },
+}
