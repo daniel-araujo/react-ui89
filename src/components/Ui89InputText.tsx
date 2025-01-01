@@ -29,6 +29,7 @@ export function Ui89InputText({
   onBlur?: () => void
 }) {
   const inputRef = useRef<HTMLInputElement>(null)
+  const [intermediateValue, setIntermediateValue] = useState(value)
   const [isTyping, setIsTyping] = useState(false)
   const onChangeThrottled = useMemo(() => throttledTimeout(), [])
 
@@ -50,6 +51,9 @@ export function Ui89InputText({
     }
 
     inputRef.current.onblur = () => {
+      onChangeThrottled.abort()
+      update()
+
       setIsTyping(false)
 
       if (onTyping) {
@@ -63,30 +67,16 @@ export function Ui89InputText({
   }, [inputRef.current, onBlur, onFocus])
 
   useEffect(() => {
-    if (inputRef.current === null) {
-      return
-    }
-
-    if (!isTyping) {
-      onChangeThrottled.abort()
-      update()
-    }
-  }, [isTyping])
-
-  useEffect(() => {
     if (!isTyping) {
       // Lets show the user what the actual value is.
       onChangeThrottled.call(THROTTLE_DELAY, () => {
-        if (inputRef.current === null) {
-          return
-        }
-
-        inputRef.current.value = convertAnyToText(value)
+        setIntermediateValue(value)
       })
     }
-  }, [isTyping, value])
+  }, [value])
 
   function implOnChange(e: React.ChangeEvent<HTMLInputElement>) {
+    setIntermediateValue(e.target.value)
     onChangeThrottled.call(THROTTLE_DELAY, update)
   }
 
@@ -99,6 +89,8 @@ export function Ui89InputText({
       return
     }
 
+    // We get the current value straight from the element because this function
+    // may have been queued.
     let newVal = inputRef.current.value
 
     if (autoTrim) {
@@ -119,6 +111,7 @@ export function Ui89InputText({
     <div>
       <input
         ref={inputRef}
+        value={intermediateValue}
         className={`${inputBoxStyles.inputBox} ${typoStyles.special}`}
         type="text"
         onChange={implOnChange}

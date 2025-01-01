@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import { Decorator } from "@storybook/react/*"
 import { useArgs } from "@storybook/preview-api"
+import { useOnce } from "../react-utils"
 
 interface ActionPropUpdateOptions {
   directLink?: {
@@ -22,7 +23,7 @@ export function ActionPropUpdate({
   return (Story) => {
     const [args, setArgs] = useArgs()
 
-    useEffect(() => {
+    useOnce(() => {
       // Set up our functions
       if (directLink !== undefined) {
         for (let actionName in directLink) {
@@ -63,7 +64,7 @@ export function ActionPropUpdate({
           })
         }
       }
-    }, [])
+    })
 
     return <Story />
   }

@@ -83,16 +83,18 @@ export function Ui89InputTextNumber({
     onChange(value)
   }
 
-  function implOnBlur() {
-    // Correct display value.
-    setIntermediateValue(displayText(value, emptyValue))
+  function onTyping(isTyping: boolean) {
+    if (!isTyping) {
+      // Correct display value.
+      setIntermediateValue(displayText(value, emptyValue))
+    }
   }
 
   return (
     <Ui89InputText
       value={intermediateValue}
       onChange={implOnChange}
-      onBlur={implOnBlur}
+      onTyping={onTyping}
     />
   )
 }
