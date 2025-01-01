@@ -1,0 +1,45 @@
+.inputSelect {
+  position: relative;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px;
+  overflow: auto;
+  display: none;
+  background: var(--ui89-input-bg-color);
+  color: var(--ui89-input-text-color);
+  z-index: 1;
+}
+
+.menu--open {
+  display: block;
+}
+
+.menuItem {
+  display: inline-flex;
+  align-items: center;
+  background: var(--ui89-input-bg-color);
+  color: var(--ui89-input-text-color);
+  height: var(--ui89-input-height);
+  padding: 0 var(--ui89-safe-space);
+  white-space: nowrap;
+  user-select: none;
+}
+
+.menuItem:not(.menuItem--disabled) {
+  cursor: pointer;
+}
+
+.menuItem:not(.menuItem--disabled):hover,
+.menuItem.selected {
+  background: var(--ui89-input-text-color);
+  color: var(--ui89-input-bg-color);
+}
+
+.menuItem--disabled {
+  color: var(--ui89-palette-white);
+}

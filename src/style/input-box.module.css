@@ -1,9 +1,10 @@
-.inputText input {
+.inputBox {
   box-sizing: border-box;
   display: block;
   width: 100%;
 
   height: var(--ui89-input-height);
+  line-height: var(--ui89-input-height);
   padding: 0 var(--ui89-safe-space);
   border: 0;
 
@@ -12,4 +13,12 @@
 
   background: var(--ui89-input-bg-color);
   color: var(--ui89-input-text-color);
+}
+
+.inputBox--unselectable {
+  user-select: none;
+}
+
+.inputBox--clickable {
+  cursor: var(--ui89-cursor-pointer);
 }

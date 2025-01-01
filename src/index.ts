@@ -12,6 +12,11 @@ export { Ui89Card } from "./components/Ui89Card"
 export { Ui89DigitalTimeClock } from "./components/Ui89DigitalTimeClock"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"
 export { Ui89InputFileUpload } from "./components/Ui89InputFileUpload"
+export type {
+  Ui89InputSelectProps,
+  Ui89InputSelectPropsOption,
+} from "./components/Ui89InputSelect"
+export { Ui89InputSelect } from "./components/Ui89InputSelect"
 export { Ui89InputText } from "./components/Ui89InputText"
 export { Ui89InputTextNumber } from "./components/Ui89InputTextNumber"
 export type {
