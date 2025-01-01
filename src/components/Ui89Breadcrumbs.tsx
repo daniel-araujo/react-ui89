@@ -32,7 +32,7 @@ export function Ui89BreadcrumbsItem({
   item: Ui89BreadcrumbsPropsItem
   onSelect?: Ui89BreadcrumbsPropsOnSelect
 }) {
-  const style = { "--ui89-index": index } as React.CSSProperties;
+  const style = { "--ui89-index": index } as React.CSSProperties
   const tagname = item.url !== undefined ? "a" : "div"
   const overrides = useUi89Overrides()
 
