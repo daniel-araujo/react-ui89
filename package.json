@@ -1,7 +1,7 @@
 {
   "name": "react-ui89",
   "description": "A collection of React components that mimic a common style of user interfaces from the late 80s and early 90s.",
-  "version": "0.20.0",
+  "version": "0.20.1",
   "author": "Daniel Araujo",
   "module": "dist/esm/index.js",
   "files": [
