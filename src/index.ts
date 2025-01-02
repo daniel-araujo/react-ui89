@@ -37,6 +37,7 @@ export { Ui89TagBox } from "./components/Ui89TagBox"
 export { Ui89ThemeBackground } from "./components/Ui89ThemeBackground"
 export { Ui89TitleBox } from "./components/Ui89TitleBox"
 export { Ui89TitleUnderline } from "./components/Ui89TitleUnderline"
+export { Ui89Toaster, useUi89Toaster } from "./components/Ui89Toaster"
 export { Ui89VirtualTable } from "./components/Ui89VirtualTable"
 export type {
   Ui89VirtualTableColumnRenderHeaderParams,

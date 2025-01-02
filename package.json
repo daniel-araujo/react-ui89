@@ -16,7 +16,8 @@
     "url": "https://github.com/daniel-araujo/react-ui89.git"
   },
   "peerDependencies": {
-    "react": "^18.3.1"
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
   },
   "scripts": {
     "build": "rollup -c",
@@ -73,6 +74,7 @@
     "vite-plugin-svgr": "^4.3.0"
   },
   "dependencies": {
+    "react-toastify": "^11.0.2",
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10",
     "smart-timeout": "^2.7.1"

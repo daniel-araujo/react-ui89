@@ -10,17 +10,21 @@ export interface Ui89InputSelectPropsOption {
 }
 
 export interface Ui89InputSelectProps {
-  options: (Ui89InputSelectPropsOption | string | number)[]
-  value: string | number
-  onChange: (value: string | number) => void
+  options?: (Ui89InputSelectPropsOption | string | number)[]
+  value?: string | number
+  onChange?: (value: string | number) => void
 }
 
 export function Ui89InputSelect({
-  options = [],
+  options,
   value,
   onChange,
 }: Ui89InputSelectProps) {
   const realOptions = useMemo(() => {
+    if (options === undefined) {
+      return []
+    }
+
     return options.map((option) => {
       if (typeof option !== "object") {
         return {

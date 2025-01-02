@@ -1,0 +1,42 @@
+.ui89-toaster::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border: var(--ui89-toaster-border-width) solid
+    var(--ui89-chosen-theme-text-color);
+  margin: var(--ui89-safe-space);
+}
+
+.ui89-toaster::after {
+  /* This is the title */
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--ui89-chosen-theme-bg-color);
+  color: var(--ui89-chosen-theme-text-color);
+  padding: 0 var(--ui89-safe-space);
+}
+
+.ui89-toaster.Toastify__toast--default {
+  --ui89-toaster-border-width: 1px;
+
+  /* Tostify uses display flex by default. */
+  display: block;
+
+  /* We want to be as flexible as possible. */
+  min-height: auto;
+
+  padding: calc(var(--ui89-safe-space) * 2 + var(--ui89-toaster-border-width));
+
+  border-radius: 0;
+  box-shadow: 10px 10px 0px black;
+  background: var(--ui89-chosen-theme-bg-color);
+  color: var(--ui89-chosen-theme-text-color);
+}
+
+.ui89-toaster .Toastify__progress-bar--wrp {
+  border-radius: 0;
+}
