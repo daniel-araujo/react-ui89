@@ -34,7 +34,7 @@ export default [
         tsconfig: "./tsconfig.json",
       }),
       postcss({
-        modules: true,
+        autoModules: true,
         extract: true,
         minimize: true,
         sourceMap: true
