@@ -1,7 +1,6 @@
 import React from "react"
 import { ToastContainer, toast } from "react-toastify"
 
-import "./Ui89Toaster.css"
 import typoStyles from "../style/typo.module.css"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
 import { Ui89Theme } from "../theme"
