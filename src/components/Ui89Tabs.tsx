@@ -4,35 +4,50 @@ import styles from "./Ui89Tabs.module.css"
 import typoStyles from "../style/typo.module.css"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
 
+export interface Ui89TabsPropsOption {
+  value: string | number
+  label: string
+}
+
+export interface Ui89TabsProps {
+  selected?: any
+  onChange?: (value: string | number) => void
+  options?: Ui89TabsPropsOption[]
+
+  /**
+   * Stretch options such that they evenly take up the entire width.
+   */
+  stretch?: boolean
+}
+
 export function Ui89Tabs({
   selected,
   onChange = () => {},
-  items = [],
-}: {
-  selected?: string
-  onChange?: (value: string) => void
-  items?: {
-    value: string
-    label: string
-  }[]
-}) {
-  function handleOnChange(value: string) {
+  options = [],
+  stretch,
+}: Ui89TabsProps) {
+  function handleOnChange(value: string | number) {
     onChange(value)
   }
 
   return (
-    <div className={styles.navigation}>
-      {items.map((item) => (
+    <div
+      className={[
+        styles.navigation,
+        stretch ? styles["navigation--stretch"] : "",
+      ].join(" ")}
+    >
+      {options.map((option) => (
         <div
           className={[
             styles.navigationItem,
             typoStyles.smallBold,
-            selected === item.value ? styles.navigationItemSelected : "",
+            selected === option.value ? styles.navigationItemSelected : "",
           ].join(" ")}
-          key={item.value}
-          onClick={() => handleOnChange(item.value)}
+          key={option.value}
+          onClick={() => handleOnChange(option.value)}
         >
-          {item.label}
+          {option.label}
         </div>
       ))}
     </div>

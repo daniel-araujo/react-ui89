@@ -32,7 +32,12 @@ export { Ui89OverrideProvider } from "./Ui89Override"
 export { Ui89Scene } from "./components/Ui89Scene"
 export { Ui89Shortcut } from "./components/Ui89Shortcut"
 export { Ui89SpaceVertical } from "./components/Ui89SpaceVertical"
+export type {
+  Ui89TabbedCardProps,
+  Ui89TabbedCardPropsOption,
+} from "./components/Ui89TabbedCard"
 export { Ui89TabbedCard } from "./components/Ui89TabbedCard"
+export type { Ui89TabsProps, Ui89TabsPropsOption } from "./components/Ui89Tabs"
 export { Ui89Tabs } from "./components/Ui89Tabs"
 export { Ui89TagBox } from "./components/Ui89TagBox"
 export { Ui89ThemeBackground } from "./components/Ui89ThemeBackground"

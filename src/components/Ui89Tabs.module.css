@@ -3,11 +3,16 @@
   flex-wrap: wrap;
 }
 
+.navigation--stretch .navigationItem {
+  flex-grow: 1;
+}
+
 .navigationItem {
   color: var(--ui89-scene-text-color);
   background-color: var(--ui89-scene-bg-color);
   padding: 0 calc(var(--ui89-safe-space) * 3);
   cursor: var(--ui89-cursor-pointer);
+  text-align: center;
 }
 
 .navigationItem:hover,

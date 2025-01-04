@@ -3,25 +3,25 @@ import { Ui89Tabs } from "./Ui89Tabs"
 import React, { useCallback, useMemo } from "react"
 
 export interface Ui89TabbedCardProps {
-  selected?: string
-  onChange?: (value: string) => void
-  items?: Ui89TabbedCardPropsItem[]
+  selected?: any
+  onChange?: (value: string | number) => void
+  options?: Ui89TabbedCardPropsOption[]
 }
 
-export interface Ui89TabbedCardPropsItem {
-  value: string
+export interface Ui89TabbedCardPropsOption {
+  value: string | number
   label: string
   render: () => React.JSX.Element
 }
 
 export function Ui89TabbedCard({
   selected,
-  onChange = () => {},
-  items = [],
+  onChange,
+  options = [],
 }: Ui89TabbedCardProps) {
-  const selectedItem = useMemo<Ui89TabbedCardPropsItem | null>(() => {
-    return items.find((item) => item.value === selected) ?? null
-  }, [selected, items])
+  const selectedItem = useMemo<Ui89TabbedCardPropsOption | null>(() => {
+    return options.find((item) => item.value === selected) ?? null
+  }, [selected, options])
 
   const render = useMemo(() => {
     return selectedItem !== null ? selectedItem.render : () => <></>
@@ -34,7 +34,7 @@ export function Ui89TabbedCard({
   return (
     <Ui89Card
       topCenter={
-        <Ui89Tabs selected={selected} items={items} onChange={onChange} />
+        <Ui89Tabs selected={selected} options={options} onChange={onChange} />
       }
     >
       <React.Fragment key={renderKey}>{render()}</React.Fragment>

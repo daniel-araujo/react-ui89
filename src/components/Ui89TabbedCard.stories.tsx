@@ -25,7 +25,7 @@ type Story = StoryObj<typeof meta>
 
 export const NothingSelected: Story = {
   args: {
-    items: [
+    options: [
       {
         value: "1",
         label: "One",
@@ -42,7 +42,7 @@ export const NothingSelected: Story = {
 
 export const Selected: Story = {
   args: {
-    items: [
+    options: [
       {
         value: "1",
         label: "One",
