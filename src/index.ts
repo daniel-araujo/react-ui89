@@ -13,6 +13,8 @@ export { Ui89Card } from "./components/Ui89Card"
 export type { Ui89DigitalClockProps } from "./components/Ui89DigitalClock"
 export { Ui89DigitalClock } from "./components/Ui89DigitalClock"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"
+export type { Ui89HrProps, Ui89HrLook } from "./components/Ui89Hr"
+export { Ui89Hr } from "./components/Ui89Hr"
 export { Ui89InputFileUpload } from "./components/Ui89InputFileUpload"
 export type {
   Ui89InputSelectProps,

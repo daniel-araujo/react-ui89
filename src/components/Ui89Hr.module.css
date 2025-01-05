@@ -1,0 +1,20 @@
+.hr--straight {
+  border-top: 1px solid var(--ui89-scene-card-text-color);
+}
+
+.hr--dotted {
+  border-top: 1px dotted var(--ui89-scene-card-text-color);
+}
+
+.hr--dashed {
+  border-top: 1px dashed var(--ui89-scene-card-text-color);
+}
+
+.hr--double {
+  border-top: 1px solid var(--ui89-scene-card-text-color);
+}
+
+.hr--double .hrDouble {
+  margin-top: 4px;
+  border-top: 1px solid var(--ui89-scene-card-text-color);
+}

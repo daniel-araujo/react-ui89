@@ -9,7 +9,7 @@
   border-right: calc(var(--ui89-safe-space)) solid #00000040;
   border-bottom: calc(var(--ui89-safe-space)) solid #00000040;
   padding: calc(var(--ui89-safe-space) / 4) calc(var(--ui89-safe-space) / 2);
-  border: 1px solid white;
+  border: 1px solid var(--ui89-scene-card-text-color);
 
   display: flex;
   flex-direction: column;
@@ -44,4 +44,13 @@
   right: var(--ui89-safe-space);
   display: flex;
   justify-content: center;
+}
+
+.cardHorizontalConnection {
+  margin: 0 calc(var(--ui89-safe-space) * -1);
+  background: var(--ui89-scene-card-bg-color);
+}
+
+.cardHorizontalConnection--overflow {
+  margin: 0 calc(var(--ui89-safe-space) * -1 - 1px);
 }
