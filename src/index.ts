@@ -29,6 +29,7 @@ export type {
 } from "./components/Ui89MenuBar"
 export { Ui89MenuBar } from "./components/Ui89MenuBar"
 export { Ui89ModalDialog } from "./components/Ui89ModalDialog"
+export { Ui89NameValuePair } from "./components/Ui89NameValuePair"
 export type { Ui89OverrideProviderProps } from "./Ui89Override"
 export { Ui89OverrideProvider } from "./Ui89Override"
 export { Ui89Scene } from "./components/Ui89Scene"

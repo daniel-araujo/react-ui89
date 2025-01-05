@@ -1,0 +1,17 @@
+.nameValuePair {
+  display: flex;
+
+  /* So that the dots are not too close to the text */
+  gap: 1px;
+}
+
+.nameValuePair__name,
+.nameValuePair__value {
+  text-align: justify;
+}
+
+.nameValuePair__dots {
+  flex: 1 1;
+  min-width: calc(var(--ui89-safe-space) * 2);
+  border-bottom: 1px dashed currentColor;
+}

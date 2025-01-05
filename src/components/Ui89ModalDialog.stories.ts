@@ -13,7 +13,6 @@ const meta: Meta<typeof Ui89ModalDialog> = {
     ActionPropUpdate({
       updateArgs: {
         onRequestClose: () => {
-          console.log("test;")
           return {
             open: false,
           }
