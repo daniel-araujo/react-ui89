@@ -52,3 +52,12 @@ export const Double: Story = {
 
   render: Straight.render,
 }
+
+export const ThemePrimary: Story = {
+  args: {
+    look: "double",
+    theme: "primary",
+  },
+
+  render: Straight.render,
+}

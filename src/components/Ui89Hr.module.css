@@ -1,20 +1,28 @@
+.hr {
+  --ui89-hr-color: var(--ui89-scene-card-text-color);
+}
+
 .hr--straight {
-  border-top: 1px solid var(--ui89-scene-card-text-color);
+  border-top: 1px solid var(--ui89-hr-color);
 }
 
 .hr--dotted {
-  border-top: 1px dotted var(--ui89-scene-card-text-color);
+  border-top: 1px dotted var(--ui89-hr-color);
 }
 
 .hr--dashed {
-  border-top: 1px dashed var(--ui89-scene-card-text-color);
+  border-top: 1px dashed var(--ui89-hr-color);
 }
 
 .hr--double {
-  border-top: 1px solid var(--ui89-scene-card-text-color);
+  border-top: 1px solid var(--ui89-hr-color);
 }
 
 .hr--double .hrDouble {
   margin-top: 4px;
-  border-top: 1px solid var(--ui89-scene-card-text-color);
+  border-top: 1px solid var(--ui89-hr-color);
+}
+
+.hr--use-theme {
+  --ui89-hr-color: var(--ui89-chosen-theme-bg-color);
 }
