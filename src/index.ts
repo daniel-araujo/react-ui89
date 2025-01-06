@@ -10,6 +10,7 @@ export type {
 export { Ui89Breadcrumbs } from "./components/Ui89Breadcrumbs"
 export { Ui89Button } from "./components/Ui89Button"
 export { Ui89Card } from "./components/Ui89Card"
+export { Ui89CardHorizontalConnection } from "./components/Ui89CardHorizontalConnection"
 export type { Ui89DigitalClockProps } from "./components/Ui89DigitalClock"
 export { Ui89DigitalClock } from "./components/Ui89DigitalClock"
 export { Ui89HighlightText } from "./components/Ui89HighlightText"

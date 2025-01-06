@@ -1,17 +1,23 @@
 .nameValuePair {
   display: flex;
+}
 
-  /* So that the dots are not too close to the text */
-  gap: 1px;
+.nameValuePair__nameWrapper {
+  display: flex;
 }
 
 .nameValuePair__name,
 .nameValuePair__value {
-  text-align: justify;
 }
 
 .nameValuePair__dots {
   flex: 1 1;
   min-width: calc(var(--ui89-safe-space) * 2);
   border-bottom: 1px dashed currentColor;
+
+  /* Want to make sure that the dots are at the baseline */
+  height: calc(1em * 0.75);
+
+  /* So that the dots are not too close to the text */
+  margin: 0 2px;
 }
