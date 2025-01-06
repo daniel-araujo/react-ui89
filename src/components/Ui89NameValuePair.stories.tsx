@@ -43,13 +43,18 @@ export const NameWithFixedWidth: Story = {
   args: {
     name: "First",
     value: "Second",
-    leftWidth: 500,
+    leftMaxWidth: 500,
   },
   render: (args, context) => (
     <>
       <Ui89NameValuePair {...args} name="First" />
       <Ui89NameValuePair {...args} name="Second" value="Third" />
       <Ui89NameValuePair {...args} name="Six" value="One Hundred Ninety Four" />
+      <Ui89NameValuePair
+        {...args}
+        name="Six"
+        value="Two thousand and One Hundred and Ninety Four"
+      />
       <Ui89NameValuePair {...args} name="Nine" value="Twenty four" />
     </>
   ),
@@ -62,7 +67,7 @@ export const TextWrap: Story = {
   args: {
     name: "First",
     value: "Second",
-    leftWidth: 500,
+    leftMaxWidth: 500,
   },
   render: (args, context) => (
     <>

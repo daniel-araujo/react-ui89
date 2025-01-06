@@ -4,10 +4,7 @@
 
 .nameValuePair__nameWrapper {
   display: flex;
-}
-
-.nameValuePair__name,
-.nameValuePair__value {
+  flex: 1;
 }
 
 .nameValuePair__dots {
