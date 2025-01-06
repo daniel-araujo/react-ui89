@@ -9,7 +9,7 @@ import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
 
 export interface Ui89ShortcutProps {
   imageUrl: string
-  label: string
+  label: React.ReactNode
   onClick?: () => void
 }
 

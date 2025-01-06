@@ -6,7 +6,7 @@ import chosenThemeStyles from "../style/chosen-theme.module.css"
 
 export interface Ui89TabsPropsOption {
   value: string | number
-  label: string
+  label: React.ReactNode
 }
 
 export interface Ui89TabsProps {

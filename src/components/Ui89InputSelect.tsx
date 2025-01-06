@@ -6,7 +6,7 @@ import textStyles from "../style/text.module.css"
 
 export interface Ui89InputSelectPropsOption {
   value: string | number
-  label: string
+  label: React.ReactNode
 }
 
 export interface Ui89InputSelectProps {
@@ -56,6 +56,10 @@ export function Ui89InputSelect({
     }
   }
 
+  function optionTitle(option: Ui89InputSelectPropsOption) {
+    return typeof option.label === "string" ? option.label : undefined
+  }
+
   return (
     <div className={`${styles.inputSelect}`}>
       <div
@@ -66,7 +70,9 @@ export function Ui89InputSelect({
           textStyles.singleLine,
         ].join(" ")}
         tabIndex={0}
-        title={selectedOption !== null ? selectedOption.label : undefined}
+        title={
+          selectedOption !== null ? optionTitle(selectedOption) : undefined
+        }
       >
         {selectedOption !== null ? <>{selectedOption.label}</> : <>Select...</>}
       </div>
@@ -84,6 +90,7 @@ export function Ui89InputSelect({
                     styles.menuItem,
                     isSelected ? styles.selected : null,
                   ].join(" ")}
+                  title={optionTitle(o)}
                   key={o.value}
                   onClick={() => selectOption(o)}
                 >

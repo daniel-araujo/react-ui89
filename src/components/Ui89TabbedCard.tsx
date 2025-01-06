@@ -10,7 +10,7 @@ export interface Ui89TabbedCardProps {
 
 export interface Ui89TabbedCardPropsOption {
   value: string | number
-  label: string
+  label: React.ReactNode
   render: () => React.JSX.Element
 }
 
