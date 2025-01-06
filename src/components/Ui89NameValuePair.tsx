@@ -2,15 +2,17 @@ import React from "react"
 
 import style from "./Ui89NameValuePair.module.css"
 
+export interface Ui89NameValuePairProps {
+  name: React.ReactNode
+  value: React.ReactNode
+  leftWidth?: number
+}
+
 export function Ui89NameValuePair({
   name,
   value,
   leftWidth,
-}: {
-  name: React.ReactNode
-  value: React.ReactNode
-  leftWidth?: number
-}) {
+}: Ui89NameValuePairProps) {
   return (
     <div className={style.nameValuePair}>
       <div

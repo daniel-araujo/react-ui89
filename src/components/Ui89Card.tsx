@@ -1,15 +1,17 @@
 import React from "react"
 import styles from "./Ui89Card.module.css"
 
+export interface Ui89CardProps {
+  topLeftCenter?: React.ReactNode
+  topCenter?: React.ReactNode
+  children: React.ReactNode
+}
+
 export function Ui89Card({
   topLeftCenter,
   topCenter,
   children,
-}: {
-  topLeftCenter?: React.ReactNode
-  topCenter?: React.ReactNode
-  children: React.ReactNode
-}) {
+}: Ui89CardProps) {
   const hasTopContent = topLeftCenter || topCenter
 
   return (

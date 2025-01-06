@@ -3,6 +3,15 @@ import { useState, useEffect } from "react"
 import { Ui89InputText } from "./Ui89InputText"
 import { stringRemoveAllWhitespace } from "../text-utils"
 
+export interface Ui89InputTextNumberProps {
+  emptyValue?: any
+  value?: any
+  min?: number
+  max?: number
+  onChange?: (value: any) => void
+  precision?: number
+}
+
 export function isTextNumber(text: string): boolean {
   return /\b\d+(\.\d+)?\b/.test(text)
 }
@@ -32,14 +41,7 @@ export function Ui89InputTextNumber({
   max,
   onChange,
   precision,
-}: {
-  emptyValue?: any
-  value?: any
-  min?: number
-  max?: number
-  onChange?: (value: any) => void
-  precision?: number
-}) {
+}: Ui89InputTextNumberProps) {
   const [isTyping, setIsTyping] = useState(false)
   const [intermediateValue, setIntermediateValue] = useState(
     displayText(value, emptyValue),

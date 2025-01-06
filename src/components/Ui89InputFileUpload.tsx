@@ -5,13 +5,15 @@ import typoStyles from "../style/typo.module.css"
 import textStyles from "../style/text.module.css"
 import { Ui89Button } from "./Ui89Button"
 
+export interface Ui89InputFileUploadProps {
+  value?: any
+  onChange?: (value: File | null) => void
+}
+
 export function Ui89InputFileUpload({
   value,
   onChange,
-}: {
-  value?: any
-  onChange?: (value: File | null) => void
-}) {
+}: Ui89InputFileUploadProps) {
   const inputRef = useRef<HTMLInputElement>(null)
 
   function implOnChange(e: React.ChangeEvent<HTMLInputElement>) {

@@ -1,6 +1,10 @@
 import React from "react"
 
-export function Ui89SpaceVertical({ gap = 1 }: { gap?: number }) {
+export interface Ui89SpaceVerticalProps {
+  gap?: number
+}
+
+export function Ui89SpaceVertical({ gap = 1 }: Ui89SpaceVerticalProps) {
   const style = {
     paddingTop: `calc(var(--ui89-safe-space) * ${gap})`,
   }

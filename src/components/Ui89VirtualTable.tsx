@@ -14,25 +14,25 @@ interface VariableSizeGridProps {
   style: React.CSSProperties
 }
 
-export interface Ui89VirtualTableColumnRenderHeaderParams<T> {
+export interface Ui89VirtualTablePropsColumnRenderHeaderParams<T> {
   index: number
-  column: Ui89VirtualTableColumn<T>
+  column: Ui89VirtualTablePropsColumn<T>
 }
 
-export interface Ui89VirtualTableColumnRenderBodyParams<T> {
+export interface Ui89VirtualTablePropsColumnRenderBodyParams<T> {
   index: number
   row: T
 }
 
-export interface Ui89VirtualTableColumn<T> {
+export interface Ui89VirtualTablePropsColumn<T> {
   width?: number
-  renderHeader?: React.FC<Ui89VirtualTableColumnRenderHeaderParams<T>>
-  renderBody: React.FC<Ui89VirtualTableColumnRenderBodyParams<T>>
+  renderHeader?: React.FC<Ui89VirtualTablePropsColumnRenderHeaderParams<T>>
+  renderBody: React.FC<Ui89VirtualTablePropsColumnRenderBodyParams<T>>
 }
 
 export interface Ui89VirtualTableProps<T> {
   rows?: T[]
-  columns?: Ui89VirtualTableColumn<T>[]
+  columns?: Ui89VirtualTablePropsColumn<T>[]
   rowHeight?: number
 }
 

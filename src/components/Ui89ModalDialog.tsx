@@ -7,6 +7,14 @@ import { Ui89Scene } from "./Ui89Scene"
 import GridExpandTrick from "./GridExpandTrick"
 import ScrollContainer from "./ScrollContainer"
 
+export interface Ui89ModalDialogProps {
+  open: boolean
+  size?: string
+  children?: React.ReactNode
+  topCenter?: React.ReactNode
+  onRequestClose?: () => void
+}
+
 const portalRoot: HTMLElement | null =
   typeof document !== "undefined" ? document.body : null
 
@@ -16,13 +24,7 @@ export function Ui89ModalDialog({
   children,
   topCenter,
   onRequestClose,
-}: {
-  open: boolean
-  size?: string
-  children?: React.ReactNode
-  topCenter?: React.ReactNode
-  onRequestClose?: () => void
-}) {
+}: Ui89ModalDialogProps) {
   const dialogClass = useMemo(() => {
     return [styles.dialog, open ? styles["dialog--open"] : ""].join(" ")
   }, [size, open])

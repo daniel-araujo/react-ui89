@@ -7,15 +7,17 @@ import typoStyles from "../style/typo.module.css"
 
 import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
 
+export interface Ui89ShortcutProps {
+  imageUrl: string
+  label: string
+  onClick?: () => void
+}
+
 export function Ui89Shortcut({
   imageUrl,
   label,
   onClick = () => {},
-}: {
-  imageUrl: string
-  label: string
-  onClick?: () => void
-}) {
+}: Ui89ShortcutProps) {
   function onNativeClick() {
     onClick()
   }

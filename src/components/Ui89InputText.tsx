@@ -7,6 +7,16 @@ import typoStyles from "../style/typo.module.css"
 
 const THROTTLE_DELAY = 200
 
+export interface Ui89InputTextProps {
+  value?: any
+  placeholder?: string
+  autoTrim?: boolean
+  onChange?: (value: any) => void
+  onTyping?: (value: boolean) => void
+  onFocus?: () => void
+  onBlur?: () => void
+}
+
 function convertAnyToText(value: any) {
   return value ?? ""
 }
@@ -19,15 +29,7 @@ export function Ui89InputText({
   onTyping,
   onFocus,
   onBlur,
-}: {
-  value?: any
-  placeholder?: string
-  autoTrim?: boolean
-  onChange?: (value: any) => void
-  onTyping?: (value: boolean) => void
-  onFocus?: () => void
-  onBlur?: () => void
-}) {
+}: Ui89InputTextProps) {
   const inputRef = useRef<HTMLInputElement>(null)
   const [intermediateValue, setIntermediateValue] = useState(value)
   const [isTyping, setIsTyping] = useState(false)

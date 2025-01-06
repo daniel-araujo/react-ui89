@@ -10,7 +10,7 @@ import HoverShadow from "./HoverShadow"
 import { Ui89Theme } from "../theme"
 import { useUi89Overrides } from "../Ui89Override"
 
-interface Ui89ButtonProps {
+export interface Ui89ButtonProps {
   theme?: Ui89Theme | keyof typeof Ui89Theme
   size?: string
   block?: boolean

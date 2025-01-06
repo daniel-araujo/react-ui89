@@ -4,14 +4,14 @@ import styles from "./Ui89MenuBar.module.css"
 import typoStyles from "../style/typo.module.css"
 import scrollbarStyles from "../style/scrollbar.module.css"
 
-export interface Ui89MenuBarItem {
+export interface Ui89MenuBarPropsItem {
   label: React.ReactNode
   onClick?: () => void
-  children?: Ui89MenuBarItem[]
+  children?: Ui89MenuBarPropsItem[]
 }
 
 export interface Ui89MenuBarProps {
-  items: Ui89MenuBarItem[]
+  items: Ui89MenuBarPropsItem[]
 }
 
 export function Ui89MenuBar({ items }: Ui89MenuBarProps) {

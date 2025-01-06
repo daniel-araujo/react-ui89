@@ -4,7 +4,7 @@ import style from "./Ui89Hr.module.css"
 import { Ui89Theme } from "../theme"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
 
-export enum Ui89HrLook {
+export enum Ui89HrPropsLook {
   straight = "straight",
   dotted = "dotted",
   dashed = "dashed",
@@ -12,7 +12,7 @@ export enum Ui89HrLook {
 }
 
 export interface Ui89HrProps {
-  look?: Ui89HrLook | keyof typeof Ui89HrLook
+  look?: Ui89HrPropsLook | keyof typeof Ui89HrPropsLook
   theme?: Ui89Theme | keyof typeof Ui89Theme
 }
 

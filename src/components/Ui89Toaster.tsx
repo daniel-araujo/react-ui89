@@ -5,7 +5,7 @@ import typoStyles from "../style/typo.module.css"
 import chosenThemeStyles from "../style/chosen-theme.module.css"
 import { Ui89Theme } from "../theme"
 
-interface Ui89ToasterOptions {
+export interface Ui89ToasterOptions {
   theme?: Ui89Theme | keyof typeof Ui89Theme
   autoClose?: boolean
   duration?: number
