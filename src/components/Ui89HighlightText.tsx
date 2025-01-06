@@ -10,7 +10,7 @@ export function Ui89HighlightText({
   block,
   children,
 }: {
-  theme: Ui89Theme | string
+  theme: Ui89Theme | keyof typeof Ui89Theme
   block?: boolean
   children: React.ReactNode
 }) {

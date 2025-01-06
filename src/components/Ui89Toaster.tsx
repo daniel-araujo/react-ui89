@@ -6,7 +6,7 @@ import chosenThemeStyles from "../style/chosen-theme.module.css"
 import { Ui89Theme } from "../theme"
 
 interface Ui89ToasterOptions {
-  theme?: Ui89Theme
+  theme?: Ui89Theme | keyof typeof Ui89Theme
   autoClose?: boolean
   duration?: number
 }

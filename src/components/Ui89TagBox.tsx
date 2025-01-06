@@ -10,7 +10,7 @@ export function Ui89TagBox({
   theme,
   children,
 }: {
-  theme: Ui89Theme | string
+  theme: Ui89Theme | keyof typeof Ui89Theme
   children: React.ReactNode
 }) {
   return (

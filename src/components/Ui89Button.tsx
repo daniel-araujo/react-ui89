@@ -11,7 +11,7 @@ import { Ui89Theme } from "../theme"
 import { useUi89Overrides } from "../Ui89Override"
 
 interface Ui89ButtonProps {
-  theme?: Ui89Theme | string
+  theme?: Ui89Theme | keyof typeof Ui89Theme
   size?: string
   block?: boolean
   onClick?: () => void | Promise<void>

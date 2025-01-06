@@ -18,7 +18,7 @@ export interface Ui89BreadcrumbsPropsItem {
 }
 
 export interface Ui89BreadcrumbsProps {
-  theme?: Ui89Theme
+  theme?: Ui89Theme | keyof typeof Ui89Theme
   items: Ui89BreadcrumbsPropsItem[]
   onSelect?: Ui89BreadcrumbsPropsOnSelect
 }

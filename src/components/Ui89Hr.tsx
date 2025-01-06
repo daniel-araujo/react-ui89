@@ -12,8 +12,8 @@ export enum Ui89HrLook {
 }
 
 export interface Ui89HrProps {
-  look?: keyof typeof Ui89HrLook
-  theme?: keyof typeof Ui89Theme
+  look?: Ui89HrLook | keyof typeof Ui89HrLook
+  theme?: Ui89Theme | keyof typeof Ui89Theme
 }
 
 export function Ui89Hr({ look = "straight", theme }: Ui89HrProps) {
