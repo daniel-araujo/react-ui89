@@ -155,7 +155,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
         </div>
       ) : (
         <div className={styles.empty}>
-          <Ui89TagBox theme="warn">Empty</Ui89TagBox>
+          <Ui89TagBox theme="warning">Empty</Ui89TagBox>
         </div>
       )}
     </div>
