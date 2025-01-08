@@ -1,5 +1,20 @@
 .container {
-  display: inline-block;
+  display: inline-grid;
+}
+
+.container--size-standard .button {
+  height: 22px;
+  padding: 0 calc(var(--ui89-safe-space) * 2);
+  min-width: 60px;
+}
+
+.container--size-square .button {
+  width: 22px;
+  height: 22px;
+  flex-basis: 22px;
+
+  /* We want to keep it square. */
+  overflow: hidden;
 }
 
 .button {
@@ -9,10 +24,8 @@
   border: 0;
   color: var(--ui89-chosen-theme-text-color);
   background-color: var(--ui89-chosen-theme-bg-color);
-  min-width: 60px;
   border-radius: 1px;
   font-weight: bold;
-  padding: 0 16px;
   user-select: none;
   text-align: center;
   box-sizing: border-box;
@@ -59,14 +72,6 @@
 .disabled {
   opacity: 0.5;
   cursor: var(--ui89-cursor-default);
-}
-
-.size--normal {
-  height: 22px;
-}
-
-.size--small {
-  height: 24px;
 }
 
 .click {

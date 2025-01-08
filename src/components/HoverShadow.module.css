@@ -1,13 +1,8 @@
 .hoverShadow {
-  display: grid;
+  display: inline-grid;
   padding-right: var(--ui89-safe-space);
   padding-bottom: var(--ui89-safe-space);
   position: relative;
-}
-
-.hoverShadow > * {
-  min-height: min-content;
-  min-width: min-content;
 }
 
 .hoverShadowRight {

@@ -61,6 +61,65 @@ export const ThemeWarning: Story = {
   },
 }
 
+export const SizeStandard: Story = {
+  args: {
+    size: "standard",
+    children: "Label",
+  },
+}
+
+export const SizeStandardGrowsWithFlexGrow: Story = {
+  render: (args, context) => (
+    <div className="flexContainer">
+      <style>{`
+        .flexContainer {
+          display: flex;
+        }
+        .flexContainer > * {
+          flex-grow: 1;
+        }
+      `}</style>
+      <Ui89Button size="standard" href="/link">
+        Button
+      </Ui89Button>
+    </div>
+  ),
+}
+
+export const SizeSquare: Story = {
+  args: {
+    theme: "danger",
+    size: "square",
+    children: "X",
+  },
+}
+
+export const SizeSquareDoesNotGrowWithFlexGrow: Story = {
+  render: (args, context) => (
+    <div className="flexContainer">
+      <style>{`
+        .flexContainer {
+          display: flex;
+        }
+        .flexContainer > * {
+          flex-grow: 1;
+        }
+      `}</style>
+      <Ui89Button size="square" href="/link">
+        Button
+      </Ui89Button>
+    </div>
+  ),
+}
+
+export const SizeSquareOverflow: Story = {
+  args: {
+    theme: "danger",
+    size: "square",
+    children: "XXXXX",
+  },
+}
+
 export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
   args: {
     routerPush: fn(),

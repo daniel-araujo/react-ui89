@@ -10,9 +10,14 @@ import HoverShadow from "./HoverShadow"
 import { Ui89Theme } from "../theme"
 import { useUi89Overrides } from "../Ui89Override"
 
+export enum Ui89ButtonPropsSize {
+  standard = "standard",
+  square = "square",
+}
+
 export interface Ui89ButtonProps {
   theme?: Ui89Theme | keyof typeof Ui89Theme
-  size?: string
+  size?: Ui89ButtonPropsSize | keyof typeof Ui89ButtonPropsSize
   block?: boolean
   onClick?: () => void | Promise<void>
   href?: string
@@ -24,7 +29,7 @@ export interface Ui89ButtonProps {
 
 export function Ui89Button({
   theme = Ui89Theme.primary,
-  size = "normal",
+  size = Ui89ButtonPropsSize.standard,
   block,
   onClick,
   href,
@@ -90,11 +95,15 @@ export function Ui89Button({
     }
   }
 
+  let containerClass = [
+    styles.container,
+    styles["container--size-" + size],
+  ].join(" ")
+
   let buttonClass = [
     styles.button,
     typoStyles.special,
     chosenThemeStyles[theme],
-    styles["size--" + size],
     activated ? styles.active : undefined,
     block ? styles.block : undefined,
     disabled ? styles.disabled : undefined,
@@ -103,7 +112,7 @@ export function Ui89Button({
 
   if (href) {
     return (
-      <span className={styles.container}>
+      <span className={containerClass}>
         <HoverShadow>
           <a
             className={`${resetStyles.a} ${buttonClass}`}
