@@ -33,7 +33,12 @@ export function Ui89InputText({
   const inputRef = useRef<HTMLInputElement>(null)
   const [intermediateValue, setIntermediateValue] = useState(value)
   const [isTyping, setIsTyping] = useState(false)
+  const onChangeRef = useRef(onChange)
   const onChangeThrottled = useMemo(() => throttledTimeout(), [])
+
+  useEffect(() => {
+    onChangeRef.current = onChange
+  }, [onChange])
 
   useEffect(() => {
     if (inputRef.current === null) {
@@ -83,7 +88,7 @@ export function Ui89InputText({
   }
 
   function update() {
-    if (!onChange) {
+    if (!onChangeRef.current) {
       return
     }
 
@@ -106,7 +111,7 @@ export function Ui89InputText({
       return
     }
 
-    onChange(newVal)
+    onChangeRef.current(newVal)
   }
 
   return (
