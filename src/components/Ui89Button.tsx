@@ -128,7 +128,7 @@ export function Ui89Button({
     )
   } else {
     return (
-      <span className={styles.container}>
+      <span className={containerClass}>
         <HoverShadow>
           <button
             className={buttonClass}
