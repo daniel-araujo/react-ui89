@@ -40,6 +40,9 @@ export type {
   Ui89InputSelectPropsOption,
 } from "./components/Ui89InputSelect"
 
+export { Ui89InputPassword } from "./components/Ui89InputPassword"
+export type { Ui89InputPasswordProps } from "./components/Ui89InputPassword"
+
 export { Ui89InputText } from "./components/Ui89InputText"
 export type { Ui89InputTextProps } from "./components/Ui89InputText"
 
