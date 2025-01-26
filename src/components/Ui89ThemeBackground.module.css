@@ -1,4 +1,8 @@
 .background {
   color: var(--ui89-chosen-theme-text-color);
   background-color: var(--ui89-chosen-theme-bg-color);
+
+  /* Must affect cards */
+  --ui89-scene-card-bg-color: var(--ui89-chosen-theme-bg-color);
+  --ui89-scene-card-text-color: var(--ui89-chosen-theme-text-color);
 }
