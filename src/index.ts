@@ -49,6 +49,9 @@ export type { Ui89InputTextProps } from "./components/Ui89InputText"
 export { Ui89InputTextNumber } from "./components/Ui89InputTextNumber"
 export type { Ui89InputTextNumberProps } from "./components/Ui89InputTextNumber"
 
+export { Ui89LinkUnderline } from "./components/Ui89LinkUnderline"
+export type { Ui89LinkUnderlineProps } from "./components/Ui89LinkUnderline"
+
 export { Ui89MenuBar } from "./components/Ui89MenuBar"
 export type {
   Ui89MenuBarPropsItem,

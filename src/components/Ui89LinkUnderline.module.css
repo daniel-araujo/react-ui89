@@ -1,0 +1,8 @@
+.link {
+  color: currentColor;
+  text-decoration: underline;
+}
+
+.link:hover {
+  color: currentColor;
+}
