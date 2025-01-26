@@ -63,10 +63,14 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     let offset = 0
 
     for (let i = 0; i < columnIndex; i++) {
-      offset += getColumnWidth(columnIndex)
+      offset += getColumnWidth(i)
     }
 
     return offset
+  }
+
+  function isLastColumn(columnIndex: number): boolean {
+    return columnIndex === columns.length - 1
   }
 
   function getColumnClass(columnIndex: number, rowIndex: number): string {
@@ -84,11 +88,28 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
       classes.push(styles["cell--column-first"])
     }
 
-    if (columnIndex === columns.length - 1) {
+    if (isLastColumn(columnIndex)) {
       classes.push(styles["cell--column-last"])
     }
 
     return classes.join(" ")
+  }
+
+  /**
+   * The width of an entire row.
+   */
+  function rowWidth() {
+    return getColumnHorizontalOffset(columns.length)
+  }
+
+  function pickWidth(autoSizerWidth: number) {
+    const total = rowWidth()
+
+    if (autoSizerWidth > total) {
+      return total
+    } else {
+      return autoSizerWidth
+    }
   }
 
   // This is the secret to having sticky headers.
@@ -129,7 +150,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                 columnWidth={getColumnWidth}
                 rowCount={rows.length + 1}
                 rowHeight={getRowHeight}
-                width={width}
+                width={pickWidth(width)}
                 height={height}
                 innerElementType={innerElementType}
               >
