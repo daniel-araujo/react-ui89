@@ -28,6 +28,9 @@
   position: absolute;
   left: 0;
   right: 0;
+
+  /* This element can appear on top of other elements. */
+  pointer-events: none;
 }
 
 .empty {
