@@ -28,9 +28,33 @@ export const Default: Story = {
   ),
 }
 
+export const Gap: Story = {
+  args: {
+    gap: 10,
+  },
+
+  render: Default.render,
+}
+
+export const GapHorizontal: Story = {
+  args: {
+    gapHorizontal: 10,
+  },
+
+  render: Default.render,
+}
+
+export const GapVertical: Story = {
+  args: {
+    gapVertical: 10,
+  },
+
+  render: Default.render,
+}
+
 export const Top: Story = {
   args: {
-    top: 10,
+    gapTop: 10,
   },
 
   render: Default.render,
@@ -38,7 +62,7 @@ export const Top: Story = {
 
 export const Right: Story = {
   args: {
-    right: 10,
+    gapRight: 10,
   },
 
   render: Default.render,
@@ -46,7 +70,7 @@ export const Right: Story = {
 
 export const Bottom: Story = {
   args: {
-    bottom: 10,
+    gapBottom: 10,
   },
 
   render: Default.render,
@@ -54,7 +78,7 @@ export const Bottom: Story = {
 
 export const Left: Story = {
   args: {
-    left: 10,
+    gapLeft: 10,
   },
 
   render: Default.render,
