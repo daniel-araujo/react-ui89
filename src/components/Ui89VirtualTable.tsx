@@ -102,16 +102,6 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     return getColumnHorizontalOffset(columns.length)
   }
 
-  function pickWidth(autoSizerWidth: number) {
-    const total = rowWidth()
-
-    if (autoSizerWidth > total) {
-      return total
-    } else {
-      return autoSizerWidth
-    }
-  }
-
   // This is the secret to having sticky headers.
   const innerElementType = forwardRef(({ children, ...rest }: any, ref) => (
     <div ref={ref} {...rest}>
@@ -133,11 +123,34 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
             )}
           </div>
         ))}
+
+        <div
+          className={styles.rowBorder}
+          style={{ top: 0, transform: `translateY(${getRowHeight(0) + "px"})` }}
+        ></div>
       </div>
 
       {children}
     </div>
   ))
+
+  function renderRowBorder(columnIndex: number, style: React.CSSProperties) {
+    if (!isLastColumn(columnIndex)) {
+      // Do nothing.
+      return
+    }
+
+    let rowBorderStyle = {
+      ...style,
+
+      // Will want to stretch width.
+      left: 0,
+      right: 0,
+      width: undefined,
+    }
+
+    return <div className={styles.rowBorder} style={rowBorderStyle}></div>
+  }
 
   return (
     <div className={styles.table}>
@@ -150,25 +163,29 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                 columnWidth={getColumnWidth}
                 rowCount={rows.length + 1}
                 rowHeight={getRowHeight}
-                width={pickWidth(width)}
+                width={width}
                 height={height}
                 innerElementType={innerElementType}
               >
                 {({ columnIndex, rowIndex, style }: VariableSizeGridProps) => (
-                  <div
-                    className={getColumnClass(columnIndex, rowIndex)}
-                    style={style}
-                  >
-                    {/* We do not render the first column. That space is reserved for the header */}
-                    {rowIndex !== 0 &&
-                      [columns[columnIndex].renderBody].map((BodyContent) => (
-                        <BodyContent
-                          key={rowIndex}
-                          index={rowIndex - 1}
-                          row={rows[rowIndex - 1]}
-                        />
-                      ))}
-                  </div>
+                  <>
+                    <div
+                      className={getColumnClass(columnIndex, rowIndex)}
+                      style={style}
+                    >
+                      {/* We do not render the first column. That space is reserved for the header */}
+                      {rowIndex !== 0 &&
+                        [columns[columnIndex].renderBody].map((BodyContent) => (
+                          <BodyContent
+                            key={rowIndex}
+                            index={rowIndex - 1}
+                            row={rows[rowIndex - 1]}
+                          />
+                        ))}
+                    </div>
+
+                    {renderRowBorder(columnIndex, style)}
+                  </>
                 )}
               </VariableSizeGrid>
             )}

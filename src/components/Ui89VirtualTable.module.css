@@ -12,10 +12,22 @@
 }
 
 .tableHeader {
-  position: sticky;
+  position: absolute;
   top: 0;
-  display: flex;
   z-index: 2;
+
+  /* Making sure that the row border can occupy the entire width */
+  min-width: 100%;
+
+  display: flex;
+}
+
+.rowBorder {
+  margin-top: -2px;
+  border-bottom: 2px solid var(--ui89-scene-text-color);
+  position: absolute;
+  left: 0;
+  right: 0;
 }
 
 .empty {
@@ -29,6 +41,8 @@
   display: flex;
   align-items: center;
   padding: var(--ui89-safe-space);
+
+  /* Have to render border in case last column is not visible. */
   border-bottom: 2px solid var(--ui89-scene-text-color);
 
   /* The width of the column will include padding and border. */
