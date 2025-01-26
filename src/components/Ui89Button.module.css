@@ -1,5 +1,6 @@
 .container {
   display: inline-grid;
+  height: fit-content;
 }
 
 .container--size-standard .button {
@@ -8,12 +9,17 @@
   min-width: 60px;
 }
 
+.container--size-square {
+  /* We want to keep it square. */
+  width: fit-content;
+}
+
 .container--size-square .button {
   width: 22px;
   height: 22px;
   flex-basis: 22px;
 
-  /* We want to keep it square. */
+  /* The user is more likely to put something here that does not fit. */
   overflow: hidden;
 }
 

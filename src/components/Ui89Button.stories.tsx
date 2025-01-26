@@ -68,12 +68,31 @@ export const SizeStandard: Story = {
   },
 }
 
-export const SizeStandardGrowsWithFlexGrow: Story = {
+export const SizeStandardGrowsHorizontallyWithFlexGrow: Story = {
   render: (args, context) => (
     <div className="flexContainer">
       <style>{`
         .flexContainer {
           display: flex;
+        }
+        .flexContainer > * {
+          flex-grow: 1;
+        }
+      `}</style>
+      <Ui89Button size="standard" href="/link">
+        Button
+      </Ui89Button>
+    </div>
+  ),
+}
+
+export const SizeStandardDoesNotGrowVerticallyWithFlexGrow: Story = {
+  render: (args, context) => (
+    <div className="flexContainer">
+      <style>{`
+        .flexContainer {
+          display: inline-flex;
+          height: 100px;
         }
         .flexContainer > * {
           flex-grow: 1;
@@ -100,6 +119,7 @@ export const SizeSquareDoesNotGrowWithFlexGrow: Story = {
       <style>{`
         .flexContainer {
           display: flex;
+          height: 100px;
         }
         .flexContainer > * {
           flex-grow: 1;

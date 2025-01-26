@@ -1,5 +1,5 @@
 .hoverShadow {
-  display: inline-grid;
+  display: grid;
   padding-right: var(--ui89-safe-space);
   padding-bottom: var(--ui89-safe-space);
   position: relative;
