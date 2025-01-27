@@ -1,0 +1,169 @@
+.ui89-date-time-picker > .react-datepicker-wrapper {
+  /* The library uses display inline. We don't. */
+  display: block;
+}
+
+.ui89-date-time-picker .react-datepicker__triangle {
+  /* We do not need the triangle */
+  display: none;
+}
+
+/* This is the menu */
+.ui89-date-time-picker .react-datepicker {
+  color: var(--ui89-scene-text-color);
+  background: var(--ui89-scene-bg-color);
+
+  border: 1px solid currentColor;
+  border-radius: 0;
+
+  box-shadow: var(--ui89-box-shadow);
+}
+
+/* Selected month, year */
+.ui89-date-time-picker .react-datepicker__current-month {
+  margin-top: calc(var(--ui89-safe-space) / 2);
+  margin-bottom: calc(var(--ui89-safe-space) / 2);
+}
+
+.ui89-date-time-picker .react-datepicker__current-month,
+.ui89-date-time-picker .react-datepicker-time__header,
+.ui89-date-time-picker .react-datepicker-year-header {
+  color: currentColor;
+}
+
+.ui89-date-time-picker .react-datepicker__day-name,
+.ui89-date-time-picker .react-datepicker__day,
+.ui89-date-time-picker .react-datepicker__time-name {
+  color: currentColor;
+}
+
+.ui89-date-time-picker .react-datepicker__day--outside-month {
+  color: var(--ui89-scene-text-subtle-color);
+}
+
+/* Month, year and week days */
+.ui89-date-time-picker .react-datepicker__header {
+  background: transparent;
+  border: 0;
+}
+
+.ui89-date-time-picker
+  .react-datepicker__time-container
+  .react-datepicker__time {
+  background: transparent;
+}
+
+.ui89-date-time-picker .react-datepicker__day--keyboard-selected,
+.ui89-date-time-picker .react-datepicker__month-text--keyboard-selected,
+.ui89-date-time-picker .react-datepicker__quarter-text--keyboard-selected,
+.ui89-date-time-picker .react-datepicker__year-text--keyboard-selected {
+  color: var(--ui89-theme-secondary-text-color);
+  background: var(--ui89-theme-secondary-bg-color);
+}
+
+.ui89-date-time-picker .react-datepicker__day--selected,
+.ui89-date-time-picker .react-datepicker__day--in-selecting-range,
+.ui89-date-time-picker .react-datepicker__day--in-range,
+.ui89-date-time-picker .react-datepicker__month-text--selected,
+.ui89-date-time-picker .react-datepicker__month-text--in-selecting-range,
+.ui89-date-time-picker .react-datepicker__month-text--in-range,
+.ui89-date-time-picker .react-datepicker__quarter-text--selected,
+.ui89-date-time-picker .react-datepicker__quarter-text--in-selecting-range,
+.ui89-date-time-picker .react-datepicker__quarter-text--in-range,
+.ui89-date-time-picker .react-datepicker__year-text--selected,
+.ui89-date-time-picker .react-datepicker__year-text--in-selecting-range,
+.ui89-date-time-picker .react-datepicker__year-text--in-range {
+  border-radius: 0;
+  color: var(--ui89-theme-primary-text-color);
+  background: var(--ui89-theme-primary-bg-color);
+}
+
+.ui89-date-time-picker
+  .react-datepicker__day--selected:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__day--in-selecting-range:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__day--in-range:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__month-text--selected:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__month-text--in-selecting-range:not(
+    [aria-disabled="true"]
+  ):hover,
+.ui89-date-time-picker
+  .react-datepicker__month-text--in-range:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__quarter-text--selected:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__quarter-text--in-selecting-range:not(
+    [aria-disabled="true"]
+  ):hover,
+.ui89-date-time-picker
+  .react-datepicker__quarter-text--in-range:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__year-text--selected:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__year-text--in-selecting-range:not(
+    [aria-disabled="true"]
+  ):hover,
+.ui89-date-time-picker
+  .react-datepicker__year-text--in-range:not([aria-disabled="true"]):hover {
+  color: var(--ui89-theme-primary-text-color);
+  background: var(--ui89-theme-primary-bg-color);
+}
+
+.ui89-date-time-picker .react-datepicker__day:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__month-text:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__quarter-text:not([aria-disabled="true"]):hover,
+.ui89-date-time-picker
+  .react-datepicker__year-text:not([aria-disabled="true"]):hover {
+  border-radius: 0;
+  color: var(--ui89-theme-secondary-text-color);
+  background: var(--ui89-theme-secondary-bg-color);
+}
+
+/* Date section */
+.ui89-date-time-picker .react-datepicker__month-container {
+  border-right: 1px solid currentColor;
+}
+
+/* Time section */
+.ui89-date-time-picker .react-datepicker__time-container {
+  /* The border will be cut if the month shows 6 weeks */
+  border-left: 0;
+}
+
+/* Time option */
+.ui89-date-time-picker
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item {
+  /* Why did it set a fixed height? It looks so bad */
+  height: auto;
+}
+
+/* Time option selected */
+.ui89-date-time-picker
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  color: var(--ui89-theme-primary-text-color);
+  background: var(--ui89-theme-primary-bg-color);
+}
+
+/* Time option hover */
+.ui89-date-time-picker
+  .react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  color: var(--ui89-theme-secondary-text-color);
+  background: var(--ui89-theme-secondary-bg-color);
+}

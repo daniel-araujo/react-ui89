@@ -32,7 +32,7 @@
   padding: calc(var(--ui89-safe-space) * 2 + var(--ui89-toaster-border-width));
 
   border-radius: 0;
-  box-shadow: 10px 10px 0px black;
+  box-shadow: var(--ui89-box-shadow);
   background: var(--ui89-chosen-theme-bg-color);
   color: var(--ui89-chosen-theme-text-color);
 }

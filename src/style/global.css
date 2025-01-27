@@ -60,4 +60,7 @@
   /* Cursors */
   --ui89-cursor-default: default;
   --ui89-cursor-pointer: pointer;
+
+  /* Shadows */
+  --ui89-box-shadow: 10px 10px 0px black;
 }

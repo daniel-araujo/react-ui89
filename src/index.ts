@@ -22,6 +22,9 @@ export type { Ui89CardProps } from "./components/Ui89Card"
 export { Ui89CardHorizontalConnection } from "./components/Ui89CardHorizontalConnection"
 export type { Ui89CardHorizontalConnectionProps } from "./components/Ui89CardHorizontalConnection"
 
+export { Ui89DateTimePicker } from "./components/Ui89DateTimePicker"
+export type { Ui89DateTimePickerProps } from "./components/Ui89DateTimePicker"
+
 export { Ui89DigitalClock } from "./components/Ui89DigitalClock"
 export type { Ui89DigitalClockProps } from "./components/Ui89DigitalClock"
 

@@ -74,6 +74,7 @@
     "vite-plugin-svgr": "^4.3.0"
   },
   "dependencies": {
+    "react-datepicker": "^7.6.0",
     "react-toastify": "^11.0.2",
     "react-virtualized-auto-sizer": "^1.0.24",
     "react-window": "^1.8.10",
