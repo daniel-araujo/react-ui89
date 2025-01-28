@@ -34,6 +34,8 @@ export default [
       css({
         output: "index.css",
         minify: true,
+        modules: true,
+        alwaysOutput: true,
       }),
     ],
     external: Object.keys(packageJson.peerDependencies),
