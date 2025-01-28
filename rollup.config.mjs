@@ -1,10 +1,9 @@
 import fs from 'fs/promises'
 
-import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
 import typescript from '@rollup/plugin-typescript'
 import dts from 'rollup-plugin-dts'
-import postcss from 'rollup-plugin-postcss'
+import css from "rollup-plugin-import-css";
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import svgr from "vite-plugin-svgr";
 
@@ -28,16 +27,13 @@ export default [
       svgr({
         include: "**/*.svg",
       }),
-      resolve(),
       commonjs(),
       typescript({
         tsconfig: "./tsconfig.json",
       }),
-      postcss({
-        autoModules: true,
-        extract: true,
-        minimize: true,
-        sourceMap: true
+      css({
+        output: "index.css",
+        minify: true,
       }),
     ],
     external: Object.keys(packageJson.peerDependencies),

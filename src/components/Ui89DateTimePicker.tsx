@@ -1,6 +1,7 @@
 import React from "react"
 import DatePicker from "react-datepicker"
 
+import "../../node_modules/react-datepicker/dist/react-datepicker.css"
 import "./Ui89DateTimePicker.css"
 
 import inputBoxStyles from "../style/input-box.module.css"
