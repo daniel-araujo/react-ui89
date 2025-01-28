@@ -1,20 +1,20 @@
-.container {
+.ui89-button {
   display: inline-grid;
   height: fit-content;
 }
 
-.container--size-standard .button {
+.ui89-button--size-standard .ui89-button__button {
   height: 22px;
   padding: 0 calc(var(--ui89-safe-space) * 2);
   min-width: 60px;
 }
 
-.container--size-square {
+.ui89-button--size-square {
   /* We want to keep it square. */
   width: fit-content;
 }
 
-.container--size-square .button {
+.ui89-button--size-square .ui89-button__button {
   width: 22px;
   height: 22px;
   flex-basis: 22px;
@@ -23,7 +23,7 @@
   overflow: hidden;
 }
 
-.button {
+.ui89-button__button {
   display: inline-flex;
   justify-content: center;
   align-items: center; /* align vertical */
@@ -45,23 +45,23 @@
   cursor: var(--ui89-cursor-pointer);
 }
 
-.button:before {
+.ui89-button__button:before {
   position: absolute;
   inset: 0;
 }
 
-.block {
+.ui89-button__button--block {
   display: flex;
 }
 
-.button:hover:not(.disabled):not(.active):before {
+.ui89-button__button:hover:not(.ui89-button__button--disabled):not(.ui89-button__button--active):before {
   content: "";
   background-color: #ffffff40;
   cursor: var(--ui89-cursor-pointer);
 }
 
-.button:active:not(.disabled),
-.active {
+.ui89-button__button:active:not(.ui89-button__button--disabled),
+.ui89-button__button--active {
   transform: translate3d(
     calc(var(--ui89-safe-space) / 2),
     calc(var(--ui89-safe-space) / 2),
@@ -69,24 +69,24 @@
   );
 }
 
-.button:active:not(.disabled):not(.active):before {
+.ui89-button__button:active:not(.ui89-button__button--disabled):not(.ui89-button__button--active):before {
   content: none;
   background-color: #00000040;
   cursor: var(--ui89-cursor-pointer);
 }
 
-.disabled {
+.ui89-button__button--disabled {
   opacity: 0.5;
   cursor: var(--ui89-cursor-default);
 }
 
-.click {
+.ui89-button__button__click {
   position: absolute;
   inset: 0;
 }
 
-.button:active:not(.disabled) > .click,
-.active > .click {
+.ui89-button__button:active:not(.ui89-button__button--disabled) > .ui89-button__button__click,
+.ui89-button__button--active > .ui89-button__button__click {
   transform: translate3d(
     calc(var(--ui89-safe-space) / 2 * -1),
     calc(var(--ui89-safe-space) / 2 * -1),

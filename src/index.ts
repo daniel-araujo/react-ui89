@@ -1,5 +1,4 @@
 import "./style/global.css"
-import "./components/Ui89Toaster.css"
 
 export { Ui89Theme, Ui89Look } from "./theme"
 

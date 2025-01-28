@@ -1,18 +1,18 @@
-.unbreakable {
+.ui89-text-unbreakable {
   white-space: nowrap;
 }
 
-.ellipsis {
+.ui89-text-ellipsis {
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.singleLine {
+.ui89-text-single-line {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-.singleLine--ellipsisLeft {
+.ui89-text-single-line--ellipsis-left {
   direction: rtl;
 }

@@ -1,4 +1,4 @@
-.container {
+.ui89-card {
   background: var(--ui89-scene-card-bg-color);
   color: var(--ui89-scene-card-text-color);
   border-radius: var(--ui89-box-border-radius);
@@ -15,20 +15,20 @@
   flex-direction: column;
 }
 
-.container > * {
+.ui89-card > * {
   flex: 1;
 }
 
-.containerHasTop {
+.ui89-card--has-top {
   margin-top: var(--ui89-safe-space);
 }
 
-.inside {
+.ui89-card__inside {
   border: 1px solid white;
   padding: calc(var(--ui89-safe-space));
 }
 
-.topLeftCenter {
+.ui89-card__top-left-center {
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -36,7 +36,7 @@
   transform: translateY(50%);
 }
 
-.topCenter {
+.ui89-card__top-center {
   position: absolute;
   top: 0;
   transform: translateY(-50%);
@@ -46,11 +46,11 @@
   justify-content: center;
 }
 
-.cardHorizontalConnection {
+.ui89-card__horizontal-connection {
   margin: 0 calc(var(--ui89-safe-space) * -1);
   background: var(--ui89-scene-card-bg-color);
 }
 
-.cardHorizontalConnection--overflow {
+.ui89-card__horizontal-connection--overflow {
   margin: 0 calc(var(--ui89-safe-space) * -1 - 1px);
 }

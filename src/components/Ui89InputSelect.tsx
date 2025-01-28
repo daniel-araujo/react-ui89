@@ -1,8 +1,8 @@
 import React, { useMemo, useState } from "react"
 
-import styles from "./Ui89InputSelect.module.css"
-import inputBoxStyles from "../style/input-box.module.css"
-import textStyles from "../style/text.module.css"
+import "./Ui89InputSelect.css"
+import "../style/input-box.css"
+import "../style/text.css"
 
 export interface Ui89InputSelectPropsOption {
   value: string | number
@@ -61,13 +61,13 @@ export function Ui89InputSelect({
   }
 
   return (
-    <div className={`${styles.inputSelect}`}>
+    <div className="ui89-input-select">
       <div
         className={[
-          inputBoxStyles.inputBox,
-          inputBoxStyles["inputBox--unselectable"],
-          inputBoxStyles["inputBox--clickable"],
-          textStyles.singleLine,
+          "ui89-input-box",
+          "ui89-input-box--unselectable",
+          "ui89-input-box--clickable",
+          "ui89-text-single-line",
         ].join(" ")}
         tabIndex={0}
         title={
@@ -77,8 +77,8 @@ export function Ui89InputSelect({
         {selectedOption !== null ? <>{selectedOption.label}</> : <>Select...</>}
       </div>
 
-      <div className={[styles.menu].join(" ")} tabIndex={0}>
-        <div className={styles.menuContent}>
+      <div className="ui89-input-select__menu" tabIndex={0}>
+        <div className="ui89-input-select__menu__content">
           {realOptions.length > 0 ? (
             realOptions.map((o) => {
               const isSelected =
@@ -87,8 +87,8 @@ export function Ui89InputSelect({
               return (
                 <div
                   className={[
-                    styles.menuItem,
-                    isSelected ? styles.selected : null,
+                    'ui89-input-select__menu__item',
+                    isSelected ? 'ui89-input-select__menu__item--selected' : null,
                   ].join(" ")}
                   title={optionTitle(o)}
                   key={o.value}
@@ -100,7 +100,7 @@ export function Ui89InputSelect({
             })
           ) : (
             <div
-              className={[styles.menuItem, styles["menuItem--disabled"]].join(
+              className={['ui89-input-select__menu__item', 'ui89-input-select__menu__item--disabled'].join(
                 " ",
               )}
             >

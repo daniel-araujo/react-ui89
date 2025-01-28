@@ -1,8 +1,8 @@
-.container {
+.ui89-highlight-text {
   color: var(--ui89-chosen-theme-text-color);
   background-color: var(--ui89-chosen-theme-bg-color);
 }
 
-.container--block {
+.ui89-highlight-text--block {
   display: block;
 }

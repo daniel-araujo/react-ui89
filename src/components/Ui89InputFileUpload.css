@@ -1,10 +1,10 @@
-.inputFileUpload {
+.ui89-input-file-upload {
   display: flex;
   gap: calc(var(--ui89-safe-space) * 1);
   align-items: center;
 }
 
-.inputFileUpload__info {
+.ui89-input-file-upload__info {
   /* We do not want to squish the button */
   min-width: 0;
 }

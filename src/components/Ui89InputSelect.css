@@ -1,8 +1,8 @@
-.inputSelect {
+.ui89-input-select {
   position: relative;
 }
 
-.menu {
+.ui89-input-select__menu {
   position: absolute;
   top: 100%;
   left: 0;
@@ -15,7 +15,7 @@
   z-index: 1;
 }
 
-.menuContent {
+.ui89-input-select__menu__content {
   display: inline-flex;
   flex-direction: column;
 
@@ -23,7 +23,7 @@
   min-width: 100%;
 }
 
-.inputSelect:focus-within .menu {
+.ui89-input-select:focus-within .ui89-input-select__menu {
   display: block;
 
   animation: appear var(--ui89-animation-speed);
@@ -39,7 +39,7 @@
   }
 }
 
-.menuItem {
+.ui89-input-select__menu__item {
   display: inline-flex;
   align-items: center;
   background: var(--ui89-input-bg-color);
@@ -50,16 +50,16 @@
   user-select: none;
 }
 
-.menuItem:not(.menuItem--disabled) {
+.ui89-input-select__menu__item:not(.ui89-input-select__menu__item--disabled) {
   cursor: pointer;
 }
 
-.menuItem:not(.menuItem--disabled):hover,
-.menuItem.selected {
+.ui89-input-select__menu__item:not(.ui89-input-select__menu__item--disabled):hover,
+.ui89-input-select__menu__item.ui89-input-select__menu__item--selected {
   background: var(--ui89-input-text-color);
   color: var(--ui89-input-bg-color);
 }
 
-.menuItem--disabled {
+.ui89-input-select__menu__item--disabled {
   color: var(--ui89-palette-white);
 }

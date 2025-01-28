@@ -34,7 +34,6 @@ export default [
       css({
         output: "index.css",
         minify: true,
-        modules: true,
         alwaysOutput: true,
       }),
     ],

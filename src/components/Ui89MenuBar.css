@@ -1,4 +1,4 @@
-.menuBar {
+.ui89-menu-bar {
   display: flex;
 
   height: 16px;
@@ -7,13 +7,13 @@
   background: var(--ui89-theme-primary-bg-color);
 }
 
-.menuBarItem {
+.ui89-menu-bar__item {
   cursor: var(--ui89-cursor-pointer);
   padding: 0 calc(var(--ui89-safe-space) * 2);
 }
 
-.menuBarItem:hover,
-.menuBarItem:active {
+.ui89-menu-bar__item:hover,
+.ui89-menu-bar__item:active {
   color: var(--ui89-theme-primary-bg-color);
   background: var(--ui89-theme-primary-text-color);
 }

@@ -1,11 +1,11 @@
-.hoverShadow {
+.ui89-hover-shadow {
   display: grid;
   padding-right: var(--ui89-safe-space);
   padding-bottom: var(--ui89-safe-space);
   position: relative;
 }
 
-.hoverShadowRight {
+.ui89-hover-shadow__right {
   display: block;
   position: absolute;
   right: 0;
@@ -17,7 +17,7 @@
   z-index: 0;
 }
 
-.hoverShadowBottom {
+.ui89-hover-shadow__bottom {
   display: block;
   position: absolute;
   right: 0;

@@ -2,8 +2,8 @@ import React, { forwardRef, useMemo } from "react"
 // @ts-ignore
 import { VariableSizeGrid } from "react-window"
 import AutoSizer from "react-virtualized-auto-sizer"
-import styles from "./Ui89VirtualTable.module.css"
-import typoStyles from "../style/typo.module.css"
+import "./Ui89VirtualTable.css"
+import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
 
 const HEADER_HEIGHT = 30
@@ -74,22 +74,22 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
   }
 
   function getColumnClass(columnIndex: number, rowIndex: number): string {
-    const classes = [styles.cell]
+    const classes = ["ui89-virtual-table__cell"]
 
     if (rowIndex === 0) {
-      classes.push(styles["cell--row-first"])
+      classes.push("ui89-virtual-table__cell--row-first")
     }
 
     if (rowIndex === rows.length) {
-      classes.push(styles["cell--row-last"])
+      classes.push("ui89-virtual-table__cell--row-last")
     }
 
     if (columnIndex === 0) {
-      classes.push(styles["cell--column-first"])
+      classes.push("ui89-virtual-table__cell--column-first")
     }
 
     if (isLastColumn(columnIndex)) {
-      classes.push(styles["cell--column-last"])
+      classes.push("ui89-virtual-table__cell--column-last")
     }
 
     return classes.join(" ")
@@ -105,11 +105,11 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
   // This is the secret to having sticky headers.
   const innerElementType = forwardRef(({ children, ...rest }: any, ref) => (
     <div ref={ref} {...rest}>
-      <div className={styles.tableHeader}>
+      <div className="ui89-virtual-table__header">
         {columns.map((column, index) => (
           <div
             key={index}
-            className={[getColumnClass(index, 0), typoStyles.normalBold].join(
+            className={[getColumnClass(index, 0), "ui89-typo-normal-bold"].join(
               " ",
             )}
             style={{
@@ -125,7 +125,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
         ))}
 
         <div
-          className={styles.rowBorder}
+          className="ui89-virtual-table__row-border"
           style={{ top: 0, transform: `translateY(${getRowHeight(0) + "px"})` }}
         ></div>
       </div>
@@ -149,13 +149,13 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
       width: undefined,
     }
 
-    return <div className={styles.rowBorder} style={rowBorderStyle}></div>
+    return <div className="ui89-virtual-table__row-border" style={rowBorderStyle}></div>
   }
 
   return (
-    <div className={styles.table}>
+    <div className="ui89-virtual-table">
       {rows.length > 0 ? (
-        <div className={styles.tableBody}>
+        <div className="ui89-virtual-table__body">
           <AutoSizer>
             {({ height, width }) => (
               <VariableSizeGrid
@@ -192,7 +192,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
           </AutoSizer>
         </div>
       ) : (
-        <div className={styles.empty}>
+        <div className="ui89-virtual-table__empty">
           <Ui89TagBox theme="warning">Empty</Ui89TagBox>
         </div>
       )}

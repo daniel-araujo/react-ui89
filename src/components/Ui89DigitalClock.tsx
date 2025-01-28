@@ -1,5 +1,5 @@
 import React, { useRef } from "react"
-import typoStyles from "../style/typo.module.css"
+import "../style/typo.css"
 import { TimeAnimation, TimeAnimationPropsChildrenProps } from "./TimeAnimation"
 import { dateFormat } from "../date-utils"
 
@@ -15,7 +15,7 @@ export function Ui89DigitalClock({
   }
 
   return (
-    <span className={`${typoStyles.special}`}>
+    <span className="ui89-typo-special">
       <TimeAnimation>{render}</TimeAnimation>
     </span>
   )

@@ -1,10 +1,10 @@
 import React from "react"
 
 import { Ui89Theme } from "../theme"
-import typoStyles from "../style/typo.module.css"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
+import "../style/typo.css"
+import "../style/chosen-theme.css"
 
-import style from "./Ui89TagBox.module.css"
+import "./Ui89TagBox.css"
 
 export interface Ui89TagBoxProps {
   theme: Ui89Theme | keyof typeof Ui89Theme
@@ -14,7 +14,7 @@ export interface Ui89TagBoxProps {
 export function Ui89TagBox({ theme, children }: Ui89TagBoxProps) {
   return (
     <div
-      className={`${style.container} ${typoStyles.special} ${chosenThemeStyles[theme]}`}
+      className={`ui89-tag-box ui89-typo-special ui89-chosen-theme-${theme}`}
     >
       {children}
     </div>

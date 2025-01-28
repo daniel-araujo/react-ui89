@@ -1,4 +1,4 @@
-.breadcrumbs {
+.ui89-breadcrumbs {
   display: flex;
   flex-direction: row-reverse;
   justify-content: flex-end;
@@ -6,7 +6,7 @@
   padding: var(--ui89-safe-space);
 }
 
-.breadcrumbsItem {
+.ui89-breadcrumbs__item {
   display: block;
   color: var(--ui89-chosen-theme-text-color);
   padding-left: calc(var(--ui89-safe-space) * 3);
@@ -27,7 +27,7 @@
   animation: appear var(--ui89-animation-speed);
 }
 
-.breadcrumbsItem:last-child {
+.ui89-breadcrumbs__item:last-child {
   padding-left: calc(var(--ui89-safe-space) * 2);
 }
 
@@ -41,7 +41,7 @@
   }
 }
 
-.breadcrumbsItemBackground {
+.ui89-breadcrumbs__item__background {
   position: absolute;
   z-index: -1;
   inset: 0;

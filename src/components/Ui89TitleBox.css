@@ -1,8 +1,8 @@
-.container {
+.ui89-title-box {
   display: flex;
 }
 
-.inside {
+.ui89-title-box__inside {
   min-width: 0;
   color: var(--ui89-scene-bg-color);
   background-color: var(--ui89-scene-text-color);

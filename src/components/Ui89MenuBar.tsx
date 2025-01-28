@@ -1,8 +1,8 @@
 import React from "react"
 
-import styles from "./Ui89MenuBar.module.css"
-import typoStyles from "../style/typo.module.css"
-import scrollbarStyles from "../style/scrollbar.module.css"
+import "./Ui89MenuBar.css"
+import "../style/typo.css"
+import "../style/scrollbar.css"
 
 export interface Ui89MenuBarPropsItem {
   label: React.ReactNode
@@ -17,7 +17,7 @@ export interface Ui89MenuBarProps {
 export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
   return (
     <div
-      className={`${styles.menuBar} ${typoStyles.special} ${scrollbarStyles.container}`}
+      className={`ui89-menu-bar ui89-typo-special ui89-scrollbar`}
     >
       {items.map((item, index) => {
         function onNativeClick() {
@@ -29,7 +29,7 @@ export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
         return (
           <div
             key={index}
-            className={styles.menuBarItem}
+            className="ui89-menu-bar__item"
             onClick={onNativeClick}
           >
             {item.label}

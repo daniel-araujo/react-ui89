@@ -1,8 +1,8 @@
 import React from "react"
 
-import styles from "./Ui89TitleUnderline.module.css"
-import typoStyles from "../style/typo.module.css"
-import textStyles from "../style/text.module.css"
+import "./Ui89TitleUnderline.css"
+import "../style/typo.css"
+import "../style/text.css"
 
 export interface Ui89TitleUnderlineProps {
   children: React.ReactNode
@@ -10,8 +10,8 @@ export interface Ui89TitleUnderlineProps {
 
 export function Ui89TitleUnderline({ children }: Ui89TitleUnderlineProps) {
   return (
-    <div className={`${styles.container} ${typoStyles.special}`}>
-      <div className={`${styles.inside} ${textStyles.singleLine}`}>
+    <div className={`ui89-title-underline ui89-typo-special`}>
+      <div className={`ui89-title-underline__inside ui89-text-single-line`}>
         {children}
       </div>
     </div>

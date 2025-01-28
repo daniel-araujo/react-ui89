@@ -1,29 +1,29 @@
-.big {
+.ui89-typo-big {
   font-family: monospace;
   font-size: var(--ui89-font-size-big);
   line-height: 25px;
 }
 
-.normal {
+.ui89-typo-normal {
   font-family: monospace;
   font-size: var(--ui89-font-size-normal);
   line-height: 16px;
 }
 
-.normalBold {
+.ui89-typo-normal-bold {
   font-family: monospace;
   font-size: var(--ui89-font-size-normal);
   line-height: 16px;
   font-weight: bold;
 }
 
-.small {
+.ui89-typo-small {
   font-family: monospace;
   font-size: var(--ui89-font-size-small);
   line-height: 16px;
 }
 
-.smallBold {
+.ui89-typo-small-bold {
   font-family: monospace;
   font-size: var(--ui89-font-size-small);
   line-height: 16px;
@@ -31,7 +31,7 @@
 }
 
 /* For buttons and such. */
-.special {
+.ui89-typo-special {
   font-family: monospace;
   font-size: var(--ui89-font-size-small);
   font-weight: bold;

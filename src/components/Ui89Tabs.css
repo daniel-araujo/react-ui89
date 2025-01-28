@@ -1,13 +1,13 @@
-.navigation {
+.ui89-tabs {
   display: flex;
   flex-wrap: wrap;
 }
 
-.navigation--stretch .navigationItem {
+.ui89-tabs--stretch .ui89-tabs__item {
   flex-grow: 1;
 }
 
-.navigationItem {
+.ui89-tabs__item {
   color: var(--ui89-scene-text-color);
   background-color: var(--ui89-scene-bg-color);
   padding: 0 calc(var(--ui89-safe-space) * 3);
@@ -15,8 +15,8 @@
   text-align: center;
 }
 
-.navigationItem:hover,
-.navigationItemSelected {
+.ui89-tabs__item:hover,
+.ui89-tabs__item--selected {
   background-color: var(--ui89-scene-text-color);
   color: var(--ui89-scene-bg-color);
 }

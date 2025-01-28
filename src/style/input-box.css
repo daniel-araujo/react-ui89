@@ -1,4 +1,4 @@
-.inputBox {
+.ui89-input-box {
   box-sizing: border-box;
   display: block;
   width: 100%;
@@ -15,10 +15,10 @@
   color: var(--ui89-input-text-color);
 }
 
-.inputBox--unselectable {
+.ui89-input-box--unselectable {
   user-select: none;
 }
 
-.inputBox--clickable {
+.ui89-input-box--clickable {
   cursor: var(--ui89-cursor-pointer);
 }

@@ -1,0 +1,8 @@
+.ui89-grid-expand-trick {
+  display: grid;
+}
+
+.ui89-grid-expand-trick > * {
+  min-height: 0;
+  min-width: 0;
+}

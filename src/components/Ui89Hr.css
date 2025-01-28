@@ -1,28 +1,28 @@
-.hr {
+.ui-89-hr {
   --ui89-hr-color: var(--ui89-scene-card-text-color);
 }
 
-.hr--straight {
+.ui-89-hr--straight {
   border-top: 1px solid var(--ui89-hr-color);
 }
 
-.hr--dotted {
+.ui-89-hr--dotted {
   border-top: 1px dotted var(--ui89-hr-color);
 }
 
-.hr--dashed {
+.ui-89-hr--dashed {
   border-top: 1px dashed var(--ui89-hr-color);
 }
 
-.hr--double {
+.ui-89-hr--double {
   border-top: 1px solid var(--ui89-hr-color);
 }
 
-.hr--double .hrDouble {
+.ui-89-hr--double .ui-89-hr__double {
   margin-top: 4px;
   border-top: 1px solid var(--ui89-hr-color);
 }
 
-.hr--use-theme {
+.ui-89-hr--use-theme {
   --ui89-hr-color: var(--ui89-chosen-theme-bg-color);
 }

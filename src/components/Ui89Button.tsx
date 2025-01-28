@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-import styles from "./Ui89Button.module.css"
-import typoStyles from "../style/typo.module.css"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
-import resetStyles from "../style/reset.module.css"
+import "./Ui89Button.css"
+import "../style/typo.css"
+import "../style/chosen-theme.css"
+import "../style/reset.css"
 
 import HoverShadow from "./HoverShadow"
 
@@ -96,18 +96,18 @@ export function Ui89Button({
   }
 
   let containerClass = [
-    styles.container,
-    styles["container--size-" + size],
+    'ui89-button',
+    `ui89-button--size-${size}`,
   ].join(" ")
 
   let buttonClass = [
-    styles.button,
-    typoStyles.special,
-    chosenThemeStyles[theme],
-    activated ? styles.active : undefined,
-    block ? styles.block : undefined,
-    disabled ? styles.disabled : undefined,
-    clicking ? styles.active : undefined,
+    'ui89-button__button',
+    'ui89-typo-special',
+    `ui89-chosen-theme-${theme}`,
+    activated ? 'ui89-button__button--active' : undefined,
+    block ? 'ui89-button__button--block' : undefined,
+    disabled ? 'ui89-button__button--disabled' : undefined,
+    clicking ? 'ui89-button__button--active' : undefined,
   ].join(" ")
 
   if (href) {
@@ -115,13 +115,13 @@ export function Ui89Button({
       <span className={containerClass}>
         <HoverShadow>
           <a
-            className={`${resetStyles.a} ${buttonClass}`}
+            className={`ui-89-reset-a ${buttonClass}`}
             role="button"
             href={href}
             onClick={onAnchorClick}
           >
-            <span className={styles.click}></span>
-            <span className={styles.buttonContent}>{children}</span>
+            <span className="ui89-button__button__click"></span>
+            <span>{children}</span>
           </a>
         </HoverShadow>
       </span>
@@ -136,8 +136,8 @@ export function Ui89Button({
             onClick={onButtonClick}
             disabled={localDisabled}
           >
-            <span className={styles.click}></span>
-            <span className={styles.buttonContent}>{children}</span>
+            <span className="ui89-button__button__click"></span>
+            <span>{children}</span>
           </button>
         </HoverShadow>
       </span>

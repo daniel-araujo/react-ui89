@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Ui89Card.module.css"
+import "./Ui89Card.css"
 
 export interface Ui89CardHorizontalConnectionProps {
   children: React.ReactNode
@@ -12,7 +12,7 @@ export function Ui89CardHorizontalConnection({
 }: Ui89CardHorizontalConnectionProps) {
   return (
     <div
-      className={`${styles.cardHorizontalConnection} ${overflow ? styles["cardHorizontalConnection--overflow"] : ""}`}
+      className={`ui89-card__horizontal-connection ${overflow ? 'ui89-card__horizontal-connection--overflow' : ""}`}
     >
       {children}
     </div>

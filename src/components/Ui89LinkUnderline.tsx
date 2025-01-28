@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-import resetStyles from "../style/reset.module.css"
-import styles from "./Ui89LinkUnderline.module.css"
+import "../style/reset.css"
+import "./Ui89LinkUnderline.css"
 
 import { useUi89Overrides } from "../Ui89Override"
 
@@ -49,11 +49,11 @@ export function Ui89LinkUnderline(props: Ui89LinkUnderlineProps) {
     }
   }
 
-  let containerClass = [styles.link].join(" ")
+  let containerClass = ['ui89-link-underline'].join(" ")
 
   return (
     <a
-      className={`${resetStyles.a} ${containerClass}`}
+      className={`ui-89-reset-a ${containerClass}`}
       role="link"
       href={props.href}
       onClick={onClick}

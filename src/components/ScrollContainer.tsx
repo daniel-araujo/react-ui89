@@ -1,10 +1,10 @@
 import React from "react"
-import styles from "./ScrollContainer.module.css"
+import "./ScrollContainer.css"
 
 export default function ScrollContainer({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <span className={styles.scrollContainer}>{children}</span>
+  return <span className="ui89-scroll-container">{children}</span>
 }

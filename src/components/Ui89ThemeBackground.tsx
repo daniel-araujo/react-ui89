@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
-import styles from "./Ui89ThemeBackground.module.css"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
+import "./Ui89ThemeBackground.css"
+import "../style/chosen-theme.css"
 
 import { Ui89Theme } from "../theme"
 
@@ -15,7 +15,7 @@ export function Ui89ThemeBackground({
   children,
 }: Ui89ThemeBackgroundProps) {
   return (
-    <div className={`${styles.background} ${chosenThemeStyles[theme]}`}>
+    <div className={`ui89-theme-background ui89-chosen-theme-${theme}`}>
       {children}
     </div>
   )

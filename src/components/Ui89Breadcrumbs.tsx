@@ -1,9 +1,9 @@
 import React, { useState } from "react"
 
-import styles from "./Ui89Breadcrumbs.module.css"
-import typoStyles from "../style/typo.module.css"
-import resetStyles from "../style/reset.module.css"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
+import "./Ui89Breadcrumbs.css"
+import "../style/typo.css"
+import "../style/reset.css"
+import "../style/chosen-theme.css"
 
 import { Ui89Theme } from "../theme"
 import { useUi89Overrides } from "../Ui89Override"
@@ -49,12 +49,12 @@ export function Ui89BreadcrumbsItem({
 
   return (
     <a
-      className={`${resetStyles.a} ${styles.breadcrumbsItem}`}
+      className={`ui-89-reset-a ui89-breadcrumbs__item`}
       href={item.url}
       style={style}
       onClick={onClick}
     >
-      <div className={styles.breadcrumbsItemBackground}></div>
+      <div className="ui89-breadcrumbs__item__background"></div>
       {item.label}
     </a>
   )
@@ -67,7 +67,7 @@ export function Ui89Breadcrumbs({
 }: Ui89BreadcrumbsProps) {
   return (
     <div
-      className={`${styles.breadcrumbs} ${typoStyles.special} ${chosenThemeStyles[theme]}`}
+      className={`ui89-breadcrumbs ui89-typo-special ui89-chosen-theme-${theme}`}
     >
       {[...items.entries()].reverse().map(([index, item]) => (
         <Ui89BreadcrumbsItem

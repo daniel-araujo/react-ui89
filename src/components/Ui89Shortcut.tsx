@@ -2,8 +2,8 @@ import React from "react"
 
 import ShortcutSvg from "../images/shortcut.svg"
 
-import styles from "./Ui89Shortcut.module.css"
-import typoStyles from "../style/typo.module.css"
+import "./Ui89Shortcut.css"
+import "../style/typo.css"
 
 import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
 
@@ -23,19 +23,19 @@ export function Ui89Shortcut({
   }
 
   return (
-    <div className={styles.container} onClick={onNativeClick}>
-      <div className={styles.imageContainer}>
-        <img className={styles.image} src={imageUrl} />
+    <div className="ui89-shortcut" onClick={onNativeClick}>
+      <div className="ui89-shortcut__image-container">
+        <img className="ui89-shortcut__image" src={imageUrl} />
 
-        <div className={styles.shortcutIconContainer}>
-          <ShortcutSvg className={styles.shortcutIcon} width={16} height={16} />
+        <div className="ui89-shortcut__shortcut-icon-container">
+          <ShortcutSvg className="ui89-shortcut__shortcut-icon" width={16} height={16} />
         </div>
       </div>
 
       <Ui89SpaceVertical gap={1} />
 
       <div
-        className={`${styles.label} ${typoStyles.smallBold}`}
+        className={`ui89-shortcut__label ui89-typo-small-bold`}
         onClick={onNativeClick}
       >
         {label}

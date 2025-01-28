@@ -2,10 +2,10 @@ import React from "react"
 
 import { Ui89Look } from "../theme"
 
-import styles from "./Ui89Scene.module.css"
-import lookStyles from "../style/look.module.css"
-import typoStyles from "../style/typo.module.css"
-import scrollbarStyles from "../style/scrollbar.module.css"
+import "./Ui89Scene.css"
+import "../style/look.css"
+import "../style/typo.css"
+import "../style/scrollbar.css"
 
 export interface Ui89SceneProps {
   look?: Ui89Look | string
@@ -15,7 +15,7 @@ export interface Ui89SceneProps {
 export function Ui89Scene({ look = Ui89Look.main, children }: Ui89SceneProps) {
   return (
     <div
-      className={`${styles.scene} ${lookStyles[look]} ${typoStyles.normal} ${scrollbarStyles.container}`}
+      className={`ui89-scene ui-89-look-${look} ui89-typo-normal ui89-scrollbar`}
     >
       {children}
     </div>

@@ -1,8 +1,9 @@
 import React from "react"
 import { ToastContainer, toast } from "react-toastify"
 
-import typoStyles from "../style/typo.module.css"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
+import "./Ui89Toaster.css"
+import "../style/typo.css"
+import "../style/chosen-theme.css"
 import { Ui89Theme } from "../theme"
 
 export interface Ui89ToasterOptions {
@@ -17,10 +18,10 @@ export function useUi89Toaster() {
       content: React.ReactNode,
       options: Ui89ToasterOptions = { theme: Ui89Theme.primary },
     ) {
-      const classNames = ["ui89-toaster", typoStyles.normal]
+      const classNames = ["ui89-toaster", "ui89-typo-normal"]
 
       if (options.theme !== undefined) {
-        classNames.push(chosenThemeStyles[options.theme])
+        classNames.push(`ui89-chosen-theme-${options.theme}`)
       }
 
       let autoClose: boolean | number = 5000

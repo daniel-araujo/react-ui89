@@ -1,8 +1,8 @@
 import React, { useRef } from "react"
 
-import styles from "./Ui89InputFileUpload.module.css"
-import typoStyles from "../style/typo.module.css"
-import textStyles from "../style/text.module.css"
+import "./Ui89InputFileUpload.css"
+import "../style/typo.css"
+import "../style/text.css"
 import { Ui89Button } from "./Ui89Button"
 
 export interface Ui89InputFileUploadProps {
@@ -46,17 +46,17 @@ export function Ui89InputFileUpload({
     <div>
       <input
         ref={inputRef}
-        className={typoStyles.special}
+        className="ui89-typo-special"
         type="file"
         onChange={implOnChange}
         hidden
       />
 
       {value ? (
-        <div className={styles.inputFileUpload}>
+        <div className="ui89-input-file-upload">
           <Ui89Button onClick={onClick}>Change</Ui89Button>
           <span
-            className={`${styles.inputFileUpload__info} ${textStyles.singleLine} ${textStyles["singleLine--ellipsisLeft"]}`}
+            className={`ui89-input-file-upload__info ui89-text-single-line ui89-text-single-line--ellipsis-left`}
             title={value.name}
           >
             {value.name}

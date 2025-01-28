@@ -4,8 +4,8 @@ import DatePicker from "react-datepicker"
 import "../../node_modules/react-datepicker/dist/react-datepicker.css"
 import "./Ui89DateTimePicker.css"
 
-import inputBoxStyles from "../style/input-box.module.css"
-import typoStyles from "../style/typo.module.css"
+import "../style/input-box.css"
+import "../style/typo.css"
 
 export interface Ui89DateTimePickerProps {
   value?: Date | null
@@ -22,8 +22,8 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
   return (
     <span className="ui89-date-time-picker">
       <DatePicker
-        className={[inputBoxStyles.inputBox, typoStyles.normal].join(" ")}
-        calendarClassName={typoStyles.normal}
+        className={["ui89-input-box", "ui89-typo-normal"].join(" ")}
+        calendarClassName="ui89-typo-normal"
         showTimeSelect
         dateFormat="MM/dd/yyyy HH:mm:ss"
         timeFormat="HH:mm"

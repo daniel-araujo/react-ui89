@@ -1,8 +1,8 @@
-.link {
+.ui89-link-underline {
   color: currentColor;
   text-decoration: underline;
 }
 
-.link:hover {
+.ui89-link-underline:hover {
   color: currentColor;
 }

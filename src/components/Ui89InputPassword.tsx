@@ -1,8 +1,8 @@
 import React from "react"
 import { useState } from "react"
 
-import inputBoxStyles from "../style/input-box.module.css"
-import typoStyles from "../style/typo.module.css"
+import "../style/input-box.css"
+import "../style/typo.css"
 
 export interface Ui89InputPasswordProps {
   value?: any
@@ -31,7 +31,7 @@ export function Ui89InputPassword({
     <div>
       <input
         type="password"
-        className={`${inputBoxStyles.inputBox} ${typoStyles.special}`}
+        className={`ui89-input-box ui89-typo-special`}
         role="textbox"
         value={intermediateValue}
         onChange={implOnChange}

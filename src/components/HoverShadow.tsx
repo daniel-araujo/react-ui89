@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./HoverShadow.module.css"
+import "./HoverShadow.css"
 
 export default function HoverShadow({
   children,
@@ -7,9 +7,9 @@ export default function HoverShadow({
   children: React.ReactNode
 }) {
   return (
-    <span className={styles.hoverShadow}>
-      <span className={styles.hoverShadowBottom}></span>
-      <span className={styles.hoverShadowRight}></span>
+    <span className="ui89-hover-shadow">
+      <span className="ui89-hover-shadow__bottom"></span>
+      <span className="ui89-hover-shadow__right"></span>
       {children}
     </span>
   )

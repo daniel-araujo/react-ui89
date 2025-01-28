@@ -1,16 +1,16 @@
-.container {
+.ui89-title-underline {
   display: flex;
   line-height: 1;
 }
 
-.inside {
+.ui89-title-underline__inside {
   min-width: 0;
   border-bottom: 1px solid;
   position: relative;
   padding-bottom: calc(var(--ui89-safe-space) / 2);
 }
 
-.inside:after {
+.ui89-title-underline__inside:after {
   content: "";
   position: absolute;
   inset: 0;

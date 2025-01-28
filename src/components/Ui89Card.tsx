@@ -1,5 +1,5 @@
 import React from "react"
-import styles from "./Ui89Card.module.css"
+import "./Ui89Card.css"
 
 export interface Ui89CardProps {
   topLeftCenter?: React.ReactNode
@@ -16,13 +16,13 @@ export function Ui89Card({
 
   return (
     <div
-      className={`${styles.container} ${hasTopContent ? styles.containerHasTop : ""}`}
+      className={`ui89-card ${hasTopContent ? 'ui89-card--has-top' : ""}`}
     >
-      <div className={styles.inside}>
+      <div className="ui89-card__inside">
         {topLeftCenter && (
-          <div className={styles.topLeftCenter}>{topLeftCenter}</div>
+          <div className="ui89-card__top-left-center">{topLeftCenter}</div>
         )}
-        {topCenter && <div className={styles.topCenter}>{topCenter}</div>}
+        {topCenter && <div className="ui89-card__top-center">{topCenter}</div>}
 
         {hasTopContent && <div className="space-vertical-1"></div>}
 

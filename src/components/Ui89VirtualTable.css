@@ -1,4 +1,4 @@
-.table {
+.ui89-virtual-table {
   display: flex;
   flex-direction: column;
   overflow: auto;
@@ -6,12 +6,12 @@
   box-sizing: border-box;
 }
 
-.table > .tableBody,
-.table > .empty {
+.ui89-virtual-table > .ui89-virtual-table__body,
+.ui89-virtual-table > .ui89-virtual-table__empty {
   flex: 1;
 }
 
-.tableHeader {
+.ui89-virtual-table__header {
   position: absolute;
   top: 0;
   z-index: 2;
@@ -22,7 +22,7 @@
   display: flex;
 }
 
-.rowBorder {
+.ui89-virtual-table__row-border {
   margin-top: -2px;
   border-bottom: 2px solid var(--ui89-scene-text-color);
   position: absolute;
@@ -33,14 +33,14 @@
   pointer-events: none;
 }
 
-.empty {
+.ui89-virtual-table__empty {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
 }
 
-.cell {
+.ui89-virtual-table__cell {
   display: flex;
   align-items: center;
   padding: var(--ui89-safe-space);
@@ -57,17 +57,17 @@
   background: var(--ui89-scene-bg-color);
 }
 
-.cell--column-first {
+.ui89-virtual-table__cell--column-first {
   padding-left: var(--ui89-safe-space);
 }
 
-.cell--column-last {
+.ui89-virtual-table__cell--column-last {
   padding-right: var(--ui89-safe-space);
 }
 
-.cell--row-first {
+.ui89-virtual-table__cell--row-first {
   border-top: none;
 }
 
-.cell--row-last {
+.ui89-virtual-table__cell--row-last {
 }

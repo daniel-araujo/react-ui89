@@ -1,9 +1,9 @@
 import React from "react"
 
 import { Ui89Theme } from "../theme"
-import chosenThemeStyles from "../style/chosen-theme.module.css"
+import "../style/chosen-theme.css"
 
-import style from "./Ui89HighlightText.module.css"
+import "./Ui89HighlightText.css"
 
 export interface Ui89HighlightTextProps {
   theme: Ui89Theme | keyof typeof Ui89Theme
@@ -18,7 +18,7 @@ export function Ui89HighlightText({
 }: Ui89HighlightTextProps) {
   return (
     <span
-      className={`${style.container} ${chosenThemeStyles[theme]} ${block ? style["container--block"] : null}`}
+      className={`ui89-highlight-text ui89-chosen-theme-${theme} ${block ? "ui89-highlight-text--block" : null}`}
     >
       {children}
     </span>

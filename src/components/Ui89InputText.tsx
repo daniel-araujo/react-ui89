@@ -2,8 +2,8 @@ import React, { useMemo } from "react"
 import { useState, useEffect, useRef } from "react"
 import { throttledTimeout } from "../timeout"
 
-import inputBoxStyles from "../style/input-box.module.css"
-import typoStyles from "../style/typo.module.css"
+import "../style/input-box.css"
+import "../style/typo.css"
 
 const THROTTLE_DELAY = 200
 
@@ -119,7 +119,7 @@ export function Ui89InputText({
       <input
         ref={inputRef}
         value={intermediateValue}
-        className={`${inputBoxStyles.inputBox} ${typoStyles.special}`}
+        className={`ui89-input-box ui89-typo-special`}
         type="text"
         onChange={implOnChange}
         placeholder={placeholder}

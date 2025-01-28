@@ -1,8 +1,8 @@
 import React from "react"
 
-import styles from "./Ui89TitleBox.module.css"
-import typoStyles from "../style/typo.module.css"
-import textStyles from "../style/text.module.css"
+import "./Ui89TitleBox.css"
+import "../style/typo.css"
+import "../style/text.css"
 
 export interface Ui89TitleBoxProps {
   children: React.ReactNode
@@ -10,8 +10,8 @@ export interface Ui89TitleBoxProps {
 
 export function Ui89TitleBox({ children }: Ui89TitleBoxProps) {
   return (
-    <div className={`${styles.container} ${typoStyles.special}`}>
-      <div className={`${styles.inside} ${textStyles.singleLine}`}>
+    <div className={`ui89-title-box ui89-typo-special`}>
+      <div className={`ui89-title-box__inside ui89-text-single-line`}>
         {children}
       </div>
     </div>

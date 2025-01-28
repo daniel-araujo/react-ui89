@@ -1,6 +1,6 @@
 import React from "react"
 
-import style from "./Ui89NameValuePair.module.css"
+import "./Ui89NameValuePair.css"
 
 export interface Ui89NameValuePairProps {
   name: React.ReactNode
@@ -14,15 +14,15 @@ export function Ui89NameValuePair({
   leftMaxWidth,
 }: Ui89NameValuePairProps) {
   return (
-    <div className={style.nameValuePair}>
+    <div className="ui-89-name-value-pair">
       <div
-        className={style.nameValuePair__nameWrapper}
+        className="ui-89-name-value-pair__name-wrapper"
         style={{ maxWidth: `${leftMaxWidth}px` }}
       >
-        <div className={style.nameValuePair__name}>{name}</div>
-        <div className={style.nameValuePair__dots}></div>
+        <div className="ui-89-name-value-pair__name">{name}</div>
+        <div className="ui-89-name-value-pair__dots"></div>
       </div>
-      <div className={style.nameValuePair__value}>{value}</div>
+      <div className="ui-89-name-value-pair__value">{value}</div>
     </div>
   )
 }

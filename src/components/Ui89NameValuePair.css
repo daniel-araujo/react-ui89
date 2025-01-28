@@ -1,13 +1,13 @@
-.nameValuePair {
+.ui-89-name-value-pair {
   display: flex;
 }
 
-.nameValuePair__nameWrapper {
+.ui-89-name-value-pair__name-wrapper {
   display: flex;
   flex: 1;
 }
 
-.nameValuePair__dots {
+.ui-89-name-value-pair__dots {
   flex: 1 1;
   min-width: calc(var(--ui89-safe-space) * 2);
   border-bottom: 1px dashed currentColor;

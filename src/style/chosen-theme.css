@@ -1,29 +1,29 @@
-.primary {
+.ui89-chosen-theme-primary {
   --ui89-chosen-theme-text-color: var(--ui89-theme-primary-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-primary-bg-color);
 }
 
-.secondary {
+.ui89-chosen-theme-secondary {
   --ui89-chosen-theme-text-color: var(--ui89-theme-secondary-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-secondary-bg-color);
 }
 
-.info {
+.ui89-chosen-theme-info {
   --ui89-chosen-theme-text-color: var(--ui89-theme-info-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-info-bg-color);
 }
 
-.success {
+.ui89-chosen-theme-success {
   --ui89-chosen-theme-text-color: var(--ui89-theme-success-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-success-bg-color);
 }
 
-.warning {
+.ui89-chosen-theme-warning {
   --ui89-chosen-theme-text-color: var(--ui89-theme-warning-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-warning-bg-color);
 }
 
-.danger {
+.ui89-chosen-theme-danger {
   --ui89-chosen-theme-text-color: var(--ui89-theme-danger-text-color);
   --ui89-chosen-theme-bg-color: var(--ui89-theme-danger-bg-color);
 }

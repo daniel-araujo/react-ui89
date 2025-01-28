@@ -1,4 +1,4 @@
-.dialog {
+.ui89-modal-dialog {
   position: fixed;
   inset: 0px;
 
@@ -6,17 +6,17 @@
   animation: appear var(--ui89-animation-speed);
 }
 
-.dialog--open {
+.ui89-modal-dialog--open {
   display: block;
 }
 
-.dialogBackdrop {
+.ui89-modal-dialog__backdrop {
   position: absolute;
   inset: 0px;
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.dialogBox {
+.ui89-modal-dialog__box {
   position: absolute;
   inset: 0;
   border: none;
@@ -38,25 +38,25 @@
   flex-direction: column;
 }
 
-.spacer {
+.ui89-modal-dialog__spacer {
   min-height: 0;
   height: 100px;
 }
 
-.dialogBox > *:not(.spacer) {
+.ui89-modal-dialog__box > *:not(.ui89-modal-dialog__spacer) {
   flex: 1 0;
   min-height: 0;
 }
 
-.dialogBox--size-big {
+.ui89-modal-dialog__box--size-big {
   max-width: 700px;
 }
 
-.dialogBox--size-medium {
+.ui89-modal-dialog__box--size-medium {
   max-width: 500px;
 }
 
-.dialogBox--size-small {
+.ui89-modal-dialog__box--size-small {
   max-width: 300px;
 }
 

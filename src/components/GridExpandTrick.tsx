@@ -1,10 +1,10 @@
 import React from "react"
-import styles from "./GridExpandTrick.module.css"
+import "./GridExpandTrick.css"
 
 export default function GridExpandTrick({
   children,
 }: {
   children: React.ReactNode
 }) {
-  return <span className={styles.gridExpandTrick}>{children}</span>
+  return <span className="ui89-grid-expand-trick">{children}</span>
 }
