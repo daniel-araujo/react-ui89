@@ -3,16 +3,14 @@
   flex-direction: column;
 
   position: relative;
-  text-align: center;
+  align-items: center;
 
   box-sizing: border-box;
 
   user-select: none;
   cursor: var(--ui89-cursor-pointer);
-}
 
-.ui89-shortcut__label {
-  max-width: 140px;
+  width: 140px;
 }
 
 .ui89-shortcut:hover {
