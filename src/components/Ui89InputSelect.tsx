@@ -4,50 +4,62 @@ import "./Ui89InputSelect.css"
 import "../style/input-box.css"
 import "../style/text.css"
 
-export interface Ui89InputSelectPropsOption {
-  value: string | number
-  label: React.ReactNode
+export interface Ui89InputSelectProps<T> {
+  /**
+   * Available options.
+   */
+  options?: T[]
+
+  /**
+   * The selected option.
+   */
+  value?: T
+
+  /**
+   * Called whenever an option is selected.
+   */
+  onChange?: (option: T) => void
+
+  /**
+   * Retrieves the value that uniquely identifies the option. This is what is
+   * used to determine which option is currently selected.
+   */
+  getOptionKey?: (option: T) => any
+
+  /**
+   * Customize how an option should be rendered.
+   */
+  renderOption?: (option: T) => any
 }
 
-export interface Ui89InputSelectProps {
-  options?: (Ui89InputSelectPropsOption | string | number)[]
-  value?: string | number
-  onChange?: (value: string | number) => void
-}
+/**
+ * This is a very performant and customizable dropdown selector that
+ * allows you to choose from a list of options.
+ */
+export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
+  const getOptionKey = useMemo(() => {
+    return props.getOptionKey ?? ((option: any) => option)
+  }, [props.getOptionKey])
 
-export function Ui89InputSelect({
-  options,
-  value,
-  onChange,
-}: Ui89InputSelectProps) {
-  const realOptions = useMemo(() => {
-    if (options === undefined) {
+  const options = useMemo(() => {
+    if (props.options === undefined) {
       return []
     }
 
-    return options.map((option) => {
-      if (typeof option !== "object") {
-        return {
-          value: option,
-          label: String(option),
-        }
-      } else {
-        return option
-      }
-    })
+    return props.options
+  }, [props.options])
+
+  const optionsMap = useMemo(() => {
+    return new Map(options.map((option) => [getOptionKey(option), option]))
   }, [options])
 
-  const selectedOption = useMemo(() => {
-    return (
-      realOptions.find((option) => {
-        return option.value === value
-      }) ?? null
-    )
-  }, [realOptions, value])
+  function isOptionSelected(option: T) {
+    return optionsMap.get(option) !== undefined
+  }
 
-  function selectOption(option: Ui89InputSelectPropsOption) {
-    if (onChange) {
-      onChange(option.value)
+  function selectOption(option: T) {
+    if (props.onChange !== undefined) {
+      props.onChange(option)
     }
 
     if (document.activeElement !== null) {
@@ -56,8 +68,8 @@ export function Ui89InputSelect({
     }
   }
 
-  function optionTitle(option: Ui89InputSelectPropsOption) {
-    return typeof option.label === "string" ? option.label : undefined
+  function optionTitle(option: T) {
+    return String(option)
   }
 
   return (
@@ -70,39 +82,47 @@ export function Ui89InputSelect({
           "ui89-text-single-line",
         ].join(" ")}
         tabIndex={0}
-        title={
-          selectedOption !== null ? optionTitle(selectedOption) : undefined
-        }
+        title={props.value !== undefined ? optionTitle(props.value) : undefined}
       >
-        {selectedOption !== null ? <>{selectedOption.label}</> : <>Select...</>}
+        {props.value !== undefined ? (
+          <>
+            {props.renderOption !== undefined
+              ? props.renderOption(props.value)
+              : props.value}
+          </>
+        ) : (
+          <>Select...</>
+        )}
       </div>
 
       <div className="ui89-input-select__menu" tabIndex={0}>
         <div className="ui89-input-select__menu__content">
-          {realOptions.length > 0 ? (
-            realOptions.map((o) => {
-              const isSelected =
-                selectedOption && selectedOption.value === o.value
+          {options.length > 0 ? (
+            options.map((o) => {
+              const isSelected = isOptionSelected(o)
 
               return (
                 <div
                   className={[
-                    'ui89-input-select__menu__item',
-                    isSelected ? 'ui89-input-select__menu__item--selected' : null,
+                    "ui89-input-select__menu__item",
+                    isSelected
+                      ? "ui89-input-select__menu__item--selected"
+                      : null,
                   ].join(" ")}
                   title={optionTitle(o)}
-                  key={o.value}
+                  key={getOptionKey(o)}
                   onClick={() => selectOption(o)}
                 >
-                  {o.label}
+                  {props.renderOption !== undefined ? props.renderOption(o) : o}
                 </div>
               )
             })
           ) : (
             <div
-              className={['ui89-input-select__menu__item', 'ui89-input-select__menu__item--disabled'].join(
-                " ",
-              )}
+              className={[
+                "ui89-input-select__menu__item",
+                "ui89-input-select__menu__item--disabled",
+              ].join(" ")}
             >
               &lt;empty&gt;
             </div>

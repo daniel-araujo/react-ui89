@@ -37,10 +37,7 @@ export { Ui89InputFileUpload } from "./components/Ui89InputFileUpload"
 export type { Ui89InputFileUploadProps } from "./components/Ui89InputFileUpload"
 
 export { Ui89InputSelect } from "./components/Ui89InputSelect"
-export type {
-  Ui89InputSelectProps,
-  Ui89InputSelectPropsOption,
-} from "./components/Ui89InputSelect"
+export type { Ui89InputSelectProps } from "./components/Ui89InputSelect"
 
 export { Ui89InputPassword } from "./components/Ui89InputPassword"
 export type { Ui89InputPasswordProps } from "./components/Ui89InputPassword"

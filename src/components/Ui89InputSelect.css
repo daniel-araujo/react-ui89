@@ -54,7 +54,9 @@
   cursor: pointer;
 }
 
-.ui89-input-select__menu__item:not(.ui89-input-select__menu__item--disabled):hover,
+.ui89-input-select__menu__item:not(
+    .ui89-input-select__menu__item--disabled
+  ):hover,
 .ui89-input-select__menu__item.ui89-input-select__menu__item--selected {
   background: var(--ui89-input-text-color);
   color: var(--ui89-input-bg-color);

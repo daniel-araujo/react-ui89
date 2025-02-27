@@ -10,6 +10,14 @@ const optionsSampleTo100 = Array.from({ length: 100 }, (_, i) => ({
   label: `Option ${i + 1}`,
 }))
 
+function getOptionKeyValue(option: any) {
+  return option.value
+}
+
+function renderOptionLabel(option: any) {
+  return option.label
+}
+
 const meta: Meta<typeof Ui89InputSelect> = {
   component: Ui89InputSelect,
   tags: ["autodocs"],
@@ -34,13 +42,10 @@ export const SelectedItemOverflow: Story = {
     viewport: { defaultViewport: "mobile1" },
   },
   args: {
-    value: 1,
+    value:
+      "Very long string of text that should overflow but not be visible unless you trigger the tooltip",
     options: [
-      {
-        value: 1,
-        label:
-          "Very long string of text that should overflow but not be visible unless you trigger the tooltip",
-      },
+      "Very long string of text that should overflow but not be visible unless you trigger the tooltip",
     ],
   },
 }
@@ -57,6 +62,8 @@ export const MenuItemOverflow: Story = {
           "Very long string of text that should overflow but still be visible",
       },
     ],
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
   },
 }
 
@@ -72,11 +79,15 @@ export const MenuItemOverflowButOnlyOne: Story = {
           "Very long string of text that should overflow but still be visible",
       },
     ].concat(optionsSampleTo100),
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
   },
 }
 
 export const MenuVerticalOverflow: Story = {
   args: {
     options: optionsSampleTo100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
   },
 }
