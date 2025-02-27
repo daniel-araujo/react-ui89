@@ -24,14 +24,14 @@
   );
 
   /* Animation */
-  animation: appear var(--ui89-animation-speed);
+  animation: ui89-breadcrumbs__appear var(--ui89-animation-speed);
 }
 
 .ui89-breadcrumbs__item:last-child {
   padding-left: calc(var(--ui89-safe-space) * 2);
 }
 
-@keyframes appear {
+@keyframes ui89-breadcrumbs__appear {
   from {
     transform: translateX(-100%);
   }
