@@ -16,9 +16,7 @@ export interface Ui89MenuBarProps {
 
 export function Ui89MenuBar({ items }: Ui89MenuBarProps) {
   return (
-    <div
-      className={`ui89-menu-bar ui89-typo-special ui89-scrollbar`}
-    >
+    <div className={`ui89-menu-bar ui89-typo-special ui89-scrollbar`}>
       {items.map((item, index) => {
         function onNativeClick() {
           if (item.onClick !== undefined) {

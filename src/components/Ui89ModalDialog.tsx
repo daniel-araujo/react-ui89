@@ -27,11 +27,16 @@ export function Ui89ModalDialog({
   onRequestClose,
 }: Ui89ModalDialogProps) {
   const dialogClass = useMemo(() => {
-    return ["ui89-modal-dialog", open ? "ui89-modal-dialog--open" : ""].join(" ")
+    return ["ui89-modal-dialog", open ? "ui89-modal-dialog--open" : ""].join(
+      " ",
+    )
   }, [size, open])
 
   const dialogBoxClass = useMemo(() => {
-    return ["ui89-modal-dialog__box", `ui89-modal-dialog__box--size-${size}`].join(" ")
+    return [
+      "ui89-modal-dialog__box",
+      `ui89-modal-dialog__box--size-${size}`,
+    ].join(" ")
   }, [size, open])
 
   function onClickBackdrop() {

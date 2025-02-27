@@ -95,19 +95,16 @@ export function Ui89Button({
     }
   }
 
-  let containerClass = [
-    'ui89-button',
-    `ui89-button--size-${size}`,
-  ].join(" ")
+  let containerClass = ["ui89-button", `ui89-button--size-${size}`].join(" ")
 
   let buttonClass = [
-    'ui89-button__button',
-    'ui89-typo-special',
+    "ui89-button__button",
+    "ui89-typo-special",
     `ui89-chosen-theme-${theme}`,
-    activated ? 'ui89-button__button--active' : undefined,
-    block ? 'ui89-button__button--block' : undefined,
-    disabled ? 'ui89-button__button--disabled' : undefined,
-    clicking ? 'ui89-button__button--active' : undefined,
+    activated ? "ui89-button__button--active" : undefined,
+    block ? "ui89-button__button--block" : undefined,
+    disabled ? "ui89-button__button--disabled" : undefined,
+    clicking ? "ui89-button__button--active" : undefined,
   ].join(" ")
 
   if (href) {

@@ -28,7 +28,11 @@ export function Ui89Shortcut({
         <img className="ui89-shortcut__image" src={imageUrl} />
 
         <div className="ui89-shortcut__shortcut-icon-container">
-          <ShortcutSvg className="ui89-shortcut__shortcut-icon" width={16} height={16} />
+          <ShortcutSvg
+            className="ui89-shortcut__shortcut-icon"
+            width={16}
+            height={16}
+          />
         </div>
       </div>
 

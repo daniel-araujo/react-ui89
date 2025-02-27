@@ -149,7 +149,12 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
       width: undefined,
     }
 
-    return <div className="ui89-virtual-table__row-border" style={rowBorderStyle}></div>
+    return (
+      <div
+        className="ui89-virtual-table__row-border"
+        style={rowBorderStyle}
+      ></div>
+    )
   }
 
   return (

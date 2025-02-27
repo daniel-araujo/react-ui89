@@ -49,7 +49,7 @@ export function Ui89LinkUnderline(props: Ui89LinkUnderlineProps) {
     }
   }
 
-  let containerClass = ['ui89-link-underline'].join(" ")
+  let containerClass = ["ui89-link-underline"].join(" ")
 
   return (
     <a

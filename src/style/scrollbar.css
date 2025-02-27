@@ -33,7 +33,8 @@
     var(--ui89-safe-space);
   border-color: transparent transparent var(--ui89-palette-black) transparent;
 }
-.ui89-scrollbar ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
+.ui89-scrollbar
+  ::-webkit-scrollbar-button:single-button:vertical:decrement:active {
   background: var(--ui89-palette-dark-gray);
 }
 
@@ -42,7 +43,8 @@
     var(--ui89-safe-space);
   border-color: var(--ui89-palette-black) transparent transparent transparent;
 }
-.ui89-scrollbar ::-webkit-scrollbar-button:single-button:vertical:increment:active {
+.ui89-scrollbar
+  ::-webkit-scrollbar-button:single-button:vertical:increment:active {
   background: var(--ui89-palette-dark-gray);
 }
 

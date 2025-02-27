@@ -31,10 +31,7 @@ export function Ui89Tabs({
 
   return (
     <div
-      className={[
-        "ui89-tabs",
-        stretch ? "ui89-tabs--stretch" : "",
-      ].join(" ")}
+      className={["ui89-tabs", stretch ? "ui89-tabs--stretch" : ""].join(" ")}
     >
       {options.map((option) => (
         <div

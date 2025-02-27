@@ -15,9 +15,7 @@ export function Ui89Card({
   const hasTopContent = topLeftCenter || topCenter
 
   return (
-    <div
-      className={`ui89-card ${hasTopContent ? 'ui89-card--has-top' : ""}`}
-    >
+    <div className={`ui89-card ${hasTopContent ? "ui89-card--has-top" : ""}`}>
       <div className="ui89-card__inside">
         {topLeftCenter && (
           <div className="ui89-card__top-left-center">{topLeftCenter}</div>

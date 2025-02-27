@@ -12,7 +12,7 @@ export function Ui89CardHorizontalConnection({
 }: Ui89CardHorizontalConnectionProps) {
   return (
     <div
-      className={`ui89-card__horizontal-connection ${overflow ? 'ui89-card__horizontal-connection--overflow' : ""}`}
+      className={`ui89-card__horizontal-connection ${overflow ? "ui89-card__horizontal-connection--overflow" : ""}`}
     >
       {children}
     </div>
