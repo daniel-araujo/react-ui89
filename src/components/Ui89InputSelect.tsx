@@ -54,7 +54,12 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
   }, [options])
 
   function isOptionSelected(option: T) {
-    return optionsMap.get(option) !== undefined
+    if (props.value === undefined) {
+      // Definitely not selected.
+      return false
+    }
+
+    return getOptionKey(option) === getOptionKey(props.value)
   }
 
   function selectOption(option: T) {
