@@ -1,6 +1,7 @@
 .ui89-link-underline {
   color: currentColor;
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .ui89-link-underline:hover {
