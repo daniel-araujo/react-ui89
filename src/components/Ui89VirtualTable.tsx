@@ -26,8 +26,12 @@ export interface Ui89VirtualTablePropsColumnRenderBodyParams<T> {
 
 export interface Ui89VirtualTablePropsColumn<T> {
   width?: number
-  renderHeader?: React.FC<Ui89VirtualTablePropsColumnRenderHeaderParams<T>>
-  renderBody: React.FC<Ui89VirtualTablePropsColumnRenderBodyParams<T>>
+  renderHeader?: (
+    props: Ui89VirtualTablePropsColumnRenderHeaderParams<T>,
+  ) => React.ReactNode
+  renderBody: (
+    props: Ui89VirtualTablePropsColumnRenderBodyParams<T>,
+  ) => React.ReactNode
 }
 
 export interface Ui89VirtualTableProps<T> {
@@ -118,9 +122,8 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
               height: getRowHeight(0) + "px",
             }}
           >
-            {column.renderHeader !== undefined && (
-              <column.renderHeader index={index} column={column} />
-            )}
+            {column.renderHeader !== undefined &&
+              column.renderHeader({ index, column })}
           </div>
         ))}
 
@@ -180,13 +183,10 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
                     >
                       {/* We do not render the first column. That space is reserved for the header */}
                       {rowIndex !== 0 &&
-                        [columns[columnIndex].renderBody].map((BodyContent) => (
-                          <BodyContent
-                            key={rowIndex}
-                            index={rowIndex - 1}
-                            row={rows[rowIndex - 1]}
-                          />
-                        ))}
+                        columns[columnIndex].renderBody({
+                          index: rowIndex - 1,
+                          row: rows[rowIndex - 1],
+                        })}
                     </div>
 
                     {renderRowBorder(columnIndex, style)}
