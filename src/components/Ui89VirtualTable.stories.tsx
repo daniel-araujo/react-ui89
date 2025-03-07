@@ -4,6 +4,7 @@ import { fn } from "@storybook/test"
 
 import { Ui89VirtualTable } from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
+import RenderCounter from "./RenderCounter"
 
 const meta: Meta<typeof Ui89VirtualTable> = {
   component: Ui89VirtualTable,
@@ -161,6 +162,28 @@ export const NotEnoughColumnsAndRows: Story = {
         width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
+      },
+    ],
+  },
+}
+
+export const BodyColumnsDoNotLoseState: Story = {
+  args: {
+    rows: new Array(200),
+    columns: [
+      {
+        renderHeader: () => <>Header #1</>,
+        renderBody: ({ index }) => <>Row #{index}</>,
+      },
+      {
+        width: 300,
+        renderHeader: () => <>Header #2</>,
+        renderBody: () => <RenderCounter />,
+      },
+      {
+        width: 300,
+        renderHeader: () => <>Header #3</>,
+        renderBody: () => <RenderCounter />,
       },
     ],
   },
