@@ -6,7 +6,7 @@ import "./Ui89VirtualTable.css"
 import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
 
-const HEADER_HEIGHT = 30
+const HEADER_HEIGHT = 20
 
 interface VariableSizeGridProps {
   columnIndex: number
@@ -55,7 +55,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
       return HEADER_HEIGHT
     } else {
       // Body
-      return props.rowHeight ?? 50
+      return props.rowHeight ?? 20
     }
   }
 

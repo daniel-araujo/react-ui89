@@ -23,8 +23,8 @@
 }
 
 .ui89-virtual-table__row-border {
-  margin-top: -2px;
-  border-bottom: 2px solid var(--ui89-scene-text-color);
+  margin-top: -1px;
+  border-bottom: 1px solid var(--ui89-scene-text-color);
   position: absolute;
   left: 0;
   right: 0;
@@ -43,10 +43,10 @@
 .ui89-virtual-table__cell {
   display: flex;
   align-items: center;
-  padding: var(--ui89-safe-space);
+  padding: 0 var(--ui89-safe-space);
 
   /* Have to render border in case last column is not visible. */
-  border-bottom: 2px solid var(--ui89-scene-text-color);
+  border-bottom: 1px solid var(--ui89-scene-text-color);
 
   /* The width of the column will include padding and border. */
   box-sizing: border-box;

@@ -25,6 +25,7 @@ export const EmptyWithColumns: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
       },
@@ -41,6 +42,7 @@ export const TwoColumns: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
       },
@@ -57,10 +59,12 @@ export const ColumnHorizontalOverflow: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Secondcolumn</>,
       },
       {
+        width: 500,
         renderHeader: () => <>Header #3</>,
         renderBody: () => <>Thirdcolumn.Third column.Third column</>,
       },
@@ -77,10 +81,12 @@ export const ColumnVerticalOverflow: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
       },
       {
+        width: 500,
         renderHeader: () => <>Header #3</>,
         renderBody: () => <>Third column. Third column. Third column</>,
       },
@@ -97,10 +103,12 @@ export const VerticalScrolling: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #3</>,
         renderBody: () => <>Third column.</>,
       },
@@ -150,6 +158,7 @@ export const NotEnoughColumnsAndRows: Story = {
         renderBody: ({ index }) => <>Row #{index}</>,
       },
       {
+        width: 300,
         renderHeader: () => <>Header #2</>,
         renderBody: () => <>Second column</>,
       },
