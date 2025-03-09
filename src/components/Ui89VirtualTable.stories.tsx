@@ -1,10 +1,12 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn } from "@storybook/test"
+import { fn, userEvent, within } from "@storybook/test"
+import { useArgs } from '@storybook/preview-api';
 
 import { Ui89VirtualTable } from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
+import { Ui89Button } from "./Ui89Button";
 
 const meta: Meta<typeof Ui89VirtualTable> = {
   component: Ui89VirtualTable,
@@ -187,4 +189,41 @@ export const BodyColumnsDoNotLoseState: Story = {
       },
     ],
   },
+}
+
+export const DoesNotLoseStateAfterReplacingData: Story = {
+  args: {
+    rows: new Array(200),
+    columns: [
+      {
+        renderHeader: () => <>Header</>,
+        renderBody: () => <RenderCounter />,
+      },
+    ],
+  },
+
+  render: () => {
+    const [args, updateArgs] = useArgs();
+
+    function onClickRefresh() {
+      updateArgs(args)
+    }
+
+    return (
+      <>
+        <Ui89Button onClick={onClickRefresh}>Refresh data</Ui89Button>
+        <Ui89VirtualTable {...args} />
+      </>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement);
+
+    const button = canvas.getByRole("button", {
+      name: 'Refresh data'
+    })
+
+    await userEvent.click(button)
+  }
 }
