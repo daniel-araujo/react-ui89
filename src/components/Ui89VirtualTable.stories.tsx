@@ -1,12 +1,12 @@
-import React from "react"
+import React, { useMemo, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn, userEvent, within } from "@storybook/test"
-import { useArgs } from '@storybook/preview-api';
+import { useArgs } from "@storybook/preview-api"
 
 import { Ui89VirtualTable } from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
-import { Ui89Button } from "./Ui89Button";
+import { Ui89Button } from "./Ui89Button"
 
 const meta: Meta<typeof Ui89VirtualTable> = {
   component: Ui89VirtualTable,
@@ -203,7 +203,7 @@ export const DoesNotLoseStateAfterReplacingData: Story = {
   },
 
   render: () => {
-    const [args, updateArgs] = useArgs();
+    const [args, updateArgs] = useArgs()
 
     function onClickRefresh() {
       updateArgs(args)
@@ -218,12 +218,46 @@ export const DoesNotLoseStateAfterReplacingData: Story = {
   },
 
   play: async (context) => {
-    const canvas = within(context.canvasElement);
+    const canvas = within(context.canvasElement)
+
+    // TODO: Move scroll
 
     const button = canvas.getByRole("button", {
-      name: 'Refresh data'
+      name: "Refresh data",
     })
 
     await userEvent.click(button)
-  }
+  },
+}
+
+export const CanTypeWithoutLosingFocusWhenUpdatingData: Story = {
+  render: (args) => {
+    const [rows, setRows] = useState(new Array(200))
+
+    const columns = useMemo(() => {
+      function onUpdate(index: number, event: any) {
+        let newRows = rows.slice()
+
+        newRows.splice(index, 1, String(event.target.value))
+
+        setRows(newRows)
+      }
+
+      return [
+        {
+          renderHeader: () => <>Header</>,
+          renderBody: (props) => {
+            return (
+              <input
+                value={props.row}
+                onChange={onUpdate.bind(null, props.index)}
+              />
+            )
+          },
+        },
+      ]
+    }, [rows])
+
+    return <Ui89VirtualTable rows={rows} columns={columns} />
+  },
 }
