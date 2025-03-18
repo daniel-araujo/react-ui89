@@ -42,7 +42,9 @@
 
 .ui89-virtual-table__cell {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
   padding: 0 var(--ui89-safe-space);
 
   /* Have to render border in case last column is not visible. */

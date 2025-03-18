@@ -152,6 +152,30 @@ export const HorizontalScrolling: Story = {
   },
 }
 
+export const AlignsColumnItemsVertically: Story = {
+  args: {
+    rows: new Array(200),
+    rowHeight: 50,
+    columns: [
+      {
+        width: 300,
+        renderHeader: () => <>Header #1</>,
+        renderBody: ({ index }) => (
+          <>
+            <div>Row #{index}</div>
+            <div>Second line</div>
+          </>
+        ),
+      },
+      {
+        width: 300,
+        renderHeader: () => <>Header #2</>,
+        renderBody: () => <>Second column</>,
+      },
+    ],
+  },
+}
+
 export const NotEnoughColumnsAndRows: Story = {
   args: {
     rows: new Array(2),
