@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { fn, userEvent, within } from "@storybook/test"
 import { useArgs } from "@storybook/preview-api"
 
-import { Ui89VirtualTable } from "./Ui89VirtualTable"
+import { Ui89VirtualTable, Ui89VirtualTablePropsColumn } from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
 import { Ui89Button } from "./Ui89Button"
@@ -310,7 +310,7 @@ export const CanTypeWithoutLosingFocusWhenUpdatingData: Story = {
   render: (args) => {
     const [rows, setRows] = useState(new Array(200))
 
-    const columns = useMemo(() => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(() => {
       function onUpdate(index: number, event: any) {
         let newRows = rows.slice()
 
