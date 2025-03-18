@@ -176,6 +176,58 @@ export const AlignsColumnItemsVertically: Story = {
   },
 }
 
+export const AlignColumnsHorizontally: Story = {
+  args: {
+    rows: new Array(200),
+    rowHeight: 50,
+    columns: [
+      {
+        width: 300,
+        renderHeader: () => <>Default</>,
+        renderBody: ({ index }) => (
+          <>
+            <div>Row #{index}</div>
+            <div>Second line</div>
+          </>
+        ),
+      },
+      {
+        width: 300,
+        halign: "left",
+        renderHeader: () => <>Align left</>,
+        renderBody: ({ index }) => (
+          <>
+            <div>Row #{index}</div>
+            <div>Second line</div>
+          </>
+        ),
+      },
+      {
+        width: 300,
+        halign: "right",
+        renderHeader: () => <>Align right</>,
+        renderBody: ({ index }) => (
+          <>
+            <div>Row #{index}</div>
+            <div>Second line</div>
+          </>
+        ),
+      },
+      {
+        width: 300,
+        halign: "center",
+        renderHeader: () => <>Align Center</>,
+        renderBody: ({ index }) => (
+          <>
+            <div>Row #{index}</div>
+            <div>Second line</div>
+          </>
+        ),
+      },
+    ],
+  },
+}
+
 export const NotEnoughColumnsAndRows: Story = {
   args: {
     rows: new Array(2),

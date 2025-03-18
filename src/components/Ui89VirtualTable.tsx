@@ -14,6 +14,12 @@ interface VariableSizeGridProps {
   style: React.CSSProperties
 }
 
+export enum Ui89VirtualTablePropsColumnAlign {
+  left = "left",
+  right = "right",
+  center = "center",
+}
+
 export interface Ui89VirtualTablePropsColumnRenderHeaderParams<T> {
   index: number
   column: Ui89VirtualTablePropsColumn<T>
@@ -26,6 +32,7 @@ export interface Ui89VirtualTablePropsColumnRenderBodyParams<T> {
 
 export interface Ui89VirtualTablePropsColumn<T> {
   width?: number
+  halign?: keyof typeof Ui89VirtualTablePropsColumnAlign
   renderHeader?: (
     props: Ui89VirtualTablePropsColumnRenderHeaderParams<T>,
   ) => React.ReactNode
@@ -78,7 +85,12 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
   }
 
   function getColumnClass(columnIndex: number, rowIndex: number): string {
-    const classes = ["ui89-virtual-table__cell"]
+    const halign = columns[columnIndex].halign ?? "left"
+
+    const classes = [
+      "ui89-virtual-table__cell",
+      `ui89-virtual-table__cell--halign-${halign}`,
+    ]
 
     if (rowIndex === 0) {
       classes.push("ui89-virtual-table__cell--row-first")

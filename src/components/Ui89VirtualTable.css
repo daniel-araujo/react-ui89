@@ -73,3 +73,15 @@
 
 .ui89-virtual-table__cell--row-last {
 }
+
+.ui89-virtual-table__cell--halign-left {
+  align-items: flex-start;
+}
+
+.ui89-virtual-table__cell--halign-right {
+  align-items: flex-end;
+}
+
+.ui89-virtual-table__cell--halign-center {
+  align-items: center;
+}
