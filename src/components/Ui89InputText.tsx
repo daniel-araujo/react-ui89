@@ -37,9 +37,9 @@ export function Ui89InputText({
     onChange,
     filter(value: any) {
       if (autoTrim) {
-        // Must trim after setting intermediate value. Do not want to disturb
-        // user.
-        value = value.replace(/\s+/g, " ").trim()
+        if (typeof value === 'string') {
+          value = value.replace(/\s+/g, " ").trim()
+        }
       }
 
       return value
