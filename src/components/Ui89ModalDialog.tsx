@@ -46,7 +46,7 @@ export function Ui89ModalDialog({
   }
 
   const vdom = (
-    <div className={dialogClass} role="dialog">
+    <div className={dialogClass} role="dialog" style={{ zIndex: 1 }}>
       <div
         className="ui89-modal-dialog__backdrop"
         role="presentation"
