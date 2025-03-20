@@ -3,7 +3,10 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { fn, userEvent, within } from "@storybook/test"
 import { useArgs } from "@storybook/preview-api"
 
-import { Ui89VirtualTable, Ui89VirtualTablePropsColumn } from "./Ui89VirtualTable"
+import {
+  Ui89VirtualTable,
+  Ui89VirtualTablePropsColumn,
+} from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
 import { Ui89Button } from "./Ui89Button"

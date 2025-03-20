@@ -74,7 +74,7 @@ export const TrimsWhitespaceAtBeginningAndEnd: Story = {
 
     await userEvent.type(textbox, " 3.14 ")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("3.14")
   },
@@ -90,7 +90,7 @@ export const RemoveWhitespaceBetweenNumbers: Story = {
 
     await userEvent.type(textbox, "3 . 1 4")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("3.14")
   },

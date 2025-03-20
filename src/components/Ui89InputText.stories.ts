@@ -35,11 +35,10 @@ export const TypingEmitsOnChange: Story = {
 
     await userEvent.type(textbox, "A")
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 200))
 
     expect(context.args.onChange).not.toHaveBeenCalled()
 
-    // Only after 200ms have passed
     await new Promise((resolve) => setTimeout(resolve, 100))
 
     expect(context.args.onChange).toHaveBeenCalledOnce()
@@ -57,17 +56,17 @@ export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
 
     await userEvent.type(textbox, "A")
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 150))
 
     expect(context.args.onChange).not.toHaveBeenCalled()
 
     await userEvent.type(textbox, "a")
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 150))
 
     expect(context.args.onChange).not.toHaveBeenCalled()
 
-    await new Promise((resolve) => setTimeout(resolve, 100))
+    await new Promise((resolve) => setTimeout(resolve, 300))
 
     expect(context.args.onChange).toHaveBeenCalledWith("Aa")
   },
@@ -84,7 +83,7 @@ export const RemovesWhitespaceAtTheBeginning: Story = {
 
     await userEvent.type(textbox, " A")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("A")
   },
@@ -101,7 +100,7 @@ export const RemovesWhitespaceAtTheEnd: Story = {
 
     await userEvent.type(textbox, "A ")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("A")
   },
@@ -118,7 +117,7 @@ export const RemovesExtraWhitespaceInTheMiddle: Story = {
 
     await userEvent.type(textbox, "A  A")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("A A")
   },
