@@ -2,7 +2,7 @@ import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
-import { VirtualList } from "./VirtualList"
+import { VirtualList, VirtualListPropsRenderRowProps } from "./VirtualList"
 import { SceneDecorator } from "../../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
 
@@ -16,7 +16,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-function renderAsIs({ row }) {
+function renderAsIs({ row }: VirtualListPropsRenderRowProps<any>) {
   return row
 }
 
