@@ -74,12 +74,12 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     const classes = ["ui89-virtual-table__row"]
 
     if (rowIndex === 0) {
-      classes.push("ui89-virtual-table__cell--row-first")
+      classes.push("ui89-virtual-table__row--first")
       classes.push("ui89-typo-normal-bold")
     }
 
     if (rowIndex === rows.length) {
-      classes.push("ui89-virtual-table__cell--row-last")
+      classes.push("ui89-virtual-table__row--last")
     }
 
     return classes.join(" ")
