@@ -1,6 +1,9 @@
 import React, { useRef } from "react"
 import "../style/typo.css"
-import { TimeAnimation, TimeAnimationPropsChildrenProps } from "./private/TimeAnimation"
+import {
+  TimeAnimation,
+  TimeAnimationPropsChildrenProps,
+} from "./private/TimeAnimation"
 import { dateFormat } from "../date-utils"
 
 export interface Ui89DigitalClockProps {
