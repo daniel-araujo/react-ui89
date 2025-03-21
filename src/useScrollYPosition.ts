@@ -1,29 +1,40 @@
-import { useState, useEffect, RefObject } from "react"
+import { useState, useEffect, useRef, RefObject } from "react";
 
-export const useScrollYPosition = (ref?: RefObject<HTMLElement>): number => {
-  const [scrollY, setScrollY] = useState<number>(0)
+export const useScrollYPosition = (ref: RefObject<HTMLElement>): number => {
+  const [scrollY, setScrollY] = useState(0);
+  const ticking = useRef(false);
+  const observer = useRef<MutationObserver | null>(null);
 
   useEffect(() => {
-    let ticking = false
+    const element = ref.current;
+    if (!element) return;
 
     const handleScroll = () => {
-      if (!ticking) {
+      if (!ticking.current) {
         requestAnimationFrame(() => {
-          const scrollTop = ref?.current
-            ? ref.current.scrollTop
-            : window.scrollY
-          setScrollY(scrollTop)
-          ticking = false
-        })
-        ticking = true
+          setScrollY(element.scrollTop);
+          ticking.current = false;
+        });
+        ticking.current = true;
       }
-    }
+    };
 
-    const target = ref?.current || window
-    target.addEventListener("scroll", handleScroll)
+    element.addEventListener("scroll", handleScroll, { passive: true });
 
-    return () => target.removeEventListener("scroll", handleScroll)
-  }, [ref])
+    observer.current = new MutationObserver(() => {
+      if (ref.current !== element) {
+        element.removeEventListener("scroll", handleScroll);
+        ref.current?.addEventListener("scroll", handleScroll, { passive: true });
+      }
+    });
 
-  return scrollY
-}
+    observer.current.observe(document.body, { childList: true, subtree: true });
+
+    return () => {
+      element.removeEventListener("scroll", handleScroll);
+      observer.current?.disconnect();
+    };
+  }, [ref]);
+
+  return scrollY;
+};
