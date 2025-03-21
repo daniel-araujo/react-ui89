@@ -113,7 +113,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
             return (
               <div
                 className="ui89-virtual-table__row"
-                style={{ height: "100%" }}
+                style={{ minWidth: rowWidth() + 'px', height: "100%" }}
               >
                 {columns.map((column, columnIndex) => {
                   return (
