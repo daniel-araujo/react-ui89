@@ -1,10 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent, within } from "@storybook/test"
 
 import { VirtualList, VirtualListPropsRenderRowProps } from "./VirtualList"
 import { SceneDecorator } from "../../storybook/SceneDecorator"
 import RenderCounter from "./RenderCounter"
+import { Ui89Button } from "../Ui89Button"
 
 const meta: Meta<typeof VirtualList> = {
   component: VirtualList,
@@ -77,5 +78,41 @@ export const CounterRender: Story = {
         <VirtualList {...args} />
       </div>
     )
+  },
+}
+
+export const UpdatesRowsWhenChanged: Story = {
+  render: (args) => {
+    const [rows, setRows] = useState<number[]>([1, 2, 3])
+
+    function onClickRefresh() {
+      let newRows = rows.slice()
+      newRows[2] += 1
+      setRows(newRows)
+    }
+
+    return (
+      <>
+        <Ui89Button onClick={onClickRefresh}>Refresh second row</Ui89Button>
+
+        <div style={{ height: "500px" }}>
+          <VirtualList rows={rows} renderRow={renderAsIs} />
+        </div>
+      </>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await new Promise((resolve) => setTimeout(resolve, 5))
+
+    const button = canvas.getByRole("button", {
+      name: "Refresh second row",
+    })
+
+    await userEvent.click(button)
+
+    await canvas.findByText("4")
   },
 }

@@ -16,8 +16,9 @@ export interface VirtualListProps<T> {
   getRowKey?: (row: T) => string
 }
 
-interface VisibleRow {
+interface VisibleRow<T> {
   index: number
+  row: T
   key: string
   render: React.ReactNode
   style: React.CSSProperties
@@ -38,7 +39,7 @@ export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
 
   const totalHeight = rowHeight * props.rows.length
 
-  const [visibleRows, setVisibleRows] = useState<Map<string, VisibleRow>>(
+  const [visibleRows, setVisibleRows] = useState<Map<string, VisibleRow<T>>>(
     new Map(),
   )
 
@@ -54,25 +55,32 @@ export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
       Math.ceil(size.height / rowHeight) + 2,
     )
 
-    const newVisibleRows = new Map<string, VisibleRow>()
+    const newVisibleRows = new Map<string, VisibleRow<T>>()
 
     for (let index = firstIndex; index < firstIndex + length; index++) {
       let row = props.rows[index]
       let key = props.getRowKey ? props.getRowKey(row) : String(index)
 
-      if (visibleRows.has(key)) {
-        newVisibleRows.set(key, visibleRows.get(key)!)
-      } else {
-        newVisibleRows.set(key, {
-          index,
-          key,
-          render: props.renderRow({ index, row }),
-          style: {
-            transform: `translateY(${index * rowHeight}px)`,
-            height: `${rowHeight}px`,
-          },
-        })
+      let existingRow = visibleRows.get(key)
+
+      if (existingRow !== undefined) {
+        if (existingRow.row === row) {
+          // Data has technically not changed so we can reuse.
+          newVisibleRows.set(key, existingRow)
+          continue
+        }
       }
+
+      newVisibleRows.set(key, {
+        index,
+        row,
+        key,
+        render: props.renderRow({ index, row }),
+        style: {
+          transform: `translateY(${index * rowHeight}px)`,
+          height: `${rowHeight}px`,
+        },
+      })
     }
 
     setVisibleRows(newVisibleRows)
