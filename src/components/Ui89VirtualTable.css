@@ -17,6 +17,10 @@
   border-top: 1px solid var(--ui89-scene-text-color);
 }
 
+.ui89-virtual-table__row--first {
+  border-top: none;
+}
+
 .ui89-virtual-table__cell {
   position: absolute;
 
@@ -41,13 +45,6 @@
 
 .ui89-virtual-table__cell--column-last {
   padding-right: var(--ui89-safe-space);
-}
-
-.ui89-virtual-table__cell--row-first {
-  border-top: none;
-}
-
-.ui89-virtual-table__cell--row-last {
 }
 
 .ui89-virtual-table__cell--halign-left {

@@ -70,13 +70,8 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     return columnIndex === columns.length - 1
   }
 
-  function getColumnClass(columnIndex: number, rowIndex: number): string {
-    const halign = columns[columnIndex].halign ?? "left"
-
-    const classes = [
-      "ui89-virtual-table__cell",
-      `ui89-virtual-table__cell--halign-${halign}`,
-    ]
+  function getRowClass(rowIndex: number): string {
+    const classes = ["ui89-virtual-table__row"]
 
     if (rowIndex === 0) {
       classes.push("ui89-virtual-table__cell--row-first")
@@ -86,6 +81,17 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     if (rowIndex === rows.length) {
       classes.push("ui89-virtual-table__cell--row-last")
     }
+
+    return classes.join(" ")
+  }
+
+  function getColumnClass(columnIndex: number): string {
+    const halign = columns[columnIndex].halign ?? "left"
+
+    const classes = [
+      "ui89-virtual-table__cell",
+      `ui89-virtual-table__cell--halign-${halign}`,
+    ]
 
     if (columnIndex === 0) {
       classes.push("ui89-virtual-table__cell--column-first")
@@ -112,14 +118,14 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
           {({ index, row }) => {
             return (
               <div
-                className="ui89-virtual-table__row"
-                style={{ minWidth: rowWidth() + 'px', height: "100%" }}
+                className={getRowClass(index)}
+                style={{ minWidth: rowWidth() + "px", height: "100%" }}
               >
                 {columns.map((column, columnIndex) => {
                   return (
                     <div
                       key={columnIndex}
-                      className={getColumnClass(columnIndex, index)}
+                      className={getColumnClass(columnIndex)}
                       style={{
                         top: 0,
                         height: "100%",
