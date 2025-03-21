@@ -37,7 +37,7 @@ export function Ui89InputText({
     onChange,
     filter(value: any) {
       if (autoTrim) {
-        if (typeof value === 'string') {
+        if (typeof value === "string") {
           value = value.replace(/\s+/g, " ").trim()
         }
       }

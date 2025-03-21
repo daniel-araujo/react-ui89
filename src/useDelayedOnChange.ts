@@ -29,6 +29,17 @@ export function useDelayedOnChange(props: {
     stateRef.current.setValue(props.value)
   }, [props.value])
 
+  function callOnChange() {
+    let newVal = stateRef.current.value
+
+    if (props.filter !== undefined) {
+      newVal = props.filter(newVal)
+    }
+
+    onChangeRef.current?.call(null, newVal)
+    return newVal
+  }
+
   class StateUnknown implements UseDelayedOnChangeState {
     state = "unknown"
 
@@ -41,23 +52,12 @@ export function useDelayedOnChange(props: {
     }
 
     setValue(newVal: any) {
-      if (props.filter !== undefined) {
-        newVal = props.filter(newVal)
-      }
-
-      if (newVal === stateRef.current.value) {
-        // Same value.
-        return
-      }
-
       setIntermediateValue(newVal)
     }
 
     onChange(newVal: any) {
       setIntermediateValue(newVal)
-      stateRef.current.throttledTimeout.call(300, () => {
-        onChangeRef.current?.call(null, stateRef.current.value)
-      })
+      stateRef.current.throttledTimeout.call(300, callOnChange)
     }
 
     onFocus() {
@@ -86,26 +86,14 @@ export function useDelayedOnChange(props: {
 
     onChange(newVal: any) {
       setIntermediateValue(newVal)
-      stateRef.current.throttledTimeout.call(300, () => {
-        onChangeRef.current?.call(null, stateRef.current.value)
-      })
+      stateRef.current.throttledTimeout.call(300, callOnChange)
     }
 
     onFocus() {}
 
     onBlur() {
-      let newVal = stateRef.current.value
-
-      if (props.filter !== undefined) {
-        newVal = props.filter(newVal)
-      }
-
-      if (newVal === stateRef.current.value) {
-        // Same value.
-        return
-      }
-
-      onChangeRef.current?.call(null, newVal)
+      let newVal = callOnChange()
+      setIntermediateValue(newVal)
       let newState = new StateUnknown()
       newState.value = newVal
       setState(newState)
