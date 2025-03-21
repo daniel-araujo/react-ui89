@@ -4,7 +4,7 @@ import "./VirtualList.css"
 import { useResizeObserver } from "../../useResizeObserver"
 import { useScrollYPosition } from "../../useScrollYPosition"
 
-export interface VirtualListPropsChildrenProps<T> {
+export interface VirtualListPropsRenderRowProps<T> {
   index: number
   row: T
 }
@@ -12,7 +12,7 @@ export interface VirtualListPropsChildrenProps<T> {
 export interface VirtualListProps<T> {
   rows: T[]
   rowHeight?: number
-  children: (props: VirtualListPropsChildrenProps<T>) => React.ReactNode
+  renderRow: (props: VirtualListPropsRenderRowProps<T>) => React.ReactNode
   getRowKey?: (row: T) => string
 }
 
@@ -26,17 +26,16 @@ interface VisibleRow {
  * Virtualization at row level. Great for long lists and tables with few
  * columns.
  */
-export function VirtualList<T>(props: VirtualListProps<T>) {
+export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
   const scrollContainer = useRef<HTMLDivElement>(null)
   const scrollAreaContainer = useRef<HTMLDivElement>(null)
 
   const { size } = useResizeObserver(scrollContainer)
+  const scrollY = useScrollYPosition(scrollContainer)
 
   const rowHeight = props.rowHeight ?? 50
 
   const totalHeight = rowHeight * props.rows.length
-
-  const scrollY = useScrollYPosition(scrollContainer)
 
   const visibleRows = useMemo<VisibleRow[]>(() => {
     if (size.height === 0) {
@@ -57,7 +56,7 @@ export function VirtualList<T>(props: VirtualListProps<T>) {
 
       visibleRows[visibleIndex] = {
         key: props.getRowKey ? props.getRowKey(row) : index,
-        render: props.children({
+        render: props.renderRow({
           index,
           row,
         }),
@@ -90,4 +89,4 @@ export function VirtualList<T>(props: VirtualListProps<T>) {
       </div>
     </div>
   )
-}
+})
