@@ -5,7 +5,7 @@ import "../style/typo.css"
 import "../style/chosen-theme.css"
 import "../style/reset.css"
 
-import HoverShadow from "./HoverShadow"
+import HoverShadow from "./private/HoverShadow"
 
 import { Ui89Theme } from "../theme"
 import { useUi89Overrides } from "../Ui89Override"

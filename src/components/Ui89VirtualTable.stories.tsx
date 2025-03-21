@@ -8,7 +8,7 @@ import {
   Ui89VirtualTablePropsColumn,
 } from "./Ui89VirtualTable"
 import { SceneDecorator } from "../storybook/SceneDecorator"
-import RenderCounter from "./RenderCounter"
+import RenderCounter from "./private/RenderCounter"
 import { Ui89Button } from "./Ui89Button"
 
 const meta: Meta<typeof Ui89VirtualTable> = {

@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { TimeAnimation } from "./TimeAnimation"
-import { SceneDecorator } from "../storybook/SceneDecorator"
+import { SceneDecorator } from "../../storybook/SceneDecorator"
 
 const meta: Meta<typeof TimeAnimation> = {
   component: TimeAnimation,

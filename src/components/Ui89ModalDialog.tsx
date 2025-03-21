@@ -1,10 +1,10 @@
 import React, { useMemo } from "react"
 import { createPortal } from "react-dom"
 import { Ui89Card } from "./Ui89Card"
-import HoverShadow from "./HoverShadow"
+import HoverShadow from "./private/HoverShadow"
 import { Ui89Scene } from "./Ui89Scene"
-import GridExpandTrick from "./GridExpandTrick"
-import ScrollContainer from "./ScrollContainer"
+import GridExpandTrick from "./private/GridExpandTrick"
+import ScrollContainer from "./private/ScrollContainer"
 
 import "./Ui89ModalDialog.css"
 
