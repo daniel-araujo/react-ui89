@@ -45,8 +45,8 @@ export function VirtualList<T>(props: VirtualListProps<T>) {
 
     let firstIndex = Math.max(0, Math.floor(scrollY / rowHeight) - 1)
     let length = Math.min(
-      props.rows.length - 1,
-      Math.ceil(size.height / rowHeight) + 1,
+      props.rows.length - firstIndex,
+      Math.ceil(size.height / rowHeight) + 2,
     )
 
     let visibleRows = Array(length)
