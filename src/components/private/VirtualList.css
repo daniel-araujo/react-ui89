@@ -1,0 +1,9 @@
+.ui89-virtual-list {
+  position: relative;
+  height: 100%;
+  overflow: auto;
+}
+
+.ui89-virtual-list__row {
+  position: absolute;
+}
