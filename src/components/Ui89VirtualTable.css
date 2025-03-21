@@ -1,36 +1,6 @@
 .ui89-virtual-table {
-  display: flex;
-  flex-direction: column;
-  overflow: auto;
   height: 100%;
   box-sizing: border-box;
-}
-
-.ui89-virtual-table > .ui89-virtual-table__body,
-.ui89-virtual-table > .ui89-virtual-table__empty {
-  flex: 1;
-}
-
-.ui89-virtual-table__header {
-  position: absolute;
-  top: 0;
-  z-index: 2;
-
-  /* Making sure that the row border can occupy the entire width */
-  min-width: 100%;
-
-  display: flex;
-}
-
-.ui89-virtual-table__row-border {
-  margin-top: -1px;
-  border-bottom: 1px solid var(--ui89-scene-text-color);
-  position: absolute;
-  left: 0;
-  right: 0;
-
-  /* This element can appear on top of other elements. */
-  pointer-events: none;
 }
 
 .ui89-virtual-table__empty {
@@ -38,17 +8,23 @@
   align-items: center;
   justify-content: center;
   text-align: center;
+  height: 100%;
+}
+
+.ui89-virtual-table__row {
+  position: relative;
+  box-sizing: border-box;
+  border-top: 1px solid var(--ui89-scene-text-color);
 }
 
 .ui89-virtual-table__cell {
+  position: absolute;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   padding: 0 var(--ui89-safe-space);
-
-  /* Have to render border in case last column is not visible. */
-  border-bottom: 1px solid var(--ui89-scene-text-color);
 
   /* The width of the column will include padding and border. */
   box-sizing: border-box;

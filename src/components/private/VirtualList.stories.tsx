@@ -22,12 +22,12 @@ function renderAsIs({ row }) {
 
 export const Empty: Story = {
   args: {
-    rows: []
+    rows: [],
   },
 
   render: (args, context) => {
     return (
-      <div style={{ height: '500px' }}>
+      <div style={{ height: "500px" }}>
         <VirtualList {...args}>{renderAsIs}</VirtualList>
       </div>
     )
@@ -36,12 +36,12 @@ export const Empty: Story = {
 
 export const SmallList: Story = {
   args: {
-    rows: [1, 2, 3, 4, 5]
+    rows: [1, 2, 3, 4, 5],
   },
 
   render: (args, context) => {
     return (
-      <div style={{ height: '500px' }}>
+      <div style={{ height: "500px" }}>
         <VirtualList {...args}>{renderAsIs}</VirtualList>
       </div>
     )
@@ -50,12 +50,12 @@ export const SmallList: Story = {
 
 export const BigList: Story = {
   args: {
-    rows: Array.from({ length: 100 }, (_, i) => i + 1)
+    rows: Array.from({ length: 100 }, (_, i) => i + 1),
   },
 
   render: (args, context) => {
     return (
-      <div style={{ height: '500px' }}>
+      <div style={{ height: "500px" }}>
         <VirtualList {...args}>{renderAsIs}</VirtualList>
       </div>
     )
@@ -64,12 +64,12 @@ export const BigList: Story = {
 
 export const CounterRender: Story = {
   args: {
-    rows: Array.from({ length: 100 }, (_, i) => i + 1)
+    rows: Array.from({ length: 100 }, (_, i) => i + 1),
   },
 
   render: (args, context) => {
     return (
-      <div style={{ height: '500px' }}>
+      <div style={{ height: "500px" }}>
         <VirtualList {...args}>{() => <RenderCounter />}</VirtualList>
       </div>
     )

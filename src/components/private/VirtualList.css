@@ -6,4 +6,5 @@
 
 .ui89-virtual-list__row {
   position: absolute;
+  width: 100%;
 }

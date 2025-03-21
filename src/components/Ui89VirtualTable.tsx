@@ -1,18 +1,8 @@
 import React, { forwardRef, useMemo } from "react"
-// @ts-ignore
-import { VariableSizeGrid } from "react-window"
-import AutoSizer from "react-virtualized-auto-sizer"
 import "./Ui89VirtualTable.css"
 import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
-
-const HEADER_HEIGHT = 20
-
-interface VariableSizeGridProps {
-  columnIndex: number
-  rowIndex: number
-  style: React.CSSProperties
-}
+import { VirtualList } from "./private/VirtualList"
 
 export enum Ui89VirtualTablePropsColumnAlign {
   left = "left",
@@ -48,23 +38,19 @@ export interface Ui89VirtualTableProps<T> {
 }
 
 export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
-  const rows = useMemo(() => {
-    return props.rows !== undefined ? props.rows : []
+  const rows = useMemo<(T | undefined)[]>(() => {
+    let rows: any[] = props.rows !== undefined ? props.rows.slice() : []
+
+    rows.unshift(undefined)
+
+    return rows
   }, [props.rows])
 
   const columns = useMemo(() => {
     return props.columns !== undefined ? props.columns : []
   }, [props.columns])
 
-  function getRowHeight(index: number): number {
-    if (index === 0) {
-      // Header.
-      return HEADER_HEIGHT
-    } else {
-      // Body
-      return props.rowHeight ?? 20
-    }
-  }
+  const rowHeight = props.rowHeight ?? 20
 
   function getColumnWidth(index: number): number {
     return columns[index].width ?? 100
@@ -94,6 +80,7 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
 
     if (rowIndex === 0) {
       classes.push("ui89-virtual-table__cell--row-first")
+      classes.push("ui89-typo-normal-bold")
     }
 
     if (rowIndex === rows.length) {
@@ -118,96 +105,46 @@ export function Ui89VirtualTable<T>(props: Ui89VirtualTableProps<T>) {
     return getColumnHorizontalOffset(columns.length)
   }
 
-  // This is the secret to having sticky headers.
-  const innerElementType = forwardRef(({ children, ...rest }: any, ref) => (
-    <div ref={ref} {...rest}>
-      <div className="ui89-virtual-table__header">
-        {columns.map((column, index) => (
-          <div
-            key={index}
-            className={[getColumnClass(index, 0), "ui89-typo-normal-bold"].join(
-              " ",
-            )}
-            style={{
-              left: getColumnHorizontalOffset(index),
-              width: getColumnWidth(index) + "px",
-              height: getRowHeight(0) + "px",
-            }}
-          >
-            {column.renderHeader !== undefined &&
-              column.renderHeader({ index, column })}
-          </div>
-        ))}
-
-        <div
-          className="ui89-virtual-table__row-border"
-          style={{ top: 0, transform: `translateY(${getRowHeight(0) + "px"})` }}
-        ></div>
-      </div>
-
-      {children}
-    </div>
-  ))
-
-  function renderRowBorder(columnIndex: number, style: React.CSSProperties) {
-    if (!isLastColumn(columnIndex)) {
-      // Do nothing.
-      return
-    }
-
-    let rowBorderStyle = {
-      ...style,
-
-      // Will want to stretch width.
-      left: 0,
-      right: 0,
-      width: undefined,
-    }
-
-    return (
-      <div
-        className="ui89-virtual-table__row-border"
-        style={rowBorderStyle}
-      ></div>
-    )
-  }
-
   return (
     <div className="ui89-virtual-table">
-      {rows.length > 0 ? (
-        <div className="ui89-virtual-table__body">
-          <AutoSizer>
-            {({ height, width }) => (
-              <VariableSizeGrid
-                columnCount={columns.length}
-                columnWidth={getColumnWidth}
-                rowCount={rows.length + 1}
-                rowHeight={getRowHeight}
-                width={width}
-                height={height}
-                innerElementType={innerElementType}
+      {rows.length > 1 ? (
+        <VirtualList rows={rows} rowHeight={rowHeight}>
+          {({ index, row }) => {
+            return (
+              <div
+                className="ui89-virtual-table__row"
+                style={{ height: "100%" }}
               >
-                {({ columnIndex, rowIndex, style }: VariableSizeGridProps) => (
-                  <>
+                {columns.map((column, columnIndex) => {
+                  return (
                     <div
-                      className={getColumnClass(columnIndex, rowIndex)}
-                      style={style}
+                      key={columnIndex}
+                      className={getColumnClass(columnIndex, index)}
+                      style={{
+                        top: 0,
+                        height: "100%",
+                        width: getColumnWidth(columnIndex) + "px",
+                        left: getColumnHorizontalOffset(columnIndex) + "px",
+                      }}
                     >
-                      {/* We do not render the first column. That space is reserved for the header */}
-                      {rowIndex !== 0 &&
-                        columns[columnIndex].renderBody({
-                          index: rowIndex - 1,
-                          row: rows[rowIndex - 1],
-                        })}
+                      {index === 0
+                        ? columns[columnIndex].renderHeader
+                          ? columns[columnIndex].renderHeader({
+                              index: columnIndex,
+                              column: column,
+                            })
+                          : ""
+                        : columns[columnIndex].renderBody({
+                            index: index,
+                            row: row as T,
+                          })}
                     </div>
-
-                    {renderRowBorder(columnIndex, style)}
-                  </>
-                )}
-              </VariableSizeGrid>
-            )}
-          </AutoSizer>
-        </div>
+                  )
+                })}
+              </div>
+            )
+          }}
+        </VirtualList>
       ) : (
         <div className="ui89-virtual-table__empty">
           <Ui89TagBox theme="warning">Empty</Ui89TagBox>

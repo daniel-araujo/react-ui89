@@ -2,24 +2,24 @@ import React, { useState, useEffect, useRef, useMemo } from "react"
 
 import "./VirtualList.css"
 import { useResizeObserver } from "../../useResizeObserver"
-import { useScrollYPosition } from "../../useScrollYPosition";
+import { useScrollYPosition } from "../../useScrollYPosition"
 
 export interface VirtualListPropsChildrenProps<T> {
-  index: number;
-  row: T;
+  index: number
+  row: T
 }
 
 export interface VirtualListProps<T> {
-  rows: T[],
-  rowHeight?: number,
+  rows: T[]
+  rowHeight?: number
   children: (props: VirtualListPropsChildrenProps<T>) => React.ReactNode
   getRowKey?: (row: T) => string
 }
 
 interface VisibleRow {
-  key: string;
-  render: React.ReactNode;
-  style: React.CSSProperties;
+  key: string
+  render: React.ReactNode
+  style: React.CSSProperties
 }
 
 /**
@@ -44,24 +44,27 @@ export function VirtualList<T>(props: VirtualListProps<T>) {
     }
 
     let firstIndex = Math.max(0, Math.floor(scrollY / rowHeight) - 1)
-    let length = Math.min(props.rows.length, Math.ceil(size.height / rowHeight) + 2)
+    let length = Math.min(
+      props.rows.length,
+      Math.ceil(size.height / rowHeight) + 2,
+    )
 
     let visibleRows = Array(length)
 
-    for (let index = firstIndex; index < (firstIndex + length); index++) {
+    for (let index = firstIndex; index < firstIndex + length; index++) {
       let visibleIndex = index - firstIndex
       let row = props.rows[index]
 
       visibleRows[visibleIndex] = {
-        key: props.getRowKey ? props.getRowKey(row) : String(row),
+        key: props.getRowKey ? props.getRowKey(row) : index,
         render: props.children({
           index,
-          row
+          row,
         }),
         style: {
           transform: `translateY(${index * rowHeight}px)`,
-          height: rowHeight + 'px'
-        }
+          height: rowHeight + "px",
+        },
       }
     }
 
@@ -70,9 +73,19 @@ export function VirtualList<T>(props: VirtualListProps<T>) {
 
   return (
     <div ref={scrollContainer} className="ui89-virtual-list">
-      <div ref={scrollAreaContainer} className="ui89-virtual-list__scroll-area" style={{ height: `${totalHeight}px` }}>
+      <div
+        ref={scrollAreaContainer}
+        className="ui89-virtual-list__scroll-area"
+        style={{ height: `${totalHeight}px` }}
+      >
         {visibleRows.map((visibleRow) => (
-          <div key={visibleRow.key} className="ui89-virtual-list__row" style={visibleRow.style}>{visibleRow.render}</div>
+          <div
+            key={visibleRow.key}
+            className="ui89-virtual-list__row"
+            style={visibleRow.style}
+          >
+            {visibleRow.render}
+          </div>
         ))}
       </div>
     </div>

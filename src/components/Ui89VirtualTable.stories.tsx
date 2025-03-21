@@ -37,6 +37,14 @@ export const EmptyWithColumns: Story = {
       },
     ],
   },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
+  },
 }
 
 export const TwoColumns: Story = {
@@ -53,6 +61,14 @@ export const TwoColumns: Story = {
         renderBody: () => <>Second column</>,
       },
     ],
+  },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
   },
 }
 
@@ -76,6 +92,14 @@ export const ColumnHorizontalOverflow: Story = {
       },
     ],
   },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
+  },
 }
 
 export const ColumnVerticalOverflow: Story = {
@@ -98,6 +122,14 @@ export const ColumnVerticalOverflow: Story = {
       },
     ],
   },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
+  },
 }
 
 export const VerticalScrolling: Story = {
@@ -119,6 +151,14 @@ export const VerticalScrolling: Story = {
         renderBody: () => <>Third column.</>,
       },
     ],
+  },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
   },
 }
 
@@ -153,6 +193,14 @@ export const HorizontalScrolling: Story = {
       },
     ],
   },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
+  },
 }
 
 export const AlignsColumnItemsVertically: Story = {
@@ -176,6 +224,14 @@ export const AlignsColumnItemsVertically: Story = {
         renderBody: () => <>Second column</>,
       },
     ],
+  },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
   },
 }
 
@@ -229,6 +285,14 @@ export const AlignColumnsHorizontally: Story = {
       },
     ],
   },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
+  },
 }
 
 export const NotEnoughColumnsAndRows: Story = {
@@ -245,6 +309,14 @@ export const NotEnoughColumnsAndRows: Story = {
         renderBody: () => <>Second column</>,
       },
     ],
+  },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
   },
 }
 
@@ -267,6 +339,14 @@ export const BodyColumnsDoNotLoseState: Story = {
         renderBody: () => <RenderCounter />,
       },
     ],
+  },
+
+  render: (args, context) => {
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable {...args} />
+      </div>
+    )
   },
 }
 
@@ -291,7 +371,9 @@ export const DoesNotLoseStateAfterReplacingData: Story = {
     return (
       <>
         <Ui89Button onClick={onClickRefresh}>Refresh data</Ui89Button>
-        <Ui89VirtualTable {...args} />
+        <div style={{ height: "500px" }}>
+          <Ui89VirtualTable {...args} />
+        </div>
       </>
     )
   },
@@ -337,6 +419,10 @@ export const CanTypeWithoutLosingFocusWhenUpdatingData: Story = {
       ]
     }, [rows])
 
-    return <Ui89VirtualTable rows={rows} columns={columns} />
+    return (
+      <div style={{ height: "500px" }}>
+        <Ui89VirtualTable rows={rows} columns={columns} />
+      </div>
+    )
   },
 }
