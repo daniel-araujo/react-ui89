@@ -170,4 +170,4 @@ export const Ui89VirtualTable = React.memo(
       </div>
     )
   },
-)
+) as <T>(props: Ui89VirtualTableProps<T>) => JSX.Element

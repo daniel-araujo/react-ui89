@@ -101,4 +101,4 @@ export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
       </div>
     </div>
   )
-})
+}) as <T>(props: VirtualListProps<T>) => JSX.Element
