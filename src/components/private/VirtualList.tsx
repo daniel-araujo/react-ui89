@@ -17,6 +17,7 @@ export interface VirtualListProps<T> {
 }
 
 interface VisibleRow {
+  index: number
   key: string
   render: React.ReactNode
   style: React.CSSProperties
@@ -37,38 +38,49 @@ export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
 
   const totalHeight = rowHeight * props.rows.length
 
-  const visibleRows = useMemo<VisibleRow[]>(() => {
+  const [visibleRows, setVisibleRows] = useState<Map<string, VisibleRow>>(
+    new Map(),
+  )
+
+  useEffect(() => {
     if (size.height === 0) {
-      return []
+      setVisibleRows(new Map())
+      return
     }
 
-    let firstIndex = Math.max(0, Math.floor(scrollY / rowHeight) - 1)
-    let length = Math.min(
+    const firstIndex = Math.max(0, Math.floor(scrollY / rowHeight) - 1)
+    const length = Math.min(
       props.rows.length - firstIndex,
       Math.ceil(size.height / rowHeight) + 2,
     )
 
-    let visibleRows = Array(length)
+    const newVisibleRows = new Map<string, VisibleRow>()
 
     for (let index = firstIndex; index < firstIndex + length; index++) {
-      let visibleIndex = index - firstIndex
       let row = props.rows[index]
+      let key = props.getRowKey ? props.getRowKey(row) : String(index)
 
-      visibleRows[visibleIndex] = {
-        key: props.getRowKey ? props.getRowKey(row) : index,
-        render: props.renderRow({
+      if (visibleRows.has(key)) {
+        newVisibleRows.set(key, visibleRows.get(key)!)
+      } else {
+        newVisibleRows.set(key, {
           index,
-          row,
-        }),
-        style: {
-          transform: `translateY(${index * rowHeight}px)`,
-          height: rowHeight + "px",
-        },
+          key,
+          render: props.renderRow({ index, row }),
+          style: {
+            transform: `translateY(${index * rowHeight}px)`,
+            height: `${rowHeight}px`,
+          },
+        })
       }
     }
 
-    return visibleRows
+    setVisibleRows(newVisibleRows)
   }, [props.rows, scrollY, size.height])
+
+  const orderedVisibleRows = useMemo(() => {
+    return Array.from(visibleRows.values()).sort((a, b) => a.index - b.index)
+  }, [visibleRows])
 
   return (
     <div ref={scrollContainer} className="ui89-virtual-list">
@@ -77,7 +89,7 @@ export const VirtualList = React.memo(<T,>(props: VirtualListProps<T>) => {
         className="ui89-virtual-list__scroll-area"
         style={{ height: `${totalHeight}px` }}
       >
-        {visibleRows.map((visibleRow) => (
+        {orderedVisibleRows.map((visibleRow) => (
           <div
             key={visibleRow.key}
             className="ui89-virtual-list__row"
