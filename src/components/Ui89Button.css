@@ -87,6 +87,9 @@
 .ui89-button__button__click {
   position: absolute;
   inset: 0;
+
+  /* Want to cover border too. */
+  margin: -1px;
 }
 
 .ui89-button__button:active:not(.ui89-button__button--disabled)
