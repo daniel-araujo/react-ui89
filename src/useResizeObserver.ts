@@ -15,8 +15,10 @@ export const useResizeObserver = <T extends HTMLElement>(
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
         setSize({
-          width: entry.target.clientWidth,
-          height: entry.target.clientHeight,
+          width:
+            entry.borderBoxSize?.[0]?.inlineSize ?? entry.contentRect.width,
+          height:
+            entry.borderBoxSize?.[0]?.blockSize ?? entry.contentRect.height,
         })
       }
     })
