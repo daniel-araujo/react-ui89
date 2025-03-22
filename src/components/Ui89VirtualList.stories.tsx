@@ -96,7 +96,7 @@ export const UpdatesRowsWhenChanged: Story = {
 
     return (
       <>
-        <Ui89Button onClick={onClickRefresh}>Refresh second row</Ui89Button>
+        <Ui89Button onClick={onClickRefresh}>Refresh third row</Ui89Button>
 
         <div style={{ height: "500px" }}>
           <Ui89VirtualList rows={rows} renderRow={renderAsIs} />
@@ -111,7 +111,7 @@ export const UpdatesRowsWhenChanged: Story = {
     await new Promise((resolve) => setTimeout(resolve, 5))
 
     const button = canvas.getByRole("button", {
-      name: "Refresh second row",
+      name: "Refresh third row",
     })
 
     await userEvent.click(button)
