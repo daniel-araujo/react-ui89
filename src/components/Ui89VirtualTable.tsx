@@ -35,6 +35,7 @@ export interface Ui89VirtualTablePropsColumn<T> {
 }
 
 export interface Ui89VirtualTableProps<T> {
+  maxHeight?: string
   rows?: T[]
   columns?: Ui89VirtualTablePropsColumn<T>[]
   rowHeight?: number
@@ -155,9 +156,10 @@ export const Ui89VirtualTable = React.memo(
     )
 
     return (
-      <div className="ui89-virtual-table">
+      <>
         {rows.length > 1 ? (
           <Ui89VirtualList
+            maxHeight={props.maxHeight}
             rows={rows as T[]}
             rowHeight={rowHeight}
             renderRow={renderRow}
@@ -167,7 +169,7 @@ export const Ui89VirtualTable = React.memo(
             <Ui89TagBox theme="warning">Empty</Ui89TagBox>
           </div>
         )}
-      </div>
+      </>
     )
   },
 ) as <T>(props: Ui89VirtualTableProps<T>) => JSX.Element

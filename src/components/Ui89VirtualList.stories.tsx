@@ -26,51 +26,31 @@ function renderAsIs({ row }: Ui89VirtualListPropsRenderRowProps<any>) {
 
 export const Empty: Story = {
   args: {
+    maxHeight: "500px",
     rows: [],
     renderRow: renderAsIs,
-  },
-
-  render: (args, context) => {
-    return (
-      <div style={{ height: "500px" }}>
-        <Ui89VirtualList {...args} />
-      </div>
-    )
   },
 }
 
 export const SmallList: Story = {
   args: {
+    maxHeight: "500px",
     rows: [1, 2, 3, 4, 5],
     renderRow: renderAsIs,
-  },
-
-  render: (args, context) => {
-    return (
-      <div style={{ height: "500px" }}>
-        <Ui89VirtualList {...args} />
-      </div>
-    )
   },
 }
 
 export const BigList: Story = {
   args: {
+    maxHeight: "500px",
     rows: Array.from({ length: 100 }, (_, i) => i + 1),
     renderRow: renderAsIs,
-  },
-
-  render: (args, context) => {
-    return (
-      <div style={{ height: "500px" }}>
-        <Ui89VirtualList {...args} />
-      </div>
-    )
   },
 }
 
 export const CounterRender: Story = {
   args: {
+    maxHeight: "500px",
     rows: Array.from({ length: 100 }, (_, i) => i + 1),
     renderRow: () => <RenderCounter />,
   },

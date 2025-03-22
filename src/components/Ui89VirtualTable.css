@@ -1,14 +1,8 @@
-.ui89-virtual-table {
-  height: 100%;
-  box-sizing: border-box;
-}
-
 .ui89-virtual-table__empty {
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
-  height: 100%;
 }
 
 .ui89-virtual-table__row {

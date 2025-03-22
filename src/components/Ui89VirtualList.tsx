@@ -10,6 +10,7 @@ export interface Ui89VirtualListPropsRenderRowProps<T> {
 }
 
 export interface Ui89VirtualListProps<T> {
+  maxHeight?: string
   rows: T[]
   rowHeight?: number
   renderRow: (props: Ui89VirtualListPropsRenderRowProps<T>) => React.ReactNode
@@ -93,7 +94,11 @@ export const Ui89VirtualList = React.memo(
     }, [visibleRows])
 
     return (
-      <div ref={scrollContainer} className="ui89-virtual-list">
+      <div
+        ref={scrollContainer}
+        className="ui89-virtual-list"
+        style={{ maxHeight: props.maxHeight }}
+      >
         <div
           ref={scrollAreaContainer}
           className="ui89-virtual-list__scroll-area"
