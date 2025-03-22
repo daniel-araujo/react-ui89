@@ -2,13 +2,16 @@ import React, { useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent, within } from "@storybook/test"
 
-import { VirtualList, VirtualListPropsRenderRowProps } from "./VirtualList"
-import { SceneDecorator } from "../../storybook/SceneDecorator"
-import RenderCounter from "./RenderCounter"
-import { Ui89Button } from "../Ui89Button"
+import {
+  Ui89VirtualList,
+  Ui89VirtualListPropsRenderRowProps,
+} from "./Ui89VirtualList"
+import { SceneDecorator } from "../storybook/SceneDecorator"
+import RenderCounter from "./private/RenderCounter"
+import { Ui89Button } from "./Ui89Button"
 
-const meta: Meta<typeof VirtualList> = {
-  component: VirtualList,
+const meta: Meta<typeof Ui89VirtualList> = {
+  component: Ui89VirtualList,
   tags: ["autodocs"],
   decorators: [SceneDecorator],
 }
@@ -17,7 +20,7 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-function renderAsIs({ row }: VirtualListPropsRenderRowProps<any>) {
+function renderAsIs({ row }: Ui89VirtualListPropsRenderRowProps<any>) {
   return row
 }
 
@@ -30,7 +33,7 @@ export const Empty: Story = {
   render: (args, context) => {
     return (
       <div style={{ height: "500px" }}>
-        <VirtualList {...args} />
+        <Ui89VirtualList {...args} />
       </div>
     )
   },
@@ -45,7 +48,7 @@ export const SmallList: Story = {
   render: (args, context) => {
     return (
       <div style={{ height: "500px" }}>
-        <VirtualList {...args} />
+        <Ui89VirtualList {...args} />
       </div>
     )
   },
@@ -60,7 +63,7 @@ export const BigList: Story = {
   render: (args, context) => {
     return (
       <div style={{ height: "500px" }}>
-        <VirtualList {...args} />
+        <Ui89VirtualList {...args} />
       </div>
     )
   },
@@ -75,7 +78,7 @@ export const CounterRender: Story = {
   render: (args, context) => {
     return (
       <div style={{ height: "500px" }}>
-        <VirtualList {...args} />
+        <Ui89VirtualList {...args} />
       </div>
     )
   },
@@ -96,7 +99,7 @@ export const UpdatesRowsWhenChanged: Story = {
         <Ui89Button onClick={onClickRefresh}>Refresh second row</Ui89Button>
 
         <div style={{ height: "500px" }}>
-          <VirtualList rows={rows} renderRow={renderAsIs} />
+          <Ui89VirtualList rows={rows} renderRow={renderAsIs} />
         </div>
       </>
     )

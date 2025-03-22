@@ -105,6 +105,12 @@ export type { Ui89TitleUnderlineProps } from "./components/Ui89TitleUnderline"
 export { Ui89Toaster, useUi89Toaster } from "./components/Ui89Toaster"
 export type { Ui89ToasterOptions } from "./components/Ui89Toaster"
 
+export { Ui89VirtualList } from "./components/Ui89VirtualList"
+export type {
+  Ui89VirtualListPropsRenderRowProps,
+  Ui89VirtualListProps,
+} from "./components/Ui89VirtualList"
+
 export { Ui89VirtualTable } from "./components/Ui89VirtualTable"
 export type {
   Ui89VirtualTablePropsColumnRenderHeaderParams,

@@ -3,9 +3,9 @@ import "./Ui89VirtualTable.css"
 import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
 import {
-  VirtualList,
-  VirtualListPropsRenderRowProps,
-} from "./private/VirtualList"
+  Ui89VirtualList,
+  Ui89VirtualListPropsRenderRowProps,
+} from "./Ui89VirtualList"
 
 export enum Ui89VirtualTablePropsColumnAlign {
   left = "left",
@@ -116,7 +116,7 @@ export const Ui89VirtualTable = React.memo(
     }
 
     const renderRow = useCallback(
-      ({ index, row }: VirtualListPropsRenderRowProps<T>) => {
+      ({ index, row }: Ui89VirtualListPropsRenderRowProps<T>) => {
         return (
           <div
             className={getRowClass(index)}
@@ -157,7 +157,7 @@ export const Ui89VirtualTable = React.memo(
     return (
       <div className="ui89-virtual-table">
         {rows.length > 1 ? (
-          <VirtualList
+          <Ui89VirtualList
             rows={rows as T[]}
             rowHeight={rowHeight}
             renderRow={renderRow}
