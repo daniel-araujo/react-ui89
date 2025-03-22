@@ -1,3 +1,9 @@
 .ui-89-reset-a {
   text-decoration: none;
 }
+
+.ui-89-reset-button {
+  background: none;
+  padding: 0;
+  border: 0;
+}

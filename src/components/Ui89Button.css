@@ -15,6 +15,11 @@
   width: fit-content;
 }
 
+.ui89-button__implementation {
+  padding: 0;
+  border: 0;
+}
+
 .ui89-button--size-square .ui89-button__button {
   width: 22px;
   height: 22px;
@@ -83,11 +88,4 @@
 .ui89-button__button--disabled {
   opacity: 0.5;
   cursor: var(--ui89-cursor-default);
-}
-
-.ui89-button__button__click {
-  position: absolute;
-  inset: 0;
-  right: var(--ui89-safe-space);
-  bottom: var(--ui89-safe-space);
 }

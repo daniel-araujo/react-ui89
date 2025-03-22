@@ -142,6 +142,27 @@ export const SizeSquareOverflow: Story = {
   },
 }
 
+export const Disabled: Story = {
+  args: {
+    children: "XXXXX",
+    disabled: true,
+  },
+}
+
+export const ClickPromise: Story = {
+  args: {
+    children: "XXXXX",
+    disabled: true,
+    onClick: () => new Promise(() => {}),
+  },
+
+  async play(context) {
+    const button = await screen.findByRole("button")
+
+    await userEvent.click(button)
+  },
+}
+
 export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
   args: {
     routerPush: fn(),

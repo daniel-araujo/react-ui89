@@ -107,37 +107,29 @@ export function Ui89Button({
     clicking ? "ui89-button__button--active" : undefined,
   ].join(" ")
 
-  if (href) {
-    return (
-      <span className={containerClass}>
-        <span className="ui89-button__button__click"></span>
-        <HoverShadow>
+  return (
+    <div className={containerClass}>
+      <HoverShadow>
+        {href ? (
           <a
-            className={`ui-89-reset-a ${buttonClass}`}
+            className="ui-89-reset-a"
             role="button"
             href={href}
             onClick={onAnchorClick}
           >
-            <span>{children}</span>
+            <span className={buttonClass}>{children}</span>
           </a>
-        </HoverShadow>
-      </span>
-    )
-  } else {
-    return (
-      <span className={containerClass}>
-        <span className="ui89-button__button__click"></span>
-        <HoverShadow>
+        ) : (
           <button
-            className={buttonClass}
+            className="ui-89-reset-button"
             type="button"
             onClick={onButtonClick}
             disabled={localDisabled}
           >
-            <span>{children}</span>
+            <span className={buttonClass}>{children}</span>
           </button>
-        </HoverShadow>
-      </span>
-    )
-  }
+        )}
+      </HoverShadow>
+    </div>
+  )
 }
