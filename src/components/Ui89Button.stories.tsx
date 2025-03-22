@@ -8,6 +8,8 @@ import {
   Ui89OverrideProvider,
   Ui89OverrideProviderProps,
 } from "../Ui89Override"
+import { useUi89Toaster } from "./Ui89Toaster"
+import { Ui89Theme } from "../theme"
 
 const meta: Meta<typeof Ui89Button> = {
   component: Ui89Button,
@@ -157,5 +159,16 @@ export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
     await userEvent.click(button)
 
     expect(context.args.routerPush).toHaveBeenCalledWith("/link")
+  },
+}
+
+export const ClickArea: Story = {
+  args: {
+    children: "Button",
+    onClick: fn(),
+  },
+
+  render: (args, context) => {
+    return <Ui89Button {...args} />
   },
 }

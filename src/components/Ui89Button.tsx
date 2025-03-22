@@ -110,6 +110,7 @@ export function Ui89Button({
   if (href) {
     return (
       <span className={containerClass}>
+        <span className="ui89-button__button__click"></span>
         <HoverShadow>
           <a
             className={`ui-89-reset-a ${buttonClass}`}
@@ -117,7 +118,6 @@ export function Ui89Button({
             href={href}
             onClick={onAnchorClick}
           >
-            <span className="ui89-button__button__click"></span>
             <span>{children}</span>
           </a>
         </HoverShadow>
@@ -126,6 +126,7 @@ export function Ui89Button({
   } else {
     return (
       <span className={containerClass}>
+        <span className="ui89-button__button__click"></span>
         <HoverShadow>
           <button
             className={buttonClass}
@@ -133,7 +134,6 @@ export function Ui89Button({
             onClick={onButtonClick}
             disabled={localDisabled}
           >
-            <span className="ui89-button__button__click"></span>
             <span>{children}</span>
           </button>
         </HoverShadow>

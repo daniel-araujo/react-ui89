@@ -1,6 +1,7 @@
 .ui89-button {
   display: inline-grid;
   height: fit-content;
+  position: relative;
 }
 
 .ui89-button--size-standard .ui89-button__button {
@@ -87,17 +88,6 @@
 .ui89-button__button__click {
   position: absolute;
   inset: 0;
-
-  /* Want to cover border too. */
-  margin: -1px;
-}
-
-.ui89-button__button:active:not(.ui89-button__button--disabled)
-  > .ui89-button__button__click,
-.ui89-button__button--active > .ui89-button__button__click {
-  transform: translate3d(
-    calc(var(--ui89-safe-space) / 2 * -1),
-    calc(var(--ui89-safe-space) / 2 * -1),
-    0
-  );
+  right: var(--ui89-safe-space);
+  bottom: var(--ui89-safe-space);
 }
