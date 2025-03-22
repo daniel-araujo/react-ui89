@@ -33,6 +33,9 @@ export type { Ui89HighlightTextProps } from "./components/Ui89HighlightText"
 export { Ui89Hr } from "./components/Ui89Hr"
 export type { Ui89HrProps, Ui89HrPropsLook } from "./components/Ui89Hr"
 
+export { Ui89InputCheckBox } from "./components/Ui89InputCheckBox"
+export type { Ui89InputCheckBoxProps } from "./components/Ui89InputCheckBox"
+
 export { Ui89InputCheckText } from "./components/Ui89InputCheckText"
 export type { Ui89InputCheckTextProps } from "./components/Ui89InputCheckText"
 

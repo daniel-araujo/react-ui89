@@ -1,0 +1,23 @@
+.ui89-input-check-box {
+  display: inline-flex;
+  cursor: pointer;
+  user-select: none;
+}
+
+.ui89-input-check-box__x {
+  box-sizing: border-box;
+  display: block;
+  text-align: center;
+  width: var(--ui89-input-height);
+  height: var(--ui89-input-height);
+  font-size: var(--ui89-font-size-normal);
+  font-weight: bold;
+  padding: 0 var(--ui89-safe-space);
+  border: 0;
+  border-radius: var(--ui89-box-border-radius);
+  outline: none;
+  background: var(--ui89-input-bg-color);
+  color: var(--ui89-input-text-color);
+  line-height: var(--ui89-input-height);
+  user-select: none;
+}
