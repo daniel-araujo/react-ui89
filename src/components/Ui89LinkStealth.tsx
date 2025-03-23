@@ -1,10 +1,10 @@
 import React from "react"
 
-import "./Ui89LinkUnderline.css"
+import "./Ui89LinkStealth.css"
 
 import { Ui89LinkBase } from "./private/LinkBase"
 
-export interface Ui89LinkUnderlineProps {
+export interface Ui89LinkStealthProps {
   onClick?: () => void | Promise<void>
   href?: string
   children: React.ReactNode
@@ -12,6 +12,6 @@ export interface Ui89LinkUnderlineProps {
   disabled?: boolean
 }
 
-export function Ui89LinkUnderline(props: Ui89LinkUnderlineProps) {
-  return <Ui89LinkBase className="ui89-link-underline" {...props} />
+export function Ui89LinkStealth(props: Ui89LinkStealthProps) {
+  return <Ui89LinkBase className="ui89-link-stealth" {...props} />
 }

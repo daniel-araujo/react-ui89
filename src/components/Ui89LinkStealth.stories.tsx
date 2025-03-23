@@ -2,15 +2,15 @@ import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
-import { Ui89LinkUnderline } from "./Ui89LinkUnderline"
+import { Ui89LinkStealth } from "./Ui89LinkStealth"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import {
   Ui89OverrideProvider,
   Ui89OverrideProviderProps,
 } from "../Ui89Override"
 
-const meta: Meta<typeof Ui89LinkUnderline> = {
-  component: Ui89LinkUnderline,
+const meta: Meta<typeof Ui89LinkStealth> = {
+  component: Ui89LinkStealth,
   tags: ["autodocs"],
   decorators: [SceneDecorator],
 }
@@ -26,7 +26,7 @@ export const Link: StoryObj<Ui89OverrideProviderProps> = {
 
   render: (args, context) => (
     <Ui89OverrideProvider routerPush={args.routerPush}>
-      <Ui89LinkUnderline href="/link">Link</Ui89LinkUnderline>
+      <Ui89LinkStealth href="/link">Link</Ui89LinkStealth>
     </Ui89OverrideProvider>
   ),
 

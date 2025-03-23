@@ -1,0 +1,9 @@
+.ui89-link-stealth {
+  color: currentColor;
+  cursor: pointer;
+}
+
+.ui89-link-stealth:hover {
+  color: currentColor;
+  background: var(--ui89-scene-highlight-color);
+}
