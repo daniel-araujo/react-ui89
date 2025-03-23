@@ -18,11 +18,23 @@ export interface Ui89VirtualListProps<T> {
 }
 
 interface VisibleRow<T> {
+  userKey: string
   index: number
   row: T
-  key: string
+  key: number
   render: React.ReactNode
   style: React.CSSProperties
+}
+
+function popAnyEntry<K, V>(map: Map<K, V>): V | undefined {
+  const iterator = map.keys().next();
+  if (!iterator.done) {
+    const key = iterator.value;
+    const value = map.get(key)!;
+    map.delete(key);
+    return value;
+  }
+  return undefined;
 }
 
 /**
@@ -32,6 +44,7 @@ interface VisibleRow<T> {
  */
 export const Ui89VirtualList = React.memo(
   <T,>(props: Ui89VirtualListProps<T>) => {
+    const keyCounter = useRef<number>(0)
     const scrollContainer = useRef<HTMLDivElement>(null)
     const scrollAreaContainer = useRef<HTMLDivElement>(null)
 
@@ -58,6 +71,15 @@ export const Ui89VirtualList = React.memo(
         Math.ceil(size.height / rowHeight) + 2,
       )
 
+      const deletedRows = new Map(visibleRows);
+
+      // Must find the ones that are no longer visible.
+      for (let index = firstIndex; index < firstIndex + length; index++) {
+        let row = props.rows[index]
+        let key = props.getRowKey ? props.getRowKey(row) : String(index)
+        deletedRows.delete(key)
+      }
+
       const newVisibleRows = new Map<string, VisibleRow<T>>()
 
       for (let index = firstIndex; index < firstIndex + length; index++) {
@@ -69,21 +91,42 @@ export const Ui89VirtualList = React.memo(
         if (existingRow !== undefined) {
           if (existingRow.row === row) {
             // Data has technically not changed so we can reuse.
-            newVisibleRows.set(key, existingRow)
-            continue
+          } else {
+            // Data has changed, must update render.
+            existingRow.render = props.renderRow({ index, row })
           }
+
+          newVisibleRows.set(key, existingRow)
+
+          continue
         }
 
-        newVisibleRows.set(key, {
-          index,
-          row,
-          key,
-          render: props.renderRow({ index, row }),
-          style: {
-            top: `${index * rowHeight}px`,
+        let oldRow = popAnyEntry(deletedRows)
+
+        if (oldRow !== undefined) {
+          oldRow.index = index
+          oldRow.row = row
+          oldRow.userKey = key
+          oldRow.render = props.renderRow({ index, row })
+          oldRow.style = {
+            transform: `translateY(${index * rowHeight}px)`,
             height: `${rowHeight}px`,
-          },
-        })
+          }
+          newVisibleRows.set(key, oldRow)
+        } else [
+          // New row.
+          newVisibleRows.set(key, {
+            index,
+            row,
+            key: keyCounter.current++,
+            userKey: key,
+            render: props.renderRow({ index, row }),
+            style: {
+              transform: `translateY(${index * rowHeight}px)`,
+              height: `${rowHeight}px`,
+            },
+          })
+        ]
       }
 
       setVisibleRows(newVisibleRows)
