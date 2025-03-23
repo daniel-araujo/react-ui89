@@ -27,14 +27,14 @@ interface VisibleRow<T> {
 }
 
 function popAnyEntry<K, V>(map: Map<K, V>): V | undefined {
-  const iterator = map.keys().next();
+  const iterator = map.keys().next()
   if (!iterator.done) {
-    const key = iterator.value;
-    const value = map.get(key)!;
-    map.delete(key);
-    return value;
+    const key = iterator.value
+    const value = map.get(key)!
+    map.delete(key)
+    return value
   }
-  return undefined;
+  return undefined
 }
 
 /**
@@ -71,7 +71,7 @@ export const Ui89VirtualList = React.memo(
         Math.ceil(size.height / rowHeight) + 2,
       )
 
-      const deletedRows = new Map(visibleRows);
+      const deletedRows = new Map(visibleRows)
 
       // Must find the ones that are no longer visible.
       for (let index = firstIndex; index < firstIndex + length; index++) {
@@ -113,7 +113,7 @@ export const Ui89VirtualList = React.memo(
             height: `${rowHeight}px`,
           }
           newVisibleRows.set(key, oldRow)
-        } else [
+        } else {
           // New row.
           newVisibleRows.set(key, {
             index,
@@ -126,7 +126,7 @@ export const Ui89VirtualList = React.memo(
               height: `${rowHeight}px`,
             },
           })
-        ]
+        }
       }
 
       setVisibleRows(newVisibleRows)
