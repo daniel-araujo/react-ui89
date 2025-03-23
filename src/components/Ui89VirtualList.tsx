@@ -80,7 +80,7 @@ export const Ui89VirtualList = React.memo(
           key,
           render: props.renderRow({ index, row }),
           style: {
-            transform: `translateY(${index * rowHeight}px)`,
+            top: `${index * rowHeight}px`,
             height: `${rowHeight}px`,
           },
         })
