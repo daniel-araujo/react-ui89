@@ -13,6 +13,7 @@ export { Ui89Button } from "./components/Ui89Button"
 export type {
   Ui89ButtonProps,
   Ui89ButtonPropsSize,
+  Ui89ButtonPropsType,
 } from "./components/Ui89Button"
 
 export { Ui89Card } from "./components/Ui89Card"

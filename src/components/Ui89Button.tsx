@@ -15,6 +15,11 @@ export enum Ui89ButtonPropsSize {
   square = "square",
 }
 
+export enum Ui89ButtonPropsType {
+  submit = "submit",
+  reset = "reset",
+}
+
 export interface Ui89ButtonProps {
   theme?: Ui89Theme | keyof typeof Ui89Theme
   size?: Ui89ButtonPropsSize | keyof typeof Ui89ButtonPropsSize
@@ -25,11 +30,13 @@ export interface Ui89ButtonProps {
   autoDisableOnClick?: boolean
   disabled?: boolean
   activated?: boolean
+  type?: keyof typeof Ui89ButtonPropsType
 }
 
 export function Ui89Button({
   theme = Ui89Theme.primary,
   size = Ui89ButtonPropsSize.standard,
+  type,
   block,
   onClick,
   href,
@@ -122,7 +129,7 @@ export function Ui89Button({
         ) : (
           <button
             className="ui-89-reset-button"
-            type="button"
+            type={type || "button"}
             onClick={onButtonClick}
             disabled={localDisabled}
           >
