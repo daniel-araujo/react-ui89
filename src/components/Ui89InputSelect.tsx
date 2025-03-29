@@ -8,6 +8,7 @@ import {
   useRole,
   useInteractions,
   FloatingFocusManager,
+  FloatingPortal,
 } from "@floating-ui/react"
 
 import "./Ui89InputSelect.css"
@@ -73,7 +74,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
       }),
     ],
     whileElementsMounted: autoUpdate,
-    placement: "bottom-start",
+    placement: "bottom",
     strategy: "fixed",
   })
 

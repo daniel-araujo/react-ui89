@@ -125,3 +125,34 @@ export const ModalDialog: Story = {
     </Ui89ModalDialog>
   ),
 }
+
+export const IsPlacedInTheRoot: Story = {
+  args: {
+    options: optionsSampleTo100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+  },
+
+  render: (args, context) => (
+    <Ui89ModalDialog open={true}>
+      <Ui89InputSelect {...args} />
+
+      <Ui89SpaceVertical gap={1} />
+
+      <div style={{ position: "absolute", zIndex: 1 }}>
+        <Ui89ThemeBackground theme={Ui89Theme.danger}>
+          This element will be on top of the menu if the menu were not in the
+          root
+        </Ui89ThemeBackground>
+      </div>
+
+      <Ui89SpaceVertical gap={5} />
+    </Ui89ModalDialog>
+  ),
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    await userEvent.click(box)
+  },
+}
