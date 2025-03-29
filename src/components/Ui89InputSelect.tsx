@@ -1,14 +1,33 @@
-import React, { useMemo, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
+import {
+  useFloating,
+  autoUpdate,
+  size,
+  useClick,
+  useDismiss,
+  useRole,
+  useInteractions,
+  FloatingFocusManager,
+} from "@floating-ui/react"
 
 import "./Ui89InputSelect.css"
 import "../style/input-box.css"
 import "../style/text.css"
+import {
+  Ui89VirtualList,
+  Ui89VirtualListPropsRenderRowProps,
+} from "./Ui89VirtualList"
 
 export interface Ui89InputSelectProps<T> {
   /**
    * Available options.
    */
   options?: T[]
+
+  /**
+   * Option height. Options list uses a technique called DOM virtualization.
+   */
+  optionHeight?: number
 
   /**
    * The selected option.
@@ -37,6 +56,37 @@ export interface Ui89InputSelectProps<T> {
  * allows you to choose from a list of options.
  */
 export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
+  const [isOpen, setIsOpen] = useState(false)
+  const { refs, floatingStyles, context } = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+      size({
+        apply({ availableWidth, availableHeight, elements }) {
+          let width = elements.reference.getBoundingClientRect().width
+          // Change styles, e.g.
+          Object.assign(elements.floating.style, {
+            width: `${width}px`,
+            maxHeight: `${Math.max(0, availableHeight)}px`,
+          })
+        },
+      }),
+    ],
+    whileElementsMounted: autoUpdate,
+    placement: "bottom-start",
+    strategy: "fixed",
+  })
+
+  const click = useClick(context)
+  const dismiss = useDismiss(context)
+  const role = useRole(context)
+
+  const { getReferenceProps, getFloatingProps } = useInteractions([
+    click,
+    dismiss,
+    role,
+  ])
+
   const getOptionKey = useMemo(() => {
     return props.getOptionKey ?? ((option: any) => option)
   }, [props.getOptionKey])
@@ -62,24 +112,46 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
     return getOptionKey(option) === getOptionKey(props.value)
   }
 
-  function selectOption(option: T) {
-    if (props.onChange !== undefined) {
-      props.onChange(option)
-    }
-
-    if (document.activeElement !== null) {
-      // @ts-expect-error
-      document.activeElement.blur()
-    }
-  }
-
   function optionTitle(option: T) {
     return String(option)
   }
 
+  const selectOption = useCallback(
+    (option: T) => {
+      if (props.onChange !== undefined) {
+        props.onChange(option)
+      }
+
+      setIsOpen(false)
+    },
+    [props.onChange],
+  )
+
+  const renderOption = useCallback(
+    ({ row }: Ui89VirtualListPropsRenderRowProps<T>) => {
+      const isSelected = isOptionSelected(row)
+
+      return (
+        <div
+          className={[
+            "ui89-input-select__menu__item",
+            isSelected ? "ui89-input-select__menu__item--selected" : null,
+          ].join(" ")}
+          title={optionTitle(row)}
+          key={getOptionKey(row)}
+          onClick={() => selectOption(row)}
+        >
+          {props.renderOption !== undefined ? props.renderOption(row) : row}
+        </div>
+      )
+    },
+    [options, selectOption],
+  )
+
   return (
     <div className="ui89-input-select">
       <div
+        ref={refs.setReference}
         className={[
           "ui89-input-box",
           "ui89-input-box--unselectable",
@@ -88,6 +160,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
         ].join(" ")}
         tabIndex={0}
         title={props.value !== undefined ? optionTitle(props.value) : undefined}
+        {...getReferenceProps()}
       >
         {props.value !== undefined ? (
           <>
@@ -100,40 +173,34 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
         )}
       </div>
 
-      <div className="ui89-input-select__menu" tabIndex={0}>
-        <div className="ui89-input-select__menu__content">
-          {options.length > 0 ? (
-            options.map((o) => {
-              const isSelected = isOptionSelected(o)
-
-              return (
-                <div
-                  className={[
-                    "ui89-input-select__menu__item",
-                    isSelected
-                      ? "ui89-input-select__menu__item--selected"
-                      : null,
-                  ].join(" ")}
-                  title={optionTitle(o)}
-                  key={getOptionKey(o)}
-                  onClick={() => selectOption(o)}
-                >
-                  {props.renderOption !== undefined ? props.renderOption(o) : o}
-                </div>
-              )
-            })
-          ) : (
-            <div
-              className={[
-                "ui89-input-select__menu__item",
-                "ui89-input-select__menu__item--disabled",
-              ].join(" ")}
-            >
-              &lt;empty&gt;
-            </div>
-          )}
-        </div>
-      </div>
+      {isOpen && (
+        <FloatingFocusManager context={context} modal={false}>
+          <div
+            ref={refs.setFloating}
+            className="ui89-input-select__menu"
+            tabIndex={0}
+            style={floatingStyles}
+          >
+            {options.length > 0 ? (
+              <Ui89VirtualList
+                maxHeight="300px"
+                rowHeight={props.optionHeight ?? 32}
+                rows={options}
+                renderRow={renderOption}
+              />
+            ) : (
+              <div
+                className={[
+                  "ui89-input-select__menu__item",
+                  "ui89-input-select__menu__item--disabled",
+                ].join(" ")}
+              >
+                &lt;empty&gt;
+              </div>
+            )}
+          </div>
+        </FloatingFocusManager>
+      )}
     </div>
   )
 }

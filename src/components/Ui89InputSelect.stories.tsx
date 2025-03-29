@@ -1,9 +1,11 @@
+import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
 import { Ui89InputSelect } from "./Ui89InputSelect"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
+import { Ui89ModalDialog } from "./Ui89ModalDialog"
 
 const optionsSampleTo100 = Array.from({ length: 100 }, (_, i) => ({
   value: i + 1,
@@ -90,4 +92,18 @@ export const MenuVerticalOverflow: Story = {
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
   },
+}
+
+export const ModalDialog: Story = {
+  args: {
+    options: optionsSampleTo100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+  },
+
+  render: (args, context) => (
+    <Ui89ModalDialog open={true}>
+      <Ui89InputSelect {...args} />
+    </Ui89ModalDialog>
+  ),
 }

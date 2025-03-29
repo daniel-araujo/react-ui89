@@ -3,30 +3,13 @@
 }
 
 .ui89-input-select__menu {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 300px;
   overflow: auto;
-  display: none;
   background: var(--ui89-input-bg-color);
   color: var(--ui89-input-text-color);
-  z-index: 1;
-}
-
-.ui89-input-select__menu__content {
-  display: inline-flex;
-  flex-direction: column;
-
-  /* We want to make sure that all items occupy at least the width of the menu */
-  min-width: 100%;
 }
 
 .ui89-input-select:focus-within .ui89-input-select__menu {
-  display: block;
-
-  animation: ui89-input-select__appear var(--ui89-animation-speed);
+  /*animation: ui89-input-select__appear var(--ui89-animation-speed);*/
 }
 
 @keyframes ui89-input-select__appear {
@@ -41,13 +24,16 @@
 
 .ui89-input-select__menu__item {
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 100%;
   background: var(--ui89-input-bg-color);
   color: var(--ui89-input-text-color);
   height: var(--ui89-input-height);
   padding: 0 var(--ui89-safe-space);
   white-space: nowrap;
   user-select: none;
+  box-sizing: border-box;
 }
 
 .ui89-input-select__menu__item:not(.ui89-input-select__menu__item--disabled) {
