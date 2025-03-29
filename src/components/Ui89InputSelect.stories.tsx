@@ -1,11 +1,14 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn } from "@storybook/test"
+import { fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89InputSelect } from "./Ui89InputSelect"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 import { Ui89ModalDialog } from "./Ui89ModalDialog"
+import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
+import { Ui89ThemeBackground } from "./Ui89ThemeBackground"
+import { Ui89Theme } from "../theme"
 
 const optionsSampleTo100 = Array.from({ length: 100 }, (_, i) => ({
   value: i + 1,
@@ -91,6 +94,21 @@ export const MenuVerticalOverflow: Story = {
     options: optionsSampleTo100,
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
+  },
+}
+
+export const OptionHeight: Story = {
+  args: {
+    options: optionsSampleTo100,
+    optionHeight: 100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+  },
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    await userEvent.click(box)
   },
 }
 
