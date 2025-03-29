@@ -61,6 +61,7 @@ export function useDelayedOnChange(props: {
     }
 
     onFocus() {
+      console.log("onFocus")
       let newState = new StateFocus()
       newState.value = stateRef.current.value
       setState(newState)
@@ -92,6 +93,7 @@ export function useDelayedOnChange(props: {
     onFocus() {}
 
     onBlur() {
+      console.log("onBlur")
       let newVal = callOnChange()
       setIntermediateValue(newVal)
       let newState = new StateUnknown()

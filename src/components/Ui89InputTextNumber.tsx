@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useMemo } from "react"
 import { useState, useEffect } from "react"
 import { Ui89InputText } from "./Ui89InputText"
 import { stringRemoveAllWhitespace } from "../text-utils"
@@ -42,10 +42,9 @@ export function Ui89InputTextNumber({
   onChange,
   precision,
 }: Ui89InputTextNumberProps) {
-  const [isTyping, setIsTyping] = useState(false)
-  const [intermediateValue, setIntermediateValue] = useState(
-    displayText(value, emptyValue),
-  )
+  const wrappedValue = useMemo(() => {
+    return displayText(value, emptyValue)
+  }, [value, emptyValue])
 
   function implOnChange(value: string) {
     if (onChange === undefined) {
@@ -82,17 +81,5 @@ export function Ui89InputTextNumber({
     onChange(value)
   }
 
-  useEffect(() => {
-    if (!isTyping) {
-      setIntermediateValue(displayText(value, emptyValue))
-    }
-  }, [isTyping, value])
-
-  return (
-    <Ui89InputText
-      value={intermediateValue}
-      onChange={implOnChange}
-      onTyping={setIsTyping}
-    />
-  )
+  return <Ui89InputText value={wrappedValue} onChange={implOnChange} />
 }

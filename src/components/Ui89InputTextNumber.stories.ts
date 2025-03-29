@@ -34,9 +34,14 @@ export const OnChangeSendsEmptyValueWhenInputIsEmptied: Story = {
   async play(context) {
     const textbox = await screen.findByRole("textbox")
 
+    textbox.focus()
+
+    // Allow time to focus.
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
     await userEvent.clear(textbox)
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    textbox.blur()
 
     expect(context.args.onChange).toHaveBeenCalledWith("0")
   },
@@ -52,13 +57,22 @@ export const BecomesEmptyWhenTypingInEmptyValue: Story = {
   async play(context) {
     const textbox = await screen.findByRole<HTMLInputElement>("textbox")
 
+    textbox.focus()
+
+    // Allow time to focus.
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
     await userEvent.clear(textbox)
     await userEvent.type(textbox, "0")
 
     expect(textbox.value).toEqual("0")
 
     textbox.blur()
-    await new Promise((resolve) => setTimeout(resolve, 200))
+
+    // Allow time to blur.
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    console.log(textbox, textbox.value)
 
     expect(textbox.value).toEqual("")
   },
