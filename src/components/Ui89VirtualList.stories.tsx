@@ -99,3 +99,49 @@ export const UpdatesRowsWhenChanged: Story = {
     await canvas.findByText("4")
   },
 }
+
+export const RendersAllRowsAgain: Story = {
+  render: (args) => {
+    const [rows, setRows] = useState<number[]>([1, 2, 3])
+
+    function onClickRefresh() {
+      let newRows = rows.slice()
+      newRows[2] += 1
+      setRows(newRows)
+    }
+
+    function renderRow({ row }: any) {
+      return (
+        <>
+          {row} (total: {rows.reduce((p, c) => c + p, 0)})
+        </>
+      )
+    }
+
+    return (
+      <>
+        <Ui89Button onClick={onClickRefresh}>Refresh third row</Ui89Button>
+
+        <div style={{ height: "500px" }}>
+          <Ui89VirtualList rows={rows} renderRow={renderRow} />
+        </div>
+      </>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await new Promise((resolve) => setTimeout(resolve, 5))
+
+    const button = canvas.getByRole("button", {
+      name: "Refresh third row",
+    })
+
+    await userEvent.click(button)
+
+    await canvas.findByText("1 (total: 7)")
+    await canvas.findByText("2 (total: 7)")
+    await canvas.findByText("4 (total: 7)")
+  },
+}

@@ -59,7 +59,7 @@ export const Ui89VirtualList = React.memo(
       new Map(),
     )
 
-    useEffect(() => {
+    function updateVisibleRows(cache: Map<string, VisibleRow<T>>) {
       if (size.height === 0) {
         setVisibleRows(new Map())
         return
@@ -71,7 +71,7 @@ export const Ui89VirtualList = React.memo(
         Math.ceil(size.height / rowHeight) + 2,
       )
 
-      const deletedRows = new Map(visibleRows)
+      const deletedRows = new Map(cache)
 
       // Must find the ones that are no longer visible.
       for (let index = firstIndex; index < firstIndex + length; index++) {
@@ -86,7 +86,7 @@ export const Ui89VirtualList = React.memo(
         let row = props.rows[index]
         let key = props.getRowKey ? props.getRowKey(row) : String(index)
 
-        let existingRow = visibleRows.get(key)
+        let existingRow = cache.get(key)
 
         if (existingRow !== undefined) {
           if (existingRow.row === row) {
@@ -130,7 +130,18 @@ export const Ui89VirtualList = React.memo(
       }
 
       setVisibleRows(newVisibleRows)
-    }, [props.rows, scrollY, size.height])
+    }
+
+    useEffect(() => {
+      // The renderRow function may have a reference to the rows array. if we
+      // do not throw away our cache we risk leaving rows referencing
+      // stale data.
+      updateVisibleRows(new Map())
+    }, [props.rows])
+
+    useEffect(() => {
+      updateVisibleRows(visibleRows)
+    }, [scrollY, size.height])
 
     const orderedVisibleRows = useMemo(() => {
       return Array.from(visibleRows.values()).sort((a, b) => a.index - b.index)
