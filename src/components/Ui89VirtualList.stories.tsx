@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useCallback, useRef, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent, within } from "@storybook/test"
 
@@ -100,23 +100,25 @@ export const UpdatesRowsWhenChanged: Story = {
   },
 }
 
-export const RendersAllRowsAgain: Story = {
+export const RendersAllRowsAgainWhenArrayChanges: Story = {
   render: (args) => {
     const [rows, setRows] = useState<number[]>([1, 2, 3])
+    const rowsRef = useRef<number[]>(rows)
 
     function onClickRefresh() {
       let newRows = rows.slice()
       newRows[2] += 1
       setRows(newRows)
+      rowsRef.current = newRows
     }
 
-    function renderRow({ row }: any) {
+    const renderRow = useCallback(({ row }: any) => {
       return (
         <>
-          {row} (total: {rows.reduce((p, c) => c + p, 0)})
+          {row} (total: {rowsRef.current.reduce((p, c) => c + p, 0)})
         </>
       )
-    }
+    }, [])
 
     return (
       <>
@@ -143,5 +145,48 @@ export const RendersAllRowsAgain: Story = {
     await canvas.findByText("1 (total: 7)")
     await canvas.findByText("2 (total: 7)")
     await canvas.findByText("4 (total: 7)")
+  },
+}
+
+export const RendersAllRowsAgainWhenRenderRowChanges: Story = {
+  render: (args) => {
+    const rowsRef = useRef<number[]>([1, 2, 3])
+    const [renderRow, setRenderRow] = useState(
+      () => (props: Ui89VirtualListPropsRenderRowProps<number>) => <>empty</>,
+    )
+
+    function onClickRefresh() {
+      setRenderRow(
+        () => (props: Ui89VirtualListPropsRenderRowProps<number>) => (
+          <>{props.row}</>
+        ),
+      )
+    }
+
+    return (
+      <>
+        <Ui89Button onClick={onClickRefresh}>Replace renderRow</Ui89Button>
+
+        <div style={{ height: "500px" }}>
+          <Ui89VirtualList rows={rowsRef.current} renderRow={renderRow} />
+        </div>
+      </>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await new Promise((resolve) => setTimeout(resolve, 5))
+
+    const button = canvas.getByRole("button", {
+      name: "Replace renderRow",
+    })
+
+    await userEvent.click(button)
+
+    await canvas.findByText("1")
+    await canvas.findByText("2")
+    await canvas.findByText("3")
   },
 }

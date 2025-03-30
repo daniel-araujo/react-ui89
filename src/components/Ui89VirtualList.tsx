@@ -137,7 +137,7 @@ export const Ui89VirtualList = React.memo(
       // do not throw away our cache we risk leaving rows referencing
       // stale data.
       updateVisibleRows(new Map())
-    }, [props.rows])
+    }, [props.rows, props.renderRow])
 
     useEffect(() => {
       updateVisibleRows(visibleRows)
