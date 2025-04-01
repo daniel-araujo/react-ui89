@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { throttledTimeout } from "./timeout"
+import { useUpdatedRef } from "./useUpdatedRef"
 
 interface UseDelayedOnChangeState {
   value: any
@@ -15,11 +16,9 @@ export function useDelayedOnChange(props: {
   onChange?: (value: any) => void
   filter?: (value: any) => any
 }): UseDelayedOnChangeState {
-  const onChangeRef = useRef(props.onChange)
-
-  useEffect(() => {
-    onChangeRef.current = props.onChange
-  }, [props.onChange])
+  console.log("useDelayedOnChange", props.value)
+  const valueRef = useUpdatedRef(props.value)
+  const onChangeRef = useUpdatedRef(props.onChange)
 
   const [intermediateValue, setIntermediateValue] = useState<any>(
     props.defaultValue || props.value,
@@ -36,7 +35,16 @@ export function useDelayedOnChange(props: {
       newVal = props.filter(newVal)
     }
 
-    onChangeRef.current?.call(null, newVal)
+    if (newVal !== valueRef.current) {
+      console.log(
+        "callOnChange",
+        newVal,
+        valueRef.current,
+        newVal !== valueRef.current,
+      )
+      onChangeRef.current?.call(null, newVal)
+    }
+
     return newVal
   }
 
@@ -61,7 +69,6 @@ export function useDelayedOnChange(props: {
     }
 
     onFocus() {
-      console.log("onFocus")
       let newState = new StateFocus()
       newState.value = stateRef.current.value
       setState(newState)
@@ -93,7 +100,6 @@ export function useDelayedOnChange(props: {
     onFocus() {}
 
     onBlur() {
-      console.log("onBlur")
       let newVal = callOnChange()
       setIntermediateValue(newVal)
       let newState = new StateUnknown()
@@ -108,11 +114,7 @@ export function useDelayedOnChange(props: {
     return newState
   })
 
-  const stateRef = useRef(state)
-
-  useEffect(() => {
-    stateRef.current = state
-  }, [state])
+  const stateRef = useUpdatedRef(state)
 
   stateRef.current.value = intermediateValue
 

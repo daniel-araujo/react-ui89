@@ -72,6 +72,50 @@ export const TypingOnlyEmitsOnChangeWhenNoLongerTyping: Story = {
   },
 }
 
+export const DoesNotEmitOnChangeOnBlurIfValuesDidNotChange: Story = {
+  args: {
+    value: "A",
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    textbox.focus()
+
+    await new Promise((resolve) => setTimeout(resolve, 50))
+
+    textbox.blur()
+
+    await new Promise((resolve) => setTimeout(resolve, 50))
+
+    expect(context.args.onChange).not.toHaveBeenCalled()
+  },
+}
+
+export const DoesNotEmitOnChangeTwiceBecauseOfBlur: Story = {
+  args: {
+    value: "",
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    textbox.focus()
+
+    await new Promise((resolve) => setTimeout(resolve, 50))
+
+    await userEvent.type(textbox, "A")
+
+    textbox.blur()
+
+    await new Promise((resolve) => setTimeout(resolve, 500))
+
+    expect(context.args.onChange).toHaveBeenCalledTimes(1)
+  },
+}
+
 export const RemovesWhitespaceAtTheBeginning: Story = {
   args: {
     value: "",
