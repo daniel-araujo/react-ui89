@@ -18,6 +18,7 @@ import {
   Ui89VirtualList,
   Ui89VirtualListPropsRenderRowProps,
 } from "./Ui89VirtualList"
+import { Ui89Scene } from "./Ui89Scene"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -175,32 +176,36 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
       </div>
 
       {isOpen && (
-        <FloatingFocusManager context={context} modal={false}>
-          <div
-            ref={refs.setFloating}
-            className="ui89-input-select__menu"
-            tabIndex={0}
-            style={floatingStyles}
-          >
-            {options.length > 0 ? (
-              <Ui89VirtualList
-                maxHeight="300px"
-                rowHeight={props.optionHeight ?? 32}
-                rows={options}
-                renderRow={renderOption}
-              />
-            ) : (
-              <div
-                className={[
-                  "ui89-input-select__menu__item",
-                  "ui89-input-select__menu__item--disabled",
-                ].join(" ")}
-              >
-                &lt;empty&gt;
-              </div>
-            )}
-          </div>
-        </FloatingFocusManager>
+        <FloatingPortal>
+          <FloatingFocusManager context={context} modal={false}>
+            <div
+              ref={refs.setFloating}
+              className="ui89-input-select__menu"
+              tabIndex={0}
+              style={floatingStyles}
+            >
+              <Ui89Scene>
+                {options.length > 0 ? (
+                  <Ui89VirtualList
+                    maxHeight="300px"
+                    rowHeight={props.optionHeight ?? 32}
+                    rows={options}
+                    renderRow={renderOption}
+                  />
+                ) : (
+                  <div
+                    className={[
+                      "ui89-input-select__menu__item",
+                      "ui89-input-select__menu__item--disabled",
+                    ].join(" ")}
+                  >
+                    &lt;empty&gt;
+                  </div>
+                )}
+              </Ui89Scene>
+            </div>
+          </FloatingFocusManager>
+        </FloatingPortal>
       )}
     </div>
   )
