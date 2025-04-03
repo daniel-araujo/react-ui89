@@ -181,7 +181,6 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
             <div
               ref={refs.setFloating}
               className="ui89-input-select__menu"
-              tabIndex={0}
               style={floatingStyles}
             >
               <Ui89Scene>

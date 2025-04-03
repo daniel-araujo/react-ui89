@@ -11,20 +11,24 @@ export const useScrollYPosition = (ref: RefObject<HTMLElement>): number => {
 
     const handleScroll = () => {
       if (!ticking.current) {
+        ticking.current = true
         requestAnimationFrame(() => {
           setScrollY(element.scrollTop)
           ticking.current = false
         })
-        ticking.current = true
       }
     }
 
     element.addEventListener("scroll", handleScroll, { passive: true })
 
-    observer.current = new MutationObserver(() => {
-      if (ref.current !== element) {
-        element.removeEventListener("scroll", handleScroll)
-        ref.current?.addEventListener("scroll", handleScroll, { passive: true })
+    observer.current = new MutationObserver((mutations) => {
+      for (const mutation of mutations) {
+        if (mutation.type === "childList" && ref.current !== element) {
+          element.removeEventListener("scroll", handleScroll)
+          ref.current?.addEventListener("scroll", handleScroll, {
+            passive: true,
+          })
+        }
       }
     })
 
@@ -33,6 +37,7 @@ export const useScrollYPosition = (ref: RefObject<HTMLElement>): number => {
     return () => {
       element.removeEventListener("scroll", handleScroll)
       observer.current?.disconnect()
+      observer.current = null
     }
   }, [ref])
 
