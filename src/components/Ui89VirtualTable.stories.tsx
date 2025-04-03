@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn, userEvent, within } from "@storybook/test"
+import { expect, fn, userEvent, waitFor, within } from "@storybook/test"
 import { useArgs } from "@storybook/preview-api"
 
 import {
@@ -349,5 +349,38 @@ export const CanTypeWithoutLosingFocusWhenUpdatingData: Story = {
     }, [rows])
 
     return <Ui89VirtualTable maxHeight="500px" rows={rows} columns={columns} />
+  },
+}
+
+export const RenderBodyReceivesCorrespondingIndexAndRow: Story = {
+  args: {
+    maxHeight: "500px",
+    rows: [1, 2, 3],
+    columns: [
+      {
+        width: 500,
+        renderHeader: () => <>Header</>,
+        renderBody: fn((props) => {
+          return <>{JSON.stringify(props)}</>
+        }),
+      },
+    ],
+  },
+
+  play: async (context) => {
+    await waitFor(() => {
+      expect(context.args.columns![0].renderBody).toHaveBeenCalledWith({
+        index: 0,
+        row: 1,
+      })
+      expect(context.args.columns![0].renderBody).toHaveBeenCalledWith({
+        index: 1,
+        row: 2,
+      })
+      expect(context.args.columns![0].renderBody).toHaveBeenCalledWith({
+        index: 2,
+        row: 3,
+      })
+    })
   },
 }

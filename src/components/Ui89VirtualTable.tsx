@@ -143,7 +143,7 @@ export const Ui89VirtualTable = React.memo(
                         })
                       : ""
                     : columns[columnIndex].renderBody({
-                        index: index,
+                        index: index - 1,
                         row: row,
                       })}
                 </div>
