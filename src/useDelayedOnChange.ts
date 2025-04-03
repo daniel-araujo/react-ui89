@@ -16,7 +16,6 @@ export function useDelayedOnChange(props: {
   onChange?: (value: any) => void
   filter?: (value: any) => any
 }): UseDelayedOnChangeState {
-  console.log("useDelayedOnChange", props.value)
   const valueRef = useUpdatedRef(props.value)
   const onChangeRef = useUpdatedRef(props.onChange)
 
