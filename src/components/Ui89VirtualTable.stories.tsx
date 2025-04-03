@@ -335,13 +335,18 @@ export const CanTypeWithoutLosingFocusWhenUpdatingData: Story = {
 
       return [
         {
+          width: 300,
           renderHeader: () => <>Header</>,
           renderBody: (props) => {
             return (
-              <input
-                value={props.row}
-                onChange={onUpdate.bind(null, props.index)}
-              />
+              <div style={{ display: "flex" }}>
+                <input
+                  value={props.row}
+                  onChange={onUpdate.bind(null, props.index)}
+                />
+
+                <RenderCounter />
+              </div>
             )
           },
         },

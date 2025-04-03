@@ -160,7 +160,7 @@ export const Ui89VirtualList = React.memo(
         >
           {orderedVisibleRows.map((visibleRow) => (
             <div
-              key={visibleRow.key}
+              key={visibleRow.userKey}
               className="ui89-virtual-list__row"
               style={visibleRow.style}
             >
