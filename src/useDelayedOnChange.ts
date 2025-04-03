@@ -35,12 +35,6 @@ export function useDelayedOnChange(props: {
     }
 
     if (newVal !== valueRef.current) {
-      console.log(
-        "callOnChange",
-        newVal,
-        valueRef.current,
-        newVal !== valueRef.current,
-      )
       onChangeRef.current?.call(null, newVal)
     }
 

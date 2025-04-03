@@ -72,8 +72,6 @@ export const BecomesEmptyWhenTypingInEmptyValue: Story = {
     // Allow time to blur.
     await new Promise((resolve) => setTimeout(resolve, 1))
 
-    console.log(textbox, textbox.value)
-
     expect(textbox.value).toEqual("")
   },
 }
