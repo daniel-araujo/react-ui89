@@ -34,6 +34,7 @@
   left: 0;
   padding-left: var(--ui89-safe-space);
   transform: translateY(50%);
+  max-width: 100%;
 }
 
 .ui89-card__top-center {
@@ -42,8 +43,7 @@
   transform: translateY(-50%);
   left: var(--ui89-safe-space);
   right: var(--ui89-safe-space);
-  display: flex;
-  justify-content: center;
+  max-width: 100%;
 }
 
 .ui89-card__horizontal-connection {
