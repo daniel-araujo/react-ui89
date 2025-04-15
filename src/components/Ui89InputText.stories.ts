@@ -166,3 +166,22 @@ export const RemovesExtraWhitespaceInTheMiddle: Story = {
     expect(context.args.onChange).toHaveBeenCalledWith("A A")
   },
 }
+
+export const CallsOnChangeWhenEnter: Story = {
+  args: {
+    value: "",
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    await userEvent.type(textbox, "A{Enter}")
+
+    expect(context.args.onChange).toHaveBeenCalledWith("A")
+
+    await userEvent.type(textbox, "A{Enter}")
+
+    expect(context.args.onChange).toHaveBeenCalledWith("AA")
+  },
+}

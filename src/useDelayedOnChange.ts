@@ -8,6 +8,7 @@ interface UseDelayedOnChangeState {
   onChange: (newVal: any) => void
   onFocus: () => void
   onBlur: () => void
+  onConfirm: () => void
 }
 
 export function useDelayedOnChange(props: {
@@ -68,6 +69,10 @@ export function useDelayedOnChange(props: {
     }
 
     onBlur() {}
+
+    onConfirm() {
+      callOnChange()
+    }
   }
 
   class StateFocus implements UseDelayedOnChangeState {
@@ -98,6 +103,10 @@ export function useDelayedOnChange(props: {
       let newState = new StateUnknown()
       newState.value = newVal
       setState(newState)
+    }
+
+    onConfirm() {
+      callOnChange()
     }
   }
 

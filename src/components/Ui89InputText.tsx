@@ -55,6 +55,11 @@ export function Ui89InputText({
         onChange={(e) => delayedState.onChange(e.target.value)}
         onBlur={delayedState.onBlur}
         onFocus={delayedState.onFocus}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            delayedState.onConfirm()
+          }
+        }}
         placeholder={placeholder}
       />
     </div>
