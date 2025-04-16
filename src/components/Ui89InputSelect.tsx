@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useState } from "react"
 import {
   useFloating,
   autoUpdate,
@@ -19,6 +19,7 @@ import {
   Ui89VirtualListPropsRenderRowProps,
 } from "./Ui89VirtualList"
 import { Ui89Scene } from "./Ui89Scene"
+import { Ui89InputText } from "./Ui89InputText"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -37,9 +38,21 @@ export interface Ui89InputSelectProps<T> {
   value?: T
 
   /**
+   * Display search input.
+   *
+   * Does not search automatically. You must filter the options yourself.
+   */
+  search?: boolean
+
+  /**
    * Called whenever an option is selected.
    */
   onChange?: (option: T) => void
+
+  /**
+   * A search term was provided.
+   */
+  onSearch?: (search: string) => void
 
   /**
    * Retrieves the value that uniquely identifies the option. This is what is
@@ -58,6 +71,7 @@ export interface Ui89InputSelectProps<T> {
  * allows you to choose from a list of options.
  */
 export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
+  const [search, setSearch] = useState("")
   const [isOpen, setIsOpen] = useState(false)
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
@@ -101,10 +115,6 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
 
     return props.options
   }, [props.options])
-
-  const optionsMap = useMemo(() => {
-    return new Map(options.map((option) => [getOptionKey(option), option]))
-  }, [options])
 
   function isOptionSelected(option: T) {
     if (props.value === undefined) {
@@ -151,6 +161,20 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
     [options, selectOption],
   )
 
+  useEffect(() => {
+    if (isOpen) {
+      setSearch("")
+    }
+  }, [isOpen])
+
+  useEffect(() => {
+    if (isOpen) {
+      if (props.onSearch !== undefined) {
+        props.onSearch(search)
+      }
+    }
+  }, [search])
+
   return (
     <div className="ui89-input-select">
       <div
@@ -185,6 +209,14 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
               style={floatingStyles}
             >
               <Ui89Scene>
+                {props.onSearch && (
+                  <Ui89InputText
+                    placeholder="Search..."
+                    value={search}
+                    onChange={setSearch}
+                  />
+                )}
+
                 {options.length > 0 ? (
                   <Ui89VirtualList
                     maxHeight="300px"

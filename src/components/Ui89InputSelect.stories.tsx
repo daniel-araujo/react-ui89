@@ -1,6 +1,6 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89InputSelect } from "./Ui89InputSelect"
 import { SceneDecorator } from "../storybook/SceneDecorator"
@@ -154,5 +154,61 @@ export const IsPlacedInTheRoot: Story = {
     const box = await screen.findByText("Select...")
 
     await userEvent.click(box)
+  },
+}
+
+export const Search: Story = {
+  args: {
+    options: optionsSampleTo100,
+    optionHeight: 100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+    onSearch: fn(),
+  },
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    await userEvent.click(box)
+
+    const search = await screen.findByPlaceholderText("Search...")
+
+    expect(context.args.onSearch).not.toHaveBeenCalled()
+
+    await userEvent.type(search, "A{Enter}")
+
+    expect(context.args.onSearch).toHaveBeenCalledWith("A")
+  },
+}
+
+export const ClearsSearchAfterOpeningAgain: Story = {
+  args: {
+    options: optionsSampleTo100,
+    optionHeight: 100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+    onSearch: fn(),
+  },
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    {
+      await userEvent.click(box)
+
+      const search = await screen.findByPlaceholderText("Search...")
+
+      await userEvent.type(search, "A{Enter}")
+
+      expect(context.args.onSearch).toHaveBeenCalledWith("A")
+    }
+
+    await userEvent.click(box)
+
+    {
+      await userEvent.click(box)
+
+      expect(context.args.onSearch).toHaveBeenCalledWith("")
+    }
   },
 }
