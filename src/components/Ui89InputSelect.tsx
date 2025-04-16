@@ -68,14 +68,15 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
           let width = elements.reference.getBoundingClientRect().width
           // Change styles, e.g.
           Object.assign(elements.floating.style, {
-            width: `${width}px`,
+            width: `${availableWidth}px`,
+            maxWidth: `${width}px`,
             maxHeight: `${Math.max(0, availableHeight)}px`,
           })
         },
       }),
     ],
     whileElementsMounted: autoUpdate,
-    placement: "bottom",
+    placement: "bottom-start",
     strategy: "fixed",
   })
 
