@@ -163,6 +163,7 @@ export const Search: Story = {
     optionHeight: 100,
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
+    search: true,
     onSearch: fn(),
   },
 
@@ -187,6 +188,7 @@ export const ClearsSearchAfterOpeningAgain: Story = {
     optionHeight: 100,
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
+    search: true,
     onSearch: fn(),
   },
 

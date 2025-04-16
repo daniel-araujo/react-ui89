@@ -209,7 +209,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
               style={floatingStyles}
             >
               <Ui89Scene>
-                {props.onSearch && (
+                {props.search && (
                   <Ui89InputText
                     placeholder="Search..."
                     value={search}
