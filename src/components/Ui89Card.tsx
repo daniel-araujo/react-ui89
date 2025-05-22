@@ -2,31 +2,40 @@ import React from "react"
 import "./Ui89Card.css"
 
 export interface Ui89CardProps {
-  topLeftCenter?: React.ReactNode
+  topLeft?: React.ReactNode
+  topRight?: React.ReactNode
   topCenter?: React.ReactNode
+  bottomLeft?: React.ReactNode
+  bottomRight?: React.ReactNode
+  bottomCenter?: React.ReactNode
   children: React.ReactNode
 }
 
-export function Ui89Card({
-  topLeftCenter,
-  topCenter,
-  children,
-}: Ui89CardProps) {
-  const hasTopContent = topLeftCenter || topCenter
-
+export function Ui89Card(props: Ui89CardProps) {
   return (
-    <div className={`ui89-card ${hasTopContent ? "ui89-card--has-top" : ""}`}>
+    <div className={`ui89-card`}>
       <div className="ui89-card__inside">
-        {topLeftCenter && (
-          <div className="ui89-card__top-left-center">{topLeftCenter}</div>
+        {props.topLeft && (
+          <div className="ui89-card__top-left">{props.topLeft}</div>
         )}
-        {topCenter && <div className="ui89-card__top-center">{topCenter}</div>}
+        {props.topCenter && (
+          <div className="ui89-card__top-center">{props.topCenter}</div>
+        )}
+        {props.topRight && (
+          <div className="ui89-card__top-right">{props.topRight}</div>
+        )}
 
-        {hasTopContent && <div className="space-vertical-1"></div>}
+        {props.children}
 
-        {children}
-
-        {hasTopContent && <div className="space-vertical-1"></div>}
+        {props.bottomLeft && (
+          <div className="ui89-card__bottom-left">{props.bottomLeft}</div>
+        )}
+        {props.bottomCenter && (
+          <div className="ui89-card__bottom-center">{props.bottomCenter}</div>
+        )}
+        {props.bottomRight && (
+          <div className="ui89-card__bottom-right">{props.bottomRight}</div>
+        )}
       </div>
     </div>
   )

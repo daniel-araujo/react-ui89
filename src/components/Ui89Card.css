@@ -19,16 +19,12 @@
   flex: 1;
 }
 
-.ui89-card--has-top {
-  margin-top: var(--ui89-safe-space);
-}
-
 .ui89-card__inside {
   border: 1px solid white;
   padding: calc(var(--ui89-safe-space));
 }
 
-.ui89-card__top-left-center {
+.ui89-card__top-left {
   position: absolute;
   bottom: 100%;
   left: 0;
@@ -39,10 +35,48 @@
 
 .ui89-card__top-center {
   position: absolute;
-  top: 0;
+  bottom: 100%;
+  left: 50%;
+  transform: translate(-50%, 50%);
+  padding: 0 var(--ui89-safe-space);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ui89-card__top-right {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  padding-right: var(--ui89-safe-space);
+  transform: translateY(50%);
+  max-width: 100%;
+}
+
+.ui89-card__bottom-left {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  padding-left: var(--ui89-safe-space);
   transform: translateY(-50%);
-  left: var(--ui89-safe-space);
-  right: var(--ui89-safe-space);
+  max-width: 100%;
+}
+
+.ui89-card__bottom-center {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0 var(--ui89-safe-space);
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.ui89-card__bottom-right {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  padding-right: var(--ui89-safe-space);
+  transform: translateY(-50%);
   max-width: 100%;
 }
 
