@@ -2,6 +2,9 @@
   display: flex;
   gap: calc(var(--ui89-safe-space) * 1);
   align-items: center;
+
+  /* We do not want the button text to break into multiple lines. */
+  word-break: initial;
 }
 
 .ui89-input-file-upload__info {

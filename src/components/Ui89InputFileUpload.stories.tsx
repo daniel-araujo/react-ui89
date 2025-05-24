@@ -1,3 +1,4 @@
+import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { fn } from "@storybook/test"
 
@@ -46,4 +47,23 @@ export const SelectedFileNameOverflow: Story = {
       name: "example_file is super long and should cause ellipsis to appeasdr.txt",
     },
   },
+}
+
+
+export const SelectedFileNameOverflowWithBreakWord: Story = {
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+  },
+
+  args: {
+    value: {
+      name: "example_file is super long and should cause ellipsis to appeasdr.txt",
+    },
+  },
+
+  render: (args, context) => (
+    <div style={{ wordBreak: 'break-word' }}>
+      <Ui89InputFileUpload {...args} />
+    </div>
+  ),
 }
