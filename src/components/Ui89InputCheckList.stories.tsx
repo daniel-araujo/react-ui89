@@ -79,7 +79,7 @@ export const RenderOption: Story = {
   },
 }
 
-export const CallsOnChangeWhenSelecting: Story = {
+export const CallsOnChangeWhenClickingCheckbox: Story = {
   args: {
     value: [],
     options: ["one", "two"],
@@ -92,6 +92,22 @@ export const CallsOnChangeWhenSelecting: Story = {
     await userEvent.click(checkboxes[1])
 
     expect(context.args.onChange).toHaveBeenCalledWith(["two"])
+  },
+}
+
+export const CallsOnChangeWhenClickingLabel: Story = {
+  args: {
+    value: [],
+    options: ["one", "two"],
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const label = await screen.findByText("one")
+
+    await userEvent.click(label)
+
+    expect(context.args.onChange).toHaveBeenCalledWith(["one"])
   },
 }
 

@@ -49,40 +49,47 @@ export function Ui89InputCheckList<T>(props: Ui89InputCheckListProps<T>) {
         ? props.renderOption({ option: props2.row, index: props2.index })
         : String(props2.row)
 
+    function onChange(checked: boolean) {
+      if (checked) {
+        if (props.onSelect !== undefined) {
+          props.onSelect(props2.row)
+        }
+      } else {
+        if (props.onDeselect !== undefined) {
+          props.onDeselect(props2.row)
+        }
+      }
+
+      if (props.onChange !== undefined) {
+        if (checked) {
+          props.onChange([...props.value, props2.row])
+        } else {
+          props.onChange(
+            props.value.filter((item) => getValueKey(item) !== key),
+          )
+        }
+      }
+    }
+
+    function toggle() {
+      onChange(!value)
+    }
+
     return (
       <div
         style={{
           display: "flex",
           alignItems: "center",
-          gap: "calc(var(--ui89-safe-space) * 2)",
+          gap: "var(--ui89-safe-space)",
           height: "100%",
         }}
       >
-        <Ui89InputCheckBox
-          value={value}
-          onChange={(value) => {
-            if (value) {
-              if (props.onSelect !== undefined) {
-                props.onSelect(props2.row)
-              }
-            } else {
-              if (props.onDeselect !== undefined) {
-                props.onDeselect(props2.row)
-              }
-            }
-
-            if (props.onChange !== undefined) {
-              if (value) {
-                props.onChange([...props.value, props2.row])
-              } else {
-                props.onChange(
-                  props.value.filter((item) => getValueKey(item) !== key),
-                )
-              }
-            }
-          }}
-        />
-        <div className="ui89-text-ellipsis" style={{ minWidth: 0 }}>
+        <Ui89InputCheckBox value={value} onChange={onChange} />
+        <div
+          className="ui89-text-ellipsis"
+          style={{ minWidth: 0, cursor: "pointer" }}
+          onClick={toggle}
+        >
           {label}
         </div>
       </div>
