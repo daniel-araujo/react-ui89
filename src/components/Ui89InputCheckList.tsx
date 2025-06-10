@@ -90,15 +90,21 @@ export function Ui89InputCheckList<T>(props: Ui89InputCheckListProps<T>) {
   }
 
   return (
-    <Ui89Card>
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "column",
+        maxHeight: props.maxHeight,
+      }}
+    >
       <Ui89VirtualList
         rows={props.options}
         renderRow={renderRow}
         getRowKey={props.getValueKey}
         rowHeight={props.optionHeight ?? 40}
-        maxHeight={props.maxHeight}
+        maxHeight={"100%"}
       />
-    </Ui89Card>
+    </div>
   )
 }
 

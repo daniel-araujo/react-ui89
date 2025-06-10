@@ -1,3 +1,4 @@
+import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent, waitFor } from "@storybook/test"
 
@@ -128,4 +129,26 @@ export const CallsOnDeselectWhenSelectingAnOption: Story = {
     expect(context.args.onSelect).not.toHaveBeenCalled()
     expect(context.args.onDeselect).toHaveBeenCalledWith("two")
   },
+}
+
+export const MaxHeightPx: Story = {
+  args: {
+    value: [],
+    options: Array(100),
+    maxHeight: "100px",
+  },
+}
+
+export const MaxHeightPercentage: Story = {
+  args: {
+    value: [],
+    options: Array(100),
+    maxHeight: "50%",
+  },
+
+  render: (args, context) => (
+    <div style={{ height: "200px" }}>
+      <Ui89InputCheckList {...args} />
+    </div>
+  ),
 }
