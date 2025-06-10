@@ -49,7 +49,6 @@ export const SelectedFileNameOverflow: Story = {
   },
 }
 
-
 export const SelectedFileNameOverflowWithBreakWord: Story = {
   parameters: {
     viewport: { defaultViewport: "mobile1" },
@@ -62,7 +61,7 @@ export const SelectedFileNameOverflowWithBreakWord: Story = {
   },
 
   render: (args, context) => (
-    <div style={{ wordBreak: 'break-word' }}>
+    <div style={{ wordBreak: "break-word" }}>
       <Ui89InputFileUpload {...args} />
     </div>
   ),

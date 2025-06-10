@@ -15,7 +15,12 @@ export function Ui89InputCheckBox(props: Ui89InputCheckBoxProps) {
   }
 
   return (
-    <span className="ui89-input-check-box" onClick={toggle}>
+    <span
+      className="ui89-input-check-box"
+      onClick={toggle}
+      role="checkbox"
+      aria-checked={props.value ? "true" : "false"}
+    >
       <span className="ui89-input-check-box__x">
         {props.value ? <>X</> : <>&nbsp;</>}
       </span>
