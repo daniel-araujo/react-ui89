@@ -32,6 +32,9 @@ export function Ui89InputFileUpload({
     }
 
     onChange(e.target.files[0])
+
+    // Reset the file input's value to allow selecting the same file again.
+    e.target.value = ""
   }
 
   function onClick() {
