@@ -193,3 +193,20 @@ export const ClickArea: Story = {
     return <Ui89Button {...args} />
   },
 }
+
+export const WhiteSpaceNoWrap: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+
+  args: {
+    children: "This is text should not wrap to a second line",
+    onClick: fn(),
+  },
+
+  render: (args, context) => {
+    return <Ui89Button {...args} />
+  },
+}

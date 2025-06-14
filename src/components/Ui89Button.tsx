@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 
 import "./Ui89Button.css"
+import "../style/text.css"
 import "../style/typo.css"
 import "../style/chosen-theme.css"
 import "../style/reset.css"
@@ -107,6 +108,7 @@ export function Ui89Button({
   let buttonClass = [
     "ui89-button__button",
     "ui89-typo-special",
+    "ui89-text-ellipsis",
     `ui89-chosen-theme-${theme}`,
     activated ? "ui89-button__button--active" : undefined,
     block ? "ui89-button__button--block" : undefined,
@@ -124,7 +126,9 @@ export function Ui89Button({
             href={href}
             onClick={onAnchorClick}
           >
-            <span className={buttonClass}>{children}</span>
+            <span className={buttonClass}>
+              <div className="ui89-button__button__content">{children}</div>
+            </span>
           </a>
         ) : (
           <button
@@ -133,7 +137,9 @@ export function Ui89Button({
             onClick={onButtonClick}
             disabled={localDisabled}
           >
-            <span className={buttonClass}>{children}</span>
+            <span className={buttonClass}>
+              <div className="ui89-button__button__content">{children}</div>
+            </span>
           </button>
         )}
       </HoverShadow>

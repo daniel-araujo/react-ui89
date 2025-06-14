@@ -45,10 +45,24 @@
 
   transition: transform var(--ui89-animation-speed);
 
+  /* We want to make sure that this does not grow larger than the grid parent */
+  max-width: 100%;
+
+  /* No wrap looks better */
+  white-space: nowrap;
+
   /* For the button active/hover/focus state */
   position: relative;
 
   cursor: var(--ui89-cursor-pointer);
+}
+
+.ui89-button__button__content {
+  /*
+    Do not grow larger than parent flex layout and also makes sure that
+    the content is not overflowing to the left.
+  */
+  min-width: 0;
 }
 
 .ui89-button__button:before {

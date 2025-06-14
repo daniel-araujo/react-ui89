@@ -5,6 +5,11 @@
   position: relative;
 }
 
+.ui89-hover-shadow > * {
+  /* Cannot let content grow larger than this grid */
+  min-width: 0;
+}
+
 .ui89-hover-shadow__right {
   display: block;
   position: absolute;
