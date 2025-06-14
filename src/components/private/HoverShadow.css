@@ -6,8 +6,8 @@
 }
 
 .ui89-hover-shadow > * {
-  /* Cannot let content grow larger than this grid */
-  min-width: 0;
+  /* Used to have min-width 0 but sometimes we do want to make sure that this element takes up some space. */
+  /* min-width: 0; */
 }
 
 .ui89-hover-shadow__right {

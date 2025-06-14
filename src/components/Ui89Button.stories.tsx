@@ -210,3 +210,28 @@ export const WhiteSpaceNoWrap: Story = {
     return <Ui89Button {...args} />
   },
 }
+
+export const FlexLayoutTakesUpMinimumContent: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+
+  render: (args, context) => (
+    <div className="flexContainer">
+      <style>{`
+        .flexContainer {
+          display: flex;
+          height: 100px;
+          gap: 16px;
+        }
+        .flexContainer > * {
+          flex-grow: 1;
+        }
+      `}</style>
+      <Ui89Button href="/link">Long text here</Ui89Button>
+      <div>Descriptive text next to button</div>
+    </div>
+  ),
+}
