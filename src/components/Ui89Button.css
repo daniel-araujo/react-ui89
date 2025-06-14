@@ -12,7 +12,7 @@
 
 .ui89-button--size-square {
   /* We want to keep it square. */
-  width: fit-content;
+  max-width: fit-content;
 }
 
 .ui89-button__implementation {
@@ -30,7 +30,7 @@
 }
 
 .ui89-button__button {
-  display: inline-flex;
+  display: flex;
   justify-content: center;
   align-items: center; /* align vertical */
   border: 0;
