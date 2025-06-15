@@ -2,23 +2,23 @@ import React, { createContext, useContext, ReactNode, useState } from "react"
 
 type RouterPush = (url: string) => void | Promise<void>
 
-interface Ui89OverrideContextType {
+interface Ui89OverrideType {
   routerPush?: RouterPush
   currentZIndex: number
   nextZIndex: () => number
 }
 
-export interface Ui89OverrideProviderProps {
+export interface Ui89OverrideProps {
   children?: ReactNode
   routerPush?: RouterPush
 }
 
-const Ui89OverrideContext = createContext<Ui89OverrideContextType>({
+const Ui89Context = createContext<Ui89OverrideType>({
   currentZIndex: 1,
   nextZIndex: () => 1,
 })
 
-export const Ui89OverrideProvider: React.FC<Ui89OverrideProviderProps> = ({
+export const Ui89Provider: React.FC<Ui89OverrideProps> = ({
   routerPush,
   children,
 }) => {
@@ -31,14 +31,14 @@ export const Ui89OverrideProvider: React.FC<Ui89OverrideProviderProps> = ({
   }
 
   return (
-    <Ui89OverrideContext.Provider
+    <Ui89Context.Provider
       value={{ routerPush, currentZIndex: zIndex, nextZIndex }}
     >
       {children}
-    </Ui89OverrideContext.Provider>
+    </Ui89Context.Provider>
   )
 }
 
-export const useUi89Overrides = (): Ui89OverrideContextType => {
-  return useContext(Ui89OverrideContext)
+export const useUi89 = (): Ui89OverrideType => {
+  return useContext(Ui89Context)
 }

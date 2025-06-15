@@ -4,10 +4,7 @@ import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89LinkStealth } from "./Ui89LinkStealth"
 import { SceneDecorator } from "../storybook/SceneDecorator"
-import {
-  Ui89OverrideProvider,
-  Ui89OverrideProviderProps,
-} from "../Ui89Override"
+import { Ui89Provider, Ui89OverrideProps } from "../Ui89Provider"
 
 const meta: Meta<typeof Ui89LinkStealth> = {
   component: Ui89LinkStealth,
@@ -19,15 +16,15 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const Link: StoryObj<Ui89OverrideProviderProps> = {
+export const Link: StoryObj<Ui89OverrideProps> = {
   args: {
     routerPush: fn(),
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89LinkStealth href="/link">Link</Ui89LinkStealth>
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {

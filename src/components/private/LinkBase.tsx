@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import "../../style/reset.css"
 
-import { useUi89Overrides } from "../../Ui89Override"
+import { useUi89 } from "../../Ui89Provider"
 
 export interface Ui89LinkBaseProps {
   className?: string
@@ -14,7 +14,7 @@ export interface Ui89LinkBaseProps {
 }
 
 export function Ui89LinkBase(props: Ui89LinkBaseProps) {
-  const overrides = useUi89Overrides()
+  const overrides = useUi89()
   const [clicking, setClicking] = useState(false)
 
   let localDisabled =

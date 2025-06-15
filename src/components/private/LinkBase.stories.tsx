@@ -4,10 +4,7 @@ import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89LinkBase } from "./LinkBase"
 import { SceneDecorator } from "../../storybook/SceneDecorator"
-import {
-  Ui89OverrideProvider,
-  Ui89OverrideProviderProps,
-} from "../../Ui89Override"
+import { Ui89Provider, Ui89OverrideProps } from "../../Ui89Provider"
 
 const meta: Meta<typeof Ui89LinkBase> = {
   component: Ui89LinkBase,
@@ -25,15 +22,15 @@ export const NoLink: Story = {
   },
 }
 
-export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
+export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
   args: {
     routerPush: fn(),
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89LinkBase href="/link">Link</Ui89LinkBase>
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {
@@ -55,9 +52,9 @@ export const CallsClickEventHandler: StoryObj<{
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89LinkBase onClick={args.onClick}>Link</Ui89LinkBase>
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {
@@ -80,11 +77,11 @@ export const IgnoresHrefWhenThereIsAClickEventHandler: StoryObj<{
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89LinkBase href="/link" onClick={args.onClick}>
         Link
       </Ui89LinkBase>
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {

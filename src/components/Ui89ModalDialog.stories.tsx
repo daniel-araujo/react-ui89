@@ -8,7 +8,7 @@ import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 import { Ui89Button } from "./Ui89Button"
 import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
-import { Ui89OverrideProvider } from "../Ui89Override"
+import { Ui89Provider } from "../Ui89Provider"
 
 const meta: Meta<typeof Ui89ModalDialog> = {
   component: Ui89ModalDialog,
@@ -113,7 +113,7 @@ export const IncreasesZIndexWhenOpenWithProvider: Story = {
     const [open, setOpen] = useState(false)
 
     return (
-      <Ui89OverrideProvider>
+      <Ui89Provider>
         <Ui89ModalDialog open={open}>First dialog in the DOM</Ui89ModalDialog>
 
         <Ui89ModalDialog open={true}>
@@ -125,7 +125,7 @@ export const IncreasesZIndexWhenOpenWithProvider: Story = {
             Open another dialog
           </Ui89Button>
         </Ui89ModalDialog>
-      </Ui89OverrideProvider>
+      </Ui89Provider>
     )
   },
 

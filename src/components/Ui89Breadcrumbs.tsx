@@ -6,7 +6,7 @@ import "../style/reset.css"
 import "../style/chosen-theme.css"
 
 import { Ui89Theme } from "../theme"
-import { useUi89Overrides } from "../Ui89Override"
+import { useUi89 } from "../Ui89Provider"
 
 export type Ui89BreadcrumbsPropsOnSelect = (e: {
   item: Ui89BreadcrumbsPropsItem
@@ -34,7 +34,7 @@ export function Ui89BreadcrumbsItem({
 }) {
   const style = { "--ui89-index": index } as React.CSSProperties
   const tagname = item.url !== undefined ? "a" : "div"
-  const overrides = useUi89Overrides()
+  const overrides = useUi89()
 
   const onClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
     if (item.url !== undefined) {

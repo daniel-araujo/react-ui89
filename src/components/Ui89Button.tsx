@@ -9,7 +9,7 @@ import "../style/reset.css"
 import HoverShadow from "./private/HoverShadow"
 
 import { Ui89Theme } from "../theme"
-import { useUi89Overrides } from "../Ui89Override"
+import { useUi89 } from "../Ui89Provider"
 
 export enum Ui89ButtonPropsSize {
   standard = "standard",
@@ -46,7 +46,7 @@ export function Ui89Button({
   disabled,
   activated,
 }: Ui89ButtonProps) {
-  const overrides = useUi89Overrides()
+  const overrides = useUi89()
   const [clicking, setClicking] = useState(false)
 
   let localDisabled = disabled || (autoDisableOnClick && clicking)

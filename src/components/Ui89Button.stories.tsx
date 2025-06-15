@@ -4,10 +4,7 @@ import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89Button } from "./Ui89Button"
 import { SceneDecorator } from "../storybook/SceneDecorator"
-import {
-  Ui89OverrideProvider,
-  Ui89OverrideProviderProps,
-} from "../Ui89Override"
+import { Ui89Provider, Ui89OverrideProps } from "../Ui89Provider"
 import { useUi89Toaster } from "./Ui89Toaster"
 import { Ui89Theme } from "../theme"
 
@@ -163,15 +160,15 @@ export const ClickPromise: Story = {
   },
 }
 
-export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
+export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
   args: {
     routerPush: fn(),
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89Button href="/link">Button</Ui89Button>
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {

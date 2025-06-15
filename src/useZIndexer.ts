@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react"
-import { useUi89Overrides } from "./Ui89Override"
+import { useUi89 } from "./Ui89Provider"
 
 interface ZIndexer {
   value: number
 }
 
 export function useZIndexer(open: boolean): ZIndexer {
-  const overrides = useUi89Overrides()
+  const overrides = useUi89()
   const [value, setValue] = useState<number>(overrides.currentZIndex)
 
   useEffect(() => {

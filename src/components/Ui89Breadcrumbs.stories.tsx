@@ -4,10 +4,7 @@ import { expect, fn, screen, userEvent } from "@storybook/test"
 
 import { Ui89Breadcrumbs, Ui89BreadcrumbsPropsItem } from "./Ui89Breadcrumbs"
 import { SceneDecorator } from "../storybook/SceneDecorator"
-import {
-  Ui89OverrideProvider,
-  Ui89OverrideProviderProps,
-} from "../Ui89Override"
+import { Ui89Provider, Ui89OverrideProps } from "../Ui89Provider"
 import { sleep } from "../promise-utils"
 
 const itemsSampleOneCrumb: Ui89BreadcrumbsPropsItem[] = [
@@ -145,15 +142,15 @@ export const RemoveItemAnimation: StoryObj = {
   },
 }
 
-export const OverrideRouterPush: StoryObj<Ui89OverrideProviderProps> = {
+export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
   args: {
     routerPush: fn(),
   },
 
   render: (args, context) => (
-    <Ui89OverrideProvider routerPush={args.routerPush}>
+    <Ui89Provider routerPush={args.routerPush}>
       <Ui89Breadcrumbs items={itemsSampleTwoCrumbs} />
-    </Ui89OverrideProvider>
+    </Ui89Provider>
   ),
 
   async play(context) {
