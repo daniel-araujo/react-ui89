@@ -9,6 +9,7 @@ import { Ui89ModalDialog } from "./Ui89ModalDialog"
 import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
 import { Ui89ThemeBackground } from "./Ui89ThemeBackground"
 import { Ui89Theme } from "../theme"
+import { Ui89Provider } from "../Ui89Provider"
 
 const optionsSampleTo100 = Array.from({ length: 100 }, (_, i) => ({
   value: i + 1,
@@ -123,6 +124,22 @@ export const ModalDialog: Story = {
     <Ui89ModalDialog open={true}>
       <Ui89InputSelect {...args} />
     </Ui89ModalDialog>
+  ),
+}
+
+export const ModalDialogWithIncrementingZIndex: Story = {
+  args: {
+    options: optionsSampleTo100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+  },
+
+  render: (args, context) => (
+    <Ui89Provider>
+      <Ui89ModalDialog open={true}>
+        <Ui89InputSelect {...args} />
+      </Ui89ModalDialog>
+    </Ui89Provider>
   ),
 }
 

@@ -20,6 +20,7 @@ import {
 } from "./Ui89VirtualList"
 import { Ui89Scene } from "./Ui89Scene"
 import { Ui89InputText } from "./Ui89InputText"
+import { useZIndexer } from "../useZIndexer"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -73,6 +74,7 @@ export interface Ui89InputSelectProps<T> {
 export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
   const [search, setSearch] = useState("")
   const [isOpen, setIsOpen] = useState(false)
+  const zIndexer = useZIndexer(isOpen)
   const { refs, floatingStyles, context } = useFloating({
     open: isOpen,
     onOpenChange: setIsOpen,
@@ -206,7 +208,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
             <div
               ref={refs.setFloating}
               className="ui89-input-select__menu"
-              style={floatingStyles}
+              style={{ ...floatingStyles, zIndex: zIndexer.value }}
             >
               <Ui89Scene>
                 {props.search && (

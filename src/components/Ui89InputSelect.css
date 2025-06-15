@@ -6,7 +6,6 @@
   overflow: auto;
   background: var(--ui89-input-bg-color);
   color: var(--ui89-input-text-color);
-  z-index: 1;
 }
 
 .ui89-input-select:focus-within .ui89-input-select__menu {
