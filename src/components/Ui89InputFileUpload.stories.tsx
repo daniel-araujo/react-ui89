@@ -38,6 +38,7 @@ export const SelectedFile: Story = {
     }),
   },
 }
+
 export const SelectedFileNameOverflow: Story = {
   parameters: {
     viewport: { defaultViewport: "mobile1" },
@@ -65,4 +66,10 @@ export const SelectedFileNameOverflowWithBreakWord: Story = {
       <Ui89InputFileUpload {...args} />
     </div>
   ),
+}
+
+export const ImageMimeType: Story = {
+  args: {
+    accept: "image/png",
+  },
 }
