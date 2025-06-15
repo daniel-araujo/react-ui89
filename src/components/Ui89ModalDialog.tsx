@@ -7,6 +7,7 @@ import GridExpandTrick from "./private/GridExpandTrick"
 import ScrollContainer from "./private/ScrollContainer"
 
 import "./Ui89ModalDialog.css"
+import { useZIndexer } from "../useZIndexer"
 
 export interface Ui89ModalDialogProps {
   open: boolean
@@ -26,6 +27,8 @@ export function Ui89ModalDialog({
   topCenter,
   onRequestClose,
 }: Ui89ModalDialogProps) {
+  const zIndexer = useZIndexer(open)
+
   const dialogClass = useMemo(() => {
     return ["ui89-modal-dialog", open ? "ui89-modal-dialog--open" : ""].join(
       " ",
@@ -46,7 +49,11 @@ export function Ui89ModalDialog({
   }
 
   const vdom = (
-    <div className={dialogClass} role="dialog" style={{ zIndex: 1 }}>
+    <div
+      className={dialogClass}
+      role="dialog"
+      style={{ zIndex: zIndexer.value }}
+    >
       <div
         className="ui89-modal-dialog__backdrop"
         role="presentation"
