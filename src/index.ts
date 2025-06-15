@@ -82,8 +82,8 @@ export type { Ui89ModalDialogProps } from "./components/Ui89ModalDialog"
 export { Ui89NameValuePair } from "./components/Ui89NameValuePair"
 export type { Ui89NameValuePairProps } from "./components/Ui89NameValuePair"
 
-export { Ui89Provider as Ui89OverrideProvider } from "./Ui89Provider"
-export type { Ui89OverrideProps as Ui89OverrideProviderProps } from "./Ui89Provider"
+export { Ui89Provider } from "./Ui89Provider"
+export type { Ui89OverrideProps } from "./Ui89Provider"
 
 export { Ui89Scene } from "./components/Ui89Scene"
 export type { Ui89SceneProps } from "./components/Ui89Scene"
