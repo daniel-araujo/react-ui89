@@ -23,6 +23,13 @@ export function throttledTimeout() {
     abort() {
       Timeout.clear(id, true)
     },
+
+    /**
+     * Lets you know whether a call is pending.
+     */
+    isPending() {
+      return Timeout.pending(id)
+    },
   }
 }
 

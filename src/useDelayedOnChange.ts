@@ -87,7 +87,13 @@ export function useDelayedOnChange(props: {
     }
 
     setValue(newVal: any) {
-      // Ignore.
+      if (!stateRef.current.throttledTimeout.isPending()) {
+        // Value may have been changed through external forces.
+        // We should update our internal state, that way the blur will use
+        // either this or the value that the user typed in, whichever comes
+        // first.
+        setIntermediateValue(newVal)
+      }
     }
 
     onChange(newVal: any) {
@@ -98,6 +104,12 @@ export function useDelayedOnChange(props: {
     onFocus() {}
 
     onBlur() {
+      // We need to make sure that we emit immediately. Do not want to leave
+      // user waiting.
+
+      // We can cancel this one.
+      stateRef.current.throttledTimeout.abort()
+
       let newVal = callOnChange()
       setIntermediateValue(newVal)
       let newState = new StateUnknown()

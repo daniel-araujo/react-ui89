@@ -1,3 +1,5 @@
+import React, { useState } from "react"
+
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
@@ -183,5 +185,94 @@ export const CallsOnChangeWhenEnter: Story = {
     await userEvent.type(textbox, "A{Enter}")
 
     expect(context.args.onChange).toHaveBeenCalledWith("AA")
+  },
+}
+
+export const DoesNotEmitIntermediateValueWhenValueIsChangedAfterTyping: Story =
+  {
+    args: {
+      value: "",
+      onChange: fn(),
+    },
+
+    render: (args, context) => {
+      const [value, setValue] = useState("")
+
+      context.storyGlobals.setValue = setValue
+      args.onChange = fn(setValue)
+
+      return (
+        <Ui89InputText
+          value={value}
+          onChange={(a) => {
+            context.storyGlobals.setValue(a)
+            args.onChange?.(a)
+          }}
+        />
+      )
+    },
+
+    async play(context) {
+      const textbox = await screen.findByRole("textbox")
+
+      textbox.focus()
+
+      await new Promise((resolve) => setTimeout(resolve, 50))
+
+      await userEvent.type(textbox, "A")
+
+      await new Promise((resolve) => setTimeout(resolve, 400))
+
+      context.storyGlobals.setValue("B")
+
+      await new Promise((resolve) => setTimeout(resolve, 1))
+
+      textbox.blur()
+
+      expect(context.args.onChange).not.toHaveBeenCalledWith()
+    },
+  }
+
+export const EmitsIntermediateValueWhenValueIsWhileTyping: Story = {
+  args: {
+    value: "",
+    onChange: fn(),
+  },
+
+  render: (args, context) => {
+    const [value, setValue] = useState("")
+
+    context.storyGlobals.setValue = setValue
+    args.onChange = fn(setValue)
+
+    return (
+      <Ui89InputText
+        value={value}
+        onChange={(a) => {
+          context.storyGlobals.setValue(a)
+          args.onChange?.(a)
+        }}
+      />
+    )
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    textbox.focus()
+
+    await new Promise((resolve) => setTimeout(resolve, 50))
+
+    await userEvent.type(textbox, "A")
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    context.storyGlobals.setValue("B")
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    textbox.blur()
+
+    expect(context.args.onChange).toHaveBeenCalledWith("A")
   },
 }
