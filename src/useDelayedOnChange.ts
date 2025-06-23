@@ -103,6 +103,9 @@ export function useDelayedOnChange(props: {
       if (stateRef.current.value === stateRef.current.lastValue) {
         // No changes.
         setIntermediateValue(newVal)
+
+        // Making sure we keep updating.
+        stateRef.current.lastValue = newVal
       } else {
         // There have been changes. Let's not bother the user.
         stateRef.current.overridenValue = newVal

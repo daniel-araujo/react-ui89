@@ -272,6 +272,49 @@ export const DisplaysValueWhenContentHasNotChangedSinceFocus: Story = {
   },
 }
 
+export const DisplaysValueWhenContentHasOnlyChangedSinceLastFocusByADifferentValue: Story =
+  {
+    args: {
+      value: "A",
+      onChange: fn(),
+    },
+
+    render: (args, context) => {
+      const [value, setValue] = useState(args.value)
+
+      context.storyGlobals.setValue = setValue
+      args.onChange = fn(setValue)
+
+      return (
+        <Ui89InputText
+          value={value}
+          onChange={(a) => {
+            context.storyGlobals.setValue(a)
+            args.onChange?.(a)
+          }}
+        />
+      )
+    },
+
+    async play(context) {
+      const textbox = await screen.findByRole("textbox")
+
+      textbox.focus()
+
+      await new Promise((resolve) => setTimeout(resolve, 1))
+
+      context.storyGlobals.setValue("B")
+
+      await new Promise((resolve) => setTimeout(resolve, 1))
+
+      context.storyGlobals.setValue("C")
+
+      await new Promise((resolve) => setTimeout(resolve, 1))
+
+      expect(textbox).toHaveDisplayValue("C")
+    },
+  }
+
 export const DoesNotDisplayValueWhenContentHasChangedSinceFocus: Story = {
   args: {
     value: "A",
