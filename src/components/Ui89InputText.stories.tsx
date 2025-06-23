@@ -195,7 +195,7 @@ export const EmitsWhatWasTypedWhenValueWasChangedBeforeLastKeyStroke: Story = {
   },
 
   render: (args, context) => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState(args.value)
 
     context.storyGlobals.setValue = setValue
     args.onChange = fn(setValue)
@@ -234,6 +234,84 @@ export const EmitsWhatWasTypedWhenValueWasChangedBeforeLastKeyStroke: Story = {
   },
 }
 
+export const DisplaysValueWhenContentHasNotChangedSinceFocus: Story = {
+  args: {
+    value: "A",
+    onChange: fn(),
+  },
+
+  render: (args, context) => {
+    const [value, setValue] = useState(args.value)
+
+    context.storyGlobals.setValue = setValue
+    args.onChange = fn(setValue)
+
+    return (
+      <Ui89InputText
+        value={value}
+        onChange={(a) => {
+          context.storyGlobals.setValue(a)
+          args.onChange?.(a)
+        }}
+      />
+    )
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    textbox.focus()
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    context.storyGlobals.setValue("B")
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    expect(textbox).toHaveDisplayValue("B")
+  },
+}
+
+export const DoesNotDisplayValueWhenContentHasChangedSinceFocus: Story = {
+  args: {
+    value: "A",
+    onChange: fn(),
+  },
+
+  render: (args, context) => {
+    const [value, setValue] = useState(args.value)
+
+    context.storyGlobals.setValue = setValue
+    args.onChange = fn(setValue)
+
+    return (
+      <Ui89InputText
+        value={value}
+        onChange={(a) => {
+          context.storyGlobals.setValue(a)
+          args.onChange?.(a)
+        }}
+      />
+    )
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    textbox.focus()
+
+    await userEvent.type(textbox, "B")
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    context.storyGlobals.setValue("C")
+
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    expect(textbox).toHaveDisplayValue("AB")
+  },
+}
+
 export const DoesNotEmitWhatWasTypedWhenValueIsChanged: Story = {
   args: {
     value: "",
@@ -241,7 +319,7 @@ export const DoesNotEmitWhatWasTypedWhenValueIsChanged: Story = {
   },
 
   render: (args, context) => {
-    const [value, setValue] = useState("")
+    const [value, setValue] = useState(args.value)
 
     context.storyGlobals.setValue = setValue
     args.onChange = fn(setValue)

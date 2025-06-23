@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react"
 import { throttledTimeout } from "./timeout"
 import { useUpdatedRef } from "./useUpdatedRef"
 
+const LAST_VALUE_CHANGED = Symbol("LAST_VALUE_CHANGED")
 const OVERRIDEN_VALUE_UNDEFINED = Symbol("OVERRIDEN_VALUE_UNDEFINED")
 
 interface UseDelayedOnChangeState {
@@ -67,6 +68,7 @@ export function useDelayedOnChange(props: {
     onFocus() {
       let newState = new StateFocus()
       newState.value = stateRef.current.value
+      newState.lastValue = newState.value
       setState(newState)
     }
 
@@ -82,6 +84,8 @@ export function useDelayedOnChange(props: {
 
     value: any
 
+    lastValue: any
+
     /**
      * If we receive a new value, we keep track of it here. We set this to
      * OVERRIDEN_VALUE_UNDEFINED if the value is meant to be discarded.
@@ -96,13 +100,19 @@ export function useDelayedOnChange(props: {
     }
 
     setValue(newVal: any) {
-      // Not setting intermediate value. Do not bother user.
-      stateRef.current.overridenValue = newVal
+      if (stateRef.current.value === stateRef.current.lastValue) {
+        // No changes.
+        setIntermediateValue(newVal)
+      } else {
+        // There have been changes. Let's not bother the user.
+        stateRef.current.overridenValue = newVal
+      }
     }
 
     onChange(newVal: any) {
       // Discard last setValue call
       stateRef.current.overridenValue = OVERRIDEN_VALUE_UNDEFINED
+      stateRef.current.lastValue = LAST_VALUE_CHANGED
 
       setIntermediateValue(newVal)
       stateRef.current.throttledTimeout.call(300, callOnChange)
