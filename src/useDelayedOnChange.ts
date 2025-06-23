@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react"
 import { throttledTimeout } from "./timeout"
 import { useUpdatedRef } from "./useUpdatedRef"
 
+const OVERRIDEN_VALUE_UNDEFINED = Symbol("OVERRIDEN_VALUE_UNDEFINED")
+
 interface UseDelayedOnChangeState {
   value: any
   setValue: (newVal: any) => void
@@ -80,23 +82,28 @@ export function useDelayedOnChange(props: {
 
     value: any
 
+    /**
+     * If we receive a new value, we keep track of it here. We set this to
+     * OVERRIDEN_VALUE_UNDEFINED if the value is meant to be discarded.
+     */
+    overridenValue: any
+
     throttledTimeout: any
 
     constructor() {
+      this.overridenValue = OVERRIDEN_VALUE_UNDEFINED
       this.throttledTimeout = throttledTimeout()
     }
 
     setValue(newVal: any) {
-      if (!stateRef.current.throttledTimeout.isPending()) {
-        // Value may have been changed through external forces.
-        // We should update our internal state, that way the blur will use
-        // either this or the value that the user typed in, whichever comes
-        // first.
-        setIntermediateValue(newVal)
-      }
+      // Not setting intermediate value. Do not bother user.
+      stateRef.current.overridenValue = newVal
     }
 
     onChange(newVal: any) {
+      // Discard last setValue call
+      stateRef.current.overridenValue = OVERRIDEN_VALUE_UNDEFINED
+
       setIntermediateValue(newVal)
       stateRef.current.throttledTimeout.call(300, callOnChange)
     }
@@ -110,7 +117,12 @@ export function useDelayedOnChange(props: {
       // We can cancel this one.
       stateRef.current.throttledTimeout.abort()
 
+      if (stateRef.current.overridenValue !== OVERRIDEN_VALUE_UNDEFINED) {
+        stateRef.current.value = stateRef.current.overridenValue
+      }
+
       let newVal = callOnChange()
+
       setIntermediateValue(newVal)
       let newState = new StateUnknown()
       newState.value = newVal

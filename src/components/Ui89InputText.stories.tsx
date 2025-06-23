@@ -188,52 +188,53 @@ export const CallsOnChangeWhenEnter: Story = {
   },
 }
 
-export const DoesNotEmitIntermediateValueWhenValueIsChangedAfterTyping: Story =
-  {
-    args: {
-      value: "",
-      onChange: fn(),
-    },
+export const EmitsWhatWasTypedWhenValueWasChangedBeforeLastKeyStroke: Story = {
+  args: {
+    value: "",
+    onChange: fn(),
+  },
 
-    render: (args, context) => {
-      const [value, setValue] = useState("")
+  render: (args, context) => {
+    const [value, setValue] = useState("")
 
-      context.storyGlobals.setValue = setValue
-      args.onChange = fn(setValue)
+    context.storyGlobals.setValue = setValue
+    args.onChange = fn(setValue)
 
-      return (
-        <Ui89InputText
-          value={value}
-          onChange={(a) => {
-            context.storyGlobals.setValue(a)
-            args.onChange?.(a)
-          }}
-        />
-      )
-    },
+    return (
+      <Ui89InputText
+        value={value}
+        onChange={(a) => {
+          context.storyGlobals.setValue(a)
+          args.onChange?.(a)
+        }}
+      />
+    )
+  },
 
-    async play(context) {
-      const textbox = await screen.findByRole("textbox")
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
 
-      textbox.focus()
+    textbox.focus()
 
-      await new Promise((resolve) => setTimeout(resolve, 50))
+    await new Promise((resolve) => setTimeout(resolve, 50))
 
-      await userEvent.type(textbox, "A")
+    await userEvent.type(textbox, "A")
 
-      await new Promise((resolve) => setTimeout(resolve, 400))
+    await new Promise((resolve) => setTimeout(resolve, 400))
 
-      context.storyGlobals.setValue("B")
+    context.storyGlobals.setValue("B")
 
-      await new Promise((resolve) => setTimeout(resolve, 1))
+    await new Promise((resolve) => setTimeout(resolve, 1))
 
-      textbox.blur()
+    await userEvent.type(textbox, "C")
 
-      expect(context.args.onChange).not.toHaveBeenCalledWith()
-    },
-  }
+    textbox.blur()
 
-export const EmitsIntermediateValueWhenValueIsWhileTyping: Story = {
+    expect(context.args.onChange).toHaveBeenCalledWith("AC")
+  },
+}
+
+export const DoesNotEmitWhatWasTypedWhenValueIsChanged: Story = {
   args: {
     value: "",
     onChange: fn(),
@@ -273,6 +274,8 @@ export const EmitsIntermediateValueWhenValueIsWhileTyping: Story = {
 
     textbox.blur()
 
-    expect(context.args.onChange).toHaveBeenCalledWith("A")
+    await new Promise((resolve) => setTimeout(resolve, 1))
+
+    expect(context.args.onChange).not.toHaveBeenCalled()
   },
 }
