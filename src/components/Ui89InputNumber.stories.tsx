@@ -46,7 +46,7 @@ export const CallsOnChange: Story = {
 
     await userEvent.type(textbox, "1")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    await new Promise((resolve) => setTimeout(resolve, 300))
 
     expect(context.args.onChange).toHaveBeenCalledWith(1)
   },
@@ -63,7 +63,7 @@ export const CanEdit: Story = {
 
     await userEvent.type(textbox, "1")
 
-    await new Promise((resolve) => setTimeout(resolve, 200))
+    await new Promise((resolve) => setTimeout(resolve, 300))
 
     expect(context.args.onChange).toHaveBeenCalledWith(11)
   },
