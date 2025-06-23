@@ -16,12 +16,9 @@ export function isTextNumber(text: string): boolean {
   return /^\d+(\.\d+)?$/.test(text)
 }
 
-function displayText(value: any, emptyValue: any) {
+function displayText(value: any) {
   if (value === undefined) {
     // No idea how to display this.
-    return ""
-  } else if (value === emptyValue) {
-    // Display emptiness.
     return ""
   } else if (isNaN(value)) {
     // No idea what to display.
@@ -31,29 +28,19 @@ function displayText(value: any, emptyValue: any) {
   return value.toString()
 }
 
-export function Ui89InputTextNumber({
-  /**
-   * The value that is emitted when the input is emptied.
-   */
-  emptyValue = null,
-  value,
-  min,
-  max,
-  onChange,
-  precision,
-}: Ui89InputTextNumberProps) {
+export function Ui89InputTextNumber(props: Ui89InputTextNumberProps) {
   const wrappedValue = useMemo(() => {
-    return displayText(value, emptyValue)
-  }, [value, emptyValue])
+    return displayText(props.value)
+  }, [props.value])
 
   function implOnChange(value: string) {
-    if (onChange === undefined) {
+    if (props.onChange === undefined) {
       return
     }
 
     if (value === "") {
       // Use empty value.
-      onChange(emptyValue)
+      props.onChange(props.emptyValue)
       return
     }
 
@@ -66,19 +53,19 @@ export function Ui89InputTextNumber({
 
     const numberValue = Number(value)
 
-    if (min !== undefined) {
-      if (numberValue <= min) {
-        value = String(min)
+    if (props.min !== undefined) {
+      if (numberValue <= props.min) {
+        value = String(props.min)
       }
     }
 
-    if (max !== undefined) {
-      if (numberValue >= max) {
-        value = String(max)
+    if (props.max !== undefined) {
+      if (numberValue >= props.max) {
+        value = String(props.max)
       }
     }
 
-    onChange(value)
+    props.onChange(value)
   }
 
   return <Ui89InputText value={wrappedValue} onChange={implOnChange} />

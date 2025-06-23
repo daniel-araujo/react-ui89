@@ -1,3 +1,5 @@
+import React, { useState } from "react"
+
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "@storybook/test"
 
@@ -47,11 +49,16 @@ export const OnChangeSendsEmptyValueWhenInputIsEmptied: Story = {
   },
 }
 
-export const BecomesEmptyWhenTypingInEmptyValue: Story = {
+export const DoesNotBecomeEmptyWhenTypingInEmptyValue: Story = {
   args: {
     value: "3",
     emptyValue: "0",
-    onChange: fn(),
+  },
+
+  render: (args, context) => {
+    const [value, setValue] = useState(args.value)
+
+    return <Ui89InputTextNumber {...args} value={value} onChange={setValue} />
   },
 
   async play(context) {
@@ -62,8 +69,7 @@ export const BecomesEmptyWhenTypingInEmptyValue: Story = {
     // Allow time to focus.
     await new Promise((resolve) => setTimeout(resolve, 1))
 
-    await userEvent.clear(textbox)
-    await userEvent.type(textbox, "0")
+    await userEvent.type(textbox, "{Backspace}0")
 
     expect(textbox.value).toEqual("0")
 
@@ -72,7 +78,7 @@ export const BecomesEmptyWhenTypingInEmptyValue: Story = {
     // Allow time to blur.
     await new Promise((resolve) => setTimeout(resolve, 1))
 
-    expect(textbox.value).toEqual("")
+    expect(textbox.value).toEqual("0")
   },
 }
 
