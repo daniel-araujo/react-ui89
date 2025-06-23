@@ -107,3 +107,19 @@ export const RemoveWhitespaceBetweenNumbers: Story = {
     expect(context.args.onChange).toHaveBeenCalledWith("3.14")
   },
 }
+
+export const DoesNotAcceptDoubleDot: Story = {
+  args: {
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    await userEvent.type(textbox, "3..14")
+
+    textbox.blur()
+
+    expect(context.args.onChange).not.toHaveBeenCalled()
+  },
+}

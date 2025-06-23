@@ -13,7 +13,7 @@ export interface Ui89InputTextNumberProps {
 }
 
 export function isTextNumber(text: string): boolean {
-  return /\b\d+(\.\d+)?\b/.test(text)
+  return /^\d+(\.\d+)?$/.test(text)
 }
 
 function displayText(value: any, emptyValue: any) {
