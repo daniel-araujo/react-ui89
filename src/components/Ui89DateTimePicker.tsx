@@ -10,6 +10,7 @@ import "../style/typo.css"
 export interface Ui89DateTimePickerProps {
   value?: Date | null
   onChange?: (value: Date | null) => void
+  dateFormat?: string
 }
 
 export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
@@ -25,7 +26,7 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
         className={["ui89-input-box", "ui89-typo-normal"].join(" ")}
         calendarClassName="ui89-typo-normal"
         showTimeSelect
-        dateFormat="MM/dd/yyyy HH:mm:ss"
+        dateFormat={props.dateFormat ?? "yyyy/MM/dd HH:mm:ss"}
         timeFormat="HH:mm"
         selected={props.value}
         onChange={datepickerOnChange}

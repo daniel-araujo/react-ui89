@@ -1,6 +1,6 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "storybook/test"
 
 import { Ui89InputSelect } from "./Ui89InputSelect"
 import { SceneDecorator } from "../storybook/SceneDecorator"

@@ -1,6 +1,6 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn } from "@storybook/test"
+import { fn } from "storybook/test"
 
 import { Ui89SpaceVertical } from "../components/Ui89SpaceVertical"
 import { Ui89Card } from "../components/Ui89Card"

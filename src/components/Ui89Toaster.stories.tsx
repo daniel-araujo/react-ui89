@@ -1,6 +1,6 @@
 import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn, screen, userEvent } from "@storybook/test"
+import { fn, screen, userEvent } from "storybook/test"
 
 import { Ui89Toaster, useUi89Toaster } from "./Ui89Toaster"
 import { SceneDecorator } from "../storybook/SceneDecorator"

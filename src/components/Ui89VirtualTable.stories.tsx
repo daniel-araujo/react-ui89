@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, userEvent, waitFor, within } from "@storybook/test"
-import { useArgs } from "@storybook/preview-api"
+import { expect, fn, userEvent, waitFor, within } from "storybook/test"
+import { useArgs } from "storybook/preview-api"
 
 import {
   Ui89VirtualTable,

@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "storybook/test"
 
 import { Ui89DateTimePicker } from "./Ui89DateTimePicker"
 import { SceneDecorator } from "../storybook/SceneDecorator"
@@ -22,7 +22,13 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const NoDateSelected: Story = {}
+export const NoDateSelected: Story = {
+  async play(context) {
+    const input = await screen.findByRole("textbox")
+
+    expect(input).toHaveDisplayValue("")
+  },
+}
 
 export const DateSelected: Story = {
   args: {
@@ -30,7 +36,7 @@ export const DateSelected: Story = {
   },
 
   async play(context) {
-    await screen.findByDisplayValue("01/05/2025 12:30:00")
+    await screen.findByDisplayValue("2025/01/05 12:30:00")
   },
 }
 
@@ -41,11 +47,24 @@ export const ChangesSelectedDateWhenTyping: Story = {
   },
 
   async play(context) {
-    const input = await screen.findByDisplayValue("01/05/2025 12:30:00")
+    const input = await screen.findByRole("textbox")
 
     await userEvent.clear(input)
-    await userEvent.type(input, "02/05/2025 12:40:00\n")
+    await userEvent.type(input, "2025/05/02 12:40:00\n")
 
-    expect(context.args.onChange).toHaveBeenCalled()
+    expect(context.args.onChange).toHaveBeenCalledWith(
+      new Date("2025-05-02T12:40:00.000"),
+    )
+  },
+}
+
+export const CustomDateFormat: Story = {
+  args: {
+    value: new Date("2025-01-05T12:30:00.000"),
+    dateFormat: "MM/yyyy mm:ss",
+  },
+
+  async play(context) {
+    await screen.findByDisplayValue("01/2025 30:00")
   },
 }

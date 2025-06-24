@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "storybook/test"
 
 import { Ui89DigitalClock } from "./Ui89DigitalClock"
 import { SceneDecorator } from "../storybook/SceneDecorator"

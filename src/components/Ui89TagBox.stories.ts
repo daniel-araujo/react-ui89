@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { fn } from "@storybook/test"
+import { fn } from "storybook/test"
 
 import { Ui89TagBox } from "./Ui89TagBox"
 import { SceneDecorator } from "../storybook/SceneDecorator"

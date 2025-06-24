@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from "react"
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent, within } from "@storybook/test"
+import { expect, fn, screen, userEvent, within } from "storybook/test"
 
 import {
   Ui89VirtualList,

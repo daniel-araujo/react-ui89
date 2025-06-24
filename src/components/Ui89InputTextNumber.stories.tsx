@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "storybook/test"
 
 import { Ui89InputTextNumber } from "./Ui89InputTextNumber"
 import { SceneDecorator } from "../storybook/SceneDecorator"

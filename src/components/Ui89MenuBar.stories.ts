@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react"
-import { expect, fn, screen, userEvent } from "@storybook/test"
+import { expect, fn, screen, userEvent } from "storybook/test"
 
 import { Ui89MenuBar } from "./Ui89MenuBar"
 import { SceneDecorator } from "../storybook/SceneDecorator"

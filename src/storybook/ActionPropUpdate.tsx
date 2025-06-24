@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import { Decorator } from "@storybook/react/*"
-import { useArgs } from "@storybook/preview-api"
+import { useArgs } from "storybook/preview-api"
 import { useOnce } from "../react-utils"
 
 interface ActionPropUpdateOptions {
