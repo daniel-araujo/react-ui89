@@ -3,7 +3,7 @@
   display: block;
   width: 100%;
 
-  height: var(--ui89-input-height);
+  min-height: var(--ui89-input-height);
   line-height: var(--ui89-input-height);
   padding: 0 var(--ui89-safe-space);
   border: 0;

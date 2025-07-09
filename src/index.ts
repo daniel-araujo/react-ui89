@@ -61,6 +61,9 @@ export type { Ui89InputPasswordProps } from "./components/Ui89InputPassword"
 export { Ui89InputText } from "./components/Ui89InputText"
 export type { Ui89InputTextProps } from "./components/Ui89InputText"
 
+export { Ui89InputTextArea } from "./components/Ui89InputTextArea"
+export type { Ui89InputTextAreaProps } from "./components/Ui89InputTextArea"
+
 export { Ui89InputTextNumber } from "./components/Ui89InputTextNumber"
 export type { Ui89InputTextNumberProps } from "./components/Ui89InputTextNumber"
 
