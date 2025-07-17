@@ -6,6 +6,8 @@
   overflow: auto;
   background: var(--ui89-input-bg-color);
   color: var(--ui89-input-text-color);
+  display: flex;
+  flex-direction: column;
 }
 
 .ui89-input-select:focus-within .ui89-input-select__menu {

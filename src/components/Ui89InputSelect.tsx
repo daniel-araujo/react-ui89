@@ -1,16 +1,4 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react"
-import {
-  useFloating,
-  autoUpdate,
-  size,
-  useClick,
-  useDismiss,
-  useRole,
-  useInteractions,
-  FloatingFocusManager,
-  FloatingPortal,
-} from "@floating-ui/react"
-
 import "./Ui89InputSelect.css"
 import "../style/input-box.css"
 import "../style/text.css"
@@ -20,7 +8,7 @@ import {
 } from "./Ui89VirtualList"
 import { Ui89Scene } from "./Ui89Scene"
 import { Ui89InputText } from "./Ui89InputText"
-import { useZIndexer } from "../useZIndexer"
+import { DropdownContainer } from "./private/DropdownContainer"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -74,37 +62,6 @@ export interface Ui89InputSelectProps<T> {
 export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
   const [search, setSearch] = useState("")
   const [isOpen, setIsOpen] = useState(false)
-  const zIndexer = useZIndexer(isOpen)
-  const { refs, floatingStyles, context } = useFloating({
-    open: isOpen,
-    onOpenChange: setIsOpen,
-    middleware: [
-      size({
-        apply({ availableWidth, availableHeight, elements }) {
-          let width = elements.reference.getBoundingClientRect().width
-          // Change styles, e.g.
-          Object.assign(elements.floating.style, {
-            width: `${availableWidth}px`,
-            maxWidth: `${width}px`,
-            maxHeight: `${Math.max(0, availableHeight)}px`,
-          })
-        },
-      }),
-    ],
-    whileElementsMounted: autoUpdate,
-    placement: "bottom-start",
-    strategy: "fixed",
-  })
-
-  const click = useClick(context)
-  const dismiss = useDismiss(context)
-  const role = useRole(context)
-
-  const { getReferenceProps, getFloatingProps } = useInteractions([
-    click,
-    dismiss,
-    role,
-  ])
 
   const getOptionKey = useMemo(() => {
     return props.getOptionKey ?? ((option: any) => option)
@@ -179,68 +136,65 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
 
   return (
     <div className="ui89-input-select">
-      <div
-        ref={refs.setReference}
-        className={[
-          "ui89-input-box",
-          "ui89-input-box--unselectable",
-          "ui89-input-box--clickable",
-          "ui89-text-single-line",
-        ].join(" ")}
-        tabIndex={0}
-        title={props.value !== undefined ? optionTitle(props.value) : undefined}
-        {...getReferenceProps()}
-      >
-        {props.value !== undefined ? (
-          <>
-            {props.renderOption !== undefined
-              ? props.renderOption(props.value)
-              : props.value}
-          </>
-        ) : (
-          <>Select...</>
+      <DropdownContainer
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        renderContainer={(props2) => (
+          <div
+            ref={props2.setRef}
+            className={[
+              "ui89-input-box",
+              "ui89-input-box--unselectable",
+              "ui89-input-box--clickable",
+              "ui89-text-single-line",
+            ].join(" ")}
+            tabIndex={0}
+            title={
+              props.value !== undefined ? optionTitle(props.value) : undefined
+            }
+            {...props2.props}
+          >
+            {props.value !== undefined ? (
+              <>
+                {props.renderOption !== undefined
+                  ? props.renderOption(props.value)
+                  : props.value}
+              </>
+            ) : (
+              <>Select...</>
+            )}
+          </div>
         )}
-      </div>
+        renderDropdown={() => (
+          <div className="ui89-input-select__menu">
+            {props.search && (
+              <Ui89InputText
+                placeholder="Search..."
+                value={search}
+                onChange={setSearch}
+              />
+            )}
 
-      {isOpen && (
-        <FloatingPortal>
-          <FloatingFocusManager context={context} modal={false}>
-            <div
-              ref={refs.setFloating}
-              className="ui89-input-select__menu"
-              style={{ ...floatingStyles, zIndex: zIndexer.value }}
-            >
-              <Ui89Scene>
-                {props.search && (
-                  <Ui89InputText
-                    placeholder="Search..."
-                    value={search}
-                    onChange={setSearch}
-                  />
-                )}
-
-                {options.length > 0 ? (
-                  <Ui89VirtualList
-                    maxHeight="300px"
-                    rowHeight={props.optionHeight ?? 32}
-                    rows={options}
-                    renderRow={renderOption}
-                  />
-                ) : (
-                  <div
-                    className={[
-                      "ui89-input-select__menu__item",
-                      "ui89-input-select__menu__item--disabled",
-                    ].join(" ")}
-                  >
-                    &lt;empty&gt;
-                  </div>
-                )}
-              </Ui89Scene>
-            </div>
-          </FloatingFocusManager>
-        </FloatingPortal>
-      )}
+            {options.length > 0 ? (
+              <Ui89VirtualList
+                maxHeight="300px"
+                rowHeight={props.optionHeight ?? 32}
+                rows={options}
+                renderRow={renderOption}
+              />
+            ) : (
+              <div
+                className={[
+                  "ui89-input-select__menu__item",
+                  "ui89-input-select__menu__item--disabled",
+                ].join(" ")}
+              >
+                &lt;empty&gt;
+              </div>
+            )}
+          </div>
+        )}
+      />
     </div>
   )
 }
