@@ -8,10 +8,7 @@
   color: var(--ui89-input-text-color);
   display: flex;
   flex-direction: column;
-}
-
-.ui89-input-select:focus-within .ui89-input-select__menu {
-  /*animation: ui89-input-select__appear var(--ui89-animation-speed);*/
+  animation: ui89-input-select__appear var(--ui89-animation-speed);
 }
 
 @keyframes ui89-input-select__appear {
