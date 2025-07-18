@@ -247,3 +247,18 @@ export const MenuLongerThanBox: Story = {
     </div>
   ),
 }
+
+export const MenuItemsWithDifferentWidth: Story = {
+  args: {
+    menuWidth: 500,
+    value: "This box is small",
+    options: [
+      "This menu item is going to overflow. This is bigger thant he menu.",
+      "But the menu can be larger than the box",
+    ],
+  },
+  async play(context) {
+    const box = await screen.findByText("Select...")
+    await userEvent.click(box)
+  },
+}
