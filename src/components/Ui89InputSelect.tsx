@@ -8,7 +8,7 @@ import {
 } from "./Ui89VirtualList"
 import { Ui89Scene } from "./Ui89Scene"
 import { Ui89InputText } from "./Ui89InputText"
-import { DropdownContainer } from "./private/DropdownContainer"
+import { Ui89Popover } from "./Ui89Popover"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -136,7 +136,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
 
   return (
     <div className="ui89-input-select">
-      <DropdownContainer
+      <Ui89Popover
         open={isOpen}
         onOpenChange={setIsOpen}
         renderContainer={(props2) => (
@@ -165,7 +165,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
             )}
           </div>
         )}
-        renderDropdown={() => (
+        renderPopover={() => (
           <div className="ui89-input-select__menu">
             {props.search && (
               <Ui89InputText

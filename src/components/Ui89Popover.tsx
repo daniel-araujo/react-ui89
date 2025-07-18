@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React from "react"
 import {
   useFloating,
   autoUpdate,
@@ -9,31 +9,27 @@ import {
   useInteractions,
   FloatingFocusManager,
   FloatingPortal,
-  ReferenceType,
 } from "@floating-ui/react"
-import "../../style/text.css"
-import { Ui89Scene } from "../Ui89Scene"
-import { useZIndexer } from "../../useZIndexer"
+import "../style/text.css"
+import { Ui89Scene } from "./Ui89Scene"
+import { useZIndexer } from "../useZIndexer"
 
-export interface DropdownContainerPropsRenderContainerProps {
+export interface Ui89PopoverPropsRenderContainerProps {
   props: React.HTMLProps<Element>
-  setRef: (ref: any) => void
+  setRef: (ref: any | null) => void
 }
 
-export interface DropdownContainerProps<T> {
+export interface Ui89PopoverProps<T> {
   open: boolean
   onOpenChange: (value: boolean) => void
+  popoverWidth?: number
   renderContainer: (
-    props: DropdownContainerPropsRenderContainerProps,
+    props: Ui89PopoverPropsRenderContainerProps,
   ) => React.ReactNode
-  renderDropdown: () => React.ReactNode
+  renderPopover: () => React.ReactNode
 }
 
-/**
- * This is a very performant and customizable dropdown selector that
- * allows you to choose from a list of options.
- */
-export function DropdownContainer<T>(props: DropdownContainerProps<T>) {
+export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
   const zIndexer = useZIndexer(props.open)
   const { refs, floatingStyles, context } = useFloating({
     open: props.open,
@@ -45,7 +41,7 @@ export function DropdownContainer<T>(props: DropdownContainerProps<T>) {
           // Change styles, e.g.
           Object.assign(elements.floating.style, {
             width: `${availableWidth}px`,
-            maxWidth: `${width}px`,
+            maxWidth: `${props.popoverWidth ?? width}px`,
             maxHeight: `${Math.max(0, availableHeight)}px`,
           })
         },
@@ -85,7 +81,7 @@ export function DropdownContainer<T>(props: DropdownContainerProps<T>) {
                   flexDirection: "column",
                 }}
               >
-                {props.renderDropdown()}
+                {props.renderPopover()}
               </div>
             </Ui89Scene>
           </FloatingFocusManager>
