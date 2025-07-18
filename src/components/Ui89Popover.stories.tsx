@@ -90,8 +90,7 @@ export const OpenByClicking: Story = {
     expect(card).toBeVisible()
   },
 }
-
-export const PopoverCanBeSmallerThanContainer: Story = {
+export const PopoverMaxOverflowWidthNotDefined: Story = {
   args: {
     open: true,
   },
@@ -100,7 +99,6 @@ export const PopoverCanBeSmallerThanContainer: Story = {
     <>
       <Ui89Popover
         {...args}
-        popoverWidth={100}
         renderContainer={(props) => (
           <span
             ref={props.setRef}
@@ -114,9 +112,24 @@ export const PopoverCanBeSmallerThanContainer: Story = {
       />
     </>
   ),
+
+  async play(context) {
+    const container = await screen.findByText(
+      "Click this to toggle the visibility of the card",
+    )
+    const popover = await screen.findByText("This is the card")
+
+    const containerWidth = container.offsetWidth
+    const popoverWidth = popover.offsetWidth
+
+    const errorMargin = 20
+    expect(Math.abs(popoverWidth - containerWidth)).toBeLessThanOrEqual(
+      errorMargin,
+    )
+  },
 }
 
-export const PopoverCanBeLargerThanContainer: Story = {
+export const PopoverMaxOverflowWidthSmallerThanContainer: Story = {
   args: {
     open: true,
   },
@@ -125,7 +138,7 @@ export const PopoverCanBeLargerThanContainer: Story = {
     <>
       <Ui89Popover
         {...args}
-        popoverWidth={1000}
+        popoverOverflowMaxWidth={100}
         renderContainer={(props) => (
           <span
             ref={props.setRef}
@@ -139,4 +152,56 @@ export const PopoverCanBeLargerThanContainer: Story = {
       />
     </>
   ),
+
+  async play(context) {
+    const container = await screen.findByText(
+      "Click this to toggle the visibility of the card",
+    )
+    const popover = await screen.findByText("This is the card")
+
+    const containerWidth = container.offsetWidth
+    const popoverWidth = popover.offsetWidth
+
+    const errorMargin = 20
+    expect(Math.abs(popoverWidth - containerWidth)).toBeLessThanOrEqual(
+      errorMargin,
+    )
+  },
+}
+
+export const PopoverMaxOverflowWidthLargerThanContainer: Story = {
+  args: {
+    open: true,
+  },
+
+  render: (args, context) => (
+    <>
+      <Ui89Popover
+        {...args}
+        popoverOverflowMaxWidth={1000}
+        renderContainer={(props) => (
+          <span
+            ref={props.setRef}
+            {...props.props}
+            style={{ cursor: "pointer" }}
+          >
+            Click this to toggle the visibility of the card
+          </span>
+        )}
+        renderPopover={() => <Ui89Card>This is the card</Ui89Card>}
+      />
+    </>
+  ),
+
+  async play(context) {
+    const container = await screen.findByText(
+      "Click this to toggle the visibility of the card",
+    )
+    const popover = await screen.findByText("This is the card")
+
+    const containerWidth = container.offsetWidth
+    const popoverWidth = popover.offsetWidth
+
+    expect(popoverWidth).toBeGreaterThan(containerWidth)
+  },
 }

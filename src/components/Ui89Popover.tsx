@@ -21,11 +21,19 @@ export interface Ui89PopoverPropsRenderContainerProps {
 
 export interface Ui89PopoverProps<T> {
   open: boolean
+
   onOpenChange: (value: boolean) => void
-  popoverWidth?: number
+
+  /**
+   * How large the popover can be if there if the viewport is larger than the
+   * width of the container.
+   */
+  popoverOverflowMaxWidth?: number
+
   renderContainer: (
     props: Ui89PopoverPropsRenderContainerProps,
   ) => React.ReactNode
+
   renderPopover: () => React.ReactNode
 }
 
@@ -38,10 +46,17 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
       size({
         apply({ availableWidth, availableHeight, elements }) {
           let width = elements.reference.getBoundingClientRect().width
+
+          if (props.popoverOverflowMaxWidth !== undefined) {
+            if (props.popoverOverflowMaxWidth > width) {
+              width = props.popoverOverflowMaxWidth
+            }
+          }
+
           // Change styles, e.g.
           Object.assign(elements.floating.style, {
             width: `${availableWidth}px`,
-            maxWidth: `${props.popoverWidth ?? width}px`,
+            maxWidth: `${width}px`,
             maxHeight: `${Math.max(0, availableHeight)}px`,
           })
         },

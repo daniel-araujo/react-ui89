@@ -237,7 +237,7 @@ export const MenuLongerThanBox: Story = {
     viewport: { defaultViewport: "mobile1" },
   },
   args: {
-    menuWidth: 500,
+    menuOverflowMaxWidth: 500,
     value: "This box is small",
     options: ["But the menu can be larger than the box"],
   },
@@ -250,7 +250,7 @@ export const MenuLongerThanBox: Story = {
 
 export const MenuItemsWithDifferentWidth: Story = {
   args: {
-    menuWidth: 500,
+    menuOverflowMaxWidth: 500,
     value: "This box is small",
     options: [
       "This menu item is going to overflow. This is bigger thant he menu.",
