@@ -53,6 +53,12 @@ export interface Ui89InputSelectProps<T> {
    * Customize how an option should be rendered.
    */
   renderOption?: (option: T) => any
+
+  /**
+   * Width of the menu. The menu is still going to shrink if it can't fit in
+   * the viewport.
+   */
+  menuWidth?: number
 }
 
 /**
@@ -139,6 +145,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
       <Ui89Popover
         open={isOpen}
         onOpenChange={setIsOpen}
+        popoverWidth={props.menuWidth}
         renderContainer={(props2) => (
           <div
             ref={props2.setRef}

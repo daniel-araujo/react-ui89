@@ -231,3 +231,19 @@ export const ClearsSearchAfterOpeningAgain: Story = {
     }
   },
 }
+
+export const MenuLongerThanBox: Story = {
+  parameters: {
+    viewport: { defaultViewport: "mobile1" },
+  },
+  args: {
+    menuWidth: 500,
+    value: "This box is small",
+    options: ["But the menu can be larger than the box"],
+  },
+  render: (args, context) => (
+    <div style={{ width: "200px" }}>
+      <Ui89InputSelect {...args} />
+    </div>
+  ),
+}
