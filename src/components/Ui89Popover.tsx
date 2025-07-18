@@ -16,7 +16,7 @@ import { useZIndexer } from "../useZIndexer"
 
 export interface Ui89PopoverPropsRenderContainerProps {
   props: React.HTMLProps<Element>
-  setRef: (ref: any | null) => void
+  setRef: any
 }
 
 export interface Ui89PopoverProps<T> {
