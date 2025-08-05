@@ -262,3 +262,23 @@ export const MenuItemsWithDifferentWidth: Story = {
     await userEvent.click(box)
   },
 }
+
+export const CallsOnOpenChange: Story = {
+  args: {
+    options: optionsSampleTo100,
+    optionHeight: 100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+    onOpenChange: fn(),
+  },
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    await userEvent.click(box)
+    expect(context.args.onOpenChange).toHaveBeenCalledWith(true)
+
+    await userEvent.click(box)
+    expect(context.args.onOpenChange).toHaveBeenCalledWith(false)
+  },
+}

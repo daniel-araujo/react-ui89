@@ -39,6 +39,11 @@ export interface Ui89InputSelectProps<T> {
   onChange?: (option: T) => void
 
   /**
+   * Called when the menu is opened or closed.
+   */
+  onOpenChange?: (open: boolean) => void
+
+  /**
    * A search term was provided.
    */
   onSearch?: (search: string) => void
@@ -127,6 +132,8 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
   )
 
   useEffect(() => {
+    props.onOpenChange?.(isOpen)
+
     if (isOpen) {
       setSearch("")
     }
