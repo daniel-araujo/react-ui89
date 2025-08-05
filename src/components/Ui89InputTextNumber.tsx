@@ -28,6 +28,10 @@ function displayText(value: any) {
   return value.toString()
 }
 
+function dotsMakeMoreSense(value: string) {
+  return value.replaceAll(",", ".")
+}
+
 export function Ui89InputTextNumber(props: Ui89InputTextNumberProps) {
   const wrappedValue = useMemo(() => {
     return displayText(props.value)
@@ -45,6 +49,7 @@ export function Ui89InputTextNumber(props: Ui89InputTextNumberProps) {
     }
 
     value = stringRemoveAllWhitespace(value)
+    value = dotsMakeMoreSense(value)
 
     if (!isTextNumber(value)) {
       // We end here.
