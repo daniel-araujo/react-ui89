@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { CSSProperties, useState } from "react"
 
 import "../../style/reset.css"
 
@@ -6,6 +6,7 @@ import { useUi89 } from "../../Ui89Provider"
 
 export interface Ui89LinkBaseProps {
   className?: string
+  style?: CSSProperties
   onClick?: () => void | Promise<void>
   href?: string
   children: React.ReactNode
@@ -37,7 +38,7 @@ export function Ui89LinkBase(props: Ui89LinkBaseProps) {
         if (props.href.startsWith("/")) {
           if (overrides.routerPush !== undefined) {
             e.preventDefault()
-            overrides.routerPush(props.href)
+            await overrides.routerPush(props.href)
           }
         }
       } else {
@@ -52,6 +53,7 @@ export function Ui89LinkBase(props: Ui89LinkBaseProps) {
   return (
     <a
       className={`ui-89-reset-a ${props.className}`}
+      style={props.style}
       role="link"
       href={props.href}
       onClick={onClick}

@@ -7,6 +7,7 @@ import "../style/chosen-theme.css"
 
 import { Ui89Theme } from "../theme"
 import { useUi89 } from "../Ui89Provider"
+import { Ui89LinkBase } from "./private/LinkBase"
 
 export type Ui89BreadcrumbsPropsOnSelect = (e: {
   item: Ui89BreadcrumbsPropsItem
@@ -34,29 +35,16 @@ export function Ui89BreadcrumbsItem({
 }) {
   const style = { "--ui89-index": index } as React.CSSProperties
   const tagname = item.url !== undefined ? "a" : "div"
-  const overrides = useUi89()
-
-  const onClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
-    if (item.url !== undefined) {
-      if (item.url.startsWith("/")) {
-        if (overrides.routerPush !== undefined) {
-          e.preventDefault()
-          overrides.routerPush(item.url)
-        }
-      }
-    }
-  }
 
   return (
-    <a
+    <Ui89LinkBase
       className={`ui-89-reset-a ui89-breadcrumbs__item`}
       href={item.url}
       style={style}
-      onClick={onClick}
     >
       <div className="ui89-breadcrumbs__item__background"></div>
       {item.label}
-    </a>
+    </Ui89LinkBase>
   )
 }
 

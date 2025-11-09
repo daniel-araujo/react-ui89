@@ -69,7 +69,7 @@ export function Ui89Button({
         if (href.startsWith("/")) {
           if (overrides.routerPush !== undefined) {
             e.preventDefault()
-            overrides.routerPush(href)
+            await overrides.routerPush(href)
           }
         }
       }
