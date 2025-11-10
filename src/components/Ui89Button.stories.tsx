@@ -7,6 +7,7 @@ import { SceneDecorator } from "../storybook/SceneDecorator"
 import { Ui89Provider, Ui89OverrideProps } from "../Ui89Provider"
 import { useUi89Toaster } from "./Ui89Toaster"
 import { Ui89Theme } from "../theme"
+import { sleep } from "../promise-utils"
 
 const meta: Meta<typeof Ui89Button> = {
   component: Ui89Button,
@@ -177,6 +178,34 @@ export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
     await userEvent.click(button)
 
     expect(context.args.routerPush).toHaveBeenCalledWith("/link")
+  },
+}
+
+export const OverrideRouterPushActiveState: StoryObj<Ui89OverrideProps> = {
+  args: {
+    routerPush: fn(async () => {
+      await sleep(10)
+    }),
+  },
+
+  render: (args, context) => (
+    <Ui89Provider routerPush={args.routerPush}>
+      <Ui89Button href="/link">Button</Ui89Button>
+    </Ui89Provider>
+  ),
+
+  async play(context) {
+    const button = await screen.findByRole("button")
+
+    await userEvent.click(button)
+
+    await sleep(5)
+
+    expect(button.querySelector(".ui89-button__button--active")).not.toBeNull()
+
+    await sleep(5)
+
+    expect(button.querySelector(".ui89-button__button--active")).toBeNull()
   },
 }
 
