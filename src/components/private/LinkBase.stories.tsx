@@ -67,6 +67,45 @@ export const CallsClickEventHandler: StoryObj<{
   },
 }
 
+export const DoesNotCallRouterPushWhenDisabled: StoryObj<Ui89OverrideProps> = {
+  args: {
+    routerPush: fn(),
+  },
+
+  render: (args, context) => (
+    <Ui89Provider routerPush={args.routerPush}>
+      <Ui89LinkBase href="/link" disabled={true}>
+        Link
+      </Ui89LinkBase>
+    </Ui89Provider>
+  ),
+
+  async play(context) {
+    const link = await screen.findByRole("link")
+
+    await userEvent.click(link)
+
+    expect(context.args.routerPush).not.toHaveBeenCalled()
+  },
+}
+
+export const DoesNotNavigateWhenDisabled: Story = {
+  args: {
+    href: "#should-not-navigate",
+    disabled: true,
+    children: "Link",
+  },
+
+  async play(context) {
+    const initialHash = window.location.hash
+    const link = await screen.findByRole("link")
+
+    await userEvent.click(link)
+
+    expect(window.location.hash).toBe(initialHash)
+  },
+}
+
 export const IgnoresHrefWhenThereIsAClickEventHandler: StoryObj<{
   routerPush: any
   onClick: any

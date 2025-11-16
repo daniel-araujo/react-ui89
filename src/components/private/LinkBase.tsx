@@ -24,6 +24,7 @@ export function Ui89LinkBase(props: Ui89LinkBaseProps) {
   async function onClick(e: React.MouseEvent<HTMLAnchorElement>) {
     if (localDisabled) {
       // The anchor tag does not support the disabled attribute so we do this.
+      e.preventDefault()
       return
     }
 
