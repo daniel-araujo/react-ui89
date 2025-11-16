@@ -9,10 +9,26 @@ import {
   useInteractions,
   FloatingFocusManager,
   FloatingPortal,
+  Placement,
 } from "@floating-ui/react"
 import "../style/text.css"
 import { Ui89Scene } from "./Ui89Scene"
 import { useZIndexer } from "../useZIndexer"
+
+export enum Ui89PopoverPropsPlacement {
+  top = "top",
+  topStart = "topStart",
+  topEnd = "topEnd",
+  right = "right",
+  rightStart = "rightStart",
+  rightEnd = "rightEnd",
+  bottom = "bottom",
+  bottomStart = "bottomStart",
+  bottomEnd = "bottomEnd",
+  left = "left",
+  leftStart = "leftStart",
+  leftEnd = "leftEnd",
+}
 
 export interface Ui89PopoverPropsRenderContainerProps {
   props: React.HTMLProps<Element>
@@ -21,6 +37,8 @@ export interface Ui89PopoverPropsRenderContainerProps {
 
 export interface Ui89PopoverProps<T> {
   open: boolean
+
+  placement: Ui89PopoverPropsPlacement | keyof typeof Ui89PopoverPropsPlacement
 
   onOpenChange: (value: boolean) => void
 
@@ -35,6 +53,39 @@ export interface Ui89PopoverProps<T> {
   ) => React.ReactNode
 
   renderPopover: () => React.ReactNode
+}
+
+function toFloatingUiPlacement(
+  placement: Ui89PopoverPropsPlacement | keyof typeof Ui89PopoverPropsPlacement,
+): Placement {
+  switch (placement) {
+    case Ui89PopoverPropsPlacement.top:
+      return "top"
+    case Ui89PopoverPropsPlacement.topStart:
+      return "top-start"
+    case Ui89PopoverPropsPlacement.topEnd:
+      return "top-end"
+    case Ui89PopoverPropsPlacement.right:
+      return "right"
+    case Ui89PopoverPropsPlacement.rightStart:
+      return "right-start"
+    case Ui89PopoverPropsPlacement.rightEnd:
+      return "right-end"
+    case Ui89PopoverPropsPlacement.bottom:
+      return "bottom"
+    case Ui89PopoverPropsPlacement.bottomStart:
+      return "bottom-start"
+    case Ui89PopoverPropsPlacement.bottomEnd:
+      return "bottom-end"
+    case Ui89PopoverPropsPlacement.left:
+      return "left"
+    case Ui89PopoverPropsPlacement.leftStart:
+      return "left-start"
+    case Ui89PopoverPropsPlacement.leftEnd:
+      return "left-end"
+    default:
+      throw new Error(`Unknown placement: ${placement}`)
+  }
 }
 
 export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
@@ -63,7 +114,9 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
       }),
     ],
     whileElementsMounted: autoUpdate,
-    placement: "bottom-start",
+    placement: toFloatingUiPlacement(
+      props.placement ?? Ui89PopoverPropsPlacement.bottomStart,
+    ),
     strategy: "fixed",
   })
 

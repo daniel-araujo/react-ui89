@@ -2,10 +2,11 @@ import React from "react"
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "storybook/test"
 
-import { Ui89Popover } from "./Ui89Popover"
+import { Ui89Popover, Ui89PopoverPropsPlacement } from "./Ui89Popover"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
 import { Ui89Card } from "./Ui89Card"
+import { Ui89ThemeBackground } from "./Ui89ThemeBackground"
 
 const meta: Meta<typeof Ui89Popover> = {
   parameters: {
@@ -203,5 +204,53 @@ export const PopoverMaxOverflowWidthLargerThanContainer: Story = {
     const popoverWidth = popover.offsetWidth
 
     expect(popoverWidth).toBeGreaterThan(containerWidth)
+  },
+}
+
+export const PlacementBottomRightCorner: Story = {
+  args: {
+    open: true,
+    placement: Ui89PopoverPropsPlacement.bottomEnd,
+    popoverOverflowMaxWidth: 300,
+  },
+
+  render: (args, context) => (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Ui89Popover
+        {...args}
+        renderContainer={(props) => (
+          <span
+            ref={props.setRef}
+            {...props.props}
+            style={{ cursor: "pointer" }}
+          >
+            Container
+          </span>
+        )}
+        renderPopover={() => (
+          <Ui89ThemeBackground theme="danger">Popover</Ui89ThemeBackground>
+        )}
+      />
+    </div>
+  ),
+
+  async play(context) {
+    const container = await screen.findByText("Container")
+    const popover = await screen.findByText("Popover")
+
+    const containerRect = container.getBoundingClientRect()
+    const popoverRect = popover.getBoundingClientRect()
+
+    // The popover should be below the container.
+    expect(popoverRect.top).toBeCloseTo(containerRect.bottom)
+
+    // The popover's left should be aligned with the container's left.
+    expect(popoverRect.right).toBeCloseTo(containerRect.right, 0)
   },
 }

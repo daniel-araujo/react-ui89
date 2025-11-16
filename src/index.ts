@@ -89,7 +89,11 @@ export { Ui89NameValuePair } from "./components/Ui89NameValuePair"
 export type { Ui89NameValuePairProps } from "./components/Ui89NameValuePair"
 
 export { Ui89Popover } from "./components/Ui89Popover"
-export type { Ui89PopoverProps } from "./components/Ui89Popover"
+export type {
+  Ui89PopoverProps,
+  Ui89PopoverPropsPlacement,
+  Ui89PopoverPropsRenderContainerProps,
+} from "./components/Ui89Popover"
 
 export { Ui89Provider } from "./Ui89Provider"
 export type { Ui89OverrideProps } from "./Ui89Provider"
