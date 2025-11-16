@@ -138,7 +138,11 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
       })}
       {props.open && (
         <FloatingPortal>
-          <FloatingFocusManager context={context} modal={false}>
+          <FloatingFocusManager
+            context={context}
+            modal={false}
+            initialFocus={-1}
+          >
             <Ui89Scene>
               <div
                 ref={refs.setFloating}
