@@ -38,7 +38,7 @@ export interface Ui89PopoverPropsRenderContainerProps {
 export interface Ui89PopoverProps<T> {
   open: boolean
 
-  placement: Ui89PopoverPropsPlacement | keyof typeof Ui89PopoverPropsPlacement
+  placement?: Ui89PopoverPropsPlacement | keyof typeof Ui89PopoverPropsPlacement
 
   onOpenChange: (value: boolean) => void
 
