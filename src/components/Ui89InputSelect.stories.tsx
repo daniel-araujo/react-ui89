@@ -199,6 +199,27 @@ export const Search: Story = {
   },
 }
 
+export const SearchFocusOnMenuOpen: Story = {
+  args: {
+    options: optionsSampleTo100,
+    getOptionKey: getOptionKeyValue,
+    renderOption: renderOptionLabel,
+    search: true,
+    onSearch: fn(),
+  },
+
+  async play(context) {
+    const box = await screen.findByText("Select...")
+
+    await userEvent.click(box)
+
+    const search = await screen.findByPlaceholderText("Search...")
+
+    // The search input should be focused when the menu is opened.
+    await expect(search).toHaveFocus()
+  },
+}
+
 export const ClearsSearchAfterOpeningAgain: Story = {
   args: {
     options: optionsSampleTo100,

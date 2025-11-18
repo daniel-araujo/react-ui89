@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react"
+import React, { useCallback, useEffect, useMemo, useRef, useState } from "react"
 import "./Ui89InputSelect.css"
 import "../style/input-box.css"
 import "../style/text.css"
@@ -7,8 +7,9 @@ import {
   Ui89VirtualListPropsRenderRowProps,
 } from "./Ui89VirtualList"
 import { Ui89Scene } from "./Ui89Scene"
-import { Ui89InputText } from "./Ui89InputText"
+import { Ui89InputText, Ui89InputTextRef } from "./Ui89InputText"
 import { Ui89Popover } from "./Ui89Popover"
+import RenderCallback from "./private/RenderCallback"
 
 export interface Ui89InputSelectProps<T> {
   /**
@@ -73,6 +74,7 @@ export interface Ui89InputSelectProps<T> {
 export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
   const [search, setSearch] = useState("")
   const [isOpen, setIsOpen] = useState(false)
+  const searchInput = useRef<Ui89InputTextRef>(null)
 
   const getOptionKey = useMemo(() => {
     return props.getOptionKey ?? ((option: any) => option)
@@ -147,6 +149,11 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
     }
   }, [search])
 
+  function onRenderPopover() {
+    // Making sure that the search input is focused when opening the menu.
+    searchInput.current?.focus()
+  }
+
   return (
     <div className="ui89-input-select">
       <Ui89Popover
@@ -181,8 +188,11 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
         )}
         renderPopover={() => (
           <div className="ui89-input-select__menu">
+            <RenderCallback onRender={onRenderPopover} />
+
             {props.search && (
               <Ui89InputText
+                ref={searchInput}
                 placeholder="Search..."
                 value={search}
                 onChange={setSearch}
