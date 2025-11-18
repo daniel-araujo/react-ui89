@@ -1,12 +1,8 @@
-import React, { useMemo } from "react"
-import { useState, useEffect, useRef } from "react"
-import { throttledTimeout } from "../timeout"
+import React, { useImperativeHandle, useRef } from "react"
 
 import "../style/input-box.css"
 import "../style/typo.css"
 import { useDelayedOnChange } from "../useDelayedOnChange"
-
-const THROTTLE_DELAY = 200
 
 export interface Ui89InputTextProps {
   value?: any
@@ -18,19 +14,18 @@ export interface Ui89InputTextProps {
   onBlur?: () => void
 }
 
-function convertAnyToText(value: any) {
-  return value ?? ""
+export interface Ui89InputTextRef {
+  focus: () => void
 }
 
-export function Ui89InputText({
-  value,
-  placeholder,
-  autoTrim = true,
-  onChange,
-  onTyping,
-  onFocus,
-  onBlur,
-}: Ui89InputTextProps) {
+export const Ui89InputText = React.forwardRef<
+  Ui89InputTextRef,
+  Ui89InputTextProps
+>(function Ui89InputText(
+  { value, placeholder, autoTrim = true, onChange, onTyping, onFocus, onBlur },
+  ref,
+) {
+  const inputRef = useRef<HTMLInputElement>(null)
   const delayedState = useDelayedOnChange({
     defaultValue: "",
     value,
@@ -46,9 +41,16 @@ export function Ui89InputText({
     },
   })
 
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      inputRef.current?.focus()
+    },
+  }))
+
   return (
     <div>
       <input
+        ref={inputRef}
         className={`ui89-input-box ui89-typo-special`}
         type="text"
         value={delayedState.value}
@@ -64,4 +66,4 @@ export function Ui89InputText({
       />
     </div>
   )
-}
+})

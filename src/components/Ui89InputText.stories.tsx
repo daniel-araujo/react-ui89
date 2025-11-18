@@ -1,11 +1,13 @@
-import React, { useState } from "react"
+import React, { useRef, useState } from "react"
 
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "storybook/test"
 
-import { Ui89InputText } from "./Ui89InputText"
+import { Ui89InputText, Ui89InputTextRef } from "./Ui89InputText"
 import { SceneDecorator } from "../storybook/SceneDecorator"
 import { ActionPropUpdate } from "../storybook/ActionPropUpdate"
+import { Ui89Button } from "./Ui89Button"
+import { Ui89SpaceVertical } from "./Ui89SpaceVertical"
 
 const meta: Meta<typeof Ui89InputText> = {
   component: Ui89InputText,
@@ -25,6 +27,38 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
+
+export const Focus: Story = {
+  render: (args) => {
+    const inputRef = useRef<Ui89InputTextRef>(null)
+
+    const handleClick = () => {
+      inputRef.current?.focus()
+    }
+
+    return (
+      <>
+        <Ui89InputText
+          {...args}
+          ref={inputRef}
+          placeholder="I can be focused"
+        />
+        <Ui89SpaceVertical />
+        <Ui89Button onClick={handleClick}>Focus Input</Ui89Button>
+      </>
+    )
+  },
+  play: async (context) => {
+    const button = await screen.findByRole("button", { name: /Focus Input/i })
+    const textbox = await screen.findByRole("textbox")
+
+    expect(textbox).not.toHaveFocus()
+
+    await userEvent.click(button)
+
+    await expect(textbox).toHaveFocus()
+  },
+}
 
 export const TypingEmitsOnChange: Story = {
   args: {
