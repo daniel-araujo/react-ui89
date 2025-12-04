@@ -161,6 +161,33 @@ export const ClickPromise: Story = {
   },
 }
 
+export const ClickHandlerTakesPrecedenceOverHref: StoryObj<{
+  routerPush: any
+  onClick: any
+}> = {
+  args: {
+    routerPush: fn(),
+    onClick: fn(),
+  },
+
+  render: (args, context) => (
+    <Ui89Provider routerPush={args.routerPush}>
+      <Ui89Button href="/link" onClick={args.onClick}>
+        Button
+      </Ui89Button>
+    </Ui89Provider>
+  ),
+
+  async play(context) {
+    const button = await screen.findByRole("button")
+
+    await userEvent.click(button)
+
+    expect(context.args.onClick).toHaveBeenCalled()
+    expect(context.args.routerPush).not.toHaveBeenCalled()
+  },
+}
+
 export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
   args: {
     routerPush: fn(),

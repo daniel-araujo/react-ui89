@@ -65,10 +65,19 @@ export function Ui89Button({
     try {
       setClicking(true)
 
-      if (href !== undefined) {
+      if (onClick !== undefined) {
+        // Takes precedence over href.
+
+        // Prevent anchor tag from taking over navigation.
+        e.preventDefault()
+
+        await onClick()
+      } else if (href !== undefined) {
         if (href.startsWith("/")) {
           if (overrides.routerPush !== undefined) {
+            // Prevent anchor tag from taking over navigation.
             e.preventDefault()
+
             await overrides.routerPush(href)
           }
         }
