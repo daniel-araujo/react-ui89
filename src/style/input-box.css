@@ -1,11 +1,23 @@
 .ui89-input-box {
+  /* We want to make sure that the space between two lines of text is the same
+  as the padding at the top and bottom. */
+  --line-height: calc(
+    (var(--ui89-input-height) - var(--ui89-font-size-normal)) / 2 +
+      var(--ui89-font-size-normal)
+  );
+  --padding: calc((var(--ui89-input-height) - var(--line-height)) / 2);
+
   box-sizing: border-box;
   display: block;
   width: 100%;
 
+  /* Input elements use a different font family. */
+  font-family: inherit;
+
   min-height: var(--ui89-input-height);
-  line-height: var(--ui89-input-height);
-  padding: 0 var(--ui89-safe-space);
+  font-size: var(--ui89-font-size-normal);
+  line-height: var(--line-height);
+  padding: var(--padding) var(--ui89-safe-space);
   border: 0;
 
   border-radius: 0;
