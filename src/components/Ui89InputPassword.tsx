@@ -31,7 +31,7 @@ export function Ui89InputPassword({
     <div>
       <input
         type="password"
-        className={`ui89-input-box ui89-typo-special`}
+        className={`ui89-input-box`}
         role="textbox"
         value={intermediateValue}
         onChange={implOnChange}

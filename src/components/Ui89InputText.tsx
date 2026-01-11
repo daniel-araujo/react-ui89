@@ -51,7 +51,7 @@ export const Ui89InputText = React.forwardRef<
     <div>
       <input
         ref={inputRef}
-        className={`ui89-input-box ui89-typo-special`}
+        className={`ui89-input-box`}
         type="text"
         value={delayedState.value}
         onChange={(e) => delayedState.onChange(e.target.value)}

@@ -23,7 +23,7 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
   return (
     <span className="ui89-date-time-picker">
       <DatePicker
-        className={["ui89-input-box", "ui89-typo-normal"].join(" ")}
+        className={["ui89-input-box"].join(" ")}
         calendarClassName="ui89-typo-normal"
         showTimeSelect
         dateFormat={props.dateFormat ?? "yyyy/MM/dd HH:mm:ss"}

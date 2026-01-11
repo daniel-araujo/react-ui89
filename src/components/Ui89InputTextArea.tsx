@@ -34,7 +34,7 @@ export function Ui89InputTextArea(props: Ui89InputTextAreaProps) {
   return (
     <div>
       <textarea
-        className={`ui89-input-box ui89-input-box--resizable ui89-typo-special`}
+        className={`ui89-input-box ui89-input-box--resizable`}
         value={delayedState.value}
         onChange={(e) => delayedState.onChange(e.target.value)}
         onBlur={delayedState.onBlur}
