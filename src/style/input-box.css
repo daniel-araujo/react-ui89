@@ -27,6 +27,10 @@
   color: var(--ui89-input-text-color);
 }
 
+.ui89-input-box--disabled {
+  color: var(--ui89-palette-light-gray);
+}
+
 .ui89-input-box--unselectable {
   user-select: none;
 }

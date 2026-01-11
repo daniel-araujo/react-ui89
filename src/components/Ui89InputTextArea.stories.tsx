@@ -49,3 +49,16 @@ second sentence
 last sentence`)
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    value: "Disabled content",
+    disabled: true,
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    expect(textbox).toBeDisabled()
+  },
+}

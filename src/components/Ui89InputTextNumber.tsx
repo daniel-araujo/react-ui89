@@ -8,6 +8,7 @@ export interface Ui89InputTextNumberProps {
   value?: any
   min?: number
   max?: number
+  disabled?: boolean
   onChange?: (value: any) => void
   precision?: number
 }
@@ -73,5 +74,11 @@ export function Ui89InputTextNumber(props: Ui89InputTextNumberProps) {
     props.onChange(value)
   }
 
-  return <Ui89InputText value={wrappedValue} onChange={implOnChange} />
+  return (
+    <Ui89InputText
+      value={wrappedValue}
+      onChange={implOnChange}
+      disabled={props.disabled}
+    />
+  )
 }

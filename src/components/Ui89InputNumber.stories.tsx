@@ -68,3 +68,16 @@ export const CanEdit: Story = {
     expect(context.args.onChange).toHaveBeenCalledWith(11)
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    value: 123,
+    disabled: true,
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    expect(textbox).toBeDisabled()
+  },
+}

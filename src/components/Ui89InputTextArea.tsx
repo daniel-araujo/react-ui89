@@ -9,6 +9,7 @@ export interface Ui89InputTextAreaProps {
   value?: any
   placeholder?: string
   autoTrim?: boolean
+  disabled?: boolean
   onChange?: (value: any) => void
   onTyping?: (value: boolean) => void
   onFocus?: () => void
@@ -34,13 +35,18 @@ export function Ui89InputTextArea(props: Ui89InputTextAreaProps) {
   return (
     <div>
       <textarea
-        className={`ui89-input-box ui89-input-box--resizable`}
+        className={[
+          "ui89-input-box",
+          "ui89-input-box--resizable",
+          props.disabled ? "ui89-input-box--disabled" : "",
+        ].join(" ")}
         value={delayedState.value}
         onChange={(e) => delayedState.onChange(e.target.value)}
         onBlur={delayedState.onBlur}
         onFocus={delayedState.onFocus}
         rows={props.rows ?? 4}
         placeholder={props.placeholder}
+        disabled={props.disabled}
       />
     </div>
   )

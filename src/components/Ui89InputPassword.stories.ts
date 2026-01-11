@@ -83,3 +83,14 @@ export const DoesNotRemoveExtraWhitespaceInTheMiddle: Story = {
     expect(context.args.onChange).toHaveBeenCalledWith("A  A")
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    value: "password",
+    disabled: true,
+  },
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+    expect(textbox).toBeDisabled()
+  },
+}

@@ -7,12 +7,14 @@ import "../style/typo.css"
 export interface Ui89InputPasswordProps {
   value?: any
   placeholder?: string
+  disabled?: boolean
   onChange?: (value: any) => void
 }
 
 export function Ui89InputPassword({
   value,
   placeholder,
+  disabled,
   onChange,
 }: Ui89InputPasswordProps) {
   const [intermediateValue, setIntermediateValue] = useState(value ?? "")
@@ -31,11 +33,15 @@ export function Ui89InputPassword({
     <div>
       <input
         type="password"
-        className={`ui89-input-box`}
+        className={[
+          "ui89-input-box",
+          disabled ? "ui89-input-box--disabled" : "",
+        ].join(" ")}
         role="textbox"
         value={intermediateValue}
         onChange={implOnChange}
         placeholder={placeholder}
+        disabled={disabled}
       />
     </div>
   )

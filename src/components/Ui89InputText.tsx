@@ -8,6 +8,7 @@ export interface Ui89InputTextProps {
   value?: any
   placeholder?: string
   autoTrim?: boolean
+  disabled?: boolean
   onChange?: (value: any) => void
   onTyping?: (value: boolean) => void
   onFocus?: () => void
@@ -22,7 +23,16 @@ export const Ui89InputText = React.forwardRef<
   Ui89InputTextRef,
   Ui89InputTextProps
 >(function Ui89InputText(
-  { value, placeholder, autoTrim = true, onChange, onTyping, onFocus, onBlur },
+  {
+    value,
+    placeholder,
+    autoTrim = true,
+    disabled,
+    onChange,
+    onTyping,
+    onFocus,
+    onBlur,
+  },
   ref,
 ) {
   const inputRef = useRef<HTMLInputElement>(null)
@@ -51,8 +61,12 @@ export const Ui89InputText = React.forwardRef<
     <div>
       <input
         ref={inputRef}
-        className={`ui89-input-box`}
+        className={[
+          "ui89-input-box",
+          disabled ? "ui89-input-box--disabled" : "",
+        ].join(" ")}
         type="text"
+        disabled={disabled}
         value={delayedState.value}
         onChange={(e) => delayedState.onChange(e.target.value)}
         onBlur={delayedState.onBlur}

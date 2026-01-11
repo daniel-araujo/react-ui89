@@ -8,6 +8,7 @@ export interface Ui89InputNumberProps {
   value?: any
   min?: number
   max?: number
+  disabled?: boolean
   onChange?: (value: any) => void
   precision?: number
 }
@@ -45,6 +46,7 @@ export function Ui89InputNumber(props: Ui89InputNumberProps) {
       onChange={wrappedOnChange}
       min={props.min}
       max={props.max}
+      disabled={props.disabled}
       precision={props.precision}
     />
   )

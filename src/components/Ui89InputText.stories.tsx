@@ -434,3 +434,16 @@ export const DoesNotEmitWhatWasTypedWhenValueIsChanged: Story = {
     expect(context.args.onChange).not.toHaveBeenCalled()
   },
 }
+
+export const Disabled: Story = {
+  args: {
+    value: "123",
+    disabled: true,
+  },
+
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+
+    expect(textbox).toBeDisabled()
+  },
+}
