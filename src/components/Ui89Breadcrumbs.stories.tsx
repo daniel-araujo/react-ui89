@@ -48,6 +48,18 @@ const itemsSampleFiveCrumbs: Ui89BreadcrumbsPropsItem[] = [
   },
 ]
 
+interface CustomItem {
+  id: number
+  name: string
+  link: string
+}
+
+const customItems: CustomItem[] = [
+  { id: 1, name: "Home", link: "/" },
+  { id: 2, name: "Section", link: "/section" },
+  { id: 3, name: "Page", link: "/section/page" },
+]
+
 const meta: Meta<typeof Ui89Breadcrumbs> = {
   component: Ui89Breadcrumbs,
   tags: ["autodocs"],
@@ -161,5 +173,75 @@ export const OverrideRouterPush: StoryObj<Ui89OverrideProps> = {
     await userEvent.click(firstLink)
 
     expect(context.args.routerPush).toHaveBeenCalledWith("/first")
+  },
+}
+
+export const GenericItems: StoryObj<Ui89OverrideProps> = {
+  args: {
+    routerPush: fn(),
+  },
+
+  render: (args, context) => (
+    <Ui89Provider routerPush={args.routerPush}>
+      <Ui89Breadcrumbs
+        items={customItems}
+        getLabel={(item: CustomItem) => item.name}
+        getUrl={(item: CustomItem) => item.link}
+      />
+    </Ui89Provider>
+  ),
+
+  async play(context) {
+    const link = await screen.findByRole("link", {
+      name: "Section",
+    })
+
+    await userEvent.click(link)
+
+    expect(context.args.routerPush).toHaveBeenCalledWith("/section")
+  },
+}
+
+export const OnSelect: Story = {
+  args: {
+    items: itemsSampleTwoCrumbs,
+    onSelect: fn(),
+  },
+
+  async play(context) {
+    const firstLink = await screen.findByRole("link", {
+      name: "First",
+    })
+
+    await userEvent.click(firstLink)
+
+    expect(context.args.onSelect).toHaveBeenCalledWith(itemsSampleTwoCrumbs[0])
+  },
+}
+
+export const OnSelectOverridesLink: StoryObj<{
+  routerPush: any
+  onSelect: any
+}> = {
+  args: {
+    routerPush: fn(),
+    onSelect: fn(),
+  },
+
+  render: (args, context) => (
+    <Ui89Provider routerPush={args.routerPush}>
+      <Ui89Breadcrumbs items={itemsSampleTwoCrumbs} onSelect={args.onSelect} />
+    </Ui89Provider>
+  ),
+
+  async play(context) {
+    const firstLink = await screen.findByRole("link", {
+      name: "First",
+    })
+
+    await userEvent.click(firstLink)
+
+    expect(context.args.routerPush).not.toHaveBeenCalled()
+    expect(context.args.onSelect).toHaveBeenCalledWith(itemsSampleTwoCrumbs[0])
   },
 }
