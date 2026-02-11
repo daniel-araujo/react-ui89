@@ -1,5 +1,4 @@
 import React, { useMemo } from "react"
-import { createPortal } from "react-dom"
 import { Ui89Card } from "./Ui89Card"
 import HoverShadow from "./private/HoverShadow"
 import { Ui89Scene } from "./Ui89Scene"
@@ -8,6 +7,7 @@ import ScrollContainer from "./private/ScrollContainer"
 
 import "./Ui89ModalDialog.css"
 import { useZIndexer } from "../useZIndexer"
+import { useUi89 } from "../Ui89Provider"
 
 export interface Ui89ModalDialogProps {
   open: boolean
@@ -28,6 +28,7 @@ export function Ui89ModalDialog({
   onRequestClose,
 }: Ui89ModalDialogProps) {
   const zIndexer = useZIndexer(open)
+  const { createPortal } = useUi89()
 
   const dialogClass = useMemo(() => {
     return ["ui89-modal-dialog", open ? "ui89-modal-dialog--open" : ""].join(

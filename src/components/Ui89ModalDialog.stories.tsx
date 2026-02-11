@@ -1,4 +1,5 @@
 import React, { useState } from "react"
+import { createPortal } from "react-dom"
 
 import type { Meta, StoryObj } from "@storybook/react"
 import { expect, fn, screen, userEvent } from "storybook/test"
@@ -153,5 +154,43 @@ export const IncreasesZIndexWhenOpenWithProvider: Story = {
     const secondZ = parseInt(secondZIndex || "0", 10)
 
     expect(firstZ).toBeGreaterThan(secondZ)
+  },
+}
+
+export const OverrideCreatePortal: Story = {
+  render: (args, context) => {
+    const [container, setContainer] = useState<HTMLDivElement | null>(null)
+
+    return (
+      <Ui89Provider
+        createPortal={(children) => {
+          if (!container) return null as any
+          return createPortal(children, container)
+        }}
+      >
+        <div
+          ref={setContainer}
+          data-testid="custom-portal-root"
+          style={{
+            position: "relative",
+            height: "300px",
+            border: "1px solid red",
+            overflow: "hidden",
+          }}
+        />
+        <Ui89ModalDialog open={true}>
+          Content inside custom portal
+        </Ui89ModalDialog>
+      </Ui89Provider>
+    )
+  },
+
+  async play(context) {
+    const customRoot = await screen.findByTestId("custom-portal-root")
+    const dialog = await screen.findByRole("dialog")
+
+    if (!customRoot.contains(dialog)) {
+      throw new Error("Dialog is not inside custom portal root")
+    }
   },
 }
