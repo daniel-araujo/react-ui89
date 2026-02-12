@@ -43,8 +43,12 @@ export interface Ui89PopoverProps<T> {
   onOpenChange: (value: boolean) => void
 
   /**
-   * How large the popover can be if there if the viewport is larger than the
-   * width of the container.
+   * Whether to have the popover take up as much width as possible.
+   */
+  popoverOverflow?: boolean
+
+  /**
+   * How large the popover can be when it takes up available width.
    */
   popoverOverflowMaxWidth?: number
 
@@ -90,6 +94,7 @@ function toFloatingUiPlacement(
 
 export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
   const zIndexer = useZIndexer(props.open)
+  const popoverOverflow = props.popoverOverflow ?? true
   const { refs, floatingStyles, context } = useFloating({
     open: props.open,
     onOpenChange: props.onOpenChange,
@@ -104,12 +109,17 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
             }
           }
 
-          // Change styles, e.g.
-          Object.assign(elements.floating.style, {
-            width: `${availableWidth}px`,
+          const style: any = {
             maxWidth: `${width}px`,
             maxHeight: `${Math.max(0, availableHeight)}px`,
-          })
+          }
+
+          if (popoverOverflow) {
+            style.width = `${availableWidth}px`
+          }
+
+          // Change styles, e.g.
+          Object.assign(elements.floating.style, style)
         },
       }),
     ],
@@ -120,7 +130,9 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
     strategy: "fixed",
   })
 
-  const click = useClick(context)
+  const click = useClick(context, {
+    keyboardHandlers: false,
+  })
   const dismiss = useDismiss(context)
   const role = useRole(context)
 

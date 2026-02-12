@@ -11,6 +11,7 @@ export interface Ui89InputNumberProps {
   disabled?: boolean
   onChange?: (value: any) => void
   precision?: number
+  textAlign?: React.CSSProperties["textAlign"]
 }
 
 export function Ui89InputNumber(props: Ui89InputNumberProps) {
@@ -48,6 +49,7 @@ export function Ui89InputNumber(props: Ui89InputNumberProps) {
       max={props.max}
       disabled={props.disabled}
       precision={props.precision}
+      textAlign={props.textAlign}
     />
   )
 }

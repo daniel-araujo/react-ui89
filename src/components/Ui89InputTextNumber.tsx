@@ -11,6 +11,7 @@ export interface Ui89InputTextNumberProps {
   disabled?: boolean
   onChange?: (value: any) => void
   precision?: number
+  textAlign?: React.CSSProperties["textAlign"]
 }
 
 export function isTextNumber(text: string): boolean {
@@ -79,6 +80,7 @@ export function Ui89InputTextNumber(props: Ui89InputTextNumberProps) {
       value={wrappedValue}
       onChange={implOnChange}
       disabled={props.disabled}
+      textAlign={props.textAlign}
     />
   )
 }

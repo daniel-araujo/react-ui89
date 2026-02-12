@@ -9,6 +9,7 @@ export interface Ui89InputTextProps {
   placeholder?: string
   autoTrim?: boolean
   disabled?: boolean
+  textAlign?: React.CSSProperties["textAlign"]
   onChange?: (value: any) => void
   onTyping?: (value: boolean) => void
   onFocus?: () => void
@@ -28,6 +29,7 @@ export const Ui89InputText = React.forwardRef<
     placeholder,
     autoTrim = true,
     disabled,
+    textAlign,
     onChange,
     onTyping,
     onFocus,
@@ -65,6 +67,7 @@ export const Ui89InputText = React.forwardRef<
           "ui89-input-box",
           disabled ? "ui89-input-box--disabled" : "",
         ].join(" ")}
+        style={{ textAlign }}
         type="text"
         disabled={disabled}
         value={delayedState.value}

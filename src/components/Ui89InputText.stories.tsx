@@ -435,6 +435,19 @@ export const DoesNotEmitWhatWasTypedWhenValueIsChanged: Story = {
   },
 }
 
+export const TextAlignRight: Story = {
+  args: {
+    value: "right aligned",
+    textAlign: "right",
+  },
+  async play(context) {
+    const textbox = await screen.findByRole("textbox")
+    expect(textbox).toHaveStyle({
+      textAlign: "right",
+    })
+  },
+}
+
 export const Disabled: Story = {
   args: {
     value: "123",
