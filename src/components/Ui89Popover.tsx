@@ -43,9 +43,10 @@ export interface Ui89PopoverProps<T> {
   onOpenChange: (value: boolean) => void
 
   /**
-   * Whether to have the popover take up as much width as possible.
+   * Whether to force the popover to take up as much of the available width
+   * as possible.
    */
-  popoverOverflow?: boolean
+  popoverOverflowForce?: boolean
 
   /**
    * How large the popover can be when it takes up available width.
@@ -94,7 +95,6 @@ function toFloatingUiPlacement(
 
 export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
   const zIndexer = useZIndexer(props.open)
-  const popoverOverflow = props.popoverOverflow ?? true
   const { refs, floatingStyles, context } = useFloating({
     open: props.open,
     onOpenChange: props.onOpenChange,
@@ -114,7 +114,7 @@ export function Ui89Popover<T>(props: Ui89PopoverProps<T>) {
             maxHeight: `${Math.max(0, availableHeight)}px`,
           }
 
-          if (popoverOverflow) {
+          if (props.popoverOverflowForce) {
             style.width = `${availableWidth}px`
           }
 

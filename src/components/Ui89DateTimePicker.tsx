@@ -207,7 +207,6 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
     <Ui89Popover
       open={open}
       onOpenChange={setOpen}
-      popoverOverflow={false}
       popoverOverflowMaxWidth={360}
       renderContainer={({ setRef, props: popoverProps }) => (
         <div className="ui89-date-time-picker" ref={setRef} {...popoverProps}>

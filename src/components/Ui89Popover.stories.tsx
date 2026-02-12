@@ -94,6 +94,7 @@ export const OpenByClicking: Story = {
 export const PopoverMaxOverflowWidthNotDefined: Story = {
   args: {
     open: true,
+    popoverOverflowForce: true,
   },
 
   render: (args, context) => (
@@ -133,6 +134,7 @@ export const PopoverMaxOverflowWidthNotDefined: Story = {
 export const PopoverMaxOverflowWidthSmallerThanContainer: Story = {
   args: {
     open: true,
+    popoverOverflowForce: true,
   },
 
   render: (args, context) => (
@@ -173,6 +175,7 @@ export const PopoverMaxOverflowWidthSmallerThanContainer: Story = {
 export const PopoverMaxOverflowWidthLargerThanContainer: Story = {
   args: {
     open: true,
+    popoverOverflowForce: true,
   },
 
   render: (args, context) => (

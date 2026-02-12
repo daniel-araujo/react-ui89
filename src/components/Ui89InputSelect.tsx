@@ -159,6 +159,7 @@ export function Ui89InputSelect<T>(props: Ui89InputSelectProps<T>) {
       <Ui89Popover
         open={isOpen}
         onOpenChange={setIsOpen}
+        popoverOverflowForce={true}
         popoverOverflowMaxWidth={props.menuOverflowMaxWidth}
         renderContainer={(props2) => (
           <div
