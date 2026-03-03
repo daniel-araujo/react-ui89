@@ -9,16 +9,9 @@ import "./Ui89ModalDialog.css"
 import { useZIndexer } from "../useZIndexer"
 import { useUi89 } from "../Ui89Provider"
 
-export type Ui89ModalDialogSize =
-  | "small"
-  | "medium"
-  | "big"
-  | "full"
-  | "responsive"
-
 export interface Ui89ModalDialogProps {
   open: boolean
-  size?: Ui89ModalDialogSize
+  size?: "small" | "medium" | "big" | "full"
   children?: React.ReactNode
   topCenter?: React.ReactNode
   onRequestClose?: () => void
@@ -29,7 +22,7 @@ const portalRoot: HTMLElement | null =
 
 export function Ui89ModalDialog({
   open,
-  size = "medium",
+  size,
   children,
   topCenter,
   onRequestClose,
@@ -46,7 +39,7 @@ export function Ui89ModalDialog({
   const dialogBoxClass = useMemo(() => {
     return [
       "ui89-modal-dialog__box",
-      `ui89-modal-dialog__box--size-${size}`,
+      `ui89-modal-dialog__box--size-${size ?? "responsive"}`,
     ].join(" ")
   }, [size])
 

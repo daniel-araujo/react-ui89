@@ -47,10 +47,17 @@ export const FullWidth: Story = {
   },
 }
 
-export const Responsive: Story = {
+export const SmallWidth: Story = {
   args: {
     open: true,
-    size: "responsive",
+    size: "small",
+    children: "Content goes here",
+  },
+}
+
+export const ResponsiveWidthIfOmitted: Story = {
+  args: {
+    open: true,
     children: "This content will determine the width of the dialog.",
   },
 }
@@ -63,7 +70,6 @@ export const ResponsiveOverflow: Story = {
   },
   args: {
     open: true,
-    size: "responsive",
     children:
       "This long content should cause the responsive dialog to expand to the maximum width. ".repeat(
         10,
