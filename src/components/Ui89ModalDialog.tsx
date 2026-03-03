@@ -1,4 +1,4 @@
-import React, { useMemo } from "react"
+import React, { CSSProperties, useMemo } from "react"
 import { Ui89Card } from "./Ui89Card"
 import HoverShadow from "./private/HoverShadow"
 import { Ui89Scene } from "./Ui89Scene"
@@ -9,9 +9,16 @@ import "./Ui89ModalDialog.css"
 import { useZIndexer } from "../useZIndexer"
 import { useUi89 } from "../Ui89Provider"
 
+export type Ui89ModalDialogSize =
+  | "small"
+  | "medium"
+  | "big"
+  | "full"
+  | "responsive"
+
 export interface Ui89ModalDialogProps {
   open: boolean
-  size?: string
+  size?: Ui89ModalDialogSize
   children?: React.ReactNode
   topCenter?: React.ReactNode
   onRequestClose?: () => void
@@ -34,14 +41,25 @@ export function Ui89ModalDialog({
     return ["ui89-modal-dialog", open ? "ui89-modal-dialog--open" : ""].join(
       " ",
     )
-  }, [size, open])
+  }, [open])
 
   const dialogBoxClass = useMemo(() => {
     return [
       "ui89-modal-dialog__box",
-      `ui89-modal-dialog__box--size-${size}`,
+      size !== "responsive" ? `ui89-modal-dialog__box--size-${size}` : "",
     ].join(" ")
-  }, [size, open])
+  }, [size])
+
+  const dialogBoxStyle = useMemo<CSSProperties>(() => {
+    if (size === "responsive") {
+      return {
+        width: "fit-content",
+        maxWidth: "100%",
+      }
+    }
+
+    return {}
+  }, [size])
 
   function onClickBackdrop() {
     if (onRequestClose !== undefined) {
@@ -61,7 +79,7 @@ export function Ui89ModalDialog({
         onClick={onClickBackdrop}
       ></div>
 
-      <div className={dialogBoxClass}>
+      <div className={dialogBoxClass} style={dialogBoxStyle}>
         <div className="ui89-modal-dialog__spacer"></div>
 
         <HoverShadow>

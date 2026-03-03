@@ -39,6 +39,55 @@ export const Open: Story = {
   },
 }
 
+export const FullWidth: Story = {
+  args: {
+    open: true,
+    size: "full",
+    children: "Content goes here",
+  },
+}
+
+export const Responsive: Story = {
+  args: {
+    open: true,
+    size: "responsive",
+    children: "This content will determine the width of the dialog.",
+  },
+}
+
+export const ResponsiveOverflow: Story = {
+  parameters: {
+    viewport: {
+      defaultViewport: "mobile1",
+    },
+  },
+  args: {
+    open: true,
+    size: "responsive",
+    children:
+      "This long content should cause the responsive dialog to expand to the maximum width. ".repeat(
+        10,
+      ),
+  },
+  async play(context) {
+    const dialog = await screen.findByRole("dialog")
+    const dialogBox = dialog.querySelector(".ui89-modal-dialog__box")
+
+    if (!dialogBox) {
+      throw new Error("Dialog box not found")
+    }
+
+    const dialogBoxRect = dialogBox.getBoundingClientRect()
+    const viewportWidth = window.innerWidth
+    const dialogStyle = window.getComputedStyle(dialog)
+    const dialogPadding =
+      parseInt(dialogStyle.paddingLeft, 10) +
+      parseInt(dialogStyle.paddingRight, 10)
+
+    expect(dialogBoxRect.width).toBeCloseTo(viewportWidth - dialogPadding, 0)
+  },
+}
+
 export const VerticalScroll: Story = {
   args: {
     open: true,
