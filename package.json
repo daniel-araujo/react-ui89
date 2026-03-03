@@ -24,7 +24,8 @@
     "storybook": "storybook dev -p 6006",
     "test-storybook": "test-storybook",
     "build-storybook": "storybook build",
-    "format": "prettier --write src"
+    "format": "prettier --write src",
+    "test": "vitest"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +52,7 @@
     "@chromatic-com/storybook": "^4.0.1",
     "@rollup/plugin-commonjs": "^28.0.1",
     "@rollup/plugin-typescript": "^12.1.1",
+    "@storybook/addon-docs": "^9.0.12",
     "@storybook/addon-onboarding": "^9.0.12",
     "@storybook/react-vite": "^9.0.12",
     "@storybook/test-runner": "^0.23.0",
@@ -67,7 +69,7 @@
     "typescript": "^5.6.3",
     "typescript-plugin-css-modules": "^5.1.0",
     "vite-plugin-svgr": "^4.3.0",
-    "@storybook/addon-docs": "^9.0.12"
+    "vitest": "^2.1.9"
   },
   "dependencies": {
     "@floating-ui/react": "^0.27.5",
