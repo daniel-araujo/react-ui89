@@ -17,12 +17,11 @@
 }
 
 .ui89-modal-dialog__box {
-  position: absolute;
-  inset: 0;
   border: none;
   border-radius: 0;
   outline: none;
-  margin: auto;
+  margin: 0 auto;
+  padding: var(--ui89-safe-space);
 
   /*
     Need to make sure that the dialog does not overflow page.
@@ -38,8 +37,15 @@
 }
 
 .ui89-modal-dialog__spacer {
-  min-height: 0;
-  height: 100px;
+  /* We only want this to shrink */
+  flex: 0 10 auto;
+  height: 10%;
+}
+
+.ui89-modal-dialog__content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .ui89-modal-dialog__box > *:not(.ui89-modal-dialog__spacer) {
@@ -57,6 +63,11 @@
 
 .ui89-modal-dialog__box--size-small {
   max-width: 300px;
+}
+
+.ui89-modal-dialog__box--size-responsive {
+  width: fit-content;
+  max-width: 100%;
 }
 
 @keyframes ui89-modal-dialog__appear {

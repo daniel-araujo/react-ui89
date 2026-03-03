@@ -1,4 +1,4 @@
-import React, { CSSProperties, useMemo } from "react"
+import React, { useMemo } from "react"
 import { Ui89Card } from "./Ui89Card"
 import HoverShadow from "./private/HoverShadow"
 import { Ui89Scene } from "./Ui89Scene"
@@ -46,19 +46,8 @@ export function Ui89ModalDialog({
   const dialogBoxClass = useMemo(() => {
     return [
       "ui89-modal-dialog__box",
-      size !== "responsive" ? `ui89-modal-dialog__box--size-${size}` : "",
+      `ui89-modal-dialog__box--size-${size}`,
     ].join(" ")
-  }, [size])
-
-  const dialogBoxStyle = useMemo<CSSProperties>(() => {
-    if (size === "responsive") {
-      return {
-        width: "fit-content",
-        maxWidth: "100%",
-      }
-    }
-
-    return {}
   }, [size])
 
   function onClickBackdrop() {
@@ -79,18 +68,20 @@ export function Ui89ModalDialog({
         onClick={onClickBackdrop}
       ></div>
 
-      <div className={dialogBoxClass} style={dialogBoxStyle}>
+      <div className="ui89-modal-dialog__content">
         <div className="ui89-modal-dialog__spacer"></div>
 
-        <HoverShadow>
-          <GridExpandTrick>
-            <Ui89Scene>
-              <Ui89Card topCenter={topCenter}>
-                <ScrollContainer>{children}</ScrollContainer>
-              </Ui89Card>
-            </Ui89Scene>
-          </GridExpandTrick>
-        </HoverShadow>
+        <div className={dialogBoxClass}>
+          <HoverShadow>
+            <GridExpandTrick>
+              <Ui89Scene>
+                <Ui89Card topCenter={topCenter}>
+                  <ScrollContainer>{children}</ScrollContainer>
+                </Ui89Card>
+              </Ui89Scene>
+            </GridExpandTrick>
+          </HoverShadow>
+        </div>
       </div>
     </div>
   )

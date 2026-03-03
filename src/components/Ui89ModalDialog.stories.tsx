@@ -91,7 +91,7 @@ export const ResponsiveOverflow: Story = {
 export const VerticalScroll: Story = {
   args: {
     open: true,
-    children: "Content goes here\n".repeat(100),
+    children: "Content goes here\n".repeat(200),
   },
 }
 
