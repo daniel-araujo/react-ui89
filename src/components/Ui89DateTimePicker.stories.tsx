@@ -50,12 +50,51 @@ export const ChangesSelectedDateWhenTyping: Story = {
     const input = await screen.findByRole("textbox")
 
     await userEvent.clear(input)
-    await userEvent.type(input, "2025/05/02 12:40:00\n")
+    await userEvent.type(input, "2025/05/02 12:40:00")
 
     await waitFor(() => {
       expect(context.args.onChange).toHaveBeenCalledWith(
         new Date("2025-05-02T12:40:00.000"),
       )
+    })
+  },
+}
+
+export const ChangesSelectedDateWhenTypingWithCustomFormat: Story = {
+  args: {
+    value: new Date("2025-01-05T12:30:00.000"),
+    onChange: fn(),
+    dateFormat: "YYYY/DD/MM HH:mm:ss",
+  },
+
+  async play(context) {
+    const input = await screen.findByRole("textbox")
+
+    await userEvent.clear(input)
+    await userEvent.type(input, "2025/02/05 12:40:00")
+
+    await waitFor(() => {
+      expect(context.args.onChange).toHaveBeenCalledWith(
+        new Date("2025-05-02T12:40:00.000"),
+      )
+    })
+  },
+}
+
+export const EmitsNullWhenInputIsCleared: Story = {
+  args: {
+    value: new Date("2025-01-05T12:30:00.000"),
+    onChange: fn(),
+  },
+
+  async play(context) {
+    const input = await screen.findByRole("textbox")
+
+    await userEvent.click(input)
+    await userEvent.clear(input)
+
+    await waitFor(() => {
+      expect(context.args.onChange).toHaveBeenCalledWith(null)
     })
   },
 }

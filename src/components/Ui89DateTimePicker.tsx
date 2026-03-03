@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { Ui89Popover } from "./Ui89Popover"
 import { Ui89Card } from "./Ui89Card"
 import { Ui89Button, Ui89ButtonPropsSize } from "./Ui89Button"
-import { dateFormat as formatDate } from "../date-utils"
+import { dateParse, dateFormat as formatDate } from "../date-utils"
 import { Ui89InputText } from "./Ui89InputText"
 import { Ui89InputTextNumber } from "./Ui89InputTextNumber"
 
@@ -36,8 +36,8 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
 
   function handleInputChange(val: string) {
     setInputValue(val)
-    const date = new Date(val)
-    if (!isNaN(date.getTime())) {
+    const date = dateParse(val, dateFormat)
+    if (date !== null) {
       if (props.onChange) props.onChange(date)
       setViewDate(date)
     } else if (val.trim() === "") {
