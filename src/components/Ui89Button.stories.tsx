@@ -248,12 +248,6 @@ export const ClickArea: Story = {
 }
 
 export const WhiteSpaceNoWrap: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
-
   args: {
     children: "This is text should not wrap to a second line",
     onClick: fn(),
@@ -262,15 +256,16 @@ export const WhiteSpaceNoWrap: Story = {
   render: (args, context) => {
     return <Ui89Button {...args} />
   },
+
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const FlexLayoutTakesUpMinimumContent: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
-
   render: (args, context) => (
     <div className="flexContainer">
       <style>{`
@@ -287,4 +282,11 @@ export const FlexLayoutTakesUpMinimumContent: Story = {
       <div>Descriptive text next to button</div>
     </div>
   ),
+
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }

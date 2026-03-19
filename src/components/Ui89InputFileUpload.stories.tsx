@@ -40,21 +40,20 @@ export const SelectedFile: Story = {
 }
 
 export const SelectedFileNameOverflow: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     value: {
       name: "example_file is super long and should cause ellipsis to appeasdr.txt",
     },
   },
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const SelectedFileNameOverflowWithBreakWord: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
-
   args: {
     value: {
       name: "example_file is super long and should cause ellipsis to appeasdr.txt",
@@ -66,6 +65,13 @@ export const SelectedFileNameOverflowWithBreakWord: Story = {
       <Ui89InputFileUpload {...args} />
     </div>
   ),
+
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const ImageMimeType: Story = {

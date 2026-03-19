@@ -44,9 +44,6 @@ type Story = StoryObj<typeof meta>
 export const Empty: Story = {}
 
 export const SelectedItemOverflow: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     value:
       "Very long string of text that should overflow but not be visible unless you trigger the tooltip",
@@ -54,12 +51,15 @@ export const SelectedItemOverflow: Story = {
       "Very long string of text that should overflow but not be visible unless you trigger the tooltip",
     ],
   },
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const MenuItemOverflow: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     options: [
       {
@@ -71,12 +71,15 @@ export const MenuItemOverflow: Story = {
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
   },
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const MenuItemOverflowButOnlyOne: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     options: [
       {
@@ -87,6 +90,12 @@ export const MenuItemOverflowButOnlyOne: Story = {
     ].concat(optionsSampleTo100),
     getOptionKey: getOptionKeyValue,
     renderOption: renderOptionLabel,
+  },
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
   },
 }
 
@@ -254,9 +263,6 @@ export const ClearsSearchAfterOpeningAgain: Story = {
 }
 
 export const MenuLongerThanBox: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     menuOverflowMaxWidth: 500,
     value: "This box is small",
@@ -267,6 +273,12 @@ export const MenuLongerThanBox: Story = {
       <Ui89InputSelect {...args} />
     </div>
   ),
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }
 
 export const MenuItemsWithDifferentWidth: Story = {

@@ -61,9 +61,6 @@ export const NameWithFixedWidth: Story = {
 }
 
 export const TextWrap: Story = {
-  parameters: {
-    viewport: { defaultViewport: "mobile1" },
-  },
   args: {
     name: "First",
     value: "Second",
@@ -77,4 +74,10 @@ export const TextWrap: Story = {
       <Ui89NameValuePair {...args} name="Nine" value="Twenty four" />
     </>
   ),
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  },
 }

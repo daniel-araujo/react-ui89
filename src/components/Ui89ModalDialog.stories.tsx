@@ -63,11 +63,6 @@ export const ResponsiveWidthIfOmitted: Story = {
 }
 
 export const ResponsiveOverflow: Story = {
-  parameters: {
-    viewport: {
-      defaultViewport: "mobile1",
-    },
-  },
   args: {
     open: true,
     children:
@@ -75,6 +70,7 @@ export const ResponsiveOverflow: Story = {
         10,
       ),
   },
+
   async play(context) {
     const dialog = await screen.findByRole("dialog")
     const dialogBox = dialog.querySelector(".ui89-modal-dialog__box")
@@ -92,6 +88,13 @@ export const ResponsiveOverflow: Story = {
 
     expect(dialogBoxRect.width).toBeCloseTo(viewportWidth - dialogPadding, 0)
   },
+
+  globals: {
+    viewport: {
+      value: "mobile1",
+      isRotated: false
+    }
+  }
 }
 
 export const VerticalScroll: Story = {
