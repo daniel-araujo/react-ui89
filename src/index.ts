@@ -85,6 +85,12 @@ export type {
   Ui89MenuBarProps,
 } from "./components/Ui89MenuBar"
 
+export { Ui89MenuCard } from "./components/Ui89MenuCard"
+export type {
+  Ui89MenuCardPropsOption,
+  Ui89MenuCardProps,
+} from "./components/Ui89MenuCard"
+
 export { Ui89ModalDialog } from "./components/Ui89ModalDialog"
 export type { Ui89ModalDialogProps } from "./components/Ui89ModalDialog"
 

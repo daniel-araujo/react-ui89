@@ -1,0 +1,25 @@
+/* /mnt/data/dev/public/react-1980ui/src/components/Ui89MenuCard.css */
+.ui89-menu-card__list {
+}
+
+.ui89-menu-card__item {
+  padding: 0 calc(var(--ui89-safe-space));
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.ui89-menu-card__item:hover:not(.ui89-menu-card__item--disabled) {
+  color: var(--ui89-scene-card-bg-color);
+  background-color: var(--ui89-scene-card-text-color);
+}
+
+.ui89-menu-card__item--disabled {
+  cursor: not-allowed;
+  color: var(--ui89-scene-text-subtle-color);
+}
+
+.ui89-menu-card__separator {
+  padding: 0;
+}
