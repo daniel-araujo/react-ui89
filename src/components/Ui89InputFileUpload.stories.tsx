@@ -48,8 +48,8 @@ export const SelectedFileNameOverflow: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
@@ -69,8 +69,8 @@ export const SelectedFileNameOverflowWithBreakWord: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 

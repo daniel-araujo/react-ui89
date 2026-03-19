@@ -260,8 +260,8 @@ export const WhiteSpaceNoWrap: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
@@ -286,7 +286,7 @@ export const FlexLayoutTakesUpMinimumContent: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }

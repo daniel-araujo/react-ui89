@@ -92,9 +92,9 @@ export const ResponsiveOverflow: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
-  }
+      isRotated: false,
+    },
+  },
 }
 
 export const VerticalScroll: Story = {

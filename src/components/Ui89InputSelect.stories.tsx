@@ -54,8 +54,8 @@ export const SelectedItemOverflow: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
@@ -74,8 +74,8 @@ export const MenuItemOverflow: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
@@ -94,8 +94,8 @@ export const MenuItemOverflowButOnlyOne: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
@@ -276,8 +276,8 @@ export const MenuLongerThanBox: Story = {
   globals: {
     viewport: {
       value: "mobile1",
-      isRotated: false
-    }
+      isRotated: false,
+    },
   },
 }
 
