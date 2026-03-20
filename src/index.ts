@@ -76,6 +76,9 @@ export type { Ui89InputTextAreaProps } from "./components/Ui89InputTextArea"
 export { Ui89InputTextNumber } from "./components/Ui89InputTextNumber"
 export type { Ui89InputTextNumberProps } from "./components/Ui89InputTextNumber"
 
+export { Ui89LinkBracket } from "./components/Ui89LinkBracket"
+export type { Ui89LinkBracketProps } from "./components/Ui89LinkBracket"
+
 export { Ui89LinkStealth } from "./components/Ui89LinkStealth"
 export type { Ui89LinkStealthProps } from "./components/Ui89LinkStealth"
 
