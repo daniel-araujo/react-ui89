@@ -116,6 +116,9 @@ export type { Ui89SceneProps } from "./components/Ui89Scene"
 export { Ui89Shortcut } from "./components/Ui89Shortcut"
 export type { Ui89ShortcutProps } from "./components/Ui89Shortcut"
 
+export { Ui89SpaceHorizontal } from "./components/Ui89SpaceHorizontal"
+export type { Ui89SpaceHorizontalProps } from "./components/Ui89SpaceHorizontal"
+
 export { Ui89SpacePadding } from "./components/Ui89SpacePadding"
 export type { Ui89SpacePaddingProps } from "./components/Ui89SpacePadding"
 
