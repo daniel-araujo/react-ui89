@@ -85,6 +85,9 @@ export type { Ui89LinkStealthProps } from "./components/Ui89LinkStealth"
 export { Ui89TitleBracket } from "./components/Ui89TitleBracket"
 export type { Ui89TitleBracketProps } from "./components/Ui89TitleBracket"
 
+export { Ui89TitleSpace } from "./components/Ui89TitleSpace"
+export type { Ui89TitleSpaceProps } from "./components/Ui89TitleSpace"
+
 export { Ui89LinkUnderline } from "./components/Ui89LinkUnderline"
 export type { Ui89LinkUnderlineProps } from "./components/Ui89LinkUnderline"
 

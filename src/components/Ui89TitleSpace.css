@@ -1,0 +1,16 @@
+.ui89-title-space {
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.ui89-title-space__inside {
+  padding: 0 calc(var(--ui89-safe-space));
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  background: var(--ui89-scene-card-bg-color);
+  color: var(--ui89-scene-card-text-color);
+}
