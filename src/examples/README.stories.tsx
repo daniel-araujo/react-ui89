@@ -10,6 +10,8 @@ import { Ui89TitleBox } from "../components/Ui89TitleBox"
 import { Ui89Popover } from "../components/Ui89Popover"
 import { Ui89MenuCard } from "../components/Ui89MenuCard"
 import { Ui89MenuBar } from "../components/Ui89MenuBar"
+import { Ui89BoxShadow } from "../components/Ui89BoxShadow"
+import { Ui89ThemeBackground } from "../components/Ui89ThemeBackground"
 
 const meta: Meta = {
   decorators: [SceneDecorator],
@@ -75,6 +77,31 @@ export const WithPopover: Story = {
       </div>
     )
   },
+}
+
+export const WithCardAndBoxShadow: Story = {
+  render: (args) => (
+    <div
+      style={{
+        margin: "auto",
+        width: "400px",
+        padding: "40px",
+      }}
+    >
+      <Ui89BoxShadow gap={2}>
+        <Ui89ThemeBackground theme="danger">
+          <Ui89Card
+            topCenter={<Ui89TitleBox>Card with Box Shadow</Ui89TitleBox>}
+          >
+            <Ui89SpaceVertical gap={1} />
+            Content inside a card which is inside a box shadow.
+            <Ui89SpaceVertical gap={2} />
+            <Ui89Button theme="warning">OK</Ui89Button>
+          </Ui89Card>
+        </Ui89ThemeBackground>
+      </Ui89BoxShadow>
+    </div>
+  ),
 }
 
 export const MenuBarWithPopover: Story = {
