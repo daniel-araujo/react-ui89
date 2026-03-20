@@ -6,7 +6,7 @@ import "../style/typo.css"
 import "../style/chosen-theme.css"
 import "../style/reset.css"
 
-import HoverShadow from "./private/HoverShadow"
+import { Ui89BoxShadow } from "./Ui89BoxShadow"
 
 import { Ui89Theme } from "../theme"
 import { useUi89 } from "../Ui89Provider"
@@ -127,7 +127,7 @@ export function Ui89Button({
 
   return (
     <div className={containerClass}>
-      <HoverShadow>
+      <Ui89BoxShadow>
         {href ? (
           <a
             className="ui-89-reset-a"
@@ -151,7 +151,7 @@ export function Ui89Button({
             </span>
           </button>
         )}
-      </HoverShadow>
+      </Ui89BoxShadow>
     </div>
   )
 }

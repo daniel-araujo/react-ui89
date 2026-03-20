@@ -20,20 +20,20 @@ export interface Ui89BoxShadowProps {
 
 export function Ui89BoxShadow({
   children,
-  gap,
+  gap = 1,
   rowGap,
   columnGap,
 }: Ui89BoxShadowProps) {
   const style = {
-    "--ui89-box-shadow-row-gap":
-      (rowGap ?? gap) !== undefined ? `${rowGap ?? gap}px` : undefined,
-    "--ui89-box-shadow-column-gap":
-      (columnGap ?? gap) !== undefined ? `${columnGap ?? gap}px` : undefined,
+    "--ui89-box-shadow-row-gap": `calc(var(--ui89-safe-space) * ${rowGap ?? gap})`,
+    "--ui89-box-shadow-column-gap": `calc(var(--ui89-safe-space) * ${columnGap ?? gap})`,
   } as React.CSSProperties
 
   return (
-    <div className={`ui89-box-shadow`} style={style}>
+    <span className="ui89-box-shadow" style={style}>
+      <span className="ui89-box-shadow__bottom"></span>
+      <span className="ui89-box-shadow__right"></span>
       {children}
-    </div>
+    </span>
   )
 }

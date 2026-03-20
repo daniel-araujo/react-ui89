@@ -1,5 +1,35 @@
 .ui89-box-shadow {
-  box-shadow: var(--ui89-box-shadow-column-gap, 8px)
-    var(--ui89-box-shadow-row-gap, 8px) 0 0
-    var(--ui89-box-shadow-color, rgba(0, 0, 0, 1));
+  display: grid;
+  padding-right: var(--ui89-box-shadow-column-gap);
+  padding-bottom: var(--ui89-box-shadow-row-gap);
+  position: relative;
+}
+
+.ui89-box-shadow > * {
+  /* Used to have min-width 0 but sometimes we do want to make sure that this element takes up some space. */
+  /* min-width: 0; */
+}
+
+.ui89-box-shadow__right {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  height: calc(100% - var(--ui89-box-shadow-row-gap));
+  width: var(--ui89-box-shadow-column-gap);
+  box-sizing: border-box;
+  background: black;
+  z-index: 0;
+}
+
+.ui89-box-shadow__bottom {
+  display: block;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: calc(100% - var(--ui89-box-shadow-column-gap));
+  height: var(--ui89-box-shadow-row-gap);
+  box-sizing: border-box;
+  background: black;
+  z-index: 0;
 }

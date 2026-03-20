@@ -1,6 +1,6 @@
 import React, { useMemo } from "react"
 import { Ui89Card } from "./Ui89Card"
-import HoverShadow from "./private/HoverShadow"
+import { Ui89BoxShadow } from "./Ui89BoxShadow"
 import { Ui89Scene } from "./Ui89Scene"
 import GridExpandTrick from "./private/GridExpandTrick"
 import ScrollContainer from "./private/ScrollContainer"
@@ -65,7 +65,7 @@ export function Ui89ModalDialog({
         <div className="ui89-modal-dialog__spacer"></div>
 
         <div className={dialogBoxClass}>
-          <HoverShadow>
+          <Ui89BoxShadow>
             <GridExpandTrick>
               <Ui89Scene>
                 <Ui89Card topCenter={topCenter}>
@@ -73,7 +73,7 @@ export function Ui89ModalDialog({
                 </Ui89Card>
               </Ui89Scene>
             </GridExpandTrick>
-          </HoverShadow>
+          </Ui89BoxShadow>
         </div>
       </div>
     </div>

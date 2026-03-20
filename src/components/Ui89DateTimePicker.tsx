@@ -10,7 +10,7 @@ import "./Ui89DateTimePicker.css"
 
 import "../style/input-box.css"
 import "../style/typo.css"
-import HoverShadow from "./private/HoverShadow"
+import { Ui89BoxShadow } from "./Ui89BoxShadow"
 
 export interface Ui89DateTimePickerProps {
   value?: Date | null
@@ -219,9 +219,9 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
       )}
       renderPopover={() => (
         <div style={{ maxWidth: "360px" }}>
-          <HoverShadow>
+          <Ui89BoxShadow>
             <Ui89Card>{renderCalendar()}</Ui89Card>
-          </HoverShadow>
+          </Ui89BoxShadow>
         </div>
       )}
     />
