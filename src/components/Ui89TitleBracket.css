@@ -1,0 +1,23 @@
+.ui89-title-bracket {
+  display: flex;
+  align-items: baseline;
+  line-height: 1;
+}
+
+.ui89-title-bracket__bracket {
+  flex: 0;
+
+  background: var(--ui89-scene-card-bg-color);
+  color: var(--ui89-scene-card-text-color);
+}
+
+.ui89-title-bracket__inside {
+  padding: 0 calc(var(--ui89-safe-space));
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  background: var(--ui89-scene-card-bg-color);
+  color: var(--ui89-scene-card-text-color);
+}
