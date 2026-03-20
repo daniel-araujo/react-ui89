@@ -9,6 +9,9 @@ export type {
   Ui89BreadcrumbsPropsOnSelect,
 } from "./components/Ui89Breadcrumbs"
 
+export { Ui89BoxShadow } from "./components/Ui89BoxShadow"
+export type { Ui89BoxShadowProps } from "./components/Ui89BoxShadow"
+
 export { Ui89Button } from "./components/Ui89Button"
 export type {
   Ui89ButtonProps,
