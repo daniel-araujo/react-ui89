@@ -1,0 +1,20 @@
+.ui89-title-side-line {
+  display: flex;
+  align-items: center;
+  gap: var(--ui89-safe-space);
+}
+
+.ui89-title-side-line__line {
+  flex: 1;
+  overflow: hidden;
+}
+
+.ui89-title-side-line__inside {
+  min-width: 0;
+
+  text-align: center;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
