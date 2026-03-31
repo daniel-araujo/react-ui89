@@ -6,11 +6,10 @@ import "../style/reset.css"
 import "../style/chosen-theme.css"
 
 import { Ui89Theme } from "../theme"
-import { useUi89 } from "../Ui89Provider"
 import { Ui89LinkBase } from "./private/LinkBase"
 
 export interface Ui89BreadcrumbsPropsItem {
-  label: React.ReactNode
+  label?: React.ReactNode
   url?: string
 }
 
@@ -48,7 +47,7 @@ function Ui89BreadcrumbsItem({
   )
 }
 
-export function Ui89Breadcrumbs<T = Ui89BreadcrumbsPropsItem>({
+export function Ui89Breadcrumbs<T extends Ui89BreadcrumbsPropsItem>({
   theme = Ui89Theme.primary,
   items,
   getLabel,
@@ -60,8 +59,8 @@ export function Ui89Breadcrumbs<T = Ui89BreadcrumbsPropsItem>({
       className={`ui89-breadcrumbs ui89-typo-special ui89-chosen-theme-${theme}`}
     >
       {[...items.entries()].reverse().map(([index, item]) => {
-        const label = getLabel ? getLabel(item) : (item as any).label
-        const url = getUrl ? getUrl(item) : (item as any).url
+        const label = getLabel ? getLabel(item) : item.label
+        const url = getUrl ? getUrl(item) : item.url
 
         const onClick = (() => {
           if (onSelect) {
