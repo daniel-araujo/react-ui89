@@ -22,7 +22,7 @@ export interface Ui89BreadcrumbsProps<T> {
   onSelect?: (item: T) => void | Promise<void>
 }
 
-export function Ui89BreadcrumbsItem({
+function Ui89BreadcrumbsItem({
   index,
   label,
   url,
