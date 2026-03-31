@@ -174,3 +174,40 @@ export const BottomRightContent: Story = {
 
   render: (args, context) => <Ui89Card {...args}>{args.children}</Ui89Card>,
 }
+
+export const StretchedContent: Story = {
+  args: {
+    stretchChildren: true,
+    children: (
+      <div
+        style={{
+          background: "rgba(0, 255, 0, 0.5)",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
+        This child fills the card height
+      </div>
+    ),
+  },
+
+  render: (args) => (
+    <div style={{ height: "200px", display: "flex" }}>
+      <Ui89Card {...args}>{args.children}</Ui89Card>
+    </div>
+  ),
+
+  play: async ({ canvasElement }) => {
+    const canvas = within(canvasElement)
+    const cardInside = canvasElement.querySelector(
+      ".ui89-card__inside",
+    ) as HTMLElement
+    const child = canvas.getByText("This child fills the card height")
+
+    await expect(cardInside).toBeInTheDocument()
+    // Use an approximation to account for internal padding and borders
+    await expect(child.clientHeight).toBeGreaterThanOrEqual(cardInside.clientHeight * 0.9)
+  },
+}
