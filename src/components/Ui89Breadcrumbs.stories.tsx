@@ -25,6 +25,15 @@ const itemsSampleTwoCrumbs: Ui89BreadcrumbsPropsItem[] = [
   },
 ]
 
+const itemsSampleTwoCrumbsWithoutUrl: Ui89BreadcrumbsPropsItem[] = [
+  {
+    label: "First",
+  },
+  {
+    label: "Second",
+  },
+]
+
 const itemsSampleFiveCrumbs: Ui89BreadcrumbsPropsItem[] = [
   {
     label: "First",
@@ -216,6 +225,25 @@ export const OnSelect: Story = {
     await userEvent.click(firstLink)
 
     expect(context.args.onSelect).toHaveBeenCalledWith(itemsSampleTwoCrumbs[0])
+  },
+}
+
+export const OnSelectWithoutUrl: Story = {
+  args: {
+    items: itemsSampleTwoCrumbsWithoutUrl,
+    onSelect: fn(),
+  },
+
+  async play(context) {
+    const firstLink = await screen.findByRole("link", {
+      name: "First",
+    })
+
+    await userEvent.click(firstLink)
+
+    expect(context.args.onSelect).toHaveBeenCalledWith(
+      itemsSampleTwoCrumbsWithoutUrl[0],
+    )
   },
 }
 

@@ -25,6 +25,8 @@
 
   /* Animation */
   animation: ui89-breadcrumbs__appear var(--ui89-animation-speed);
+
+  cursor: pointer;
 }
 
 .ui89-breadcrumbs__item:last-child {
