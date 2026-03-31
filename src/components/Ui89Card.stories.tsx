@@ -25,47 +25,6 @@ export const Content: Story = {
   },
 }
 
-export const HorizontalConnection: Story = {
-  args: {
-    children: "Content goes here",
-  },
-
-  render: (args, context) => (
-    <Ui89Card {...args}>
-      <Ui89CardHorizontalConnection>
-        <Ui89Hr look="double" />
-      </Ui89CardHorizontalConnection>
-
-      {args.children}
-    </Ui89Card>
-  ),
-}
-
-export const HorizontalConnectionOverflow: Story = {
-  args: {
-    children: "Content goes here",
-  },
-
-  render: (args, context) => (
-    <Ui89Card {...args}>
-      <Ui89CardHorizontalConnection overflow>
-        <Ui89Hr look="double" />
-      </Ui89CardHorizontalConnection>
-
-      {args.children}
-    </Ui89Card>
-  ),
-}
-
-export const TopLeftContent: Story = {
-  args: {
-    topLeft: <Ui89TitleBox>Title goes here</Ui89TitleBox>,
-    children: "Content goes here",
-  },
-
-  render: (args, context) => <Ui89Card {...args}>{args.children}</Ui89Card>,
-}
-
 export const ScrollbarPresence: Story = {
   args: {
     children: (
@@ -110,6 +69,47 @@ export const ScrollbarPresence: Story = {
       cardInside.clientHeight,
     )
   },
+}
+
+export const HorizontalConnection: Story = {
+  args: {
+    children: "Content goes here",
+  },
+
+  render: (args, context) => (
+    <Ui89Card {...args}>
+      <Ui89CardHorizontalConnection>
+        <Ui89Hr look="double" />
+      </Ui89CardHorizontalConnection>
+
+      {args.children}
+    </Ui89Card>
+  ),
+}
+
+export const HorizontalConnectionOverflow: Story = {
+  args: {
+    children: "Content goes here",
+  },
+
+  render: (args, context) => (
+    <Ui89Card {...args}>
+      <Ui89CardHorizontalConnection overflow>
+        <Ui89Hr look="double" />
+      </Ui89CardHorizontalConnection>
+
+      {args.children}
+    </Ui89Card>
+  ),
+}
+
+export const TopLeftContent: Story = {
+  args: {
+    topLeft: <Ui89TitleBox>Title goes here</Ui89TitleBox>,
+    children: "Content goes here",
+  },
+
+  render: (args, context) => <Ui89Card {...args}>{args.children}</Ui89Card>,
 }
 
 export const TopCenterContent: Story = {
