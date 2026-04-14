@@ -14,9 +14,7 @@ export interface Ui89CardProps {
 export function Ui89Card(props: Ui89CardProps) {
   return (
     <div className={`ui89-card`}>
-      <div className="ui89-card__inside">
-        {props.children}
-      </div>
+      <div className="ui89-card__inside">{props.children}</div>
 
       {props.topLeft && (
         <div className="ui89-card__top-left">{props.topLeft}</div>

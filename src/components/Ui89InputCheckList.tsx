@@ -77,19 +77,17 @@ export function Ui89InputCheckList<T>(props: Ui89InputCheckListProps<T>) {
 
     return (
       <div
+        onClick={toggle}
         style={{
           display: "flex",
           alignItems: "center",
           gap: "var(--ui89-safe-space)",
           height: "100%",
+          cursor: "pointer",
         }}
       >
-        <Ui89InputCheckBox value={value} onChange={onChange} />
-        <div
-          className="ui89-text-ellipsis"
-          style={{ minWidth: 0, cursor: "pointer" }}
-          onClick={toggle}
-        >
+        <Ui89InputCheckBox value={value} />
+        <div className="ui89-text-ellipsis" style={{ minWidth: 0 }}>
           {label}
         </div>
       </div>

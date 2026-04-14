@@ -52,6 +52,18 @@ export type {
 export { Ui89InputCheckText } from "./components/Ui89InputCheckText"
 export type { Ui89InputCheckTextProps } from "./components/Ui89InputCheckText"
 
+export { Ui89InputSelectMultiCheck } from "./components/Ui89InputSelectMultiCheck"
+export type {
+  Ui89InputSelectMultiCheckProps,
+  Ui89InputSelectMultiCheckPropsRenderOption,
+} from "./components/Ui89InputSelectMultiCheck"
+
+export { Ui89InputSelectMultiTag } from "./components/Ui89InputSelectMultiTag"
+export type {
+  Ui89InputSelectMultiTagProps,
+  Ui89InputSelectMultiTagPropsRenderOption,
+} from "./components/Ui89InputSelectMultiTag"
+
 export { Ui89InputFileUpload } from "./components/Ui89InputFileUpload"
 export type { Ui89InputFileUploadProps } from "./components/Ui89InputFileUpload"
 

@@ -208,6 +208,8 @@ export const StretchedContent: Story = {
 
     await expect(cardInside).toBeInTheDocument()
     // Use an approximation to account for internal padding and borders
-    await expect(child.clientHeight).toBeGreaterThanOrEqual(cardInside.clientHeight * 0.9)
+    await expect(child.clientHeight).toBeGreaterThanOrEqual(
+      cardInside.clientHeight * 0.9,
+    )
   },
 }
