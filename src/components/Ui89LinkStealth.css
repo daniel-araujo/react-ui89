@@ -5,5 +5,5 @@
 
 .ui89-link-stealth:hover {
   color: currentColor;
-  background: var(--ui89-scene-highlight-color);
+  background: rgba(255, 255, 255, 0.2);
 }

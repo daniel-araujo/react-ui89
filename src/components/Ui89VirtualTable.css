@@ -8,7 +8,7 @@
 .ui89-virtual-table__row {
   position: relative;
   box-sizing: border-box;
-  border-top: 1px solid var(--ui89-scene-text-color);
+  border-top: 1px solid var(--ui89-theme-text-color);
 }
 
 .ui89-virtual-table__row--first {
@@ -30,7 +30,7 @@
   overflow: hidden;
 
   /* So that the floating headers remain visible. */
-  background: var(--ui89-scene-bg-color);
+  background: var(--ui89-theme-bg-color);
 }
 
 .ui89-virtual-table__cell--column-first {

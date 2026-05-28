@@ -11,6 +11,6 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  background: var(--ui89-scene-bg-color);
-  color: var(--ui89-scene-text-color);
+  background: var(--ui89-theme-bg-color);
+  color: var(--ui89-theme-text-color);
 }

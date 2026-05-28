@@ -5,6 +5,6 @@
 }
 
 .ui89-link-bracket:hover {
-  color: var(--ui89-scene-bg-color);
-  background-color: var(--ui89-scene-text-color);
+  color: var(--ui89-theme-bg-color);
+  background-color: var(--ui89-theme-text-color);
 }

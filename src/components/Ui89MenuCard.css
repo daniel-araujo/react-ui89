@@ -11,13 +11,13 @@
 }
 
 .ui89-menu-card__item:hover:not(.ui89-menu-card__item--disabled) {
-  color: var(--ui89-scene-bg-color);
-  background-color: var(--ui89-scene-text-color);
+  color: var(--ui89-theme-bg-color);
+  background-color: var(--ui89-theme-text-color);
 }
 
 .ui89-menu-card__item--disabled {
   cursor: not-allowed;
-  color: var(--ui89-scene-text-subtle-color);
+  color: var(--ui89-theme-text-disabled-color);
 }
 
 .ui89-menu-card__separator {

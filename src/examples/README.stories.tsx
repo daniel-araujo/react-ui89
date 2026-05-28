@@ -72,7 +72,11 @@ export const WithPopover: Story = {
               <Ui89Button>Open Menu</Ui89Button>
             </span>
           )}
-          renderPopover={() => <Ui89MenuCard options={options} />}
+          renderPopover={() => (
+            <Ui89BoxShadow>
+              <Ui89MenuCard options={options} />
+            </Ui89BoxShadow>
+          )}
         />
       </div>
     )
@@ -124,7 +128,11 @@ export const MenuBarWithPopover: Story = {
                 {label}
               </span>
             )}
-            renderPopover={() => <Ui89MenuCard options={options} />}
+            renderPopover={() => (
+              <Ui89BoxShadow>
+                <Ui89MenuCard options={options} />
+              </Ui89BoxShadow>
+            )}
           />
         ),
         onClick: () => setOpen(!open),

@@ -20,11 +20,10 @@
   --ui89-palette-light-yellow: #ffff55;
   --ui89-palette-white: #ffffff;
 
-  /* Scene */
-  --ui89-scene-text-color: var(--ui89-palette-white);
-  --ui89-scene-text-subtle-color: var(--ui89-palette-light-gray);
-  --ui89-scene-bg-color: var(--ui89-palette-dark-blue);
-  --ui89-scene-highlight-color: rgba(255, 255, 255, 0.2);
+  /* Default theme (dark blue) */
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-blue);
 
   /* Size and alignment */
   --ui89-safe-space: 8px;
