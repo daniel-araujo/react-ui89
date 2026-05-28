@@ -6,7 +6,6 @@ export { Ui89Breadcrumbs } from "./components/Ui89Breadcrumbs"
 export type {
   Ui89BreadcrumbsProps,
   Ui89BreadcrumbsPropsItem,
-  Ui89BreadcrumbsPropsOnSelect,
 } from "./components/Ui89Breadcrumbs"
 
 export { Ui89BoxShadow } from "./components/Ui89BoxShadow"
