@@ -12,6 +12,7 @@ import { Ui89MenuCard } from "../components/Ui89MenuCard"
 import { Ui89MenuBar } from "../components/Ui89MenuBar"
 import { Ui89BoxShadow } from "../components/Ui89BoxShadow"
 import { Ui89ThemeBackground } from "../components/Ui89ThemeBackground"
+import { Ui89Tabs } from "../components/Ui89Tabs"
 
 const meta: Meta = {
   decorators: [SceneDecorator],
@@ -160,6 +161,70 @@ export const MenuBarWithPopover: Story = {
     return (
       <div style={{ height: "200px" }}>
         <Ui89MenuBar items={items} />
+      </div>
+    )
+  },
+}
+
+export const TabbedCard: Story = {
+  render: (args) => {
+    const [selected, setSelected] = React.useState("general")
+
+    const tabs = [
+      { value: "general", label: "General" },
+      { value: "network", label: "Network" },
+      { value: "about", label: "About" },
+    ]
+
+    const content: Record<string, React.ReactNode> = {
+      general: (
+        <>
+          Tweak the basics here.
+          <Ui89SpaceVertical gap={2} />
+          <Ui89Button theme="success">Save</Ui89Button>
+          <Ui89Button theme="danger">Reset</Ui89Button>
+        </>
+      ),
+      network: (
+        <>
+          Configure your connection to the grid.
+          <Ui89SpaceVertical gap={2} />
+          <Ui89Button theme="info">Connect</Ui89Button>
+          <Ui89Button theme="warning">Disconnect</Ui89Button>
+        </>
+      ),
+      about: (
+        <>
+          react-1980ui &mdash; a window into the past.
+          <Ui89SpaceVertical gap={2} />
+          <Ui89Button>Close</Ui89Button>
+        </>
+      ),
+    }
+
+    return (
+      <div
+        style={{
+          margin: "auto",
+          width: "400px",
+          padding: "40px",
+        }}
+      >
+        <Ui89BoxShadow gap={2}>
+          <Ui89ThemeBackground theme="darkCyan">
+            <Ui89Card>
+              <Ui89Tabs
+                theme="darkCyan"
+                stretch
+                options={tabs}
+                selected={selected}
+                onChange={(value) => setSelected(String(value))}
+              />
+              <Ui89SpaceVertical gap={2} />
+              {content[selected]}
+            </Ui89Card>
+          </Ui89ThemeBackground>
+        </Ui89BoxShadow>
       </div>
     )
   },
