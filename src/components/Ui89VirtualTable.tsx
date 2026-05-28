@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useMemo } from "react"
+import React, { forwardRef, useCallback, useMemo, useState } from "react"
 import "./Ui89VirtualTable.css"
 import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
@@ -23,8 +23,14 @@ export interface Ui89VirtualTablePropsColumnRenderBodyParams<T> {
   row: T
 }
 
+export interface Ui89VirtualTablePropsColumnWidth {
+  stretch?: {
+    min: number
+  }
+}
+
 export interface Ui89VirtualTablePropsColumn<T> {
-  width?: number
+  width?: number | Ui89VirtualTablePropsColumnWidth
   halign?: keyof typeof Ui89VirtualTablePropsColumnAlign
   renderHeader?: (
     props: Ui89VirtualTablePropsColumnRenderHeaderParams<T>,
@@ -57,8 +63,48 @@ export const Ui89VirtualTable = React.memo(
 
     const rowHeight = props.rowHeight ?? 20
 
+    const [containerWidth, setContainerWidth] = useState(0)
+
+    const measureContainer = useCallback((node: HTMLDivElement | null) => {
+      if (node !== null) {
+        console.log(node.clientWidth)
+        setContainerWidth(node.clientWidth)
+      }
+    }, [])
+
+    const columnWidths = useMemo<number[]>(() => {
+      const widths = new Array<number>(columns.length)
+      const stretchIndices: number[] = []
+      let fixedTotal = 0
+
+      for (let i = 0; i < columns.length; i++) {
+        const width = columns[i].width
+        if (typeof width === "object" && width !== null && width.stretch) {
+          widths[i] = width.stretch.min
+          stretchIndices.push(i)
+        } else if (typeof width === "number") {
+          widths[i] = width
+        } else {
+          widths[i] = 100
+        }
+        fixedTotal += widths[i]
+      }
+
+      if (stretchIndices.length > 0 && containerWidth > fixedTotal) {
+        const extra = Math.floor(
+          (containerWidth - fixedTotal) / stretchIndices.length,
+        )
+        console.log("extra", extra)
+        for (const i of stretchIndices) {
+          widths[i] += extra
+        }
+      }
+
+      return widths
+    }, [columns, containerWidth])
+
     function getColumnWidth(index: number): number {
-      return columns[index].width ?? 100
+      return columnWidths[index]
     }
 
     function getColumnHorizontalOffset(columnIndex: number) {
@@ -152,11 +198,11 @@ export const Ui89VirtualTable = React.memo(
           </div>
         )
       },
-      [columns, rowHeight],
+      [columns, rowHeight, columnWidths],
     )
 
     return (
-      <>
+      <div ref={measureContainer}>
         {rows.length > 1 ? (
           <Ui89VirtualList
             maxHeight={props.maxHeight}
@@ -169,7 +215,7 @@ export const Ui89VirtualTable = React.memo(
             <Ui89TagBox theme="warning">Empty</Ui89TagBox>
           </div>
         )}
-      </>
+      </div>
     )
   },
 ) as <T>(props: Ui89VirtualTableProps<T>) => JSX.Element

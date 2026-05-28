@@ -127,6 +127,208 @@ export const VerticalScrolling: Story = {
   },
 }
 
+function getCellByText(
+  canvas: ReturnType<typeof within>,
+  text: string,
+): HTMLElement {
+  const element = canvas.getByText(text)
+  const cell = element.closest(".ui89-virtual-table__cell") as HTMLElement
+  if (!cell) throw new Error(`No cell found for text "${text}"`)
+  return cell
+}
+
+export const StretchColumnFillsRemainingSpace: Story = {
+  render: () => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(
+      () => [
+        {
+          width: 200,
+          renderHeader: () => <>FixedLeft</>,
+          renderBody: ({ index }) => <>Row #{index}</>,
+        },
+        {
+          width: { stretch: { min: 100 } },
+          renderHeader: () => <>StretchHeader</>,
+          renderBody: () => <>Stretchy body</>,
+        },
+        {
+          width: 200,
+          renderHeader: () => <>FixedRight</>,
+          renderBody: () => <>Last column</>,
+        },
+      ],
+      [],
+    )
+
+    return (
+      <div style={{ width: "1000px" }}>
+        <Ui89VirtualTable
+          maxHeight="500px"
+          rows={new Array(3)}
+          columns={columns}
+        />
+      </div>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await waitFor(() => {
+      const stretchCell = getCellByText(canvas, "StretchHeader")
+      const fixedLeft = getCellByText(canvas, "FixedLeft")
+      const fixedRight = getCellByText(canvas, "FixedRight")
+
+      expect(fixedLeft.style.width).toBe("200px")
+      expect(fixedRight.style.width).toBe("200px")
+      // Container is 1000px, fixed columns take 400px, so stretch should
+      // grow well beyond its 100px minimum.
+      expect(stretchCell.offsetWidth).toBeGreaterThan(500)
+    })
+  },
+}
+
+export const StretchColumnRespectsMinWhenContainerTooNarrow: Story = {
+  render: () => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(
+      () => [
+        {
+          width: 500,
+          renderHeader: () => <>FixedLeft</>,
+          renderBody: ({ index }) => <>Row #{index}</>,
+        },
+        {
+          width: { stretch: { min: 150 } },
+          renderHeader: () => <>StretchHeader</>,
+          renderBody: () => <>Stretchy body</>,
+        },
+        {
+          width: 500,
+          renderHeader: () => <>FixedRight</>,
+          renderBody: () => <>Last column</>,
+        },
+      ],
+      [],
+    )
+
+    return (
+      <div style={{ width: "300px" }}>
+        <Ui89VirtualTable
+          maxHeight="500px"
+          rows={new Array(3)}
+          columns={columns}
+        />
+      </div>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await waitFor(() => {
+      const stretchCell = getCellByText(canvas, "StretchHeader")
+      // Container is 300px but fixed columns alone need 1000px. Stretch
+      // column must remain at its minimum (150px).
+      expect(stretchCell.style.width).toBe("150px")
+    })
+  },
+}
+
+export const MultipleStretchColumnsShareRemainingSpace: Story = {
+  render: () => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(
+      () => [
+        {
+          width: 200,
+          renderHeader: () => <>Fixed</>,
+          renderBody: ({ index }) => <>Row #{index}</>,
+        },
+        {
+          width: { stretch: { min: 50 } },
+          renderHeader: () => <>StretchA</>,
+          renderBody: () => <>A</>,
+        },
+        {
+          width: { stretch: { min: 50 } },
+          renderHeader: () => <>StretchB</>,
+          renderBody: () => <>B</>,
+        },
+      ],
+      [],
+    )
+
+    return (
+      <div style={{ width: "1000px" }}>
+        <Ui89VirtualTable
+          maxHeight="500px"
+          rows={new Array(3)}
+          columns={columns}
+        />
+      </div>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await waitFor(() => {
+      const stretchA = getCellByText(canvas, "StretchA")
+      const stretchB = getCellByText(canvas, "StretchB")
+
+      // Both stretch columns should be expanded above min and approximately
+      // equal in width.
+      expect(stretchA.offsetWidth).toBeGreaterThan(300)
+      expect(stretchB.offsetWidth).toBeGreaterThan(300)
+      expect(
+        Math.abs(stretchA.offsetWidth - stretchB.offsetWidth),
+      ).toBeLessThan(2)
+    })
+  },
+}
+
+export const NumericWidthIsUnaffectedByStretchLogic: Story = {
+  render: () => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(
+      () => [
+        {
+          width: 250,
+          renderHeader: () => <>Header250</>,
+          renderBody: ({ index }) => <>Row #{index}</>,
+        },
+        {
+          width: 350,
+          renderHeader: () => <>Header350</>,
+          renderBody: () => <>Right</>,
+        },
+      ],
+      [],
+    )
+
+    return (
+      <div style={{ width: "1200px" }}>
+        <Ui89VirtualTable
+          maxHeight="500px"
+          rows={new Array(3)}
+          columns={columns}
+        />
+      </div>
+    )
+  },
+
+  play: async (context) => {
+    const canvas = within(context.canvasElement)
+
+    await waitFor(() => {
+      const a = getCellByText(canvas, "Header250")
+      const b = getCellByText(canvas, "Header350")
+
+      // With no stretch column, leftover space must not be redistributed.
+      expect(a.style.width).toBe("250px")
+      expect(b.style.width).toBe("350px")
+    })
+  },
+}
+
 export const HorizontalScrolling: Story = {
   args: {
     maxHeight: "500px",

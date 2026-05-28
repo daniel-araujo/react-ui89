@@ -183,6 +183,7 @@ export { Ui89VirtualTable } from "./components/Ui89VirtualTable"
 export type {
   Ui89VirtualTablePropsColumnRenderHeaderParams,
   Ui89VirtualTablePropsColumnRenderBodyParams,
+  Ui89VirtualTablePropsColumnWidth,
   Ui89VirtualTablePropsColumn,
   Ui89VirtualTableProps,
 } from "./components/Ui89VirtualTable"
