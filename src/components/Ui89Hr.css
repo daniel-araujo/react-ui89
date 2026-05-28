@@ -1,5 +1,5 @@
 .ui-89-hr {
-  --ui89-hr-color: var(--ui89-scene-card-text-color);
+  --ui89-hr-color: var(--ui89-scene-text-color);
 }
 
 .ui-89-hr--straight {
@@ -24,5 +24,5 @@
 }
 
 .ui-89-hr--use-theme {
-  --ui89-hr-color: var(--ui89-chosen-theme-bg-color);
+  --ui89-hr-color: var(--ui89-theme-bg-color);
 }

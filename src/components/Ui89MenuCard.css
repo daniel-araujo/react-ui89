@@ -11,8 +11,8 @@
 }
 
 .ui89-menu-card__item:hover:not(.ui89-menu-card__item--disabled) {
-  color: var(--ui89-scene-card-bg-color);
-  background-color: var(--ui89-scene-card-text-color);
+  color: var(--ui89-scene-bg-color);
+  background-color: var(--ui89-scene-text-color);
 }
 
 .ui89-menu-card__item--disabled {

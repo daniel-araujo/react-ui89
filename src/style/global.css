@@ -20,24 +20,11 @@
   --ui89-palette-light-yellow: #ffff55;
   --ui89-palette-white: #ffffff;
 
-  /* Themes */
-  --ui89-theme-primary-text-color: var(--ui89-palette-black);
-  --ui89-theme-primary-bg-color: var(--ui89-palette-light-yellow);
-
-  --ui89-theme-secondary-text-color: var(--ui89-palette-black);
-  --ui89-theme-secondary-bg-color: var(--ui89-palette-white);
-
-  --ui89-theme-success-text-color: var(--ui89-palette-white);
-  --ui89-theme-success-bg-color: var(--ui89-palette-dark-green);
-
-  --ui89-theme-info-text-color: var(--ui89-palette-white);
-  --ui89-theme-info-bg-color: var(--ui89-palette-light-blue);
-
-  --ui89-theme-warning-text-color: var(--ui89-palette-white);
-  --ui89-theme-warning-bg-color: var(--ui89-palette-dark-yellow);
-
-  --ui89-theme-danger-text-color: var(--ui89-palette-white);
-  --ui89-theme-danger-bg-color: var(--ui89-palette-dark-red);
+  /* Scene */
+  --ui89-scene-text-color: var(--ui89-palette-white);
+  --ui89-scene-text-subtle-color: var(--ui89-palette-light-gray);
+  --ui89-scene-bg-color: var(--ui89-palette-dark-blue);
+  --ui89-scene-highlight-color: rgba(255, 255, 255, 0.2);
 
   /* Size and alignment */
   --ui89-safe-space: 8px;

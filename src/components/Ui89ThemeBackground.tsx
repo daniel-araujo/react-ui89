@@ -1,12 +1,16 @@
 import React, { useState } from "react"
 
 import "./Ui89ThemeBackground.css"
-import "../style/chosen-theme.css"
+import "../style/theme.css"
 
-import { Ui89Theme } from "../theme"
+import { Ui89Palette, Ui89Theme } from "../theme"
 
 export interface Ui89ThemeBackgroundProps {
-  theme?: Ui89Theme | keyof typeof Ui89Theme
+  theme?:
+    | Ui89Theme
+    | keyof typeof Ui89Theme
+    | Ui89Palette
+    | keyof typeof Ui89Palette
   children: React.ReactNode
 }
 
@@ -15,7 +19,7 @@ export function Ui89ThemeBackground({
   children,
 }: Ui89ThemeBackgroundProps) {
   return (
-    <div className={`ui89-theme-background ui89-chosen-theme-${theme}`}>
+    <div className={`ui89-theme-background ui89-theme-${theme}`}>
       {children}
     </div>
   )

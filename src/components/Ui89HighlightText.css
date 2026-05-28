@@ -1,6 +1,6 @@
 .ui89-highlight-text {
-  color: var(--ui89-chosen-theme-text-color);
-  background-color: var(--ui89-chosen-theme-bg-color);
+  color: var(--ui89-theme-text-color);
+  background-color: var(--ui89-theme-bg-color);
 }
 
 .ui89-highlight-text--block {

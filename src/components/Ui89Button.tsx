@@ -3,12 +3,12 @@ import React, { useState } from "react"
 import "./Ui89Button.css"
 import "../style/text.css"
 import "../style/typo.css"
-import "../style/chosen-theme.css"
+import "../style/theme.css"
 import "../style/reset.css"
 
 import { Ui89BoxShadow } from "./Ui89BoxShadow"
 
-import { Ui89Theme } from "../theme"
+import { Ui89Palette, Ui89Theme } from "../theme"
 import { useUi89 } from "../Ui89Provider"
 
 export enum Ui89ButtonPropsSize {
@@ -22,7 +22,11 @@ export enum Ui89ButtonPropsType {
 }
 
 export interface Ui89ButtonProps {
-  theme?: Ui89Theme | keyof typeof Ui89Theme
+  theme?:
+    | Ui89Theme
+    | keyof typeof Ui89Theme
+    | Ui89Palette
+    | keyof typeof Ui89Palette
   size?: Ui89ButtonPropsSize | keyof typeof Ui89ButtonPropsSize
   block?: boolean
   onClick?: () => void | Promise<void>
@@ -118,7 +122,7 @@ export function Ui89Button({
     "ui89-button__button",
     "ui89-typo-special",
     "ui89-text-ellipsis",
-    `ui89-chosen-theme-${theme}`,
+    `ui89-theme-${theme}`,
     activated ? "ui89-button__button--active" : undefined,
     block ? "ui89-button__button--block" : undefined,
     disabled ? "ui89-button__button--disabled" : undefined,

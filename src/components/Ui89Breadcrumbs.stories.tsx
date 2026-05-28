@@ -124,6 +124,74 @@ export const FiveCrumbs: Story = {
   },
 }
 
+export const ThemePrimary: Story = {
+  args: { theme: "primary", items: itemsSampleTwoCrumbs },
+}
+export const ThemeSecondary: Story = {
+  args: { theme: "secondary", items: itemsSampleTwoCrumbs },
+}
+export const ThemeInfo: Story = {
+  args: { theme: "info", items: itemsSampleTwoCrumbs },
+}
+export const ThemeSuccess: Story = {
+  args: { theme: "success", items: itemsSampleTwoCrumbs },
+}
+export const ThemeWarning: Story = {
+  args: { theme: "warning", items: itemsSampleTwoCrumbs },
+}
+export const ThemeDanger: Story = {
+  args: { theme: "danger", items: itemsSampleTwoCrumbs },
+}
+
+export const PaletteBlack: Story = {
+  args: { theme: "black", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkBlue: Story = {
+  args: { theme: "darkBlue", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkGreen: Story = {
+  args: { theme: "darkGreen", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkCyan: Story = {
+  args: { theme: "darkCyan", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkRed: Story = {
+  args: { theme: "darkRed", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkPink: Story = {
+  args: { theme: "darkPink", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkYellow: Story = {
+  args: { theme: "darkYellow", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightGray: Story = {
+  args: { theme: "lightGray", items: itemsSampleTwoCrumbs },
+}
+export const PaletteDarkGray: Story = {
+  args: { theme: "darkGray", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightBlue: Story = {
+  args: { theme: "lightBlue", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightGreen: Story = {
+  args: { theme: "lightGreen", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightCyan: Story = {
+  args: { theme: "lightCyan", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightRed: Story = {
+  args: { theme: "lightRed", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightPink: Story = {
+  args: { theme: "lightPink", items: itemsSampleTwoCrumbs },
+}
+export const PaletteLightYellow: Story = {
+  args: { theme: "lightYellow", items: itemsSampleTwoCrumbs },
+}
+export const PaletteWhite: Story = {
+  args: { theme: "white", items: itemsSampleTwoCrumbs },
+}
+
 export const NewItemAnimation: StoryObj = {
   render: (args, context) => {
     const [items, setItems] = useState(itemsSampleTwoCrumbs)

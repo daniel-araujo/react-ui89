@@ -59,6 +59,55 @@ export const ThemeWarning: Story = {
   },
 }
 
+export const PaletteBlack: Story = {
+  args: { theme: "black", children: "Content" },
+}
+export const PaletteDarkBlue: Story = {
+  args: { theme: "darkBlue", children: "Content" },
+}
+export const PaletteDarkGreen: Story = {
+  args: { theme: "darkGreen", children: "Content" },
+}
+export const PaletteDarkCyan: Story = {
+  args: { theme: "darkCyan", children: "Content" },
+}
+export const PaletteDarkRed: Story = {
+  args: { theme: "darkRed", children: "Content" },
+}
+export const PaletteDarkPink: Story = {
+  args: { theme: "darkPink", children: "Content" },
+}
+export const PaletteDarkYellow: Story = {
+  args: { theme: "darkYellow", children: "Content" },
+}
+export const PaletteLightGray: Story = {
+  args: { theme: "lightGray", children: "Content" },
+}
+export const PaletteDarkGray: Story = {
+  args: { theme: "darkGray", children: "Content" },
+}
+export const PaletteLightBlue: Story = {
+  args: { theme: "lightBlue", children: "Content" },
+}
+export const PaletteLightGreen: Story = {
+  args: { theme: "lightGreen", children: "Content" },
+}
+export const PaletteLightCyan: Story = {
+  args: { theme: "lightCyan", children: "Content" },
+}
+export const PaletteLightRed: Story = {
+  args: { theme: "lightRed", children: "Content" },
+}
+export const PaletteLightPink: Story = {
+  args: { theme: "lightPink", children: "Content" },
+}
+export const PaletteLightYellow: Story = {
+  args: { theme: "lightYellow", children: "Content" },
+}
+export const PaletteWhite: Story = {
+  args: { theme: "white", children: "Content" },
+}
+
 export const ChangesCardBackground: Story = {
   args: {
     theme: "warning",

@@ -2,8 +2,7 @@
   content: "";
   position: absolute;
   inset: 0;
-  border: var(--ui89-toaster-border-width) solid
-    var(--ui89-chosen-theme-text-color);
+  border: var(--ui89-toaster-border-width) solid var(--ui89-theme-text-color);
   margin: var(--ui89-safe-space);
 }
 
@@ -15,8 +14,8 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--ui89-chosen-theme-bg-color);
-  color: var(--ui89-chosen-theme-text-color);
+  background: var(--ui89-theme-bg-color);
+  color: var(--ui89-theme-text-color);
   padding: 0 var(--ui89-safe-space);
 }
 
@@ -33,8 +32,8 @@
 
   border-radius: 0;
   box-shadow: var(--ui89-box-shadow);
-  background: var(--ui89-chosen-theme-bg-color);
-  color: var(--ui89-chosen-theme-text-color);
+  background: var(--ui89-theme-bg-color);
+  color: var(--ui89-theme-text-color);
 }
 
 .ui89-toaster .Toastify__progress-bar--wrp {

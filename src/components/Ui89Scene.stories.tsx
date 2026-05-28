@@ -16,23 +16,14 @@ export default meta
 
 type Story = StoryObj<typeof meta>
 
-export const LookMain: Story = {
+export const Default: Story = {
   args: {
-    look: "main",
-    children: "Content goes here",
-  },
-}
-
-export const LookSide: Story = {
-  args: {
-    look: "side",
     children: "Content goes here",
   },
 }
 
 export const VerticalOverflow: Story = {
   args: {
-    look: "main",
     children: "Content goes here\n".repeat(1000),
   },
   render: (args, context) => (
@@ -58,7 +49,6 @@ export const VerticalOverflow: Story = {
 
 export const HorizontalOverflow: Story = {
   args: {
-    look: "main",
     children: "Contentgoeshere".repeat(100),
   },
   render: (args, context) => (
@@ -83,9 +73,7 @@ export const HorizontalOverflow: Story = {
 }
 
 export const CustomizesScrollbarsInside: Story = {
-  args: {
-    look: "main",
-  },
+  args: {},
   render: (args, context) => (
     <Ui89Scene {...args}>
       <div className="container">

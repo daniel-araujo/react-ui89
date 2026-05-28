@@ -1,6 +1,6 @@
 .ui89-card {
-  background: var(--ui89-scene-card-bg-color);
-  color: var(--ui89-scene-card-text-color);
+  background: var(--ui89-scene-bg-color);
+  color: var(--ui89-scene-text-color);
   border-radius: var(--ui89-box-border-radius);
   position: relative;
   box-shadow: rgb(0 0 0 / 5%) 0px 1px 2px 0px;
@@ -8,6 +8,15 @@
 
   display: flex;
   flex-direction: column;
+}
+
+.ui89-card--themed {
+  background: var(--ui89-theme-bg-color);
+  color: var(--ui89-theme-text-color);
+}
+
+.ui89-card--themed .ui89-card__horizontal-connection {
+  background: var(--ui89-theme-bg-color);
 }
 
 .ui89-card > * {
@@ -22,7 +31,7 @@
 }
 
 .ui89-card__inside {
-  border: 1px solid white;
+  border: 1px solid currentColor;
   padding: calc(var(--ui89-safe-space));
 }
 
@@ -90,7 +99,7 @@
 
 .ui89-card__horizontal-connection {
   margin: 0 calc(var(--ui89-safe-space) * -1);
-  background: var(--ui89-scene-card-bg-color);
+  background: var(--ui89-scene-bg-color);
 }
 
 .ui89-card__horizontal-connection--overflow {

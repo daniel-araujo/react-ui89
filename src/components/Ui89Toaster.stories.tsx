@@ -119,6 +119,34 @@ export const Info: Story = {
   },
 }
 
+function makePaletteStory(theme: string): Story {
+  return {
+    args: { children: "Title goes here" },
+    async play(context) {
+      const toaster = useUi89Toaster()
+      toaster.toast("This is a test", { theme: theme as any, autoClose: false })
+      await screen.findByText("This is a test")
+    },
+  }
+}
+
+export const PaletteBlack = makePaletteStory("black")
+export const PaletteDarkBlue = makePaletteStory("darkBlue")
+export const PaletteDarkGreen = makePaletteStory("darkGreen")
+export const PaletteDarkCyan = makePaletteStory("darkCyan")
+export const PaletteDarkRed = makePaletteStory("darkRed")
+export const PaletteDarkPink = makePaletteStory("darkPink")
+export const PaletteDarkYellow = makePaletteStory("darkYellow")
+export const PaletteLightGray = makePaletteStory("lightGray")
+export const PaletteDarkGray = makePaletteStory("darkGray")
+export const PaletteLightBlue = makePaletteStory("lightBlue")
+export const PaletteLightGreen = makePaletteStory("lightGreen")
+export const PaletteLightCyan = makePaletteStory("lightCyan")
+export const PaletteLightRed = makePaletteStory("lightRed")
+export const PaletteLightPink = makePaletteStory("lightPink")
+export const PaletteLightYellow = makePaletteStory("lightYellow")
+export const PaletteWhite = makePaletteStory("white")
+
 export const ShowText: Story = {
   args: {
     children: "Title goes here",

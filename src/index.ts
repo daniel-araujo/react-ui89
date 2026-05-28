@@ -1,6 +1,6 @@
 import "./style/global.css"
 
-export { Ui89Theme, Ui89Look } from "./theme"
+export { Ui89Theme, Ui89Palette } from "./theme"
 
 export { Ui89Breadcrumbs } from "./components/Ui89Breadcrumbs"
 export type {
@@ -158,7 +158,10 @@ export { Ui89Tabs } from "./components/Ui89Tabs"
 export type { Ui89TabsProps, Ui89TabsPropsOption } from "./components/Ui89Tabs"
 
 export { Ui89TagBox } from "./components/Ui89TagBox"
-export type { Ui89TagBoxProps } from "./components/Ui89TagBox"
+export type {
+  Ui89TagBoxProps,
+  Ui89TagBoxPropsVariant,
+} from "./components/Ui89TagBox"
 
 export { Ui89ThemeBackground } from "./components/Ui89ThemeBackground"
 export type { Ui89ThemeBackgroundProps } from "./components/Ui89ThemeBackground"

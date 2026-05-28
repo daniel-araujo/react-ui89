@@ -34,8 +34,8 @@
   justify-content: center;
   align-items: center; /* align vertical */
   border: 0;
-  color: var(--ui89-chosen-theme-text-color);
-  background-color: var(--ui89-chosen-theme-bg-color);
+  color: var(--ui89-theme-text-color);
+  background-color: var(--ui89-theme-bg-color);
   border-radius: 1px;
   font-weight: bold;
   user-select: none;

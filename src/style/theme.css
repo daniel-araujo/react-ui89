@@ -1,0 +1,131 @@
+.ui89-theme-primary {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-blue);
+}
+
+.ui89-theme-secondary {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-gray);
+}
+
+.ui89-theme-info {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-blue);
+}
+
+.ui89-theme-success {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-green);
+}
+
+.ui89-theme-warning {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-yellow);
+}
+
+.ui89-theme-danger {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-red);
+}
+
+.ui89-theme-black {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-black);
+}
+
+.ui89-theme-darkBlue {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-blue);
+}
+
+.ui89-theme-darkGreen {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-green);
+}
+
+.ui89-theme-darkCyan {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-cyan);
+}
+
+.ui89-theme-darkRed {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-red);
+}
+
+.ui89-theme-darkPink {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-pink);
+}
+
+.ui89-theme-darkYellow {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-yellow);
+}
+
+.ui89-theme-lightGray {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-gray);
+}
+
+.ui89-theme-darkGray {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-light-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-dark-gray);
+}
+
+.ui89-theme-lightBlue {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-blue);
+}
+
+.ui89-theme-lightGreen {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-green);
+}
+
+.ui89-theme-lightCyan {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-cyan);
+}
+
+.ui89-theme-lightRed {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-red);
+}
+
+.ui89-theme-lightPink {
+  --ui89-theme-text-color: var(--ui89-palette-white);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-pink);
+}
+
+.ui89-theme-lightYellow {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-light-yellow);
+}
+
+.ui89-theme-white {
+  --ui89-theme-text-color: var(--ui89-palette-black);
+  --ui89-theme-text-disabled-color: var(--ui89-palette-dark-gray);
+  --ui89-theme-bg-color: var(--ui89-palette-white);
+}

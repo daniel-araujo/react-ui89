@@ -3,11 +3,15 @@ import { ToastContainer, toast } from "react-toastify"
 
 import "./Ui89Toaster.css"
 import "../style/typo.css"
-import "../style/chosen-theme.css"
-import { Ui89Theme } from "../theme"
+import "../style/theme.css"
+import { Ui89Palette, Ui89Theme } from "../theme"
 
 export interface Ui89ToasterOptions {
-  theme?: Ui89Theme | keyof typeof Ui89Theme
+  theme?:
+    | Ui89Theme
+    | keyof typeof Ui89Theme
+    | Ui89Palette
+    | keyof typeof Ui89Palette
   autoClose?: boolean
   duration?: number
 }
@@ -21,7 +25,7 @@ export function useUi89Toaster() {
       const classNames = ["ui89-toaster", "ui89-typo-normal"]
 
       if (options.theme !== undefined) {
-        classNames.push(`ui89-chosen-theme-${options.theme}`)
+        classNames.push(`ui89-theme-${options.theme}`)
       }
 
       let autoClose: boolean | number = 5000

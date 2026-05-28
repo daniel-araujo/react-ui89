@@ -7,7 +7,21 @@ export enum Ui89Theme {
   danger = "danger",
 }
 
-export enum Ui89Look {
-  main = "main",
-  side = "side",
+export enum Ui89Palette {
+  black = "black",
+  darkBlue = "darkBlue",
+  darkGreen = "darkGreen",
+  darkCyan = "darkCyan",
+  darkRed = "darkRed",
+  darkPink = "darkPink",
+  darkYellow = "darkYellow",
+  lightGray = "lightGray",
+  darkGray = "darkGray",
+  lightBlue = "lightBlue",
+  lightGreen = "lightGreen",
+  lightCyan = "lightCyan",
+  lightRed = "lightRed",
+  lightPink = "lightPink",
+  lightYellow = "lightYellow",
+  white = "white",
 }

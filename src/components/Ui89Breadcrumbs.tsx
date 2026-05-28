@@ -3,9 +3,9 @@ import React, { useState } from "react"
 import "./Ui89Breadcrumbs.css"
 import "../style/typo.css"
 import "../style/reset.css"
-import "../style/chosen-theme.css"
+import "../style/theme.css"
 
-import { Ui89Theme } from "../theme"
+import { Ui89Palette, Ui89Theme } from "../theme"
 import { Ui89LinkBase } from "./private/LinkBase"
 
 export interface Ui89BreadcrumbsPropsItem {
@@ -14,7 +14,11 @@ export interface Ui89BreadcrumbsPropsItem {
 }
 
 export interface Ui89BreadcrumbsProps<T> {
-  theme?: Ui89Theme | keyof typeof Ui89Theme
+  theme?:
+    | Ui89Theme
+    | keyof typeof Ui89Theme
+    | Ui89Palette
+    | keyof typeof Ui89Palette
   items: T[]
   getLabel?: (item: T) => React.ReactNode
   getUrl?: (item: T) => string | undefined
@@ -55,9 +59,7 @@ export function Ui89Breadcrumbs<T extends Ui89BreadcrumbsPropsItem>({
   onSelect,
 }: Ui89BreadcrumbsProps<T>) {
   return (
-    <div
-      className={`ui89-breadcrumbs ui89-typo-special ui89-chosen-theme-${theme}`}
-    >
+    <div className={`ui89-breadcrumbs ui89-typo-special ui89-theme-${theme}`}>
       {[...items.entries()].reverse().map(([index, item]) => {
         const label = getLabel ? getLabel(item) : item.label
         const url = getUrl ? getUrl(item) : item.url

@@ -1,9 +1,66 @@
 .ui89-tag-box {
-  color: var(--ui89-chosen-theme-text-color);
-  background-color: var(--ui89-chosen-theme-bg-color);
-
   display: inline-block;
   padding: calc(var(--ui89-safe-space) / 2) calc(var(--ui89-safe-space) * 2);
   border-radius: var(--box-border-radius);
   line-height: 1;
+}
+
+.ui89-tag-box--variant-solid {
+  color: var(--ui89-theme-text-color);
+  background-color: var(--ui89-theme-bg-color);
+}
+
+.ui89-tag-box--variant-outline {
+  color: var(--ui89-theme-bg-color);
+  background-color: transparent;
+  border: 1px solid var(--ui89-theme-bg-color);
+}
+
+.ui89-tag-box--variant-ghost {
+  color: var(--ui89-theme-bg-color);
+  background-color: transparent;
+}
+
+.ui89-tag-box--variant-soft {
+  color: var(--ui89-theme-bg-color);
+  background-color: color-mix(
+    in srgb,
+    var(--ui89-theme-bg-color) 25%,
+    transparent
+  );
+}
+
+.ui89-tag-box--variant-dot {
+  color: inherit;
+  background-color: transparent;
+}
+
+.ui89-tag-box--variant-dot::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--ui89-theme-bg-color);
+  margin-right: calc(var(--ui89-safe-space) / 2);
+  vertical-align: middle;
+}
+
+.ui89-tag-box--variant-gradient {
+  color: var(--ui89-theme-text-color);
+  background: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--ui89-theme-bg-color) 65%, white) 0%,
+    var(--ui89-theme-bg-color) 50%,
+    color-mix(in srgb, var(--ui89-theme-bg-color) 75%, black) 100%
+  );
+}
+
+.ui89-tag-box--variant-underline {
+  color: inherit;
+  background-color: transparent;
+  text-decoration: underline;
+  text-decoration-color: var(--ui89-theme-bg-color);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 2px;
 }

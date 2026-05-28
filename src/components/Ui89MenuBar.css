@@ -3,8 +3,8 @@
 
   height: 16px;
 
-  color: var(--ui89-theme-primary-text-color);
-  background: var(--ui89-theme-primary-bg-color);
+  color: var(--ui89-theme-text-color);
+  background: var(--ui89-theme-bg-color);
 }
 
 .ui89-menu-bar__item {
@@ -14,6 +14,6 @@
 
 .ui89-menu-bar__item:hover,
 .ui89-menu-bar__item:active {
-  color: var(--ui89-theme-primary-bg-color);
-  background: var(--ui89-theme-primary-text-color);
+  color: var(--ui89-theme-bg-color);
+  background: var(--ui89-theme-text-color);
 }

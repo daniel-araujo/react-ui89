@@ -148,7 +148,7 @@ export function Ui89DateTimePicker(props: Ui89DateTimePickerProps) {
                   padding: "5px",
                   cursor: "pointer",
                   backgroundColor: isSelected
-                    ? "var(--ui89-theme-primary-bg-color)"
+                    ? "var(--ui89-palette-light-blue)"
                     : "transparent",
                   opacity: isCurrentMonth ? 1 : 0.3,
                 }}

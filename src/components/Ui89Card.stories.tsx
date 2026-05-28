@@ -25,6 +25,74 @@ export const Content: Story = {
   },
 }
 
+export const ThemePrimary: Story = {
+  args: { theme: "primary", children: "Content goes here" },
+}
+export const ThemeSecondary: Story = {
+  args: { theme: "secondary", children: "Content goes here" },
+}
+export const ThemeInfo: Story = {
+  args: { theme: "info", children: "Content goes here" },
+}
+export const ThemeSuccess: Story = {
+  args: { theme: "success", children: "Content goes here" },
+}
+export const ThemeWarning: Story = {
+  args: { theme: "warning", children: "Content goes here" },
+}
+export const ThemeDanger: Story = {
+  args: { theme: "danger", children: "Content goes here" },
+}
+
+export const PaletteBlack: Story = {
+  args: { theme: "black", children: "Content goes here" },
+}
+export const PaletteDarkBlue: Story = {
+  args: { theme: "darkBlue", children: "Content goes here" },
+}
+export const PaletteDarkGreen: Story = {
+  args: { theme: "darkGreen", children: "Content goes here" },
+}
+export const PaletteDarkCyan: Story = {
+  args: { theme: "darkCyan", children: "Content goes here" },
+}
+export const PaletteDarkRed: Story = {
+  args: { theme: "darkRed", children: "Content goes here" },
+}
+export const PaletteDarkPink: Story = {
+  args: { theme: "darkPink", children: "Content goes here" },
+}
+export const PaletteDarkYellow: Story = {
+  args: { theme: "darkYellow", children: "Content goes here" },
+}
+export const PaletteLightGray: Story = {
+  args: { theme: "lightGray", children: "Content goes here" },
+}
+export const PaletteDarkGray: Story = {
+  args: { theme: "darkGray", children: "Content goes here" },
+}
+export const PaletteLightBlue: Story = {
+  args: { theme: "lightBlue", children: "Content goes here" },
+}
+export const PaletteLightGreen: Story = {
+  args: { theme: "lightGreen", children: "Content goes here" },
+}
+export const PaletteLightCyan: Story = {
+  args: { theme: "lightCyan", children: "Content goes here" },
+}
+export const PaletteLightRed: Story = {
+  args: { theme: "lightRed", children: "Content goes here" },
+}
+export const PaletteLightPink: Story = {
+  args: { theme: "lightPink", children: "Content goes here" },
+}
+export const PaletteLightYellow: Story = {
+  args: { theme: "lightYellow", children: "Content goes here" },
+}
+export const PaletteWhite: Story = {
+  args: { theme: "white", children: "Content goes here" },
+}
+
 export const ScrollbarPresence: Story = {
   args: {
     children: (
