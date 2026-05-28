@@ -1,4 +1,4 @@
-import React, { forwardRef, useCallback, useMemo, useState } from "react"
+import React, { useCallback, useMemo, useState } from "react"
 import "./Ui89VirtualTable.css"
 import "../style/typo.css"
 import { Ui89TagBox } from "./Ui89TagBox"
@@ -65,12 +65,13 @@ export const Ui89VirtualTable = React.memo(
 
     const [containerWidth, setContainerWidth] = useState(0)
 
-    const measureContainer = useCallback((node: HTMLDivElement | null) => {
-      if (node !== null) {
-        console.log(node.clientWidth)
-        setContainerWidth(node.clientWidth)
-      }
-    }, [])
+    // The list reports its viewport width, which already excludes the vertical
+    // scrollbar, so stretch columns leave room for it instead of overflowing
+    // horizontally.
+    const handleResize = useCallback(
+      (size: { width: number; height: number }) => setContainerWidth(size.width),
+      [],
+    )
 
     const columnWidths = useMemo<number[]>(() => {
       const widths = new Array<number>(columns.length)
@@ -94,7 +95,6 @@ export const Ui89VirtualTable = React.memo(
         const extra = Math.floor(
           (containerWidth - fixedTotal) / stretchIndices.length,
         )
-        console.log("extra", extra)
         for (const i of stretchIndices) {
           widths[i] += extra
         }
@@ -202,13 +202,14 @@ export const Ui89VirtualTable = React.memo(
     )
 
     return (
-      <div ref={measureContainer}>
+      <div>
         {rows.length > 1 ? (
           <Ui89VirtualList
             maxHeight={props.maxHeight}
             rows={rows as T[]}
             rowHeight={rowHeight}
             renderRow={renderRow}
+            onResize={handleResize}
           />
         ) : (
           <div className="ui89-virtual-table__empty">

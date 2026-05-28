@@ -286,6 +286,63 @@ export const MultipleStretchColumnsShareRemainingSpace: Story = {
   },
 }
 
+export const StretchColumnAccountsForVerticalScrollbar: Story = {
+  render: () => {
+    const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(
+      () => [
+        {
+          width: 200,
+          renderHeader: () => <>FixedLeft</>,
+          renderBody: ({ index }) => <>Row #{index}</>,
+        },
+        {
+          width: { stretch: { min: 100 } },
+          renderHeader: () => <>StretchHeader</>,
+          renderBody: () => <>Stretchy body</>,
+        },
+        {
+          width: 200,
+          renderHeader: () => <>FixedRight</>,
+          renderBody: () => <>Last column</>,
+        },
+      ],
+      [],
+    )
+
+    return (
+      <div style={{ width: "1000px" }}>
+        {/* Many rows so the list overflows vertically and grows a vertical
+            scrollbar. The stretch column must shrink to leave room for it,
+            otherwise a horizontal scrollbar appears. */}
+        <Ui89VirtualTable
+          maxHeight="200px"
+          rows={new Array(500)}
+          columns={columns}
+        />
+      </div>
+    )
+  },
+
+  play: async (context) => {
+    const scroller = context.canvasElement.querySelector(
+      ".ui89-virtual-list",
+    ) as HTMLElement
+
+    await waitFor(() => {
+      expect(scroller).toBeTruthy()
+
+      // The vertical scrollbar must be present for this story to be
+      // meaningful.
+      expect(scroller.scrollHeight).toBeGreaterThan(scroller.clientHeight)
+
+      // The content must fit horizontally within the scroll viewport. When
+      // the vertical scrollbar is not accounted for, scrollWidth exceeds
+      // clientWidth and a horizontal scrollbar appears.
+      expect(scroller.scrollWidth).toBeLessThanOrEqual(scroller.clientWidth)
+    })
+  },
+}
+
 export const NumericWidthIsUnaffectedByStretchLogic: Story = {
   render: () => {
     const columns = useMemo<Ui89VirtualTablePropsColumn<any>[]>(

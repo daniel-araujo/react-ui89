@@ -15,6 +15,11 @@ export interface Ui89VirtualListProps<T> {
   rowHeight?: number
   renderRow: (props: Ui89VirtualListPropsRenderRowProps<T>) => React.ReactNode
   getRowKey?: (row: T) => string
+  /**
+   * Reports the space actually available to rows, which excludes the vertical
+   * scrollbar. Fires on mount and whenever the viewport resizes.
+   */
+  onResize?: (size: { width: number; height: number }) => void
 }
 
 interface VisibleRow<T> {
@@ -45,11 +50,32 @@ function popAnyEntry<K, V>(map: Map<K, V>): V | undefined {
 export const Ui89VirtualList = React.memo(
   <T,>(props: Ui89VirtualListProps<T>) => {
     const keyCounter = useRef<number>(0)
-    const scrollContainer = useRef<HTMLDivElement>(null)
+    const scrollContainer = useRef<HTMLDivElement | null>(null)
     const scrollAreaContainer = useRef<HTMLDivElement>(null)
 
     const { size } = useResizeObserver(scrollContainer)
     const scrollY = useScrollYPosition(scrollContainer)
+
+    const onResize = props.onResize
+    useEffect(() => {
+      const element = scrollContainer.current
+      if (!onResize || element === null) {
+        return
+      }
+
+      const report = () =>
+        onResize({
+          width: element.clientWidth,
+          height: element.clientHeight,
+        })
+
+      report()
+
+      const observer = new ResizeObserver(report)
+      observer.observe(element)
+
+      return () => observer.disconnect()
+    }, [onResize])
 
     const rowHeight = props.rowHeight ?? 50
 
