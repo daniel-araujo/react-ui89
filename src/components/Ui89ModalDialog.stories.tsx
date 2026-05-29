@@ -39,6 +39,14 @@ export const Open: Story = {
   },
 }
 
+export const Themed: Story = {
+  args: {
+    open: true,
+    theme: "danger",
+    children: "Content goes here",
+  },
+}
+
 export const FullWidth: Story = {
   args: {
     open: true,

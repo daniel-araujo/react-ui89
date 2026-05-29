@@ -69,7 +69,8 @@ export const Ui89VirtualTable = React.memo(
     // scrollbar, so stretch columns leave room for it instead of overflowing
     // horizontally.
     const handleResize = useCallback(
-      (size: { width: number; height: number }) => setContainerWidth(size.width),
+      (size: { width: number; height: number }) =>
+        setContainerWidth(size.width),
       [],
     )
 

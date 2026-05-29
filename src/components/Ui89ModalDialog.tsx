@@ -8,10 +8,16 @@ import ScrollContainer from "./private/ScrollContainer"
 import "./Ui89ModalDialog.css"
 import { useZIndexer } from "../useZIndexer"
 import { useUi89 } from "../Ui89Provider"
+import { Ui89Palette, Ui89Theme } from "../theme"
 
 export interface Ui89ModalDialogProps {
   open: boolean
   size?: "small" | "medium" | "big" | "full"
+  theme?:
+    | Ui89Theme
+    | keyof typeof Ui89Theme
+    | Ui89Palette
+    | keyof typeof Ui89Palette
   children?: React.ReactNode
   topCenter?: React.ReactNode
   onRequestClose?: () => void
@@ -23,6 +29,7 @@ const portalRoot: HTMLElement | null =
 export function Ui89ModalDialog({
   open,
   size,
+  theme,
   children,
   topCenter,
   onRequestClose,
@@ -68,7 +75,7 @@ export function Ui89ModalDialog({
           <Ui89BoxShadow>
             <GridExpandTrick>
               <Ui89Scene>
-                <Ui89Card topCenter={topCenter}>
+                <Ui89Card topCenter={topCenter} theme={theme}>
                   <ScrollContainer>{children}</ScrollContainer>
                 </Ui89Card>
               </Ui89Scene>
