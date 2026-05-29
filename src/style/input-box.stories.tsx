@@ -15,7 +15,7 @@ export default meta
 type Story = StoryObj<typeof meta>
 
 export const CenterTextVertically: Story = {
-  render: (args, context) => {
+  render: () => {
     return (
       <>
         <div>

@@ -13,7 +13,7 @@
     "esModuleInterop": true, // Enable `import` and `export` interop between ES Modules and CommonJS
     "skipLibCheck": true, // Skip type checking for declaration files (faster compilation)
     "forceConsistentCasingInFileNames": true, // Enforce consistent casing in import paths
-    "moduleResolution": "node", // Resolve modules using Node.js conventions
+    "moduleResolution": "bundler", // Resolve modules the way the bundler (rollup) does
     "isolatedModules": true, // Ensures each file is treated as a separate module
     "allowSyntheticDefaultImports": true // Allow default imports from modules with no default export
   },

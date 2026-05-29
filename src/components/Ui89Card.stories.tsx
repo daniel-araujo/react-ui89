@@ -97,7 +97,7 @@ export const ScrollbarPresence: Story = {
   args: {
     children: (
       <div style={{ padding: "8px" }}>
-        <Ui89HighlightText>Scrollable Area</Ui89HighlightText>
+        <Ui89HighlightText theme="primary">Scrollable Area</Ui89HighlightText>
         <p>
           This content is designed to overflow the card when it is constrained
           to a fixed height, verifying internal scrollbar behavior.
@@ -245,7 +245,6 @@ export const BottomRightContent: Story = {
 
 export const StretchedContent: Story = {
   args: {
-    stretchChildren: true,
     children: (
       <div
         style={{

@@ -1,5 +1,5 @@
 import React from "react"
-import { Decorator } from "@storybook/react/*"
+import { Decorator } from "@storybook/react"
 
 import { Ui89Scene } from "../components/Ui89Scene"
 

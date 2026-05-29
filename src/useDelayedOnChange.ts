@@ -7,6 +7,9 @@ const OVERRIDEN_VALUE_UNDEFINED = Symbol("OVERRIDEN_VALUE_UNDEFINED")
 
 interface UseDelayedOnChangeState {
   value: any
+  lastValue?: any
+  overridenValue?: any
+  throttledTimeout?: any
   setValue: (newVal: any) => void
   onChange: (newVal: any) => void
   onFocus: () => void

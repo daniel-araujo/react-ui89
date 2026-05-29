@@ -25,7 +25,9 @@ export const Default: Story = {
   },
 }
 
-export const AsLink: StoryObj<Ui89OverrideProps> = {
+export const AsLink: StoryObj<
+  React.ComponentProps<typeof Ui89LinkBracket> & Ui89OverrideProps
+> = {
   args: {
     routerPush: fn(),
     href: "/link",
