@@ -210,6 +210,113 @@ export const PopoverMaxOverflowWidthLargerThanContainer: Story = {
   },
 }
 
+export const PlacementBottomCenter: Story = {
+  args: {
+    open: true,
+    placement: Ui89PopoverPropsPlacement.bottom,
+    popoverOverflowMaxWidth: 300,
+  },
+
+  render: (args, context) => (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Ui89Popover
+        {...args}
+        renderContainer={(props) => (
+          <span
+            ref={props.setRef}
+            {...props.props}
+            style={{ cursor: "pointer" }}
+          >
+            Container
+          </span>
+        )}
+        renderPopover={() => (
+          <Ui89ThemeBackground theme="danger">Popover</Ui89ThemeBackground>
+        )}
+      />
+    </div>
+  ),
+
+  async play(context) {
+    const container = await screen.findByText("Container")
+    const popover = await screen.findByText("Popover")
+
+    const containerRect = container.getBoundingClientRect()
+    const popoverRect = popover.getBoundingClientRect()
+
+    // The popover should be below the container.
+    expect(popoverRect.top).toBeCloseTo(containerRect.bottom)
+
+    // The popover should be horizontally centered on the container.
+    const containerCenterX = (containerRect.left + containerRect.right) / 2
+    const popoverCenterX = (popoverRect.left + popoverRect.right) / 2
+    expect(popoverCenterX).toBeCloseTo(containerCenterX, 0)
+  },
+}
+
+export const PlacementBottomCenterPopoverWiderThanContainer: Story = {
+  args: {
+    open: true,
+    placement: Ui89PopoverPropsPlacement.bottom,
+    popoverOverflowMaxWidth: 300,
+  },
+
+  render: (args, context) => (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      <Ui89Popover
+        {...args}
+        renderContainer={(props) => (
+          <span
+            ref={props.setRef}
+            {...props.props}
+            style={{ cursor: "pointer" }}
+          >
+            Container
+          </span>
+        )}
+        renderPopover={() => (
+          <Ui89ThemeBackground theme="danger">
+            {"This popover content is much wider than the container element"}
+          </Ui89ThemeBackground>
+        )}
+      />
+    </div>
+  ),
+
+  async play(context) {
+    const container = await screen.findByText("Container")
+    const popover = await screen.findByText(
+      "This popover content is much wider than the container element",
+    )
+
+    const containerRect = container.getBoundingClientRect()
+    const popoverRect = popover.getBoundingClientRect()
+
+    // The popover should be wider than the container.
+    expect(popoverRect.width).toBeGreaterThan(containerRect.width)
+
+    // The popover should be below the container.
+    expect(popoverRect.top).toBeCloseTo(containerRect.bottom)
+
+    // The popover should still be horizontally centered on the container.
+    const containerCenterX = (containerRect.left + containerRect.right) / 2
+    const popoverCenterX = (popoverRect.left + popoverRect.right) / 2
+    expect(popoverCenterX).toBeCloseTo(containerCenterX, 0)
+  },
+}
+
 export const PlacementBottomRightCorner: Story = {
   args: {
     open: true,
