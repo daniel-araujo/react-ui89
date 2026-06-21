@@ -117,8 +117,9 @@ export const RequestsToCloseWhenClickingOnTheBackdrop: Story = {
 
   async play(context) {
     const dialog = await screen.findByRole("dialog")
+    const content = dialog.querySelector(".ui89-modal-dialog__content")!
 
-    dialog.dispatchEvent(new MouseEvent("click", { bubbles: true }))
+    content.dispatchEvent(new MouseEvent("click", { bubbles: true }))
 
     expect(context.args.onRequestClose).toHaveBeenCalledOnce()
   },

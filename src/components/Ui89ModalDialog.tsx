@@ -48,8 +48,8 @@ export function Ui89ModalDialog({
     ].join(" ")
   }, [size])
 
-  function onClickDialog(e: React.MouseEvent<HTMLDialogElement>) {
-    if (e.target === dialogRef.current) {
+  function onClickContent(e: React.MouseEvent<HTMLDivElement>) {
+    if (e.target === e.currentTarget) {
       onRequestClose?.()
     }
   }
@@ -65,10 +65,9 @@ export function Ui89ModalDialog({
     <dialog
       ref={dialogRef}
       className="ui89-modal-dialog"
-      onClick={onClickDialog}
       onKeyDown={onKeyDownDialog}
     >
-      <div className="ui89-modal-dialog__content">
+      <div className="ui89-modal-dialog__content" onClick={onClickContent}>
         <div className="ui89-modal-dialog__spacer"></div>
 
         <div className={dialogBoxClass}>
