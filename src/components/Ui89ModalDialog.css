@@ -1,19 +1,20 @@
-.ui89-modal-dialog {
+dialog.ui89-modal-dialog {
   position: fixed;
-  inset: 0px;
-
-  display: none;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  border: none;
+  padding: 0;
+  background: transparent;
+  overflow: hidden;
   animation: ui89-modal-dialog__appear var(--ui89-animation-speed);
 }
 
-.ui89-modal-dialog--open {
-  display: block;
-}
-
-.ui89-modal-dialog__backdrop {
-  position: absolute;
-  inset: 0px;
+dialog.ui89-modal-dialog::backdrop {
   background-color: rgba(0, 0, 0, 0.4);
+  animation: ui89-modal-dialog__appear var(--ui89-animation-speed);
 }
 
 .ui89-modal-dialog__box {
